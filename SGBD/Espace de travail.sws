@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?PowerDesigner signature="Workspace" version="15.0.0.2613"?>
+<!-- Veuillez ne pas modifier ce fichier -->
+
+<Workspace>
+	<Local Expanded="Yes">
+		<Model Expanded="Yes" ID="{FFF7B149-EF91-4D25-8844-8274C7EF4EC0}" Name="TP1" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="file:///E|/TP1.mcd"/>
+		<Model Expanded="Yes" ID="{871B98A7-F8FC-43A5-A914-A35111033BD7}" Name="TP1" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="file:///E|/TP1.mpd"/>
+	</Local>
+	<BrowserModule Name="Référentiel"/>
+</Workspace>
