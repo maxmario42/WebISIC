@@ -1,4 +1,4 @@
-#Bienvenue sur notre projet Web
+Bienvenue sur notre projet Web
 
 Ce projet est réalisé dans le cadre de la majeure ISIC de l'IMT Lille Douai promo 2020.
 
