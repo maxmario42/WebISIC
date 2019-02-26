@@ -6,7 +6,7 @@
     if(isset($_GET['login'])&&isset($_GET['password']))
         $pageToLoad="connected.php";
     if(!is_readable($pageToLoad)) 
-        $pageToLoad="error.php"; 
+        $pageToLoad="error.php"; //!!
 ?> 
 <!doctype html>
 <html>
