@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  11/02/2019 11:57:02                      */
+/* Date de création :  04/03/2019 12:10:24                      */
 /*==============================================================*/
 
 
@@ -71,6 +71,8 @@ create table PARTICIPER
 (
    ID                   bigint not null,
    IDQ                  bigint not null,
+   DATE_PARTICIPATION   date,
+   CLASSEMENT           int,
    primary key (ID, IDQ)
 );
 
@@ -91,7 +93,7 @@ create table QUESTION
 /*==============================================================*/
 create table QUESTIONNAIRE
 (
-   IDQ                  bigint not null,
+   IDQ                  bigint not null auto_increment,
    ID                   bigint not null,
    TITRE                varchar(200) not null,
    ID_REGLES_QUEST      bigint not null,
