@@ -8,29 +8,21 @@ class AutoLoader extends MyObject {
     }
     // This method will be automatically executed by PHP whenever it encounters 
     // an unknown class name in the source code 
-    private function load($className) { 
-        $temp = strtolower ($className);
-        $nom = ucfirst ($temp) . '.class.php';
-        $trouve = false;
-        if (is_readable (__ROOT_DIR . '/classes/'.$nom)){
-            $chemin=__ROOT_DIR . '/classes/'.$nom;
-            $trouve = true;
+    private function load($className) {
+        $className = ucfirst(strtolower($bar)); //Permet de respecter la convention de nommage
+        $dirs = array('classes', 'model', 'controller', 'view');
+        foreach ($dirs as $dir) {
+            $path = implode('/', array(
+                __ROOT_DIR,
+                $dir,
+                $className.'.class.php'
+            ));
+            if (is_readable($path)) {
+                require_once($path);
+                return;
+            }
         }
-        else if (is_readable (__ROOT_DIR . '/model/'.$nom)){
-            $chemin=__ROOT_DIR . '/model/'.$nom;
-            $trouve = true;
-        }
-        else if (is_readable (__ROOT_DIR . '/controller/'.$nom)){
-            $chemin=__ROOT_DIR . '/controller/'.$nom;
-            $trouve = true;
-        }
-        else if (is_readable (__ROOT_DIR . '/view/'.$nom)){
-            $chemin=__ROOT_DIR . '/view/'.$nom;
-            $trouve = true;
-        }
-        if ($trouve){
-            require_once($chemin);
-        }
+        throw new \Error('File not found');
     }
 }
 
