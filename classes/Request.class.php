@@ -12,7 +12,6 @@ aux paramètres de la requête (GET, POST, ...).
     private $action;
     private $controller;
     private $connection;
-    private $user = null;
 
     public function __construct()
     //Constructeur de la requête
