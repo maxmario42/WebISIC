@@ -10,7 +10,7 @@ class AnonymousController extends Controller
        //print_r($view); pour tester apres.s
        $view->render();
     }
-
+    /*
     function __construct(!$_REQUEST) {
         _construct($_REQUEST);
         $this-> name ='ananymous';
@@ -19,5 +19,6 @@ class AnonymousController extends Controller
         $this->request->hasPOST(insclogin) && $request->hasPOST('inscPassword');
         $this->request->SetActionName('validateInscription');
     }
+    */
 }
 ?>
