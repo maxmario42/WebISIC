@@ -5,13 +5,14 @@ class AnonymousController extends Controller
 {
     public function defaultAction()
     //Appelle la vue qui retournera la bonne réponse ou affichera la bonne chose
-    {
-        $view = new View($this);
-        $view->render();
+    { //echo "Hello world";
+       $view = new View($this);
+       //print_r($view); pour tester apres.s
+       $view->render();
     }
-
-    function __construct(!$_REQUEST) {
-        _construct($_REQUEST);
+    
+    function __construct($request) {
+      parent::  _construct($request);
         $this-> name ='ananymous';
         $this-> request-> hasPOST('login') && $this->request->hasPOST('password')
         $this->request->setActionname('login');
@@ -19,4 +20,5 @@ class AnonymousController extends Controller
         $this->request->SetActionName('validateInscription');
     }
 }
-?>
+
+	
