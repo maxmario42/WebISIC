@@ -1,0 +1,51 @@
+<?php
+
+class DatabasePDO extends MyObject
+/*
+Encapsule un objet PDO.
+Design patter Singleton
+*/
+{
+    private static $instance = null;
+    private $conn;
+    public function __construct()
+    {
+        $this->conn = new PDO(
+            //Connexion à la base de données
+            'mysql:host='._MYSQL_HOST.':'._MYSQL_PORT.';dbname='._MYSQL_DBNAME,
+            _MYSQL_USER,
+            _MYSQL_PASSWORD,
+            array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8')
+        );
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    public static function getCurrentPDO()
+    //Gestion de l'unique instance
+    {
+        if (is_null(self::$instance)) {
+            self::$instance = new DatabasePDO();
+        }
+        return self::$instance;
+    }
+
+    public function query($sql, $options = array(), $fetch = PDO::FETCH_ASSOC)
+    //Cette fonction prépare une requête SQL
+    {
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute($options);
+        if ($fetch == false) {
+            return;
+        }
+        $qres = $stmt->fetchAll($fetch);
+        if (!isset($qres[0])) {
+            $qres = array(array());
+        }
+        return $qres;
+    }
+
+    public function lastInsertId()
+    {
+        return $this->conn->lastInsertId();
+    }
+}
+?>
