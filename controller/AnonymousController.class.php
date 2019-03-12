@@ -6,8 +6,8 @@ class AnonymousController extends Controller
     public function defaultAction()
     //Appelle la vue qui retournera la bonne réponse ou affichera la bonne chose
     {
-      //  $view = new View($this);
-        //$view->render();
+        $view = new View($this);
+        $view->render();
     }
 
     function __construct(!$_REQUEST) {
