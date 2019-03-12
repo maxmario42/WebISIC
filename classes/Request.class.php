@@ -11,6 +11,8 @@ aux paramètres de la requête (GET, POST, ...).
     private static $request;
     private $action;
     private $controller;
+    private $connection;
+    private $user = null;
 
     public function __construct()
     //Constructeur de la requête
@@ -67,6 +69,33 @@ aux paramètres de la requête (GET, POST, ...).
             return $_GET[$key];
         }
         return $default;
+    }
+    public function POST($key, $default = false)
+    //Récupère les paramètres en POST
+    {
+        if (isset($_POST[$key])) {
+            return $_POST[$key];
+        }
+        return $default;
+    }
+    public function REQUEST($key, $default = false)
+    //Renvoie une requête associée à une clé, faux si elle n'existe pas
+    {
+        if (isset($_REQUEST[$key])) {
+            return $_REQUEST[$key];
+        }
+        return $default;
+    }
+    public function set($key, $value)
+    //Permet de setter une valeur sur une clé
+    {
+        $this->{'set'.ucfirst($key)}($value);
+        return $this;
+    }
+    public function isPost()
+    //Requête en POST
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
 }
 ?>
