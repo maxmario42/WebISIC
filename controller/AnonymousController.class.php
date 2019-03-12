@@ -5,9 +5,10 @@ class AnonymousController extends Controller
 {
     public function defaultAction()
     //Appelle la vue qui retournera la bonne réponse ou affichera la bonne chose
-    {
-        $view = new View($this);
-        $view->render();
+    { //echo "Hello world";
+       $view = new View($this);
+       //print_r($view); pour tester apres.s
+       $view->render();
     }
 }
 ?>

@@ -9,7 +9,7 @@ abstract class Controller extends MyObject
     }
     public function execute()
     //Appelle la bonne méthode du contrôleur i.e soit l’action par défaut (defaultAction), soit l’action dont le nom a été passé dans la requête courante.
-    {
+    { 
         $action = $this->request->getActionName();
         $this->$action();
     }
