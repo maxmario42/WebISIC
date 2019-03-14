@@ -17,21 +17,21 @@ aux paramètres de la requête (GET, POST, ...).
     //Constructeur de la requête
     {
         $this->setController($this->GET('controller'));
-        $this->setAction($this->GET('action'));
+        $this->setAction($this->GET('action')); //nom de la methode du controlleur a executer 
     }
 
     public static function getCurrentRequest()
     //Retourne l'instance requête si elle existe sinon la crée
     {
         if (is_null(self::$request)) { //Singleton
-            self::$request = new Request();
+            self::$request = new Request();  // static::new static() dessigne la classe du receveur du message. 
         }
         return self::$request;
     }
 
     public function getControllerName()
     //Retourne le nom du controlleur
-    {
+    { 
         return $this->controller.'Controller';
     }
     public function getActionName()

@@ -20,7 +20,7 @@ class View extends MyObject {
         //$this->getTemplate('top');
        // $this->getTemplate('menu');
         $this->getTemplate($this->templateName);
-        //$this->getTemplate('foot'); 
+        $this->getTemplate('foot'); 
 
     }
 
