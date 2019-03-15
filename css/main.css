@@ -14,11 +14,7 @@ label, .label {
 .home {
   height: 50vh;
   min-height: 300px;
-<<<<<<< HEAD
   background: url('./img/backidea.jpg') center center no-repeat scroll;
-=======
-  background: url('./img/backIdea.jpg') center center no-repeat scroll;
->>>>>>> 8fa464aeab431b51951292f9bc36f7e35b24f4b7
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;

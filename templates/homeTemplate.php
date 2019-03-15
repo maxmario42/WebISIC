@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 		<main>
-=======
-<main>
->>>>>>> 8fa464aeab431b51951292f9bc36f7e35b24f4b7
             <!-- Preloader -->
             <div id="preloader">
                 <div class="spinner"></div>
