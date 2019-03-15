@@ -10,14 +10,15 @@ class AnonymousController extends Controller
        //print_r($view); pour tester apres.s
        $view->render();
     }
-
-   /* function __construct(!$_REQUEST) {
-        _construct($_REQUEST);
+    
+    function __construct($request) {
+      parent::  _construct($request);
         $this-> name ='ananymous';
         $this-> request-> hasPOST('login') && $this->request->hasPOST('password')
         $this->request->setActionname('login');
         $this->request->hasPOST(insclogin) && $request->hasPOST('inscPassword');
         $this->request->SetActionName('validateInscription');
-    } */
+    }
 }
-?>
+
+	
