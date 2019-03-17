@@ -10,7 +10,14 @@ class AnonymousController extends Controller
        //print_r($view); pour tester apres.s
        $view->render();
     }
+   
+    public function inscriptionAction(){
+       $view = new View($this,'inscription');
+       $view->render();  
+    }
+
     
+
    /*function __construct($request) {
       parent::  _construct($request);
         $this-> name ='anonymous';

@@ -42,7 +42,7 @@
 
                             <!-- Register / Login -->
                             <div class="register-login-area">
-                                <a href="#" class="btn">S'inscrire</a>
+                                <a href="index.php?action=inscription" class="btn">S'inscrire</a>
                                 <a href="index-login.html" class="btn active">Se connecter</a>
                             </div>
 
