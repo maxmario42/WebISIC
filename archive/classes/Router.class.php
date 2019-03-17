@@ -1,7 +1,7 @@
 <?php
 
 class Router extends MyObject
-{
+{ //Construire automatiquement la route vers les pages
     const routes = array(
     //  'route_name' => 'Controller:action',
         'home' => ':',
