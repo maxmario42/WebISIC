@@ -16,9 +16,10 @@ class AnonymousController extends Controller
        $view->render();  
     }
 
-    public function validateInscription($request) {
-        $login = $request->read('inscLogin');
-        if(User::isLoginUsed($login)) {
+    public function validateInscriptionAction($request) {
+        print_r($request);
+      /*$mail = $request->read('inscLogin');
+      // if(User::isLoginUsed($login)) {
         $view = new View($this,'inscription');
         $view->setArg('inscErrorText','This login is already used');
         $view->render();
@@ -27,7 +28,9 @@ class AnonymousController extends Controller
         $nom = $request->read('nom');
         $prenom = $request->read('prenom');
         $mail_etudiant = $request->read('mail');
-        $user = User::create($nom, $prenom, $type_utilisateur='Invite', $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo=NULL, $annee_de_sortie=NULL, $mail_etudiant, $password);
+        $promo= $request->read('promo');
+        $annee_de_sortie= $request->read('anne-sortie');    
+        $user = User::create($nom, $prenom, $type_utilisateur='etudiant', $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo, $annee_de_sortie, $mail_etudiant, $password);
         if(!isset($user)) {
         $view = new View($this,'inscription');
         $view->setArg('inscErrorText', 'Cannot complete inscription');
@@ -38,7 +41,7 @@ class AnonymousController extends Controller
         $newRequest->write('user',$user->id());
         Dispatcher::dispatch($newRequest);
         }
-        }
+        } */
         }
 
    /*function __construct($request) {
