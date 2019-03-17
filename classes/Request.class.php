@@ -12,12 +12,14 @@ aux paramètres de la requête (GET, POST, ...).
     private $action;
     private $controller;
     private $connection;
+    private $user = null;
 
     public function __construct()
     //Constructeur de la requête
     {
         $this->setController($this->GET('controller'));
-        $this->setAction($this->GET('action')); //nom de la methode du controlleur a executer 
+        $this->setAction($this->GET('action')); //nom de la methode du controlleur a executer
+        $this->user = Session::getInstance()->user;
     }
 
     public static function getCurrentRequest()
@@ -95,6 +97,26 @@ aux paramètres de la requête (GET, POST, ...).
     //Requête en POST
     {
         return $_SERVER['REQUEST_METHOD'] === 'POST';
+    }
+    public function setUser($user)
+    //Premet de setter l'utilisateur
+    {
+        if (!$user instanceof User) {
+            Session::getInstance()->user = $user;
+        } else {
+            Session::getInstance()->user = $user->getId();
+        };
+        $this->user = $user;
+        return $this;
+    }
+    public function getUser()
+    //Permet d'obtenir l'utilisateur
+    {
+        if ($this->user == null || $this->user instanceof User) {
+            return $this->user;
+        }
+        $this->setUser(User::find($this->user));
+        return $this->user;
     }
 }
 ?>
