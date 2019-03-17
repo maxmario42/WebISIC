@@ -26,6 +26,7 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -33,4 +34,9 @@
 
 </head>
 <body>
-    <div id="page">
+     <!-- Preloader -->
+     <div id="preloader">
+                <div class="spinner"></div>
+            </div>
+            <header class="header-area">       
+    

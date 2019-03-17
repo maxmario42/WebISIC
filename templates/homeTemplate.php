@@ -1,9 +1,4 @@
 		<main>
-            <!-- Preloader -->
-            <div id="preloader">
-                <div class="spinner"></div>
-            </div>
-
             <div class="home">
             </div>
         

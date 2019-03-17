@@ -72,7 +72,7 @@
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="">Home</a></li>
                                         <li><a href="courses.html">Courses</a></li>
                                         <li><a href="single-course.html">Single Courses</a></li>
                                         <li><a href="instructors.html">Instructors</a></li>
