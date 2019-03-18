@@ -1,7 +1,41 @@
-Bienvenue sur notre projet Web
+Projet-Web - Quiz en ligne
+===================
 
-Ce projet est réalisé dans le cadre de la majeure ISIC de l'IMT Lille Douai promo 2020.
+Inroduction
+-----------
 
-Ceci est un questionnaire en ligne, il est réalisé sans framework. Ce site est génial.
+Le projet Web est un projet de groupe de deuxième année à l'école IMT Lille Douai.
+Le but est d'enseigner plusieurs technologies web (PHP, SQL, HTML, CSS).
+Ce projet n'utilise pas de framework externe, on construit le notre en suivant l'architecture MVC.
+L'objectif est de construire un site web permettant de réaliser des questionnaires en lignes.
 
-TODO : Faire une charte graphique et faire des tests
+Déploiement
+-------------
+
+Mode d'emploi :
+
+Téléchargement du projet
+- `git clone`
+- `cd projet-web`
+
+Initialisation de la base de données
+- Importer dans votre base de données le fichier `sql/structure.sql`
+- Importer les données de test dans votre base à l'aide du fichier `sql/data.sql`
+
+Configurer votre environnement
+- Renommer `config/config.php.dist` en `config/config.php`
+- Editer le fichier pour permettre la connection à votre base de données
+
+Architecture du Projet
+----------------------
+- `assets`: Fichiers publics
+- `classes`: Classes génériques
+- `config`: Fichiers de configuration
+- `controller`: Controllers
+- `model`: Modèles de données
+- `repository`: Requêtes pour accéder aux données
+- `sql`: Fichiers SQL permettant l'initialisation de la base de données
+    - `sql/structure.sql`: Schéma de la base de donnée
+    - `sql/data.sql`: Données de test
+- `templates`: Modèles de génération HTML
+- `view`: Gestion des vues
