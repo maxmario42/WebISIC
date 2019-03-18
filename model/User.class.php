@@ -37,8 +37,9 @@ class User extends Model
         );
     }
     public static function isloginUsed($key)
-    {
-        return "SELECT COUNT(*) FROM "UTILISATEUR" WHERE "UTILISATEUR.LOGIN" = ".$key."=?"
+    {  $db = DatabasePDO::getCurrentPDO();
+
+        return  $db->query ("SELECT COUNT(*) FROM"UTILISATEUR" WHERE "LOGIN" = ".$key."=?");
     }
 
     public static function create($nom, $prenom, $type_utilisateur='Invite', $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo=NULL, $annee_de_sortie=NULL, $mail_etudiant=NULL, $mdp=NULL, $login=NULL)
