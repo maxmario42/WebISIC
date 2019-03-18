@@ -26,10 +26,10 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/3.4.0/bootstrap.min.css">
     <script src="js/jquery/jquery.min.js"></script>
-    <script src="bootstrap/3.4.0/bootstrap.min.js"></script>
+    <script src="js/bootstrap/3.4.0/bootstrap.min.js"></script>
     <link href="css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>

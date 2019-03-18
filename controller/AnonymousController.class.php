@@ -10,7 +10,16 @@ class AnonymousController extends Controller
        //print_r($view); pour tester apres.s
        $view->render();
     }
+
+    public function aProposAction($request)
+    //Appelle la vue qui retournera la bonne réponse ou affichera la bonne chose
+    { //echo "Hello world";
+       $view = new View($this,'apropos');
+       //print_r($view); pour tester apres.s
+       $view->render();
+    }
    
+    
     public function inscriptionAction($request){
        $view = new View($this,'inscription');
        $view->render();  

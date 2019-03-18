@@ -15,7 +15,7 @@
                         
 						<div class="container">
   			
-			 		 	<p><a href="#" class="btn btn-info" role="button">S'inscrire</a><p>
+			 		 	<p><a href="index.php?action=inscription" class="btn btn-info" role="button">S'inscrire</a><p>
 						</div>
 						</div>
 				</div>

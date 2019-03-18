@@ -26,7 +26,7 @@
                         <div class="classynav">
                             <ul>  <?php //<?php echo $this->path('home'); ?> 
                                 <li><a href="<?php echo $this->path('home');?>">Accueil</a></li> 
-                                <li><a href="Apropos.html">À propos</a></li>
+                                <li><a href="index.php?action=apropos.php">À propos</a></li>
                                 <li><a href="Quest.php">Questionnaire</a></li>
                                <!-- <li><a href="blog.html"></a></li>
                                 <li><a href="contact.html">Contact</a></li> -->
