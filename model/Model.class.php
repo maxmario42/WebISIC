@@ -11,9 +11,9 @@ Pour cela, les modèles utiliseront l’unique objet permettant d’accéder à 
     private $db; //Base de donnée connectée
     private $id; //ID de l'objet
 
-    abstract public static function getTableName(); //Retourne le nom de la table
-    abstract public static function getColumns(); //Retourne les colonnes d'un table
-    abstract public function getError(); //Lève une erreur si une colonne n'est pas présente
+     abstract public static function getTableName(); //Retourne le nom de la table
+     abstract public static function getColumns(); //Retourne les colonnes d'un table
+     abstract public function getError(); //Lève une erreur si une colonne n'est pas présente
 
     public function isValid()
     //Tester la validité d'une requête
