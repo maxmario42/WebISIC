@@ -36,6 +36,10 @@ class User extends Model
             'LOGIN',
         );
     }
+    public static function isloginUsed($key)
+    {
+        
+    }
 
     public static function create($nom, $prenom, $type_utilisateur='Invite', $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo=NULL, $annee_de_sortie=NULL, $mail_etudiant=NULL, $mdp=NULL, $login=NULL)
     {

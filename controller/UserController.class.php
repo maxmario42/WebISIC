@@ -2,12 +2,12 @@
 
 class UserController extends Controller
 {
-    public function defaultAction()
+    public function defaultAction($request)
     {
         $view = new View($this);
         $view->render();
     }
-    public function profileAction()
+    public function profileAction($request)
     {
         $id = $this->request->GET('id');
         if ($id) {
@@ -21,6 +21,10 @@ class UserController extends Controller
         $view = new View($this, 'profile/view');
         $view->setArg('user', $user);
         $view->render();
+    }
+
+    public function isLoginUsed($key){
+
     }
     
 }
