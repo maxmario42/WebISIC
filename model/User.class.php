@@ -37,9 +37,10 @@ class User extends Model
         );
     }
     public static function isloginUsed($key)
-    {  $db = DatabasePDO::getCurrentPDO();
-
-        return  $db->query ("SELECT COUNT(*) FROM"UTILISATEUR" WHERE "LOGIN" = ".$key."=?");
+    //Teste si le login est déjà utilisé lors d'une incription
+    {  
+        $db = DatabasePDO::getCurrentPDO();
+        return $db->query ("SELECT COUNT(*) FROM UTILISATEUR WHERE LOGIN = ".$key."=?");
     }
 
     public static function create($nom, $prenom, $type_utilisateur='Invite', $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo=NULL, $annee_de_sortie=NULL, $mail_etudiant=NULL, $mdp=NULL, $login=NULL)
