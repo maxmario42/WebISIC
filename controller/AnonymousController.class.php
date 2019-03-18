@@ -18,24 +18,8 @@ class AnonymousController extends Controller
 
     public function loginAction()
     {
-        if ($this->request->getUser()!=null) {
-            $this->redirect(Router::path('profile'));
-        } else {
-            if ($this->request->isPost()) {
-                $login = $this->request->POST('login');
-                $password = $this->request->POST('password');
-                $user = User::findOneBy(array('LOGIN' => $login));
-                if ($user->getMDP() == $password) {
-                    $this->request->setUser($user);
-                    $this->redirect(Router::path('profile'));
-                } else {
-                    $view = new View($this, 'login');
-                }
-            } else {
-                $view = new View($this, 'login');
-            }
-        }
-        $view->render();
+      $view = new View($this,'profile/login');
+      $view->render();
     }
 
     public function validateInscriptionAction($request) {
