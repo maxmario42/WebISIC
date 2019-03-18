@@ -16,7 +16,7 @@ class AnonymousController extends Controller
        $view->render();  
     }
 
-    public function loginAction()
+    public function loginAction($request)
     {
       $view = new View($this,'profile/login');
       $view->render();
