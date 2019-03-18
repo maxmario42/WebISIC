@@ -3,7 +3,7 @@
 class AnonymousController extends Controller
 //Ce contrôleur regroupe l’ensemble des actions pour un utilisateur non connecté.
 {
-    public function defaultAction()
+    public function defaultAction($request)
     //Appelle la vue qui retournera la bonne réponse ou affichera la bonne chose
     { //echo "Hello world";
        $view = new View($this);
@@ -11,7 +11,7 @@ class AnonymousController extends Controller
        $view->render();
     }
    
-    public function inscriptionAction(){
+    public function inscriptionAction($request){
        $view = new View($this,'inscription');
        $view->render();  
     }

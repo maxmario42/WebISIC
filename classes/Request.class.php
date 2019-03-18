@@ -71,6 +71,9 @@ aux paramètres de la requête (GET, POST, ...).
         }
         return $default;
     }
+    public function read($key){ //pour lire les donnes en post
+        return $_POST[$key];
+    }
     public function POST($key, $default = false)
     //Récupère les paramètres en POST
     {
