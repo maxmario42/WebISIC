@@ -4,7 +4,7 @@ class User extends Model
 {
     private $nom;
     private $prenom;
-    private $type_utilisateur
+    private $type_utilisateur;
     private $id;
     private $matricule;
     private $statut;

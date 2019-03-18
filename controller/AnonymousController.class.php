@@ -18,20 +18,21 @@ class AnonymousController extends Controller
 
     public function validateInscriptionAction($request) {
        
-      $Login = $request->read('inscLogin');
-      echo($Login);
-      /* if(User::isLoginUsed($login)) {
-        $view = new View($this,'inscription');
+      $login = $request->read('inscLogin');
+      //echo($login);
+      if(User::isLoginUsed($login)) {
+         echo("isUsed");
+      }
+        /*$view = new View($this,'inscription');
         $view->setArg('inscErrorText','This login is already used');
         $view->render();
         } else {
         $password = $request->read('inscPassword');
         $nom = $request->read('nom');
-        $prenom = $request->POST('prenom');
-        $mail_etudiant = $request->POST('mail');
-        $promo= $request->POST('promo');
-        $annee_de_sortie= $request->POST('anne-sortie');    
-        $user = User::create($nom, $prenom, $type_utilisateur='etudiant', $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo, $annee_de_sortie, $mail_etudiant, $password);
+        $prenom = $request->read('prenom');
+        $mail = $request->read('mail');
+         
+        $user = User::create($nom, $prenom, $type_utilisateur= NULL, $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo, $annee_de_sortie, $mail_etudiant, $password);
         if(!isset($user)) {
         $view = new View($this,'inscription');
         $view->setArg('inscErrorText', 'Cannot complete inscription');
