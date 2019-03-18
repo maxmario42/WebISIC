@@ -22,10 +22,10 @@ class AnonymousController extends Controller
             $this->redirect(Router::path('profile'));
         } else {
             if ($this->request->isPost()) {
-                $email = $this->request->POST('email');
+                $login = $this->request->POST('login');
                 $password = $this->request->POST('password');
-                $user = User::findOneBy(array('EMAIL' => $email));
-                if ($user->getPassword() == $password) {
+                $user = User::findOneBy(array('LOGIN' => $login));
+                if ($user->getMDP() == $password) {
                     $this->request->setUser($user);
                     $this->redirect(Router::path('profile'));
                 } else {

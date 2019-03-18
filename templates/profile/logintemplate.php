@@ -4,8 +4,8 @@
 			<form action="<?php echo $this->path('login');?>" method="post">
 				<div class="form-group">
 					<h2>Connexion</h2>
-					<label for="email" class="sr-only">Adresse Email</label>
-					<input type="email" name="email" class="form-control" placeholder="Adresse Email" required autofocus>
+					<label for="login" class="sr-only">Login</label>
+					<input type="login" name="login" class="form-control" placeholder="Login" required autofocus>
 					<label for="password" class="sr-only">Mot de passe</label>
 					<input type="password" name="password" class="form-control" placeholder="Mot de passe" required autofocus>
 					<br />
