@@ -10,7 +10,36 @@
                 echo '<span class="error">' . $inscErrorText . '</span>';
             ?>
             <form action="index.php?action=validateInscription" method="post">
-                <table>
+
+                <div class="form-group">
+                    <label for="login">Login</label>
+                    <input type="text" class="form-control" name="inscLogin" id="inLogin" placeholder="Login">
+                </div>
+                <div class="form-group">
+                    <label for="mdp">Mot de passe</label>
+                    <input type="password" class="form-control" name="inscPassword" id="inPassword" placeholder="Mot de passe">
+                </div>
+                <div class="form-group">
+                    <label for="mdp2">Répetez le mot de passe</label>
+                    <input type="password" class="form-control" name="inscPasswordRepeat" id="inPasswordRepeat" placeholder="Mot de passe">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="nom">Nom</label>
+                        <input type="text" class="form-control" name="nom" id="inName" placeholder="Nom">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" class="form-control" name="prenom" id="inPrenom" placeholder="Prenom">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email2">Email</label>
+                    <input type="email" class="form-control" name="mail" id="inMail" placeholder="Email">
+                </div>
+
+                <button type="submit" class="btn btn-dark" style="background-color: #1B5040;">Creer mon compte...</button>
+                <!--<table>
                     <tr>
                         <th>mail* :</th>
                         <td><input type="text" name="mail" /></td>
@@ -52,10 +81,10 @@
                     </tr>
                     <tr>    
                         <th>
-                        <td><input type="submit" value="Creer mon compte..." /></td>
+                        <td><input type="submit" value="Creer mon compte..." /></td> 
                     </tr>
-                </table>
+                </table> -->
             </form>
         </div>
     </div>
-</div>
+</div> 

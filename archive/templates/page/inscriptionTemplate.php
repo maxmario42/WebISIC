@@ -25,6 +25,7 @@
 					<label for="passwordConfirm" class="sr-only">Confirmez le mot de passe</label>
 					<input type="password" name="passwordConfirm" class="form-control" placeholder="Confirmez le mot de passe" required>
 					<br/>
+					<br>
 					<button class="btn btn-lg btn-primary btn-block" type="submit">
 						<span class="fa fa-pencil-square-o"></span> Créer mon compte
 					</button>
