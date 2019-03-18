@@ -43,6 +43,11 @@ class User extends Model
         return $db->query ("SELECT COUNT(*) FROM UTILISATEUR WHERE LOGIN = ".$key."=?");
     }
 
+    public function getError()
+    {
+        //TODO
+    }
+
     public static function create($nom, $prenom, $type_utilisateur='Invite', $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo=NULL, $annee_de_sortie=NULL, $mail_etudiant=NULL, $mdp=NULL, $login=NULL)
     {
         return new self(array(
