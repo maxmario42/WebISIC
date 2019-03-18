@@ -13,6 +13,7 @@ class User extends Model
     private $annee_de_sortie;
     private $mail_etudiant;
     private $mdp;
+    private $login;
 
     public static function getTableName()
     {
@@ -32,10 +33,11 @@ class User extends Model
             'ANNEE_DE_SORTIE',
             'MAIL_ETUDIANT',
             'MDP',
+            'LOGIN',
         );
     }
 
-    public static function create($nom, $prenom, $type_utilisateur='Invite', $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo=NULL, $annee_de_sortie=NULL, $mail_etudiant=NULL, $mdp=NULL)
+    public static function create($nom, $prenom, $type_utilisateur='Invite', $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo=NULL, $annee_de_sortie=NULL, $mail_etudiant=NULL, $mdp=NULL, $login=NULL)
     {
         return new self(array(
             'NOM'=>$nom,
@@ -49,6 +51,7 @@ class User extends Model
             'ANNEE_DE_SORTIE'=>$annee_de_sortie,
             'MAIL_ETUDIANT'=>$mail_etudiant,
             'MDP'=>$mdp,
+            'LOGIN'=>$login,
         ));
     }
     /*
@@ -189,7 +192,7 @@ class User extends Model
     }
 
     /*
-    Variable utilisée pour prof et étudiant connecté
+    Variables utilisée pour prof et étudiant connecté
     */
 
     //Gestion du mot de passe
@@ -206,6 +209,18 @@ class User extends Model
     public function setPlainPassword(string $plainPassword)
     {
         $this->setPassword(hash('sha256', $plainPassword));
+        return $this;
+    }
+
+    //Gestion du login
+    public function getLogin()
+    {
+        $this->load();
+        return $this->login;
+    }
+    public function setLogin(string $login)
+    {
+        $this->login = $login;
         return $this;
     }
 }
