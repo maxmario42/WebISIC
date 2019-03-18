@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Dim 17 Mars 2019 à 20:14
+-- Généré le :  Lun 18 Mars 2019 à 19:06
 -- Version du serveur :  10.1.26-MariaDB-0+deb9u1
 -- Version de PHP :  7.0.33-0+deb9u3
 
@@ -173,15 +173,15 @@ INSERT INTO `TYPE` (`TYPEQ`) VALUES
 -- Contenu de la table `UTILISATEUR`
 --
 
-INSERT INTO `UTILISATEUR` (`NOM`, `PRENOM`, `TYPE_UTILISATEUR`, `ID`, `MATRICULE`, `STATUT`, `MAIL_ENSEIGNANT`, `PROMO`, `ANNEE_DE_SORTIE`, `MAIL_ETUDIANT`, `MDP`) VALUES
-('Godefert', 'Maxence', 'Etudiant', 1, NULL, NULL, NULL, 'FI 2020', 2020, 'maxence.godefert@etu.imt-lille-douai.fr', ''),
-('Acevedo', 'Alejandra', 'Etudiant', 2, NULL, NULL, NULL, 'FI 2020', 2020, 'alejandra.acevedo@etu.imt-lille-douai.fr', ''),
-('Kepseu', 'Dorine', 'Etudiant', 3, NULL, NULL, NULL, 'FCD 2020', 2020, 'dorine.kepseu@etu.imt-lille-douai.fr', ''),
-('Le participant non inscrit', 'Lorem IPSUM', 'Etudiant Non Connecte', 4, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-('Pinot', 'Rémy', 'Enseignant', 5, 'IMT001', 'Interne', 'remy.pinot@imt-lille-douai.fr', NULL, NULL, NULL, ''),
-('Fabresse', 'Luc', 'Enseignant', 6, 'IMT002', 'Interne', 'luc.fabresse@imt-lille-douai.fr', NULL, NULL, NULL, ''),
-('Vermeulen', 'Mathieu', 'Enseignant', 7, 'IMT003', 'Interne', 'mathieu.vermeulen@imt-lille-douai.fr', NULL, NULL, NULL, ''),
-('Le prof pas engagé', 'Inconnu', 'Enseignant', 8, 'EX001', 'Externe', 'inconnu@domaine.ext', NULL, NULL, NULL, '');
+INSERT INTO `UTILISATEUR` (`NOM`, `PRENOM`, `TYPE_UTILISATEUR`, `ID`, `MATRICULE`, `STATUT`, `MAIL_ENSEIGNANT`, `PROMO`, `ANNEE_DE_SORTIE`, `MAIL_ETUDIANT`, `MDP`, `login`) VALUES
+('Godefert', 'Maxence', 'Etudiant', 1, NULL, NULL, NULL, 'FI 2020', 2020, 'maxence.godefert@etu.imt-lille-douai.fr', 'a', 'max'),
+('Acevedo', 'Alejandra', 'Etudiant', 2, NULL, NULL, NULL, 'FI 2020', 2020, 'alejandra.acevedo@etu.imt-lille-douai.fr', 'b', 'aleja'),
+('Kepseu', 'Dorine', 'Etudiant', 3, NULL, NULL, NULL, 'FCD 2020', 2020, 'dorine.kepseu@etu.imt-lille-douai.fr', 'c', 'dory'),
+('Le participant non inscrit', 'Lorem IPSUM', 'Etudiant Non Connecte', 4, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL),
+('Pinot', 'Rémy', 'Enseignant', 5, 'IMT001', 'Interne', 'remy.pinot@imt-lille-douai.fr', NULL, NULL, NULL, 'd', 'rem'),
+('Fabresse', 'Luc', 'Enseignant', 6, 'IMT002', 'Interne', 'luc.fabresse@imt-lille-douai.fr', NULL, NULL, NULL, 'e', 'pharluc'),
+('Vermeulen', 'Mathieu', 'Enseignant', 7, 'IMT003', 'Interne', 'mathieu.vermeulen@imt-lille-douai.fr', NULL, NULL, NULL, 'f', 'matt'),
+('Le prof pas engagé', 'Inconnu', 'Enseignant', 8, 'EX001', 'Externe', 'inconnu@domaine.ext', NULL, NULL, NULL, 'g', '42');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
