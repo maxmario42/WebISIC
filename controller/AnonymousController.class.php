@@ -16,6 +16,28 @@ class AnonymousController extends Controller
        $view->render();  
     }
 
+    public function loginAction()
+    {
+        if ($this->request->getUser()!=null) {
+            $this->redirect(Router::path('profile'));
+        } else {
+            if ($this->request->isPost()) {
+                $email = $this->request->POST('email');
+                $password = $this->request->POST('password');
+                $user = User::findOneBy(array('EMAIL' => $email));
+                if ($user->getPassword() == $password) {
+                    $this->request->setUser($user);
+                    $this->redirect(Router::path('profile'));
+                } else {
+                    $view = new View($this, 'login');
+                }
+            } else {
+                $view = new View($this, 'login');
+            }
+        }
+        $view->render();
+    }
+
     public function validateInscriptionAction($request) {
        
       $login = $request->read('inscLogin');
