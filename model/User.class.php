@@ -75,7 +75,7 @@ class User extends Model
         $this->load();
         return $this->id;
     }
-    public function setId(string $id)
+    public function setId($id)
     {
         $this->id = $id;
         return $this;
@@ -87,7 +87,7 @@ class User extends Model
         $this->load();
         return $this->nom;
     }
-    public function setNom(string $nom)
+    public function setNom($nom)
     {
         $this->nom = $nom;
         return $this;
@@ -99,7 +99,7 @@ class User extends Model
         $this->load();
         return $this->prenom;
     }
-    public function setPrenom(string $prenom)
+    public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
         return $this;
@@ -111,7 +111,7 @@ class User extends Model
         $this->load();
         return $this->type_utilisateur;
     }
-    public function setType(string $type_utilisateur)
+    public function setType($type_utilisateur)
     {
         $this->type_utilisateur = $type_utilisateur;
         return $this;
@@ -127,7 +127,7 @@ class User extends Model
         $this->load();
         return $this->matricule;
     }
-    public function setMatricule(string $matricule)
+    public function setMatricule($matricule)
     {
         $this->matricule = $matricule;
         return $this;
@@ -139,7 +139,7 @@ class User extends Model
         $this->load();
         return $this->statut;
     }
-    public function setStatut(string $statut)
+    public function setStatut($statut)
     {
         $this->statut = $statut;
         return $this;
@@ -151,7 +151,7 @@ class User extends Model
         $this->load();
         return $this->email_Enseignant;
     }
-    public function setEmailEnseignant(string $email_Enseignant)
+    public function setEmailEnseignant($email_Enseignant)
     {
         $this->email_Enseignant = $email_Enseignant;
         return $this;
@@ -167,7 +167,7 @@ class User extends Model
         $this->load();
         return $this->promo;
     }
-    public function setPromo(string $promo)
+    public function setPromo($promo)
     {
         $this->promo = $promo;
         return $this;
@@ -179,7 +179,7 @@ class User extends Model
         $this->load();
         return $this->annee_de_sortie;
     }
-    public function setAnneeDeSortie(string $annee_de_sortie)
+    public function setAnneeDeSortie($annee_de_sortie)
     {
         $this->annee_de_sortie = $annee_de_sortie;
         return $this;
@@ -191,7 +191,7 @@ class User extends Model
         $this->load();
         return $this->email_Etudiant;
     }
-    public function setEmailEtudiant(string $email_Etudiant)
+    public function setEmailEtudiant($email_Etudiant)
     {
         $this->email_Etudiant = $email_Etudiant;
         return $this;
@@ -207,12 +207,12 @@ class User extends Model
         $this->load();
         return $this->mdp;
     }
-    public function setMdp(string $mdp)
+    public function setMdp($mdp)
     {
         $this->mdp = $mdp;
         return $this;
     }
-    public function setPlainPassword(string $plainPassword)
+    public function setPlainPassword($plainPassword)
     {
         $this->setPassword(hash('sha256', $plainPassword));
         return $this;
@@ -224,7 +224,7 @@ class User extends Model
         $this->load();
         return $this->login;
     }
-    public function setLogin(string $login)
+    public function setLogin($login)
     {
         $this->login = $login;
         return $this;
