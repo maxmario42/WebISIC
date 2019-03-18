@@ -22,16 +22,16 @@ class AnonymousController extends Controller
       //echo($login);
       if(User::isLoginUsed($login)) {
          echo("isUsed");
-      }
-        /*$view = new View($this,'inscription');
+         $view = new View($this,'inscription');
         $view->setArg('inscErrorText','This login is already used');
         $view->render();
-        } else {
+         }  
+       else {
         $password = $request->read('inscPassword');
         $nom = $request->read('nom');
         $prenom = $request->read('prenom');
-        $mail = $request->read('mail');
-         
+        $mail = $request->read('mail'); }
+         /*
         $user = User::create($nom, $prenom, $type_utilisateur= NULL, $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo, $annee_de_sortie, $mail_etudiant, $password);
         if(!isset($user)) {
         $view = new View($this,'inscription');
