@@ -9,14 +9,23 @@
 @import url(css/font-awesome.min.css);
 @import url(css/classy-nav.min.css);
 /* :: 3.0 Base CSS */
+
 * {
   margin: 0;
-  padding: 0; }
+  /*padding: 0;*/ }
 
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
   font-weight: 400; }
+
+   td {
+    
+    padding: 5px;
+  }
+  table{
+    border-spacing: 20px;
+  }
 
 h1,
 h2,

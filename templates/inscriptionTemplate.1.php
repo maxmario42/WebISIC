@@ -42,20 +42,9 @@
                         <td><input type="text" name="anne-sortie" /></td>
                     </tr>
                     <tr>
-                    <tr>
-                        <th>Matricule :</th>
-                        <td><input type="text" name="matricule" /></td>
-                    </tr>
-                    <tr>
-                        <th>Statut:</th>
-                        <td><input type="text" name="statut" /></td>
-                    </tr>
-                    <tr>    
                         <th>
                         <td><input type="submit" value="Creer mon compte..." /></td>
                     </tr>
                 </table>
             </form>
-        </div>
-    </div>
-</div>
+        </div> 

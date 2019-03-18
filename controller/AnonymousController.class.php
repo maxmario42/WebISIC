@@ -18,18 +18,18 @@ class AnonymousController extends Controller
 
     public function validateInscriptionAction($request) {
         print_r($request);
-      /*$mail = $request->read('inscLogin');
+      /*$mail = $request->POST('inscLogin');
       // if(User::isLoginUsed($login)) {
         $view = new View($this,'inscription');
         $view->setArg('inscErrorText','This login is already used');
         $view->render();
         } else {
-        $password = $request->read('inscPassword');
-        $nom = $request->read('nom');
-        $prenom = $request->read('prenom');
-        $mail_etudiant = $request->read('mail');
-        $promo= $request->read('promo');
-        $annee_de_sortie= $request->read('anne-sortie');    
+        $password = $request->POST('inscPassword');
+        $nom = $request->POST('nom');
+        $prenom = $request->POST('prenom');
+        $mail_etudiant = $request->POST('mail');
+        $promo= $request->POST('promo');
+        $annee_de_sortie= $request->POST('anne-sortie');    
         $user = User::create($nom, $prenom, $type_utilisateur='etudiant', $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo, $annee_de_sortie, $mail_etudiant, $password);
         if(!isset($user)) {
         $view = new View($this,'inscription');
