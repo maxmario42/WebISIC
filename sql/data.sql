@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Lun 18 Mars 2019 à 19:06
+-- Généré le :  Lun 18 Mars 2019 à 20:19
 -- Version du serveur :  10.1.26-MariaDB-0+deb9u1
 -- Version de PHP :  7.0.33-0+deb9u3
 
@@ -173,7 +173,7 @@ INSERT INTO `TYPE` (`TYPEQ`) VALUES
 -- Contenu de la table `UTILISATEUR`
 --
 
-INSERT INTO `UTILISATEUR` (`NOM`, `PRENOM`, `TYPE_UTILISATEUR`, `ID`, `MATRICULE`, `STATUT`, `MAIL_ENSEIGNANT`, `PROMO`, `ANNEE_DE_SORTIE`, `MAIL_ETUDIANT`, `MDP`, `login`) VALUES
+INSERT INTO `UTILISATEUR` (`NOM`, `PRENOM`, `TYPE_UTILISATEUR`, `ID`, `MATRICULE`, `STATUT`, `MAIL_ENSEIGNANT`, `PROMO`, `ANNEE_DE_SORTIE`, `MAIL_ETUDIANT`, `MDP`, `LOGIN`) VALUES
 ('Godefert', 'Maxence', 'Etudiant', 1, NULL, NULL, NULL, 'FI 2020', 2020, 'maxence.godefert@etu.imt-lille-douai.fr', 'a', 'max'),
 ('Acevedo', 'Alejandra', 'Etudiant', 2, NULL, NULL, NULL, 'FI 2020', 2020, 'alejandra.acevedo@etu.imt-lille-douai.fr', 'b', 'aleja'),
 ('Kepseu', 'Dorine', 'Etudiant', 3, NULL, NULL, NULL, 'FCD 2020', 2020, 'dorine.kepseu@etu.imt-lille-douai.fr', 'c', 'dory'),

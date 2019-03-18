@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Lun 18 Mars 2019 à 19:05
+-- Généré le :  Lun 18 Mars 2019 à 20:19
 -- Version du serveur :  10.1.26-MariaDB-0+deb9u1
 -- Version de PHP :  7.0.33-0+deb9u3
 
@@ -211,7 +211,7 @@ CREATE TABLE `UTILISATEUR` (
   `ANNEE_DE_SORTIE` smallint(6) DEFAULT NULL,
   `MAIL_ETUDIANT` char(200) DEFAULT NULL,
   `MDP` varchar(200) DEFAULT NULL,
-  `login` varchar(200) DEFAULT NULL
+  `LOGIN` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
