@@ -55,6 +55,12 @@ class User extends Model
 
     }
 
+    public function toHtml(){
+		echo "<ul><li>LOGIN  :".$this->getLogin()." ";
+		echo "<li>NOM    : ".$this->getNom()."</li>";
+		echo "<li>PRENOM : ".$this->getPrenom();."</li>";
+	}
+
     public function getError()
     {
         //TODO
