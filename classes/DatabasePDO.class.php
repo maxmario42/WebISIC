@@ -28,6 +28,7 @@ Design patter Singleton
         return self::$instance;
     }
 
+    /*
     public function query($sql, $options = array(), $fetch = PDO::FETCH_ASSOC)
     //Cette fonction prépare une requête SQL
     {
@@ -42,6 +43,7 @@ Design patter Singleton
         }
         return $qres;
     }
+    */
 
     public function lastInsertId()
     {

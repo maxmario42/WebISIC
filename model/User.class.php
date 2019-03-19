@@ -40,11 +40,12 @@ class User extends Model
     //Teste si le login est déjà utilisé lors d'une incription
     {  
         $db = DatabasePDO::getCurrentPDO();
-        $req = "SELECT COUNT(*) FROM UTILISATEUR WHERE LOGIN = \"".$key."\";";
-        echo $req;
-        $result = $db->query($req);
-        print_r($result);
-        return count($result)==0;
+        $sql = "SELECT COUNT(*) FROM UTILISATEUR WHERE LOGIN = \"".$key."\";";
+        echo $sql;
+        $request = $db->query($sql);
+        print_r($request);
+        $users=$request->fetchAll(PDO::FETCH_CLASS,'User');
+        return count($users)!=0;
 
     }
 
