@@ -42,6 +42,7 @@ class AnonymousController extends Controller
         $view->render();
          }  
        else {
+         $login = $request->read('inscLogin');
         $password = $request->read('inscPassword');
         $nom = $request->read('nom');
         $prenom = $request->read('prenom');
