@@ -17,7 +17,7 @@ class AnonymousController extends Controller {
         if(!is_null($user)) {
             $newRequest = new Request();
             $newRequest->changeController('User');
-            $newRequest->write('User',$user->id());
+            $newRequest->write('User',$user['id']);
             //print_r($_POST);
             //echo($user->id());
             $controller = Dispatcher::dispatch($newRequest);

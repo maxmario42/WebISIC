@@ -8,7 +8,7 @@
             session_start();
             $userId = NULL;
             
-            $userId = $request->read('user');
+            $userId = $request->read('User');
             if(!is_null($userId))
             $this->user = User::getWithId($userId);
             

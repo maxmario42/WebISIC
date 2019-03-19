@@ -55,7 +55,7 @@
             $st = static::db()->query("select  * from UTILISATEUR where login='$login' and mdp='$mdp'");
             $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
             
-            $user = $st->fetch();
+            $user = $st->fetch(PDO::FETCH_ASSOC);
             
             return $user;
         }
