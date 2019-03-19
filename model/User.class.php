@@ -23,9 +23,28 @@
         private $mail_etudiant;
         private $mdp;
         private $login;
-        protected static $table_name = 'UTILISATEUR';
 
-       
+        public static function getTableName()
+        {
+            return 'UTILISATEUR';
+        }
+        public static function getColumns()
+        {
+            return array(
+                'NOM',
+                'PRENOM',
+                'TYPE_UTILISATEUR',
+                'ID',
+                'MATRICULE',
+                'STATUT',
+                'MAIL_ENSEIGNANT',
+                'PROMO',
+                'ANNEE_DE_SORTIE',
+                'MAIL_ETUDIANT',
+                'MDP',
+                'LOGIN',
+            );
+        }
         
         public static function create($nom, $prenom, $mail_etudiant, $mdp, $login) {
             static::db()->exec("INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,mail_etudiant,mdp,login) VALUES('$nom', '$prenom', 'Etudiant','$mail_etudiant','$mdp','$login')");
@@ -33,7 +52,7 @@
         }
                 
         public static function tryLogin($login, $mdp){
-            $st = static::db()->query("select  * from users where login='$login' and password='$mdp'");
+            $st = static::db()->query("select  * from UTILISATEUR where login='$login' and mdp='$mdp'");
             $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
             
             $user = $st->fetch();
@@ -48,15 +67,14 @@
     }
 
     public static function isLoginUsed ($login){
-        $st = static::db()->query("select login from users where login='$login'");
-      //  $a=$request->execute();     
+        $st = static::db()->query("select login from UTILISATEUR where login='$login'");   
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
         $user = $st-> fetch();
         return $user!=null;
     }
 
     public static function getWithId($userId){
-        $st = static::db()->query("select  * from users where id ='$userId'");
+        $st = static::db()->query("select  * from UTILISATEUR where id ='$userId'");
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
         $user = $st-> fetch();
         return $user;

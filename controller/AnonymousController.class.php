@@ -10,14 +10,13 @@ class AnonymousController extends Controller {
             $this -> Connect($currentRequest);
         }
     }
-}
 
     public function Connect($currentRequest){
         $user = User::tryLogin($currentRequest->read('inscLogin'),$currentRequest->read('inscPassword'));
             
         if(!is_null($user)) {
             $newRequest = new Request();
-            $newRequest->changeController('user');
+            $newRequest->changeController('User');
             $newRequest->write('user',$user->id());
             //print_r($_POST);
             //echo($user->id());
@@ -52,11 +51,11 @@ class AnonymousController extends Controller {
             echo("<script>alert('utilisateur existe déjà...');</script>");  
         } 
         else {
-            $password = $request->read('inscPassword');
+            $mdp = $request->read('inscPassword');
             $nom = $request->read('nom');
             $prenom = $request->read('prenom');
-            $mail = $request->read('mail');
-            $user = User::create($login, $password,$mail,$nom,$prenom);
+            $mail_etudiant = $request->read('mail');
+            $user = User::create($nom, $prenom, $mail_etudiant, $mdp, $login);
             if(!isset($user)) {
                 $view = new View($this,'inscription');
                 $view->setArg('inscErrorText', 'Cannot complete inscription');
@@ -66,8 +65,8 @@ class AnonymousController extends Controller {
                 $newRequest = new Request();
                 $newRequest->changeController('user');
                 $newRequest->write('user',$user->id());
-                //print_r($_POST);
-                //echo($user->id());
+                print_r($_POST);
+                echo($user->id());
                 $controller = Dispatcher::dispatch($newRequest);
                 $controller -> execute();
 
