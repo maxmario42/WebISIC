@@ -64,7 +64,7 @@ class AnonymousController extends Controller
       var_dump($V);
       if($V) {
          echo("isUsed");
-        /* $view = new View($this,'inscription');
+         $view = new View($this,'inscription');
         $view->setArg('inscErrorText','This login is already used');
         $view->render();
          } 
@@ -87,7 +87,7 @@ class AnonymousController extends Controller
             $newRequest->write('controller','user');
             $newRequest->write('user',$user->id());
             Dispatcher::dispatch($newRequest);
-                     }  */ 
+                     }  
         } 
         }
 

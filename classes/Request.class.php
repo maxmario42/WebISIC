@@ -51,6 +51,8 @@ aux paramètres de la requête (GET, POST, ...).
     {
         return $this->action;
     }
+
+
     public function setAction($action)
     //Paramètre l'action
     {
@@ -62,6 +64,10 @@ aux paramètres de la requête (GET, POST, ...).
     {
         $this->controller = ucfirst($controller) ?: 'Anonymous';
         return $this;
+    }
+
+    public function write($controller,$action){
+        
     }
     public function GET($key, $default = '')
     //Permet de récupérer les paramètres passés en GET
