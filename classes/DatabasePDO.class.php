@@ -28,23 +28,6 @@ Design patter Singleton
         return self::$instance;
     }
 
-    /*
-    public function query($sql, $options = array(), $fetch = PDO::FETCH_ASSOC)
-    //Cette fonction prépare une requête SQL
-    {
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute($options);
-        if ($fetch == false) {
-            return;
-        }
-        $qres = $stmt->fetchAll($fetch);
-        if (!isset($qres[0])) {
-            $qres = array(array());
-        }
-        return $qres;
-    }
-    */
-
     public function lastInsertId()
     {
         return $this->conn->lastInsertId();
