@@ -1,6 +1,6 @@
 <?php
 
-class DatabasePDO extends MyObject
+class DatabasePDO extends PDO
 /*
 Encapsule un objet PDO.
 Design patter Singleton
@@ -9,7 +9,7 @@ Design patter Singleton
     private static $instance = null;
     private $conn;
     public function __construct()
-    {
+    {       parent::__construct;
         $this->conn = new PDO(
             //Connexion à la base de données
             'mysql:host='._MYSQL_HOST.':'._MYSQL_PORT.';dbname='._MYSQL_DBNAME,
@@ -36,19 +36,11 @@ Design patter Singleton
         return $stmt;
     }
     */
-    public function query($sql)
-    {
-        $stmt = $this->conn->prepare($sql);
-        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE);
-        $stmt->execute();
+ 
 
-        $data->fetchAll(PDO::FETCH_ASSOC);
-        return $data;
-    }
-
-    public function lastInsertId()
+   /* public function lastInsertId()
     {
         return $this->conn->lastInsertId();
-    }
+    }*/
 }
 ?>
