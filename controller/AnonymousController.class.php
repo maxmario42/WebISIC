@@ -1,72 +1,68 @@
 <?php
-    class AnonymousController extends Controller {
-        public function __construct($currentRequest) {
-            parent::__construct($currentRequest);
-           if(! count($_POST)==0){
-               
-            if(count($_POST)==5)
-                $this -> validateInscription($currentRequest);
-            else if (count($_POST)==2)
-                $this -> Connect($currentRequest);
-           }
+class AnonymousController extends Controller {
+    
+    public function __construct($currentRequest) {
+        parent::__construct($currentRequest);  
+        if(count($_POST)==5){
+            $this -> validateInscription($currentRequest);
         }
+        else if (count($_POST)==2){
+            $this -> Connect($currentRequest);
+        }
+    }
+}
 
-        public function Connect($currentRequest){
-            $user = User::tryLogin($currentRequest->read('inscLogin'),$currentRequest->read('inscPassword'));
+    public function Connect($currentRequest){
+        $user = User::tryLogin($currentRequest->read('inscLogin'),$currentRequest->read('inscPassword'));
             
-            if(!is_null($user)) {
-                $newRequest = new Request();
-                $newRequest->changeController('user');
-                $newRequest->write('user',$user->id());
-                //print_r($_POST);
-                //echo($user->id());
-                $controller = Dispatcher::dispatch($newRequest);
-                $controller -> execute();
-            }
-            else {
-                echo 'Incorrect Password or Login';
-            }
-
+        if(!is_null($user)) {
+            $newRequest = new Request();
+            $newRequest->changeController('user');
+            $newRequest->write('user',$user->id());
+            //print_r($_POST);
+            //echo($user->id());
+            $controller = Dispatcher::dispatch($newRequest);
+            $controller -> execute();
         }
+        else {
+            echo 'Incorrect Password or Login';
+        }
+    }
         
-        public function defaultAction($currentRequest){
-            $view = new AnonymousView($this,'head');
-            $view->render();
-        }
-        public function inscription($currentRequest){
-            $view = new AnonymousView($this,'inscription');
-            $view->render();
-        }
-        public function signIn($currentRequest){
-            $view = new AnonymousView($this,'signIn');
-            $view->render();
-        }
+    public function defaultAction($currentRequest){
+        $view = new View($this);
+        $view->render();
+    }
+        
+    public function inscription($currentRequest){
+        $view = new View($this,'inscription');
+        $view->render();
+    }
+    public function login($currentRequest){
+        $view = new View($this,'profile/login');
+        $view->render();
+    }
 
-        public function validateInscription($request) {
-            $login = $request->read('inscLogin');
-            if(User::isLoginUsed($login)) {
-                $view = new View($this,'inscription');
-                $view->setArg('inscErrorText','This login is already used');
-                $view->render();
-                echo("<script>alert('utilisateur existe déjà...');</script>");
-            
-
-            } 
-            else {
+    public function validateInscription($request) {
+        $login = $request->read('inscLogin');
+        if(User::isLoginUsed($login)) {
+            $view = new View($this,'inscription');
+            $view->setArg('inscErrorText','This login is already used');
+            $view->render();
+            echo("<script>alert('utilisateur existe déjà...');</script>");  
+        } 
+        else {
             $password = $request->read('inscPassword');
             $nom = $request->read('nom');
             $prenom = $request->read('prenom');
             $mail = $request->read('mail');
             $user = User::create($login, $password,$mail,$nom,$prenom);
             if(!isset($user)) {
-
                 $view = new View($this,'inscription');
                 $view->setArg('inscErrorText', 'Cannot complete inscription');
                 $view->render();
             } 
             else {
-               
-
                 $newRequest = new Request();
                 $newRequest->changeController('user');
                 $newRequest->write('user',$user->id());
@@ -76,10 +72,9 @@
                 $controller -> execute();
 
             }
-            }
         }
     }
-
+}
 ?>
 
 <?php

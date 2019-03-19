@@ -11,21 +11,30 @@
             return static::$currentUser;
         }*/
 
-        protected $nom,$prenom,$mail,$id; protected $password; protected $ROLE;
-        protected $PROMO;protected $INE;protected $MATRICULE;protected $INTEXT;
-        protected $login;
-        protected static $table_name = 'USER';
+        private $nom;
+        private $prenom;
+        private $type_utilisateur;
+        private $id;
+        private $matricule;
+        private $statut;
+        private $mail_enseignant;
+        private $promo;
+        private $annee_de_sortie;
+        private $mail_etudiant;
+        private $mdp;
+        private $login;
+        protected static $table_name = 'UTILISATEUR';
 
        
         
-        public  static function create($login, $pwd, $mail,$nom,$prenom) {
-            static::db()->exec("INSERT INTO users (login,password,mail,nom,prenom) VALUES('$login', '$pwd', '$mail','$nom','$prenom')");
-            return static::tryLogin($login, $pwd);
+        public static function create($nom, $prenom, $mail_etudiant, $mdp, $login) {
+            static::db()->exec("INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,mail_etudiant,mdp,login) VALUES('$nom', '$prenom', 'Etudiant','$mail_etudiant','$mdp','$login')");
+            return static::tryLogin($login, $mdp);
         }
                 
-        public static function tryLogin($login, $pwd){
-            $st = static::db()->query("select  * from users where login='$login' and password='$pwd'");
-            $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "user");
+        public static function tryLogin($login, $mdp){
+            $st = static::db()->query("select  * from users where login='$login' and password='$mdp'");
+            $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
             
             $user = $st->fetch();
             
@@ -41,14 +50,14 @@
     public static function isLoginUsed ($login){
         $st = static::db()->query("select login from users where login='$login'");
       //  $a=$request->execute();     
-        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "user");
+        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
         $user = $st-> fetch();
         return $user!=null;
     }
 
     public static function getWithId($userId){
         $st = static::db()->query("select  * from users where id ='$userId'");
-        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "user");
+        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
         $user = $st-> fetch();
         return $user;
             
@@ -60,7 +69,7 @@
     }
 
     public function mail(){
-        return $this ->mail;
+        return $this ->mail_etudiant;
 
     }
 
@@ -73,8 +82,6 @@
         return $this ->nom;
 
     }
-
-    
 }
 ?>
 <?php

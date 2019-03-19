@@ -2,7 +2,7 @@
 
 class DatabasePDO extends MyObject {
 
-  private static   $pdo = null;
+    private static $pdo = null;
 
     public static function getCurrentpdo() {
 
@@ -13,8 +13,13 @@ class DatabasePDO extends MyObject {
         return static::$pdo;
         }
     public static function connect(){
-        $mysql_dbname = "vincent_belotti";
-        static::$pdo =new PDO("mysql:host=localhost;dbname=$mysql_dbname","root","");
+        static::$pdo =new PDO(
+            //Connexion à la base de données
+            'mysql:host='._MYSQL_HOST.':'._MYSQL_PORT.';dbname='._MYSQL_DBNAME,
+            _MYSQL_USER,
+            _MYSQL_PASSWORD,
+            array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8')
+        );
         static::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 }

@@ -18,7 +18,7 @@
         public function defaultAction($currentRequest){
             //if (is_null($this->user)){
               //  echo('user is null');}
-            $view = new UserView($this,'user');
+            $view = new View($this,'profile/login');
             $view ->setUser($this->user);
             
             $view->render();
@@ -26,7 +26,7 @@
 
 
         public function profile($args) {
-            $v = new UserView($this->user);
+            $v = new View($this->user,'profile/view');
             $v->render();
         }
 
@@ -34,7 +34,7 @@
             if(isset($_SESSION))
                 session_destroy();
             //echo  "URL = " . __BA::SE_URL;
-            header("Location: /~vincent.belotti");
+            header("Location: index.php");
         }
     }
 
