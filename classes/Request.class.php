@@ -36,7 +36,7 @@ class Request extends MyObject {
 
     public function write($key,$value){
         $l1=$_POST[$key]=$value;
-        print_r($l1);
+        //print_r($l1);
     }
 }
 ?>
