@@ -63,7 +63,7 @@
         public function getId($login){
             $st = static::db()->query("select  id from UTILISATEUR where login='$login'");
             $st  ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
-            $id= $st->fetch();
+            $id= $st->fetch(PDO::FETCH_ASSOC)['id'];
             var_dump($id);
         }
 
