@@ -39,6 +39,7 @@ Design patter Singleton
     public function query($sql)
     {
         $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE);
         $stmt->execute();
 
         $data->fetchAll(PDO::FETCH_ASSOC);
