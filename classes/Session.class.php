@@ -4,6 +4,7 @@ class Session
 /*
 Cette classe gère la session en cours
 */
+/*
 {
     private static $_instance;
     private function __construct()
@@ -47,4 +48,5 @@ Cette classe gère la session en cours
         session_start();
         session_destroy();
     }
+*/
 }

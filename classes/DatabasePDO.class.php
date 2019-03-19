@@ -1,10 +1,33 @@
 <?php
 
+class DatabasePDO extends MyObject {
+
+  private static   $pdo = null;
+
+    public static function getCurrentpdo() {
+
+        if(is_null(static::$pdo)) {
+            static::$pdo = new static();
+        }
+        static::connect();
+        return static::$pdo;
+        }
+    public static function connect(){
+        $mysql_dbname = "vincent_belotti";
+        static::$pdo =new PDO("mysql:host=localhost;dbname=$mysql_dbname","root","");
+        static::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+}
+?>
+
+<?php
+/*
 class DatabasePDO extends MyObject
 /*
 Encapsule un objet PDO.
 Design patter Singleton
 */
+/*
 {
     private static $instance = null;
     private $conn;
@@ -36,6 +59,7 @@ Design patter Singleton
         return $stmt;
     }
     */
+    /*
     public function query($sql)
     {
         $stmt = $this->conn->prepare($sql);
@@ -51,4 +75,5 @@ Design patter Singleton
         return $this->conn->lastInsertId();
     }
 }
+*/
 ?>
