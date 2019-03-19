@@ -8,7 +8,7 @@
                 <div class="col-12">
 
                 
-                        <h1>QUIZ EN LIGNE</h1>
+                        <h1>À propos de ce site</h1>
                         <p>Nous sommes des étudiants de la Majeur ISIC, on profite de ce site pour pratiquer nos connaissances
                             sur la creation de pages web dynamiques avec php, html et css en integrant une base de données 
                             sur mySQL.
