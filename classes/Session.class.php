@@ -1,5 +1,5 @@
 <?php
-
+/*
 class Session
 /*
 Cette classe gère la session en cours
