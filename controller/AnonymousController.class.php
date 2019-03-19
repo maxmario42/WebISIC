@@ -59,9 +59,12 @@ class AnonymousController extends Controller
       $passwordRepeat = $request->read('inscPasswordRepeat');
       $password = $request->read('inscPassword');
       //echo($login);
-      if(User::isLoginUsed($login)!=0) {
+      
+      $V = User::isLoginUsed($login);
+      var_dump($V);
+      if($V) {
          echo("isUsed");
-         $view = new View($this,'inscription');
+        /* $view = new View($this,'inscription');
         $view->setArg('inscErrorText','This login is already used');
         $view->render();
          } 
@@ -84,7 +87,7 @@ class AnonymousController extends Controller
             $newRequest->write('controller','user');
             $newRequest->write('user',$user->id());
             Dispatcher::dispatch($newRequest);
-                     }   
+                     }  */ 
         } 
         }
 
