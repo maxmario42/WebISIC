@@ -14,7 +14,7 @@
                             sur mySQL.
                         </p>
                     
-                        <p>Notre équipe est integré par: Alejandra ACEVEDO, Maxence GODEFERT et Dorine </p>
+                        <p>Notre équipe est integré par: Alejandra ACEVEDO, Maxence GODEFERT et Dorine KEPSEU </p>
                         
 						
   			
