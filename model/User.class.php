@@ -60,9 +60,18 @@
             return $user;
         }
 	
+        public function getId($login){
+            $st = static::db()->query("select  id from UTILISATEUR where login='$login'");
+            $st  ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
+            $id= $st->fetch();
+            var_dump($id);
+        }
 
     public function id(){
-        return $this ->id;
+        
+        $v=$this ->id;
+        var_dump($v);
+        return $v;
         
     }
 

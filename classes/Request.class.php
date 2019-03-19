@@ -30,11 +30,13 @@ class Request extends MyObject {
     }
 
     public function changeController($value){
-        $_GET['controller']=$value;
+        $l=$_GET['controller']=$value;
+        return $l;
     }
 
     public function write($key,$value){
-        $_POST[$key]=$value;
+        $l1=$_POST[$key]=$value;
+        print_r($l1);
     }
 }
 ?>

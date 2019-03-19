@@ -64,11 +64,14 @@ class AnonymousController extends Controller {
             else {
                 $newRequest = new Request();
                 $newRequest->changeController('User');
-                $newRequest->write('User',$user->id());
-                print_r($_POST);
+                //print_r($req);
+                $user->getId($login);
+               //$newRequest->write('User',$user->id());
+              // print_r($newRequest);
                 echo($user->id());
-                $controller = Dispatcher::dispatch($newRequest);
-                $controller -> execute();
+
+                /*$controller = Dispatcher::dispatch($newRequest);
+                $controller -> execute();*/
 
             }
         }
