@@ -34,7 +34,7 @@ class AnonymousController extends Controller
     public function validateInscriptionAction($request) {
        
       $login = $request->read('inscLogin');
-      $inscPasswordRepeat = $request->read('inscPasswordRepeat');
+      $passwordRepeat = $request->read('inscPasswordRepeat');
       $password = $request->read('inscPassword');
       //echo($login);
       if(User::isLoginUsed($login)!=0) {
@@ -42,25 +42,28 @@ class AnonymousController extends Controller
          $view = new View($this,'inscription');
         $view->setArg('inscErrorText','This login is already used');
         $view->render();
-         }  
+         } 
+         elseif ($password != $passwordRepeat) {
+            $view = new View($this, 'inscription');
+            $this->request->notify('danger', 'Les mots de passe ne correspondent pas.');
+            $view->render();
+         } 
        else {
-        
         $nom = $request->read('nom');
         $prenom = $request->read('prenom');
-        $mail = $request->read('mail'); }
-         /*
-        $user = User::create($nom, $prenom, $type_utilisateur= NULL, $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo, $annee_de_sortie, $mail_etudiant, $password);
-        if(!isset($user)) {
-        $view = new View($this,'inscription');
-        $view->setArg('inscErrorText', 'Cannot complete inscription');
-        $view->render();
-        } else {
-        $newRequest = new Request();
-        $newRequest->write('controller','user');
-        $newRequest->write('user',$user->id());
-        Dispatcher::dispatch($newRequest);
-        }
-        } */
+        $mail = $request->read('mail'); 
+        $user = User::create($nom, $prenom, $type_utilisateur= NULL, $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo=NULL, $annee_de_sortie=NULL, $mail, $password,$login);
+            if(!isset($user)) {
+               $view = new View($this,'inscription');
+               $view->setArg('inscErrorText', 'Cannot complete inscription');
+               $view->render();
+               } else {
+            $newRequest = new Request();
+            $newRequest->write('controller','user');
+            $newRequest->write('user',$user->id());
+            Dispatcher::dispatch($newRequest);
+                     }   
+        } 
         }
 
    /*function __construct($request) {
