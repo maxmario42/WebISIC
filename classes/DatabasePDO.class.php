@@ -28,14 +28,15 @@ Design patter Singleton
         return self::$instance;
     }
 
+    /*
     public function query($sql)
     {
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt;
     }
-
-    public function queryFetch($sql)
+    */
+    public function query($sql)
     {
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
