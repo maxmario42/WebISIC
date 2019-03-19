@@ -8,7 +8,7 @@ Pour cela, les modèles utiliseront l’unique objet permettant d’accéder à 
 */
 {
     private $loaded; //La base de donnée est-elle connectée ?
-    private $db; //Base de donnée connectée
+    protected $db; //Base de donnée connectée
     private $id; //ID de l'objet
 
      abstract public static function getTableName(); //Retourne le nom de la table

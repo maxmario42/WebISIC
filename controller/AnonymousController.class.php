@@ -77,7 +77,7 @@ class AnonymousController extends Controller
         $nom = $request->read('nom');
         $prenom = $request->read('prenom');
         $mail = $request->read('mail'); 
-        $user = User::create($nom, $prenom, $type_utilisateur= NULL, $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo=NULL, $annee_de_sortie=NULL, $mail, $password,$login);
+        $user = User::create($nom, $prenom, $type_utilisateur= 'invite', $matricule=NULL, $statut=NULL, $mail_enseignant=NULL, $promo=NULL, $annee_de_sortie=NULL, $mail, $password,$login);
             if(!isset($user)) {
                $view = new View($this,'inscription');
                $view->setArg('inscErrorText', 'Cannot complete inscription');
@@ -85,7 +85,7 @@ class AnonymousController extends Controller
                } else {
             $newRequest = new Request();
             $newRequest->write('controller','user');
-            $newRequest->write('user',$user->id());
+            $newRequest->set('user', $user->getId());
             Dispatcher::dispatch($newRequest);
                      }  
         } 
