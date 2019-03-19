@@ -29,13 +29,6 @@ Pour cela, les modèles utiliseront l’unique objet permettant d’accéder à 
         return $this;
     }
 
-    protected function query($sql)
-    {
-        $st = $this->db->query($sql) or die("Mauvaise requête :".$sql);
-        $st->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, get_called_class());
-        return $st;
-    }
-
     public function load($override = true)
     //Charge tous les élements 
     {
