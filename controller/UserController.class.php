@@ -25,7 +25,7 @@
         }
 
 
-        public function profile($args) {
+        public function profileAction($args) {
             $v = new View($this->user,'profile/view');
             $v->render();
         }
