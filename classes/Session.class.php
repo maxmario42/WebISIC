@@ -48,5 +48,6 @@ Cette classe gère la session en cours
         session_start();
         session_destroy();
     }
+}   
 */
-}
+
