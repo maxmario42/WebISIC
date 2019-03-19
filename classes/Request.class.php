@@ -1,6 +1,6 @@
 <?php
 class Request extends MyObject {
-    private static   $Request = null;
+    private static $Request = null;
     public static function getCurrentRequest() {
  
         if(is_null(static::$Request)) {
