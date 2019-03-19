@@ -67,7 +67,9 @@ aux paramètres de la requête (GET, POST, ...).
     }
 
     public function write($controller,$action){
-        
+        $this->setController($controller);
+        $this->setAction($action);
+        return $this;
     }
     public function GET($key, $default = '')
     //Permet de récupérer les paramètres passés en GET
