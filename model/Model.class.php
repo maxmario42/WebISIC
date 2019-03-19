@@ -41,7 +41,7 @@ Pour cela, les modèles utiliseront l’unique objet permettant d’accéder à 
     }
 
     protected function loadData($values = array(), $override = true)
-    //
+    //Charge les données
     {
         foreach ($values as $key => $value) {
             if ($key == static::getIdColumn()) { //Si on est sur la colonne de l'ID
