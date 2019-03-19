@@ -86,7 +86,8 @@ class AnonymousController extends Controller
             $newRequest = new Request();
             $newRequest->write('controller','user');
             $newRequest->set('user', $user->getId());
-            Dispatcher::dispatch($newRequest);
+            $this->redirect(Router::path('profile'));
+            //Dispatcher::dispatch($newRequest);
                      }  
         } 
         }

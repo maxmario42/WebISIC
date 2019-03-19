@@ -15,5 +15,11 @@ abstract class Controller extends MyObject
     }
     abstract public function defaultAction($request); //action par défaut du contrôleur. Une action peut nécessiter des paramètres qui doivent être présents dans la requête courante.
 
+
+    public function redirect($url)
+    {
+        header('Location: '.$url);
+        exit();
+    }
 }
 ?>
