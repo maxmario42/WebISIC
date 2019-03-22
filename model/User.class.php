@@ -169,7 +169,7 @@ class User extends Model
     }
 
     //Gestion du mail de l'enseignant
-    public function getEmailEnseignant()
+    public function getEmailEnseignant() 
     {
         $this->load();
         return $this->email_Enseignant;

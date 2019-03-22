@@ -5,6 +5,7 @@ class UserController extends Controller
     public function defaultAction($request)
     {
         $view = new View($this);
+        $view = new UserView($this,->'userbienvenu',arraw ('user'->$this->user))
         $view->render();
     }
     public function profileAction($request)
