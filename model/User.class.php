@@ -41,18 +41,15 @@ class User extends Model
     {  
         $db = DatabasePDO::getCurrentPDO();
         $sql = "SELECT LOGIN FROM UTILISATEUR WHERE LOGIN = \"".$key."\";";
-       // $sql = "SELECT COUNT(*) FROM UTILISATEUR WHERE LOGIN = \"".$key."\";";
-        echo $sql;
-        $request = $db->query($sql);
-        print_r($request);
-        if(sizeof($request)==0){
-            return false;
-        }else{
-            return true;
-        }
-       // $users=$request->fetchAll(PDO::FETCH_CLASS,'User');
-       // return count($users)!=0;
 
+        $stmt = $db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "User");
+        $stmt->execute();
+        $user = $stmt->fetch();
+    
+        print_r($user);
+        // $user->getLogin() == $key    TRUE
+         return res;
     }
 
     public function toHtml(){
