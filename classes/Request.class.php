@@ -13,7 +13,7 @@ class Request extends MyObject {
         if (isset($_GET['controller'])){
             return $_GET['controller'];
         }
-        return 'Anonymous';  
+        return 'Anonymous';
     }
 
     public function getAction(){
@@ -41,7 +41,6 @@ class Request extends MyObject {
 
     public function write($key,$value){
         $l1=$_POST[$key]=$value;
-        //print_r($l1);
     }
 }
 ?>

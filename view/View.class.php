@@ -7,7 +7,6 @@ class View extends MyObject {
     protected $controller;
     protected $args;
     protected $templateName;
-    protected $user;
 
     public function __construct(Controller $controller, $templateName ='home', $args= array())
     {
@@ -17,9 +16,8 @@ class View extends MyObject {
     }
 
     public function render(){
-        $this->getTemplate('head');
-        //$this->getTemplate('top');
-       $this->getTemplate('menu');
+        //$this->getTemplate('head');
+        $this->getTemplate('menu');
         $this->getTemplate($this->templateName);
         $this->getTemplate('foot'); 
 
@@ -27,6 +25,7 @@ class View extends MyObject {
 
     protected function getTemplate($templateName)
     {
+        extract($this->args);
         include_once(implode('/', array(
             __ROOT_DIR,
             'templates',
@@ -34,26 +33,9 @@ class View extends MyObject {
         )));
     }
 
-    public function getArg($key, $default = false)
-    {
-        if (isset($this->args[$key])) {
-            return $this->args[$key];
-        }
-        return $default;
-    }
-    public function setArg($key, $value)
-    {
-        $this->args[$key] = $value;
-        return $this;
-    }
-
     public function path($route, $params = array())
     {
         return Router::path($route, $params);
-    }
-
-    public function setUser($user){
-        $this->user=$user;
     }
 } 
 ?> 

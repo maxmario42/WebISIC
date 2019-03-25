@@ -8,6 +8,7 @@ class Router extends MyObject
         // USER
         'logout' => 'User:logout',
         'login' => 'User:login',
+        'connect' => 'Anonymous:Connect',
         'profile' => 'User:profile',
         'user_edit' => 'User:edit',
         // ADMIN
