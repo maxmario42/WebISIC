@@ -24,7 +24,7 @@
             $view->render();
         }
 
-        public function validateInscription($request) {
+        /*public function validateInscription($request) {
             $login = $request->read('inscLogin');
             if(User::isLoginUsed($login)) {
                 $view = new View($this,'inscription');
@@ -56,9 +56,9 @@
                 }
             }
         }
+*/
 
-
-        public function profileAction($args) {
+        public function profile($args) {
             $v = new View($this->user,'profile/view');
             $v->render();
         }

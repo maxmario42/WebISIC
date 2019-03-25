@@ -14,7 +14,7 @@
         private $nom;
         private $prenom;
         private $type_utilisateur;
-        private $id;
+        protected $id;
         private $matricule;
         private $statut;
         private $mail_enseignant;
@@ -55,24 +55,17 @@
             $st = static::db()->query("select  * from UTILISATEUR where login='$login' and mdp='$mdp'");
             $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
             
-            $user = $st->fetch(PDO::FETCH_ASSOC);
-            
+            $user = $st->fetch(); //PDO::FETCH_ASSOC
+            var_dump($user);
             return $user;
         }
 	
-        public function getId($login){
-            $st = static::db()->query("select  id from UTILISATEUR where login='$login'");
-            $st  ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
-            $id= $st->fetch(PDO::FETCH_ASSOC)['id'];
-            //var_dump($id);
-            $this->id=$id;
-        }
+      /*  public function getId($login){
+            return $this->props['ID'];
+        }*/
 
     public function id(){
-        
-        $v=$this ->id;
-        //var_dump($v);
-        return $v;
+        return $this->props['ID'];
         
     }
 

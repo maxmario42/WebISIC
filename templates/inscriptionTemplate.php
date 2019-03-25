@@ -19,10 +19,6 @@
                     <label for="mdp">Mot de passe</label>
                     <input type="password" class="form-control" name="inscPassword" id="inPassword" placeholder="Mot de passe">
                 </div>
-                <div class="form-group">
-                    <label for="mdp2">Répetez le mot de passe</label>
-                    <input type="password" class="form-control" name="inscPasswordRepeat" id="inPasswordRepeat" placeholder="Mot de passe">
-                </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="nom">Nom</label>

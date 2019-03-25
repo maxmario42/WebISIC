@@ -15,6 +15,8 @@ class AnonymousController extends Controller {
         $user = User::tryLogin($currentRequest->read('inscLogin'),$currentRequest->read('inscPassword'));
             
         if(!is_null($user)) {
+            $id = $user->id();
+            var_dump($id);
             $newRequest = new Request();
             $newRequest->changeController('User');
             $newRequest->write('User',$user['id']);
@@ -62,12 +64,17 @@ class AnonymousController extends Controller {
                 $view->render();
             } 
             else {
+                
+                
                 $newRequest = new Request();
                 $newRequest->changeController('User');
                 //print_r($req);
-                $user->getId($login);
-                $newRequest->write('User',$user->id());
-                //print_r($newRequest);
+                //$user->getId($login);
+                $id = $user->id();
+                var_dump($id);
+                $newRequest->write('user',$id);
+                $newRequest->changeAction(null);
+                print_r($newRequest);
                 //echo($user->id());
                 $controller = Dispatcher::dispatch($newRequest);
                 $controller -> execute();

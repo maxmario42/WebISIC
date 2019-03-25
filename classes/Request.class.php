@@ -34,9 +34,14 @@ class Request extends MyObject {
         return $l;
     }
 
+    public function changeAction($value){
+        $l=$_GET['action']=$value;
+        return $l;
+    }
+
     public function write($key,$value){
         $l1=$_POST[$key]=$value;
-        //print_r($l1);
+        print_r($l1);
     }
 }
 ?>

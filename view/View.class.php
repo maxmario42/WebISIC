@@ -7,6 +7,7 @@ class View extends MyObject {
     protected $controller;
     protected $args;
     protected $templateName;
+    protected $user;
 
     public function __construct(Controller $controller, $templateName ='home', $args= array())
     {
@@ -49,6 +50,10 @@ class View extends MyObject {
     public function path($route, $params = array())
     {
         return Router::path($route, $params);
+    }
+
+    public function setUser($user){
+        $this->user=$user;
     }
 } 
 ?> 
