@@ -1,5 +1,5 @@
 <?php
-    class User extends Model {
+class User extends Model {
         
         //protected static $currentUser;
 
@@ -10,7 +10,7 @@
         /*public function getUser(){
             return static::$currentUser;
         }*/
-
+        /*
         private $nom;
         private $prenom;
         private $type_utilisateur;
@@ -23,50 +23,49 @@
         private $mail_etudiant;
         private $mdp;
         private $login;
-
-        public static function getTableName()
-        {
-            return 'UTILISATEUR';
-        }
-        public static function getColumns()
-        {
-            return array(
-                'NOM',
-                'PRENOM',
-                'TYPE_UTILISATEUR',
-                'ID',
-                'MATRICULE',
-                'STATUT',
-                'MAIL_ENSEIGNANT',
-                'PROMO',
-                'ANNEE_DE_SORTIE',
-                'MAIL_ETUDIANT',
-                'MDP',
-                'LOGIN',
-            );
-        }
+        */
+    public static function getTableName()
+    {
+        return 'UTILISATEUR';
+    }
+    public static function getColumns()
+    {
+        return array(
+            'NOM',
+            'PRENOM',
+            'TYPE_UTILISATEUR',
+            'ID',
+            'MATRICULE',
+            'STATUT',
+            'MAIL_ENSEIGNANT',
+            'PROMO',
+            'ANNEE_DE_SORTIE',
+            'MAIL_ETUDIANT',
+            'MDP',
+            'LOGIN',
+        );
+    }
         
-        public static function create($nom, $prenom, $mail_etudiant, $mdp, $login) {
-            static::db()->exec("INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,mail_etudiant,mdp,login) VALUES('$nom', '$prenom', 'Etudiant','$mail_etudiant','$mdp','$login')");
-            return static::tryLogin($login, $mdp);
-        }
+    public static function create($nom, $prenom, $mail_etudiant, $mdp, $login) {
+        static::db()->exec("INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,mail_etudiant,mdp,login) VALUES('$nom', '$prenom', 'Etudiant','$mail_etudiant','$mdp','$login')");
+        return static::tryLogin($login, $mdp);
+    }
                 
-        public static function tryLogin($login, $mdp){
-            $st = static::db()->query("select  * from UTILISATEUR where login='$login' and mdp='$mdp'");
-            $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
+    public static function tryLogin($login, $mdp){
+        $st = static::db()->query("select  * from UTILISATEUR where login='$login' and mdp='$mdp'");
+        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
             
-            $user = $st->fetch(); //PDO::FETCH_ASSOC
-            var_dump($user);
-            return $user;
-        }
+        $user = $st->fetch(); //PDO::FETCH_ASSOC
+        var_dump($user);
+        return $user;
+    }
 	
       /*  public function getId($login){
             return $this->props['ID'];
         }*/
 
     public function id(){
-        return $this->props['ID'];
-        
+        return $this->props['ID'];  
     }
 
     public static function isLoginUsed ($login){
@@ -84,24 +83,150 @@
             
 
     }
-    public function login(){
-        return $this ->login;
-
+    /*
+    GETTER ET SETTERS
+    Chaque variable possède un getter et un setter. 
+    Le getter a pour nom getNomVariable et le setter setNomVariable
+    */
+    /*
+    Variables communes
+    */
+    
+    //Gestion de l'ID
+    public function getId()
+    {
+        return $this->props['ID'];
+    }
+    public function setId($id)
+    {
+        $this->props['ID']=$id;
     }
 
-    public function mail(){
-        return $this ->mail_etudiant;
-
+    //Gestion du Nom
+    public function getNom()
+    {
+        return $this->props['NOM'];
+    }
+    public function setNom($nom)
+    {
+        $this->props['NOM']=$nom;
     }
 
-    public function prenom(){
-        return $this ->prenom;
-
+    //Gestion du Prénom.
+    public function getPrenom()
+    {
+        return $this->props['PRENOM'];
+    }
+    public function setPrenom($prenom)
+    {
+        $this->props['PRENOM']=$nom;
     }
 
-    public function nom(){
-        return $this ->nom;
+    //Gestion du type d'utilisateur
+    public function getType()
+    {
+        return $this->props['TYPE_UTILISATEUR'];
+    }
+    public function setType($type_utilisateur)
+    {
+        $this->props['TYPE_UTILISATEUR']=$type_utilisateur;
+    }
 
+    /*
+    Variables réservées aux profs (NULL pour les autres)
+    */
+    
+    //Gestion du matricule de l'enseignant
+    public function getMatricule()
+    {
+        return $this->props['MATRICULE'];
+    }
+    public function setMatricule($matricule)
+    {
+        $this->props['MATRICULE']=$matricule;
+    }
+
+    //Gestion du statut de l'enseignant
+    public function getStatut()
+    {
+        return $this->props['STATUT'];
+    }
+    public function setStatut($statut)
+    {
+        $this->props['STATUT']=$statut;
+    }
+
+    //Gestion du mail de l'enseignant
+    public function getEmailEnseignant()
+    {
+        return $this->props['MAIL_ENSEIGNANT'];
+    }
+    public function setEmailEnseignant($email_Enseignant)
+    {
+        $this->props['MAIL_ENSEIGNANT']=$email_Enseignant;
+    }
+
+    /*
+    Variables réservées aux étudiants (NULL pour les autres)
+    */
+    
+    //Gestion de la promo de l'étudiant
+    public function getPromo()
+    {
+        return $this->props['PROMO'];
+    }
+    public function setPromo($promo)
+    {
+        $this->props['PROMO']=$promo;
+    }
+    
+    //Gestion de l'année de sortie de l'étudiant
+    public function getAnneeDeSortie()
+    {
+        return $this->props['ANNEE_DE_SORTIE'];
+    }
+    public function setAnneeDeSortie($annee_de_sortie)
+    {
+        $this->props['ANNEE_DE_SORTIE']=$annee_de_sortie;
+    }
+
+    //Gestion du mail de l'étudiant
+    public function getEmailEtudiant()
+    {
+        return $this->props['MAIL_ETUDIANT'];
+    }
+    public function setEmailEtudiant($email_Etudiant)
+    {
+        $this->props['MAILT_ETUDIANT'];
+    }
+
+    /*
+    Variables utilisée pour prof et étudiant connecté
+    */
+    
+    //Gestion du mot de passe
+    public function getMDP()
+    {
+        return $this->props['MDP'];
+    }
+    public function setMdp($mdp)
+    {
+        $this->props['MDP']=$mdp;
+    }
+    public function setPlainPassword($plainPassword)
+    {
+        $this->setPassword(hash('sha256', $plainPassword));
+        return $this;
+    }
+
+    //Gestion du login
+    public function getLogin()
+    {
+        return $this->props['LOGIN'];
+    }
+    public function setLogin($login)
+    {
+        $this->props['LOGIN']=$login;
     }
 }
 ?>
