@@ -69,28 +69,39 @@ class AnonymousController extends Controller {
         } 
         else {
             $mdp = $request->read('inscPassword');
+            $mdpVali = $request->read('inscPasswordVali');
             $nom = $request->read('nom');
             $prenom = $request->read('prenom');
             $mail_etudiant = $request->read('mail');
-            $user = User::create($nom, $prenom, $mail_etudiant, $mdp, $login);
-            if(!isset($user)) {
+            if ($mdp==$mdpVali)
+            {
+                $user = User::create($nom, $prenom, $mail_etudiant, $mdp, $login);
+                if(!isset($user)) {
+                    $view = new View($this,'inscription');
+                    $view->setArg('inscErrorText', 'Cannot complete inscription');
+                    $view->render();
+                } 
+                else {
+                    $newRequest = new Request();
+                    $newRequest->changeController('User');
+                    //print_r($req);
+                    //$user->getId($login);
+                    $id = $user->__get('ID');
+                   // var_dump($id);
+                    $newRequest->write('User',$id);
+                    $newRequest->changeAction(null);
+                    //print_r($newRequest);
+                    //echo($user->id());
+                    $controller = Dispatcher::dispatch($newRequest);
+                    $controller -> execute();
+                }
+            }
+            else
+            {
                 $view = new View($this,'inscription');
-                $view->setArg('inscErrorText', 'Cannot complete inscription');
+                $view->setArg('inscErrorText', 'Les mots de passe ne correspondent pas');
                 $view->render();
-            } 
-            else {
-                $newRequest = new Request();
-                $newRequest->changeController('User');
-                //print_r($req);
-                //$user->getId($login);
-                $id = $user->__get('ID');
-               // var_dump($id);
-                $newRequest->write('User',$id);
-                $newRequest->changeAction(null);
-               // print_r($newRequest);
-                //echo($user->id());
-                $controller = Dispatcher::dispatch($newRequest);
-                $controller -> execute();
+                echo("<script>alert('Les mots de passe ne correspondent pas');</script>");  
             }
         }
     }
