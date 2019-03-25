@@ -1,6 +1,10 @@
 <?php
 
 class Dispatcher extends MyObject{
+    /*
+    Le dispatcher courant doit permettre d’aiguiller la requête courante sur le bon contrôleur en
+fonction des paramètres de la requête.
+    */
 	private $controller;
     private $controllerClass;
     public static function dispatch($request){
