@@ -6,8 +6,6 @@ class Router extends MyObject
     //  'route_name' => 'Controller:action',
         'home' => ':',
         // USER
-        'inscription' => 'User:inscription',
-        'validate_inscription' => 'User:validateInscription',
         'logout' => 'User:logout',
         'login' => 'User:login',
         'profile' => 'User:profile',

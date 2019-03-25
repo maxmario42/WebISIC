@@ -59,7 +59,7 @@
 */
 
         public function profile($args) {
-            $v = new View($this->user,'profile/view');
+            $v = new View($this,'profile/view');
             $v->render();
         }
 

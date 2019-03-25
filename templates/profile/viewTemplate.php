@@ -1,4 +1,3 @@
-<?php
 
-echo "utilisateur connecté";
-?>
+
+<h1>Bienvenue USER </h1>
