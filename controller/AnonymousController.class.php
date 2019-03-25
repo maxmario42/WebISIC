@@ -1,6 +1,8 @@
 <?php
 class AnonymousController extends Controller {
-    
+    /*
+    Ce contrôleur regroupe l’ensemble des actions pour un utilisateur non connecté.
+    */
     public function __construct($currentRequest) {
         parent::__construct($currentRequest);  
         if(count($_POST)==5){
@@ -45,11 +47,13 @@ class AnonymousController extends Controller {
     }
         
     public function inscription($currentRequest)
+    //Appelle la vue qui retournera la page d'inscription
     {
         $view = new View($this,'inscription');
         $view->render();
     }
     public function login($currentRequest)
+    //Appelle la vue qui retourne la page de login
     {
         $view = new View($this,'profile/login');
         $view->render();
@@ -75,8 +79,6 @@ class AnonymousController extends Controller {
                 $view->render();
             } 
             else {
-                
-                
                 $newRequest = new Request();
                 $newRequest->changeController('User');
                 //print_r($req);

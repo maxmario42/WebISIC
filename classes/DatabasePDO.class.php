@@ -2,10 +2,14 @@
 
 class DatabasePDO extends MyObject {
 
+    /*
+    Encapsule un objet PDO.
+    Design patter Singleton
+    */
     private static $pdo = null;
 
     public static function getCurrentpdo() {
-
+        //Gestion de l'unique instance
         if(is_null(static::$pdo)) {
             static::$pdo = new static();
         }

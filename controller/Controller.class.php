@@ -6,9 +6,10 @@ abstract class Controller extends MyObject {
         $this->request = $currentRequest;
     }
     
-    Abstract function defaultAction($currentRequest);
+    Abstract function defaultAction($currentRequest); //Action par défaut
 
     public function execute(){
+        //Exécute l'action demandée (celle par défaut si pas de demande)
         if(is_null($this->request->getAction())){
             $this->defaultAction($this->request);
         }
@@ -16,6 +17,13 @@ abstract class Controller extends MyObject {
             $action = $this->request->getAction();
             $this-> $action($this->request);
         }
+    }
+
+    public function redirect($url)
+    //Fonction de redirection
+    {
+        header('Location: '.$url);
+        exit();
     }
 }
 ?>
