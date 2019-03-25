@@ -30,16 +30,27 @@ class AnonymousController extends Controller {
         }
     }
         
-    public function defaultAction($currentRequest){
+    public function defaultAction($currentRequest)
+    {
         $view = new View($this);
         $view->render();
     }
+
+    public function aPropos($currentrequest)
+    //Appelle la vue qui retournera notre about Us
+    {
+       $view = new View($this,'apropos');
+       //print_r($view); pour tester apres.s
+       $view->render();
+    }
         
-    public function inscription($currentRequest){
+    public function inscription($currentRequest)
+    {
         $view = new View($this,'inscription');
         $view->render();
     }
-    public function login($currentRequest){
+    public function login($currentRequest)
+    {
         $view = new View($this,'profile/login');
         $view->render();
     }
@@ -70,9 +81,9 @@ class AnonymousController extends Controller {
                 $newRequest->changeController('User');
                 //print_r($req);
                 //$user->getId($login);
-                $id = $user->getId();
+                $id = $user->__get('ID');
                // var_dump($id);
-                $newRequest->write('user',$id);
+                $newRequest->write('User',$id);
                 $newRequest->changeAction(null);
                // print_r($newRequest);
                 //echo($user->id());

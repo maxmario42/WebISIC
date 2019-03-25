@@ -63,11 +63,11 @@ class User extends Model {
       /*  public function getId($login){
             return $this->props['ID'];
         }*/
-
+        /*
     public function id(){
         return $this->props['ID'];  
     }
-
+    */
     public static function isLoginUsed ($login){
         $st = static::db()->query("select login from UTILISATEUR where login='$login'");   
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
@@ -91,7 +91,7 @@ class User extends Model {
     /*
     Variables communes
     */
-    
+    /*
     //Gestion de l'ID
     public function getId()
     {
@@ -135,7 +135,7 @@ class User extends Model {
     /*
     Variables réservées aux profs (NULL pour les autres)
     */
-    
+    /*
     //Gestion du matricule de l'enseignant
     public function getMatricule()
     {
@@ -169,7 +169,7 @@ class User extends Model {
     /*
     Variables réservées aux étudiants (NULL pour les autres)
     */
-    
+    /*
     //Gestion de la promo de l'étudiant
     public function getPromo()
     {
@@ -203,7 +203,7 @@ class User extends Model {
     /*
     Variables utilisée pour prof et étudiant connecté
     */
-    
+    /*
     //Gestion du mot de passe
     public function getMDP()
     {
@@ -228,6 +228,7 @@ class User extends Model {
     {
         $this->props['LOGIN']=$login;
     }
+    */
 }
 ?>
 <?php
