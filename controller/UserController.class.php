@@ -6,16 +6,19 @@
         public function __construct($request) {
             parent::__construct($request);
             session_start();
-            $userId = NULL;
-            $userId = $request->read('User');
-            if(!is_null($userId))
-            $this->user = User::getWithId($userId);
             
+            if (!isset($_SESSION['UserID'])){
+                throw new Exception("No User id in Session");    
+            }
+            $userId = $_SESSION['UserID'];
+            $this->user = User::getWithId($userId);
+            //var_dump($this->user);
         }
 
         public function defaultAction($currentRequest){
-            $view = new UserView($this,'profile/login', array('user' => $this->user));
+            $view = new UserView($this, 'home',array('user' => $this->user));
             $view->render();
+
         }
 
         public function profile($args) {

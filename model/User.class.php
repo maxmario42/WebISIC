@@ -56,7 +56,7 @@ class User extends Model {
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
             
         $user = $st->fetch(); //PDO::FETCH_ASSOC
-        //var_dump($user);
+       
         return $user;
     }
 	

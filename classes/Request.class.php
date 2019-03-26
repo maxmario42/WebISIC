@@ -29,12 +29,20 @@ class Request extends MyObject {
         }
     }
 
-    public function changeController($value){
+    public function changeController($value=null){
+        if($value==null){
+            unset ($_GET['controller']);
+        }
         $l=$_GET['controller']=$value;
+        
         return $l;
+        
     }
 
-    public function changeAction($value){
+    public function changeAction($value=null){
+        if($value==null){
+            unset ($_GET['action']);
+        }
         $l=$_GET['action']=$value;
         return $l;
     }
