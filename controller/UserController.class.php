@@ -26,6 +26,13 @@
             $v->render();
         }
 
+        public function aPropos($currentrequest)
+        //Appelle la vue qui retournera notre about Us
+        {
+            $view = new UserView($this,'apropos', array('user' => $this->user));
+            $view->render();
+    }
+
         public function disconnect($args) {
             if(isset($_SESSION))
                 session_destroy();

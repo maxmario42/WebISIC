@@ -16,25 +16,17 @@ class AnonymousController extends Controller {
     public function Connect($currentRequest){
         
         $user = User::tryLogin($currentRequest->read('login'),$currentRequest->read('password'));
-    
 
         if(is_object($user)) {
-          $id = $user->ID;
-          session_start();
-          $_SESSION["UserID"]=$id;
-          /*
-            $newRequest = new Request();
-            $newRequest->changeController('User');
-            $newRequest->changeAction('profile');
-            $newRequest->write('User',$id);
-
-            $controller = Dispatcher::dispatch($newRequest);
-            $controller -> execute();*/
+            $id = $user->ID;
+            session_start();
+            $_SESSION["UserID"]=$id;
             header("Location:index.php?controller=User&action=profile ");
-        
         }
         else {
-            echo 'Incorrect Password or Login';
+            $view = new View($this,'profile/login');
+            $view->render();
+            echo("<script>alert('C'est pas bon !!');</script>");  
         }
     }
         
