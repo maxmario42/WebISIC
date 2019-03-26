@@ -20,7 +20,7 @@
                     </tr>
 				<tr>
                     <th scope="row">Mail</th>
-					<td><?php echo $user->MAIL; ?></td>
+                <td><?php echo $user->MAIL_ETUDIANT; ?></td>
                     
 				</tr>
 			</table>
