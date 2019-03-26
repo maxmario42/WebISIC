@@ -1,31 +1,40 @@
 <?php
-
-class UserController extends Controller
-{
-    public function defaultAction($request)
-    {
-        $view = new View($this);
-        $view = new UserView($this,->'userbienvenu',arraw ('user'->$this->user))
-        $view->render();
-    }
-    public function profileAction($request)
-    {
-        $id = $this->request->GET('id');
-        if ($id) {
-            $user = User::find($this->request->GET('id'));
-        } else {
-            $user = $this->request->getUser();
+    class UserController extends Controller {
+        protected $user;
+        
+        
+        public function __construct($request) {
+            parent::__construct($request);
+            $session=Session::getInstance();
+            
+            if (!isset($session->UserID)){
+                throw new Exception("No User id in Session");    
+            }
+            $userId = $session->UserID;
+            $this->user = User::getWithId($session->UserID);
         }
-        if (!$user || !$user->isInDb()) {
-            throw new Error('Ce profil n\'existe pas', 404);
+
+        public function defaultAction($currentRequest){
+            $view = new UserView($this, 'home',array('user' => $this->user));
+            $view->render();
         }
-        $view = new View($this, 'profile/view');
-        $view->setArg('user', $user);
-        $view->render();
+
+        public function profile($args) {
+            $v = new UserView($this,'profile/view', array('user' => $this->user));
+            $v->render();
+        }
+
+        public function aPropos($currentrequest)
+        //Appelle la vue qui retournera notre about Us
+        {
+            $view = new UserView($this,'apropos', array('user' => $this->user));
+            $view->render();
+        }
+
+        public function disconnect($args) {
+            Session::getInstance()->destroy();
+            header("Location: index.php");
+        }
     }
 
-    public function isLoginUsed($key){
-
-    }
-    
-}
+?>

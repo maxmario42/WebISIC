@@ -9,7 +9,7 @@ class AutoLoader extends MyObject {
     // This method will be automatically executed by PHP whenever it encounters 
     // an unknown class name in the source code 
     private function load($className) {
-        $className = ucfirst($className); //Permet de respecter la convention de nommage
+        $className = ucfirst(($className)); //Permet de respecter la convention de nommage
         $dirs = array('classes', 'model', 'controller', 'view');
         foreach ($dirs as $dir) {
             $path = implode('/', array(

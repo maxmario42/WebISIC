@@ -1,5 +1,5 @@
 <?php
-
+/*
 abstract class Repository extends MyObject
 {
     protected $model;
@@ -60,4 +60,6 @@ abstract class Repository extends MyObject
         }
         return $results;
     }
+*/
 }
+?>

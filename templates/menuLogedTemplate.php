@@ -1,5 +1,3 @@
-
-  
   <!-- Navbar Area -->
   <div class="clever-main-menu">
             <div class="classy-nav-container breakpoint-off">
@@ -7,7 +5,7 @@
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="<?php echo 'index.php';?>"><img src="css/img/quiz.png" alt=""></a>
+                    <a class="nav-brand" href="index.php?controller=User"><img src="css/img/quiz.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -25,8 +23,8 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul> 
-                                <li><a href="<?php echo 'index.php';?>">Accueil</a></li> 
-                                <li><a href="index.php?action=apropos">À propos</a></li>
+                                <li><a href="index.php?controller=User">Accueil</a></li> 
+                                <li><a href="index.php?controller=User&action=apropos">À propos</a></li>
                                 <li><a href="Quest.php">Questionnaire</a></li>
                                <!-- <li><a href="blog.html"></a></li>
                                 <li><a href="contact.html">Contact</a></li> -->
@@ -41,9 +39,19 @@
                             </div> 
 
                             <!-- Register / Login -->
-                            <div class="register-login-area">
-                                <a href="index.php?action=inscription" class="btn">S'inscrire</a>
-                                <a href="index.php?action=login" class="btn active">Se connecter</a>
+                            <div class="login-state d-flex align-items-center">
+                                <div class="user-name mr-30">
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $user->LOGIN?></a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
+                                            <a class="dropdown-item" href="<?php echo $this->path('profile'); ?>">Profil</a>
+                                            <a class="dropdown-item" href="index.php?controller=User&action=disconnect">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="userthumb">
+                                    <img src="img/bg-img/t1.png" alt="">
+                                </div>
                             </div>
 
                         </div>

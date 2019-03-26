@@ -17,8 +17,7 @@ class View extends MyObject {
 
     public function render(){
         $this->getTemplate('head');
-        //$this->getTemplate('top');
-       $this->getTemplate('menu');
+        $this->getTemplate('menu');
         $this->getTemplate($this->templateName);
         $this->getTemplate('foot'); 
 
@@ -26,6 +25,7 @@ class View extends MyObject {
 
     protected function getTemplate($templateName)
     {
+        extract($this->args);
         include_once(implode('/', array(
             __ROOT_DIR,
             'templates',

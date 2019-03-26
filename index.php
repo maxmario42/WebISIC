@@ -6,6 +6,8 @@ ini_set("display_errors", E_ALL);
 // of the directory that contains this file (index.php) 
 // e.g. for http://eden.imt-lille-douai.fr/~luc.fabresse/index.php 
 // __ROOT_DIR = /home/luc.fabresse/public_html 
+error_reporting(E_ALL);
+ini_set("display_errors", E_ALL);
 $rootDirectoryPath = realpath(dirname(__FILE__)); 
 define ('__ROOT_DIR', $rootDirectoryPath );
 
