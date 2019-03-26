@@ -33,6 +33,19 @@ class View extends MyObject {
         )));
     }
 
+    public function getArg($key, $default = false)
+    {
+        if (isset($this->args[$key])) {
+            return $this->args[$key];
+        }
+        return $default;
+    }
+    public function setArg($key, $value)
+    {
+        $this->args[$key] = $value;
+        return $this;
+    }
+
     public function path($route, $params = array())
     {
         return Router::path($route, $params);

@@ -88,13 +88,14 @@ class AnonymousController extends Controller {
                     $view->render();
                 } 
                 else {
-                    $newRequest = new Request();
+                   /* $newRequest = new Request();
                     $newRequest->changeController();
                     $id = $user->ID;
                     $newRequest->write('User',$id);
                     $newRequest->changeAction('login');
                     $controller = Dispatcher::dispatch($newRequest);
-                    $controller -> execute();
+                $controller -> execute();*/
+                header("Location:index.php?action=login");
                 }
             }
             else
