@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", E_ALL);
+
 // define __ROOT_DIR constant which contains the absolute path on disk 
 // of the directory that contains this file (index.php) 
 // e.g. for http://eden.imt-lille-douai.fr/~luc.fabresse/index.php 

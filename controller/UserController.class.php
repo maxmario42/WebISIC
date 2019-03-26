@@ -17,7 +17,6 @@
         public function defaultAction($currentRequest){
             $view = new UserView($this, 'home',array('user' => $this->user));
             $view->render();
-
         }
 
         public function profile($args) {
@@ -30,7 +29,7 @@
         {
             $view = new UserView($this,'apropos', array('user' => $this->user));
             $view->render();
-    }
+        }
 
         public function disconnect($args) {
             Session::getInstance()->destroy();

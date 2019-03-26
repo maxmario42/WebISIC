@@ -45,7 +45,6 @@ class User extends Model {
             'LOGIN',
         );
     }
-        
     public static function create($nom, $prenom, $mail_etudiant, $mdp, $login) {
         static::db()->exec("INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,mail_etudiant,mdp,login) VALUES('$nom', '$prenom', 'Etudiant','$mail_etudiant','$mdp','$login')");
         return static::tryLogin($login, $mdp);
@@ -68,7 +67,7 @@ class User extends Model {
         return $this->props['ID'];  
     }
     */
-    public static function isLoginUsed ($login){
+    public static function isLoginUsed($login){
         $st = static::db()->query("select login from UTILISATEUR where login='$login'");   
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
         $user = $st-> fetch();
@@ -80,9 +79,6 @@ class User extends Model {
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
         $user = $st-> fetch();
         return $user;
-            
-
     }
-    
 }
 ?>
