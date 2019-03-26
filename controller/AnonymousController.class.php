@@ -44,7 +44,7 @@ class AnonymousController extends Controller {
     public function inscription($currentRequest)
     //Appelle la vue qui retournera la page d'inscription
     {
-        $view = new View($this,'inscription');
+        $view = new View($this,'profile/inscription');
         $view->render();
     }
     public function login($currentRequest)
@@ -58,7 +58,7 @@ class AnonymousController extends Controller {
         $login = $request->read('inscLogin');
         if(User::isLoginUsed($login)) 
         {
-            $view = new View($this,'inscription');
+            $view = new View($this,'profile/inscription');
             $view->setArg('inscErrorText','This login is already used');
             $view->render();
             echo("<script>alert('utilisateur existe déjà...');</script>");  
@@ -73,7 +73,7 @@ class AnonymousController extends Controller {
             {
                 $user = User::create($nom, $prenom, $mail_etudiant, $mdp, $login);
                 if(!isset($user)) {
-                    $view = new View($this,'inscription');
+                    $view = new View($this,'profile/inscription');
                     $view->setArg('inscErrorText', 'Cannot complete inscription');
                     $view->render();
                 } 
@@ -84,7 +84,7 @@ class AnonymousController extends Controller {
             }
             else
             {
-                $view = new View($this,'inscription');
+                $view = new View($this,'profile/inscription');
                 $view->setArg('inscErrorText', 'Les mots de passe ne correspondent pas');
                 $view->render();
                 echo("<script>alert('Les mots de passe ne correspondent pas');</script>");  

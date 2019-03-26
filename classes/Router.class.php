@@ -6,11 +6,12 @@ class Router extends MyObject
     //  'route_name' => 'Controller:action',
         'home' => ':',
         // USER
-        'logout' => 'User:logout',
+        'logout' => 'User:disconnect',
         'login' => 'User:login',
         'connect' => ':Connect',
         'profile' => 'User:profile',
         'user_edit' => 'User:edit',
+        'edition' => 'User:edition',
         // ADMIN
         'admin' => 'Admin:',
         'admin_users' => 'Admin:users',

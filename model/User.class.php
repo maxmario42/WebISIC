@@ -5,6 +5,7 @@ class User extends Model {
     {
         return 'UTILISATEUR';
     }
+
     public static function getColumns()
     {
         return array(
@@ -22,12 +23,21 @@ class User extends Model {
             'LOGIN',
         );
     }
+
     public static function getIDColumn()
     {
         return 'ID';
     }
-    public static function create($nom, $prenom, $mail_etudiant, $mdp, $login) {
+
+    public static function create($nom, $prenom, $mail_etudiant, $mdp, $login) 
+    {
         static::db()->exec("INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,mail_etudiant,mdp,login) VALUES('$nom', '$prenom', 'Etudiant','$mail_etudiant','$mdp','$login')");
+        return static::tryLogin($login, $mdp);
+    }
+
+    public static function update($oldLogin, $nom, $prenom, $mail_etudiant, $mdp, $login)
+    {
+        static::db()->exec("UPDATE UTILISATEUR SET nom='$nom',prenom='$prenom',type_utilisateur='Etudiant',mail_etudiant='$mail_etudiant',mdp='$mdp',login='$login' WHERE LOGIN='$oldLogin'");
         return static::tryLogin($login, $mdp);
     }
                 

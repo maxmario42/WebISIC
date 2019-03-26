@@ -44,9 +44,7 @@ class Request extends MyObject {
             unset ($_GET['controller']);
         }
         $l=$_GET['controller']=$value;
-        
         return $l;
-        
     }
 
     public function changeAction($value=null){
@@ -59,6 +57,7 @@ class Request extends MyObject {
 
     public function write($key,$value){
         $l1=$_POST[$key]=$value;
+        return $l1;
     }
 
     public static function setUser($userID)
@@ -67,11 +66,7 @@ class Request extends MyObject {
     }
     public static function getUser()
     {
-        $session=Session::getInstance();
-        if (!isset($session->UserID)){
-            throw new Exception("No User id in Session");    
-        }
-        return $session->UserID;
+        return Session::getInstance()->UserID;
     }
 }
 ?>
