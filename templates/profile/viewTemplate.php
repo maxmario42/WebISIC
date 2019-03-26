@@ -17,6 +17,11 @@
 				<tr>
 					<th scope="row">Prénom</th>
 					<td><?php echo $user->PRENOM; ?></td>
+                    </tr>
+				<tr>
+                    <th scope="row">Mail</th>
+					<td><?php echo $user->MAIL; ?></td>
+                    
 				</tr>
 			</table>
             </div>
