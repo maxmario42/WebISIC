@@ -18,12 +18,5 @@ abstract class Controller extends MyObject {
             $this-> $action($this->request);
         }
     }
-
-    public function redirect($url)
-    //Fonction de redirection
-    {
-        header('Location: '.$url);
-        exit();
-    }
 }
 ?>
