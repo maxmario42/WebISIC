@@ -5,14 +5,13 @@
         
         public function __construct($request) {
             parent::__construct($request);
-            session_start();
+            $session=Session::getInstance();
             
-            if (!isset($_SESSION['UserID'])){
+            if (!isset($session->UserID)){
                 throw new Exception("No User id in Session");    
             }
-            $userId = $_SESSION['UserID'];
-            $this->user = User::getWithId($userId);
-            //var_dump($this->user);
+            $userId = $session->UserID;
+            $this->user = User::getWithId($session->UserID);
         }
 
         public function defaultAction($currentRequest){
@@ -34,9 +33,7 @@
     }
 
         public function disconnect($args) {
-            if(isset($_SESSION))
-                session_destroy();
-            //echo  "URL = " . __BA::SE_URL;
+            Session::getInstance()->destroy();
             header("Location: index.php");
         }
     }

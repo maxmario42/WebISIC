@@ -45,7 +45,7 @@
                                         <a class="dropdown-toggle" href="#" role="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $user->LOGIN?></a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
                                             <a class="dropdown-item" href="<?php echo $this->path('profile'); ?>">Profil</a>
-                                            <a class="dropdown-item" href="index.php">Logout</a>
+                                            <a class="dropdown-item" href="index.php?controller=User&action=disconnect">Logout</a>
                                         </div>
                                     </div>
                                 </div>

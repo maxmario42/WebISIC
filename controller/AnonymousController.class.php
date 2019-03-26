@@ -19,9 +19,9 @@ class AnonymousController extends Controller {
 
         if(is_object($user)) {
             $id = $user->ID;
-            session_start();
-            $_SESSION["UserID"]=$id;
-            header("Location:index.php?controller=User&action=profile ");
+            $session=Session::getInstance();
+            $session->UserID=$user->ID;
+            header("Location:index.php?controller=User");
         }
         else {
             $view = new View($this,'profile/login');
@@ -59,7 +59,8 @@ class AnonymousController extends Controller {
 
     public function validateInscription($request) {
         $login = $request->read('inscLogin');
-        if(User::isLoginUsed($login)) {
+        if(User::isLoginUsed($login)) 
+        {
             $view = new View($this,'inscription');
             $view->setArg('inscErrorText','This login is already used');
             $view->render();
@@ -79,15 +80,9 @@ class AnonymousController extends Controller {
                     $view->setArg('inscErrorText', 'Cannot complete inscription');
                     $view->render();
                 } 
-                else {
-                   /* $newRequest = new Request();
-                    $newRequest->changeController();
-                    $id = $user->ID;
-                    $newRequest->write('User',$id);
-                    $newRequest->changeAction('login');
-                    $controller = Dispatcher::dispatch($newRequest);
-                $controller -> execute();*/
-                header("Location:index.php?action=login");
+                else 
+                {
+                    header("Location:index.php?action=login");
                 }
             }
             else
