@@ -1,25 +1,24 @@
 <?php
     class UserController extends Controller {
+        
         protected $user;
         
-        
-        public function __construct($request) {
+        public function __construct($request) 
+        {
             parent::__construct($request);
-            $session=Session::getInstance();
-            
-            if (!isset($session->UserID)){
-                throw new Exception("No User id in Session");    
-            }
-            $userId = $session->UserID;
-            $this->user = User::getWithId($session->UserID);
+            $userId = Request::getUser();
+            $this->user = User::getWithId($userId);
         }
 
-        public function defaultAction($currentRequest){
+        public function defaultAction($currentRequest)
+        {
             $view = new UserView($this, 'home',array('user' => $this->user));
             $view->render();
         }
 
-        public function profile($args) {
+        public function profile($args) 
+        {
+        //Appelle la vue qui affiche notre profil
             $v = new UserView($this,'profile/view', array('user' => $this->user));
             $v->render();
         }

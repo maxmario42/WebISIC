@@ -10,10 +10,12 @@ abstract class Controller extends MyObject {
 
     public function execute(){
         //Appelle la bonne méthode du contrôleur i.e soit l’action par défaut (defaultAction), soit l’action dont le nom a été passé dans la requête courante.
-        if(is_null($this->request->getAction())){
+        if(is_null($this->request->getAction()))
+        {
             $this->defaultAction($this->request);
         }
-        else {
+        else 
+        {
             $action = $this->request->getAction();
             $this-> $action($this->request);
         }

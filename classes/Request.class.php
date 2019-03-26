@@ -10,6 +10,7 @@ class Request extends MyObject {
     aux paramètres de la requête (GET, POST, ...).
     */
     private static $Request = null;
+
     public static function getCurrentRequest() {
  
         if(is_null(static::$Request)) {
@@ -58,6 +59,19 @@ class Request extends MyObject {
 
     public function write($key,$value){
         $l1=$_POST[$key]=$value;
+    }
+
+    public static function setUser($userID)
+    {
+        Session::getInstance()->UserID=$userID;
+    }
+    public static function getUser()
+    {
+        $session=Session::getInstance();
+        if (!isset($session->UserID)){
+            throw new Exception("No User id in Session");    
+        }
+        return $session->UserID;
     }
 }
 ?>

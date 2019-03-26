@@ -18,9 +18,7 @@ class AnonymousController extends Controller {
         $user = User::tryLogin($currentRequest->read('login'),$currentRequest->read('password'));
 
         if(is_object($user)) {
-            $id = $user->ID;
-            $session=Session::getInstance();
-            $session->UserID=$user->ID;
+            Request::setUser($user->ID);
             header("Location:index.php?controller=User");
         }
         else {
@@ -40,7 +38,6 @@ class AnonymousController extends Controller {
     //Appelle la vue qui retournera notre about Us
     {
        $view = new View($this,'apropos');
-       
        $view->render();
     }
         
