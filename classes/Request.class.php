@@ -1,5 +1,14 @@
 <?php
+
+// Load my root class 
+require_once(__ROOT_DIR . '/classes/MyObject.class.php');
+
 class Request extends MyObject {
+    /* 
+    La classe Request represente les requêtes HTTP. Il y aura une seule instance de cette classe
+    dans le programme qui représentera la requête courante. Cet objet Request devra faciliter l’accès
+    aux paramètres de la requête (GET, POST, ...).
+    */
     private static $Request = null;
     public static function getCurrentRequest() {
  
