@@ -14,7 +14,7 @@ class App
         // echo( $url);
         $url = explode('/', $url); //buscar un separador para obtener
         //los parametros correctos de la url
-        // var_dump($url); //control de los parametros de mi controlador.
+        //var_dump($url); //control de los parametros de mi controlador.
         if(empty($url[0])){
             $archivoController = 'controllers/main.php';
             require_once $archivoController;

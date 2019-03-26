@@ -40,7 +40,7 @@ class AnonymousController extends Controller {
     //Appelle la vue qui retournera notre about Us
     {
        $view = new View($this,'apropos');
-       //print_r($view); pour tester apres.s
+       
        $view->render();
     }
         
