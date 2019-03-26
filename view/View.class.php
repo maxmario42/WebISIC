@@ -16,7 +16,7 @@ class View extends MyObject {
     }
 
     public function render(){
-        //$this->getTemplate('head');
+        $this->getTemplate('head');
         $this->getTemplate('menu');
         $this->getTemplate($this->templateName);
         $this->getTemplate('foot'); 
@@ -31,6 +31,19 @@ class View extends MyObject {
             'templates',
             $templateName.'Template.php'
         )));
+    }
+
+    public function getArg($key, $default = false)
+    {
+        if (isset($this->args[$key])) {
+            return $this->args[$key];
+        }
+        return $default;
+    }
+    public function setArg($key, $value)
+    {
+        $this->args[$key] = $value;
+        return $this;
     }
 
     public function path($route, $params = array())

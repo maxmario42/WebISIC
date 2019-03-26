@@ -5,7 +5,7 @@
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="<?php echo 'index.php';?>"><img src="css/img/quiz.png" alt=""></a>
+                    <a class="nav-brand" href="index.php?controller=User"><img src="css/img/quiz.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -23,8 +23,8 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul> 
-                                <li><a href="<?php echo 'index.php';?>">Accueil</a></li> 
-                                <li><a href="index.php?action=apropos">À propos</a></li>
+                                <li><a href="index.php?controller=User">Accueil</a></li> 
+                                <li><a href="index.php?controller=User&action=apropos">À propos</a></li>
                                 <li><a href="Quest.php">Questionnaire</a></li>
                                <!-- <li><a href="blog.html"></a></li>
                                 <li><a href="contact.html">Contact</a></li> -->
