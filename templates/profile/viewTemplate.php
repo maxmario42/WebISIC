@@ -1,5 +1,3 @@
-
-
 <h1>Bienvenue <?php echo $user->LOGIN?></h1>
 <main class="container" style="flex-grow:1;">
 
@@ -12,19 +10,18 @@
 			<table class="table">
 				<tr>
 					<th scope="row">Nom</th>
-                    <td><?php echo $user->NOM; ?></td>
+            <td><?php echo $user->NOM; ?></td>
 				</tr>
 				<tr>
 					<th scope="row">Prénom</th>
 					<td><?php echo $user->PRENOM; ?></td>
-                    </tr>
-				<tr>
-                    <th scope="row">Mail</th>
-                <td><?php echo $user->MAIL_ETUDIANT; ?></td>
-                    
-				</tr>
+        </tr>
+				<?php 
+				if($user->TYPE_UTILISATEUR=='Enseignant'){require_once("viewType/viewProfTemplate.php");}
+				else{require_once("viewType/viewEtuTemplate.php");}
+				?>
 			</table>
-            </div>
+    </div>
 		</div>
 	</div>
  </main>

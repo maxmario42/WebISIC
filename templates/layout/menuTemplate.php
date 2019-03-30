@@ -42,8 +42,9 @@
 
                             <!-- Register / Login -->
                             <div class="register-login-area">
-                                <a href="index.php?action=inscription" class="btn">S'inscrire</a>
-                                <a href="index.php?action=login" class="btn active">Se connecter</a>
+                                <a href="index.php?action=inscriptionEtu" class="btn">Inscription Etudiant</a>
+                                <a href="index.php?action=inscriptionProf" class="btn">Inscription Prof</a>
+                                <a href="index.php?action=login" class="btn active">Connexion</a>
                             </div>
 
                         </div>

@@ -9,7 +9,7 @@
             if (isset($inscErrorText))
                 echo '<span class="error">' . $inscErrorText . '</span>';
             ?>
-            <form action="index.php?action=validateInscription" method="post">
+            <form action="index.php?action=validateInscriptionEtu" method="post">
 
                 <div class="form-group">
                     <label for="login">Login</label>
@@ -35,53 +35,16 @@
                     <label for="email2">Email</label>
                     <input type="email" class="form-control" name="mail" id="inMail" placeholder="Email">
                 </div>
+                <div class="form-group">
+                    <label for="promo">Promo</label>
+                    <input type="text" class="form-control" name="promo" id="promo" placeholder="Promo">
+                </div>
+                <div class="form-group">
+                    <label for="anneedesortie">Année de sortie</label>
+                    <input type="text" class="form-control" name="anneedesortie" id="anneedesortie" placeholder="Année de sortie">
+                </div>
 
                 <button type="submit" class="btn btn-dark" style="background-color: #1B5040;">Creer mon compte...</button>
-                <!--<table>
-                    <tr>
-                        <th>mail* :</th>
-                        <td><input type="text" name="mail" /></td>
-                    </tr>
-                    <tr>
-                        <th>Mot de passe* :</th>
-                        <td><input type="password" name="inscPassword" /></td>
-                    </tr>
-                    <tr>
-                        <th>Nom:</th>
-                        <td><input type="text" name="nom" /></td>
-                    </tr>
-                    <tr>
-                        <th>Prenom :</th>
-                        <td><input type="text" name="prenom" /></td>
-                    </tr>
-                    <tr>
-
-                        <th>Type user :</th>
-                        <td><input type="radio" name="radio" value="0">Étudiant</td>
-                        <td><input type="radio" name="radio" value="1">Professeur</td>
-                    </tr>
-                    <tr>
-                        <th>Promo :</th>
-                        <td><input type="text" name="promo" /></td>
-                    </tr>
-                    <tr>
-                        <th>Anne de sortie:</th>
-                        <td><input type="text" name="anne-sortie" /></td>
-                    </tr>
-                    <tr>
-                    <tr>
-                        <th>Matricule :</th>
-                        <td><input type="text" name="matricule" /></td>
-                    </tr>
-                    <tr>
-                        <th>Statut:</th>
-                        <td><input type="text" name="statut" /></td>
-                    </tr>
-                    <tr>    
-                        <th>
-                        <td><input type="submit" value="Creer mon compte..." /></td> 
-                    </tr>
-                </table> -->
             </form>
         </div>
     </div>
