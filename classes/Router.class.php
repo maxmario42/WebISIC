@@ -12,8 +12,6 @@ class Router extends MyObject
         'profile' => 'User:profile',
         'user_edit' => 'User:edit',
         'edition' => 'User:edition',
-        'editionEtu' => 'User:editionEtu',
-        'editionProf' => 'User:editioProf',
         // ADMIN
         'admin' => 'Admin:',
         'admin_users' => 'Admin:users',
