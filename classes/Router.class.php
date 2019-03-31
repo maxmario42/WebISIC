@@ -6,12 +6,12 @@ class Router extends MyObject
     //  'route_name' => 'Controller:action',
         'home' => ':',
         // USER
-        'inscription' => 'User:inscription',
-        'validate_inscription' => 'User:validateInscription',
-        'logout' => 'User:logout',
+        'logout' => 'User:disconnect',
         'login' => 'User:login',
+        'connect' => ':Connect',
         'profile' => 'User:profile',
         'user_edit' => 'User:edit',
+        'edition' => 'User:edition',
         // ADMIN
         'admin' => 'Admin:',
         'admin_users' => 'Admin:users',
@@ -32,3 +32,5 @@ class Router extends MyObject
         //throw new Error('Route Not Found', 404); Ils nous manque coder une classe des erreurs.
     }
 }
+
+?>

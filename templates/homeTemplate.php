@@ -11,12 +11,7 @@
                         <h1>Bienvenue</h1>
                         <p>Vous êtes sur notre site de QUIZ en Ligne, une site creé par des étudiants de l'IMT Lille Douai !</p>
                     
-                        <p>N'hésitez pas à créer un compte pour profiter de nos services :</p>
-                        
-						<div class="container">
-  			
-			 		 	<p><a href="index.php?action=inscription" class="btn btn-info" role="button">S'inscrire</a><p>
-						</div>
+                        <p>N'hésitez pas à créer un compte pour profiter de nos services.</p>
 						</div>
 				</div>
 				</div>
