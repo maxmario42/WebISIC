@@ -12,7 +12,7 @@
                         <h1>Bienvenue</h1>
                          <p> vous etes bien connecté<p>      
                         <p>cliquez pour derouler le menu </p>
-												<p>commencer des à present votre quizz<p>
+												
     
 						<div class="container"> 
   			
