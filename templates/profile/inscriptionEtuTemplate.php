@@ -9,7 +9,7 @@
             if (isset($inscErrorText))
                 echo '<span class="error">' . $inscErrorText . '</span>';
             ?>
-            <form action="index.php?action=validateInscriptionEtu" method="post">
+            <form action="index.php?action=validateInscription" method="post">
 
                 <div class="form-group">
                     <label for="login">Login</label>

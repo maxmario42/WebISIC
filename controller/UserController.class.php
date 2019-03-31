@@ -35,6 +35,7 @@
         }
 
         public function edition($request)
+        //Permet de mettre à jour les informations d'un utilisateur. Fonctionne sur tout les types.
         {
             $login = $request->read('inscLogin');
             if(User::isLoginUsed($login)&&$this->user->LOGIN!=$login) 
@@ -51,6 +52,11 @@
                 $nom = $request->read('nom');
                 $prenom = $request->read('prenom');
                 $mail_etudiant = $request->read('mail');
+                /* 
+                Les types enseignants et étudiants comportent chacun deux champs spécifiques. 
+                Enseignant -> Matricule et Statut
+                Etudiant -> Promo et Année de Sortie
+                */
                 $spe1 = $request->read('spe1');
                 $spe2 = $request->read('spe2');
                 if ($mdp==$mdpVali)
@@ -64,7 +70,7 @@
                 } 
                     else 
                     {
-                    header("Location:index.php?controller=User&action=profile");
+                        header("Location:index.php?controller=User&action=profile");
                     }
                 }
                 else

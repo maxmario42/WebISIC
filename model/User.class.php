@@ -41,6 +41,20 @@ class User extends Model {
         return static::tryLogin($login, $mdp);
     }
 
+    public static function create($nom, $prenom, $mail, $matricule, $statut, $promo, $annee, $mdp, $login) 
+    {
+        if(isset($matricule)&&isset($statut))
+        {
+            static::db()->exec("INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,matricule,statut,mail_enseignant,mdp,login) VALUES('$nom', '$prenom', 'Enseignant','$matricule','$statut','$mail','$mdp','$login')");
+        }
+        else
+        {
+            static::db()->exec("INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,promo,annee_de_sortie,mail_etudiant,mdp,login) VALUES('$nom', '$prenom', 'Etudiant','$promo','$annee','$mail','$mdp','$login')");
+        }
+        
+        return static::tryLogin($login, $mdp);
+    }
+
     public static function update($oldLogin, $type, $nom, $prenom, $mail, $spe1, $spe2, $mdp, $login)
     {
         if($type=='Enseignant'){
