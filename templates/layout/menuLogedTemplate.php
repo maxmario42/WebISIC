@@ -63,4 +63,3 @@
         </div>
 </header>
         <div id="page">
-        <?

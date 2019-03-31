@@ -34,9 +34,24 @@
 
 </head>
 <body>
-     <!-- Preloader -->
-     <div id="preloader">
-                <div class="spinner"></div>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+    <header class="header-area">
+        <!-- Top Header Area -->
+        <div class="top-header-area d-flex justify-content-between align-items-center">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <a href="tel:+33327712222"><span>Téléphone:</span>+33 3 27 71 22 22</a>
+                <a href="mailto:webmaster@imt-lille-douai.fr"><span>Email:</span>webmaster@imt-lille-douai.fr</a>
             </div>
-            <header class="header-area">       
+            <!-- Follow Us -->
+            <div class="follow-us">
+                <span>Suivez-nous</span>
+                <a href="https://www.facebook.com/IMTLilleDouai/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/school/imt-lille-douai/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/imtlilledouai"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </div>
+        </div>  
     
