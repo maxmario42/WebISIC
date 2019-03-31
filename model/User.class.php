@@ -41,15 +41,15 @@ class User extends Model {
         return static::tryLogin($login, $mdp);
     }
 
-    public static function updateEtu($oldLogin, $nom, $prenom, $mail, $promo, $annee, $mdp, $login)
+    public static function update($oldLogin, $type, $nom, $prenom, $mail, $spe1, $spe2, $mdp, $login)
     {
-        static::db()->exec("UPDATE UTILISATEUR SET nom='$nom',prenom='$prenom',type_utilisateur='Etudiant',promo='$promo',annee_de_sortie='$annee',mail_etudiant='$mail',mdp='$mdp',login='$login' WHERE LOGIN='$oldLogin'");
-        return static::tryLogin($login, $mdp);
-    }
-
-    public static function updateProf($oldLogin, $nom, $prenom, $mail, $matricule, $statut, $mdp, $login)
-    {
-        static::db()->exec("UPDATE UTILISATEUR SET nom='$nom',prenom='$prenom',type_utilisateur='Enseignant',matricule='$matricule',statut='$statut',mail_enseignant='$mail',mdp='$mdp',login='$login' WHERE LOGIN='$oldLogin'");
+        if($type=='Enseignant'){
+            static::db()->exec("UPDATE UTILISATEUR SET nom='$nom',prenom='$prenom',type_utilisateur='Enseignant',matricule='$spe1',statut='$spe2',mail_enseignant='$mail',mdp='$mdp',login='$login' WHERE LOGIN='$oldLogin'");
+        }
+        else
+        {
+            static::db()->exec("UPDATE UTILISATEUR SET nom='$nom',prenom='$prenom',type_utilisateur='Etudiant',promo='$spe1',annee_de_sortie='$spe2',mail_etudiant='$mail',mdp='$mdp',login='$login' WHERE LOGIN='$oldLogin'");
+        }
         return static::tryLogin($login, $mdp);
     }
                 
