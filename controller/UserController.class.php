@@ -9,7 +9,7 @@
             $userId = Request::getUser();
             if(!isset($userId))
             {
-                header("Location: index.php");
+                header("Location: index.php"); //On empêche l'accès aux personnes non connectées
             }
             $this->user = User::getWithId($userId);
         }
@@ -34,12 +34,12 @@
             $v->render();
         }
 
-        public function edition($request)
+        public function editionEtu($request)
         {
             $login = $request->read('inscLogin');
-            if(User::isLoginUsed($login)) 
+            if(User::isLoginUsed($login)&&$this->user->LOGIN!=$login) 
             {
-                $view = new UserView($this,'profile/edit', array('user' => $this->user));
+                $view = new UserView($this,'profile/edit',array('user' => $this->user));
                 $view->setArg('inscErrorText','This login is already used');
                 $view->render();
                 echo("<script>alert('utilisateur existe déjà...');</script>");  
@@ -51,27 +51,71 @@
                 $nom = $request->read('nom');
                 $prenom = $request->read('prenom');
                 $mail_etudiant = $request->read('mail');
+                $promo = $request->read('promo');
+                $annee = $request->read('anneedesortie');
                 if ($mdp==$mdpVali)
                 {
-                    $user = User::update($this->user->LOGIN,$nom, $prenom, $mail_etudiant, $mdp, $login);
+                    $user = User::updateEtu($this->user->LOGIN,$nom, $prenom, $mail_etudiant, $promo, $annee, $mdp, $login);
                     if(!isset($user)) 
                     {
-                        $view = new UserView($this,'profile/edit', array('user' => $this->user));
-                        $view->setArg('inscErrorText', 'Cannot edit information');
+                        $view = new UserView($this,'profile/edit',array('user' => $this->user));
+                        $view->setArg('inscErrorText', 'Cannot complete inscription');
                         $view->render();
-                    } 
+                } 
                     else 
                     {
-                        $view = new UserView($this,'home', array('user' => $user));
-                        $view->render();
+                    header("Location:index.php?controller=User&action=profile");
                     }
-                }   
+                }
                 else
                 {
-                    $view = new UserView($this,'profile/edit', array('user' => $this->user));
+                    $view = new UserView($this,'profile/edit',array('user' => $this->user));
                     $view->setArg('inscErrorText', 'Les mots de passe ne correspondent pas');
                     $view->render();
-                    echo("<script>alert('Les mots de passe ne correspondent pas');</script>");  
+                    secho("<script>alert('Les mots de passe ne correspondent pas');</script>");  
+                }
+            }
+        }
+    
+        public function editionProf($request)
+        {
+            $login = $request->read('inscLogin');
+            if(User::isLoginUsed($login)&&$this->user->LOGIN!=$login) 
+            {
+                $view = new UserView($this,'profile/edit',array('user' => $this->user));
+                $view->setArg('inscErrorText','This login is already used');
+                $view->render();
+                echo("<script>alert('utilisateur existe déjà...');</script>");  
+            } 
+            else 
+            {
+                $mdp = $request->read('inscPassword');
+                $mdpVali = $request->read('inscPasswordVali');
+                $nom = $request->read('nom');
+                $prenom = $request->read('prenom');
+                $mail_prof = $request->read('mail');
+                $matricule = $request->read('matricule');
+                $statut = $request->read('statut');
+                if ($mdp==$mdpVali)
+                {
+                    $user = User::updateProf($this->user->LOGIN,$nom, $prenom, $mail_prof, $matricule, $statut, $mdp, $login);
+                    if(!isset($user)) 
+                    {
+                        $view = new UserView($this,'profile/edit',array('user' => $this->user));
+                        $view->setArg('inscErrorText', 'Cannot complete inscription');
+                        $view->render();
+                } 
+                    else 
+                    {
+                    header("Location:index.php?controller=User&action=profile");
+                    }
+                }
+                else
+                {
+                    $view = new UserView($this,'profile/edit',array('user' => $this->user));
+                    $view->setArg('inscErrorText', 'Les mots de passe ne correspondent pas');
+                    $view->render();
+                    secho("<script>alert('Les mots de passe ne correspondent pas');</script>");  
                 }
             }
         }
@@ -84,7 +128,8 @@
         }
 
         public function disconnect($request) {
-            Session::getInstance()->destroy();
+        //Déconnecte l'utilisateur
+            Request::unsetUser();
             header("Location: index.php");
         }
     }

@@ -68,5 +68,9 @@ class Request extends MyObject {
     {
         return Session::getInstance()->UserID;
     }
+    public static function unsetUser()
+    {
+        Session::getInstance()->destroy();
+    }
 }
 ?>

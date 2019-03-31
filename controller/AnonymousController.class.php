@@ -3,18 +3,18 @@ class AnonymousController extends Controller {
     /*
     Ce contrôleur regroupe l’ensemble des actions pour un utilisateur non connecté.
     */
+    
     public function __construct($currentRequest) {
-        parent::__construct($currentRequest);  
-        if(count($_POST)==5){
-            $this -> validateInscription($currentRequest);
-        }
-        else if (count($_POST)==2){
-            $this -> Connect($currentRequest);
+        parent::__construct($currentRequest);
+        $userId = Request::getUser();
+        if(isset($userId))
+        {
+            header("Location: index.php?controller=User"); //On empêche la déconnexion par changement d'adresse
         }
     }
 
     public function Connect($currentRequest){
-        
+        //Permet la connexion d'un utilisateur
         $user = User::tryLogin($currentRequest->read('login'),$currentRequest->read('password'));
 
         if(is_object($user)) {
@@ -60,7 +60,12 @@ class AnonymousController extends Controller {
         $view->render();
     }
 
+    /*
+    Actions d'inscriptions
+    */
+
     public function validateInscriptionEtu($request) {
+    //Valide l'inscription d'un étudiant
         $login = $request->read('inscLogin');
         if(User::isLoginUsed($login)) 
         {
@@ -100,6 +105,7 @@ class AnonymousController extends Controller {
         }
     }
     public function validateInscriptionProf($request) {
+    //Valide l'inscription d'un prof
         $login = $request->read('inscLogin');
         if(User::isLoginUsed($login)) 
         {

@@ -16,10 +16,7 @@
 					<th scope="row">Prénom</th>
 					<td><?php echo $user->PRENOM; ?></td>
         </tr>
-				<?php 
-				if($user->TYPE_UTILISATEUR=='Enseignant'){require_once("viewType/viewProfTemplate.php");}
-				else{require_once("viewType/viewEtuTemplate.php");}
-				?>
+				<?php require_once("viewType/view".$user->TYPE_UTILISATEUR."Template.php"); ?>
 			</table>
     </div>
 		</div>
