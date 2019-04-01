@@ -1,15 +1,10 @@
 <?php
     class UserController extends Controller {
         
-        protected $user;
-        
         public function __construct($request) 
         {
             parent::__construct($request);
-            if(!is_object($this->user))
-            {
-                header("Location: index.php"); //On empêche l'accès aux personnes non connectées
-            }
+            $this->protection();
         }
 
         public function defaultAction($request)

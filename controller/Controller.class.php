@@ -24,5 +24,15 @@ abstract class Controller extends MyObject {
             $this-> $action($this->request);
         }
     }
+
+    public function protection()
+    //On empêche l'accès aux personnes non connectées
+    {
+        if(!is_object($this->user))
+        {
+            header("Location: index.php"); 
+        }
+    }
+
 }
 ?>
