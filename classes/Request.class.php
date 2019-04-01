@@ -20,7 +20,7 @@ class Request extends MyObject {
         return static::$Request;
       }
     public function getController(){
-        if (isset($_GET['controller'])){
+        if (isset($_GET['controller']) && $_GET['controller']!=NULL){
             return $_GET['controller'];
         }
         return 'Anonymous';
@@ -28,9 +28,10 @@ class Request extends MyObject {
 
     public function getAction(){
         
-        if (isset($_GET['action'])){
+        if (isset($_GET['action']) && $_GET['action']!=NULL){
             return $_GET['action'];
         }
+        return 'defaultAction';
     }
 
     public function read($arg){

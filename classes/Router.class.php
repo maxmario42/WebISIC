@@ -5,12 +5,14 @@ class Router extends MyObject
     const routes = array(
     //  'route_name' => 'Controller:action',
         'home' => ':',
+        'about' => ':aPropos',
         // USER
         'logout' => 'User:disconnect',
-        'login' => 'User:login',
+        'aboutUser' => 'User:aPropos',
+        'inscription' => ':validateInscription',
         'connect' => ':Connect',
         'profile' => 'User:profile',
-        'user_edit' => 'User:edit',
+        'edit' => 'User:edit',
         'edition' => 'User:edition',
         // ADMIN
         'admin' => 'Admin:',

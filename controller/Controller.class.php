@@ -34,5 +34,11 @@ abstract class Controller extends MyObject {
         }
     }
 
+    public function redirect($url)
+    {
+        header('Location: '.$url);
+        exit();
+    }
+
 }
 ?>
