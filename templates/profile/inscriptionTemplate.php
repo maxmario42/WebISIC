@@ -9,7 +9,7 @@
             if (isset($inscErrorText))
                 echo '<span class="error">' . $inscErrorText . '</span>';
             ?>
-            <form action="<?php echo $this->path('inscription');?>" method="post">
+            <form action="<?php echo $this->path('validateInscription');?>" method="post">
 
                 <div class="form-group">
                     <label for="login">Login</label>
@@ -36,13 +36,21 @@
                     <input type="email" class="form-control" name="mail" id="inMail" placeholder="Email">
                 </div>
                 <div class="form-group">
-                    <label for="matricule">Matricule</label>
+                    <label for="matricule">Matricule (si vous êtes prof)</label>
                     <input type="text" class="form-control" name="matricule" id="inMatricule" placeholder="Matricule">
                 </div>
                 <div class="form-group">
-                    <label for="statut">Statut</label><br>
-                    <input type="radio" name="statut" value="interne" checked>Interne<br>
+                    <label for="statut">Statut (si vous êtes prof)</label><br>
+                    <input type="radio" name="statut" value="interne">Interne<br>
                     <input type="radio" name="statut" value="externe">Externe<br>
+                </div>
+                <div class="form-group">
+                    <label for="promo">Promo (si vous êtes étudiant)</label>
+                    <input type="text" class="form-control" name="promo" id="promo" placeholder="Promo">
+                </div>
+                <div class="form-group">
+                    <label for="anneedesortie">Année de sortie (si vous êtes étudiant)</label>
+                    <input type="text" class="form-control" name="anneedesortie" id="anneedesortie" placeholder="Année de sortie">
                 </div>
 
                 <button type="submit" class="btn btn-dark" style="background-color: #1B5040;">Creer mon compte...</button>

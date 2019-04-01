@@ -42,8 +42,7 @@
 
                             <!-- Register / Login -->
                             <div class="register-login-area">
-                                <a href="<?php echo $this->path('inscriptionEtu');?>" class="btn">Inscription Etudiant</a>
-                                <a href="<?php echo $this->path('inscriptionProf');?>" class="btn">Inscription Prof</a>
+                                <a href="<?php echo $this->path('inscription');?>" class="btn">Inscription</a>
                                 <a href="<?php echo $this->path('login');?>" class="btn active">Connexion</a>
                             </div>
 

@@ -18,7 +18,7 @@ class AnonymousController extends Controller {
 
         if(is_object($user)) {
             Request::setUser($user->ID);
-            header("Location:index.php?controller=User");
+            $this->redirect('homeUser');
         }
         else {
             $view = new View($this,'profile/login');
@@ -40,18 +40,13 @@ class AnonymousController extends Controller {
        $view->render();
     }
         
-    public function inscriptionEtu($currentRequest)
-    //Appelle la vue qui retournera la page d'inscription Etudiant
+    public function inscription($currentRequest)
+    //Appelle la vue qui retournera la page d'inscription
     {
-        $view = new View($this,'profile/inscriptionEtu');
+        $view = new View($this,'profile/inscription');
         $view->render();
     }
-    public function inscriptionProf($currentRequest)
-    //Appelle la vue qui retournera la page d'inscription Prof
-    {
-        $view = new View($this,'profile/inscriptionProf');
-        $view->render();
-    }
+
     public function login($currentRequest)
     //Appelle la vue qui retourne la page de login
     {
@@ -69,7 +64,7 @@ class AnonymousController extends Controller {
         $login = $request->read('inscLogin');
         if(User::isLoginUsed($login)) 
         {
-            $view = new View($this,'profile/login');
+            $view = new View($this,'profile/inscription');
             $view->setArg('inscErrorText','This login is already used');
             $view->render();
             echo("<script>alert('utilisateur existe déjà...');</script>");  
@@ -88,7 +83,7 @@ class AnonymousController extends Controller {
             {
                 $user = User::create($nom, $prenom, $mail, $matricule, $statut ,$promo, $annee, $mdp, $login);
                 if(!isset($user)) {
-                    $view = new View($this,'profile/login');
+                    $view = new View($this,'profile/inscription');
                     $view->setArg('inscErrorText', 'Cannot complete inscription');
                     $view->render();
                 } 
@@ -99,7 +94,7 @@ class AnonymousController extends Controller {
             }
             else
             {
-                $view = new View($this,'profile/login');
+                $view = new View($this,'profile/inscription');
                 $view->setArg('inscErrorText', 'Les mots de passe ne correspondent pas');
                 $view->render();
                 echo("<script>alert('Les mots de passe ne correspondent pas');</script>");  
