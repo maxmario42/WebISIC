@@ -16,9 +16,10 @@ class Router extends MyObject
         'admin' => 'Admin:',
         'admin_users' => 'Admin:users',
         // QUIZ
-        'quiz' => 'Quiz:',
-        'add_Quiz' => 'Quiz:add',
-        'delete_Quiz' => 'Quiz:delete',
+        'quiz' => 'Questionnaire:',
+        'add_Quiz' => 'Questionnaire:add',
+        'my_Quiz' => 'Questionnaire:show',
+        'delete_Quiz' => 'Questionnaire:delete',
         
     );
     public static function path($route, $params = array())
