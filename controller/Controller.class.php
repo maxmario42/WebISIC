@@ -2,8 +2,12 @@
 abstract class Controller extends MyObject {
     private $request;
     private $action;
+
+    protected $user;
+
     public function __construct($currentRequest) {
         $this->request = $currentRequest;
+        $this->user = User::getWithId(Request::getUser());
     }
     
     Abstract function defaultAction($currentRequest); //Action par défaut
@@ -20,5 +24,15 @@ abstract class Controller extends MyObject {
             $this-> $action($this->request);
         }
     }
+
+    public function protection()
+    //On empêche l'accès aux personnes non connectées
+    {
+        if(!is_object($this->user))
+        {
+            header("Location: index.php"); 
+        }
+    }
+
 }
 ?>

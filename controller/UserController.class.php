@@ -1,17 +1,10 @@
 <?php
     class UserController extends Controller {
         
-        protected $user;
-        
         public function __construct($request) 
         {
             parent::__construct($request);
-            $userId = Request::getUser();
-            if(!isset($userId))
-            {
-                header("Location: index.php"); //On empêche l'accès aux personnes non connectées
-            }
-            $this->user = User::getWithId($userId);
+            $this->protection();
         }
 
         public function defaultAction($request)
@@ -51,7 +44,7 @@
                 $mdpVali = $request->read('inscPasswordVali');
                 $nom = $request->read('nom');
                 $prenom = $request->read('prenom');
-                $mail_etudiant = $request->read('mail');
+                $mail = $request->read('mail');
                 /* 
                 Les types enseignants et étudiants comportent chacun deux champs spécifiques. 
                 Enseignant -> Matricule et Statut
@@ -61,7 +54,7 @@
                 $spe2 = $request->read('spe2');
                 if ($mdp==$mdpVali)
                 {
-                    $user = User::update($this->user->LOGIN,$this->user->TYPE_UTILISATEUR,$nom, $prenom, $mail_etudiant, $spe1, $spe2, $mdp, $login);
+                    $user = User::update($this->user->LOGIN,$this->user->TYPE_UTILISATEUR,$nom, $prenom, $mail, $spe1, $spe2, $mdp, $login);
                     if(!isset($user)) 
                     {
                         $view = new UserView($this,'profile/edit',array('user' => $this->user));
