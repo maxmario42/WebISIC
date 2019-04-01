@@ -25,7 +25,7 @@ class Router extends MyObject
         'admin_users' => 'Admin:users',
         // QUIZ  (Liens en construction)
         'quiz' => 'Questionnaire:',
-        'add_Quiz' => 'Questionnaire:add',
+        'add_Quiz' => 'Questionnaire:newQuest',
         'my_Quiz' => 'Questionnaire:show',
         'delete_Quiz' => 'Questionnaire:delete',
         'my_EQuiz' => 'Questionnaire:etuQuiz',
