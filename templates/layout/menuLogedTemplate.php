@@ -27,7 +27,7 @@
                           <li><a href="<?php echo $this->path('aboutUser');?>">À propos</a></li>
                           <?php if ($user->TYPE_UTILISATEUR == 'Enseignant') : ?>
                           <li>
-                              <a href="<?php echo $this->path('add_Quiz'); ?>">
+                              <a href="index.php?controller=User&action=creerQuest">
                                   <!-- aller vers la page creation questionnaire-->
                                   Créer Questionnaire</a>
                           </li>
@@ -44,7 +44,7 @@
                               </a>
                           </li>
                           <li>
-                              <a href="<?php echo $this->path('my_EQuiz'); ?>">
+                              <a href="<?php echo $this->path('my_EResults'); ?>">
                                   Resultats
                               </a>
                           </li>
