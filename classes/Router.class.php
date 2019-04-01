@@ -6,17 +6,14 @@ class Router extends MyObject
     //  'route_name' => 'Controller:action',
         'home' => ':',
         'about' => ':aPropos',
-        // USER
-        'homeUser' => 'User:',
-        'logout' => 'User:disconnect',
-        'aboutUser' => 'User:aPropos',
-        /*'inscription' => ':validateInscription',
-        'inscriptionEtu' => ':inscriptionEtu',
-        'inscriptionProf' => ':inscriptionProf',*/
         'inscription' => ':inscription',
         'validateInscription' => ':validateInscription',
         'login' => ':login',
         'connect' => ':Connect',
+        // USER
+        'homeUser' => 'User:',
+        'logout' => 'User:disconnect',
+        'aboutUser' => 'User:aPropos',
         'profile' => 'User:profile',
         'edit' => 'User:edit',
         'edition' => 'User:edition',
