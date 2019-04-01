@@ -8,7 +8,7 @@ class AnonymousController extends Controller {
         parent::__construct($currentRequest);
         if(is_object($this->user))
         {
-            header("Location: index.php?controller=User"); //On empêche la déconnexion par changement d'adresse
+            $this->redirect('homeUser'); //On empêche la déconnexion par changement d'adresse
         }
     }
 
@@ -94,7 +94,7 @@ class AnonymousController extends Controller {
                 } 
                 else 
                 {
-                    header("Location:index.php?action=login");
+                    $this->redirect('login');
                 }
             }
             else

@@ -7,9 +7,13 @@ class Router extends MyObject
         'home' => ':',
         'about' => ':aPropos',
         // USER
+        'homeUser' => 'User:',
         'logout' => 'User:disconnect',
         'aboutUser' => 'User:aPropos',
         'inscription' => ':validateInscription',
+        'inscriptionEtu' => ':inscriptionEtu',
+        'inscriptionProf' => ':inscriptionProf',
+        'login' => ':login',
         'connect' => ':Connect',
         'profile' => 'User:profile',
         'edit' => 'User:edit',
@@ -17,11 +21,13 @@ class Router extends MyObject
         // ADMIN
         'admin' => 'Admin:',
         'admin_users' => 'Admin:users',
-        // QUIZ
+        // QUIZ  (Liens en construction)
         'quiz' => 'Questionnaire:',
         'add_Quiz' => 'Questionnaire:add',
         'my_Quiz' => 'Questionnaire:show',
         'delete_Quiz' => 'Questionnaire:delete',
+        'my_EQuiz' => 'Questionnaire:etuQuiz',
+        'my_EResults' => 'Questionnaire:etuResultats'
         
     );
     public static function path($route, $params = array())

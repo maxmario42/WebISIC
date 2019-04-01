@@ -9,7 +9,7 @@
             if (isset($questErrorText))
                 echo '<span class="error">' . $questErrorText . '</span>';
             ?>
-            <form action="index.php?action=validateInscription" method="post">
+            <form action="index.php?action=newQuest" method="post">
 
                 <div class="form-group">
                     <label for="titre">Titre</label>
