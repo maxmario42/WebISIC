@@ -30,15 +30,14 @@ abstract class Controller extends MyObject {
     {
         if(!is_object($this->user))
         {
-            header("Location: index.php"); 
+            $this->redirect('home'); 
         }
     }
 
-    public function redirect($url)
+    public function redirect($cle,$params = array())
     {
-        header('Location: '.$url);
+        header('Location:'.Router::path($cle,$params));
         exit();
     }
-
 }
 ?>

@@ -63,7 +63,8 @@
                 } 
                     else 
                     {
-                        header("Location:index.php?controller=User&action=profile");
+                        //header("Location:index.php?controller=User&action=profile");
+                        $this->redirect('profile');
                     }
                 }
                 else
@@ -86,7 +87,7 @@
         public function disconnect($request) {
         //Déconnecte l'utilisateur
             Request::unsetUser();
-            header("Location: index.php");
+            $this->redirect('home');
         }
     }
 

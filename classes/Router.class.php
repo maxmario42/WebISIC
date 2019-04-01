@@ -7,9 +7,13 @@ class Router extends MyObject
         'home' => ':',
         'about' => ':aPropos',
         // USER
+        'homeUser' => 'User:',
         'logout' => 'User:disconnect',
         'aboutUser' => 'User:aPropos',
         'inscription' => ':validateInscription',
+        'inscriptionEtu' => ':inscriptionEtu',
+        'inscriptionProf' => ':inscriptionProf',
+        'login' => ':login',
         'connect' => ':Connect',
         'profile' => 'User:profile',
         'edit' => 'User:edit',
