@@ -83,6 +83,12 @@
             $view->render();
         }
 
+        public function creerQuest($request){
+            //Request::getUser();
+            header("Location:index.php?controller=Questionnaire");
+            
+        }
+
         public function disconnect($request) {
         //Déconnecte l'utilisateur
             Request::unsetUser();

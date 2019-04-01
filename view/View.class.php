@@ -16,7 +16,7 @@ class View extends MyObject {
     }
 
     public function render(){
-        $this->getTemplate('layout/head');
+       // $this->getTemplate('layout/head');
         $this->getTemplate('layout/menu');
         $this->getTemplate($this->templateName);
         $this->getTemplate('layout/foot'); 
