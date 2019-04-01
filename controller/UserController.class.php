@@ -86,7 +86,8 @@
 
         public function creerQuest($request){
             //Request::getUser();
-            header("Location:index.php?controller=Questionnaire");
+            $this->redirect("quiz");
+           
             
         }
 

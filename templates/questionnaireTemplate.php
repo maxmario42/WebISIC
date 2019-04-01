@@ -9,7 +9,7 @@
             if (isset($questErrorText))
                 echo '<span class="error">' . $questErrorText . '</span>';
             ?>
-            <form action="index.php?action=newQuest" method="post">
+            <form action="<?php echo $this->path('add_Quiz');?>" method="post">
 
                 <div class="form-group">
                     <label for="titre">Titre</label>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="dateOuverture">DateOuverture</label>
+                        <label for="dateOuverture">Date Ouverture</label>
                         <input type="text" class="form-control" name="dateOuverture" id="inDate_Ouverture" placeholder="Date_Ouverture">
                     </div>
                     <div class="form-group col-md-6">
