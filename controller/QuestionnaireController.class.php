@@ -8,7 +8,7 @@ Class QuestionnaireController extends Controller{
     }
 
   public function defaultAction($request)
-        {   echo "you are in the questionnaire controller";
+        {   //echo "you are in the questionnaire controller";
             $view = new UserView($this, 'questionnaire',array('user' => $this->user));
             $view->render();
         } 
