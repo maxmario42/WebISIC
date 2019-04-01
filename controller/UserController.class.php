@@ -51,7 +51,7 @@
                 $mdpVali = $request->read('inscPasswordVali');
                 $nom = $request->read('nom');
                 $prenom = $request->read('prenom');
-                $mail_etudiant = $request->read('mail');
+                $mail = $request->read('mail');
                 /* 
                 Les types enseignants et étudiants comportent chacun deux champs spécifiques. 
                 Enseignant -> Matricule et Statut

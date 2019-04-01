@@ -16,6 +16,10 @@
 					<th scope="row">Prénom</th>
 					<td><?php echo $user->PRENOM; ?></td>
         </tr>
+				<tr>
+            <th scope="row">Mail</th>
+            <td><?php echo $user->MAIL_ENSEIGNANT; echo $user->MAIL_ETUDIANT; ?></td>    
+				</tr>
 				<?php require_once("viewType/view".$user->TYPE_UTILISATEUR."Template.php"); ?>
 			</table>
 			<button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = 'index.php?controller=User&action=edit';">
