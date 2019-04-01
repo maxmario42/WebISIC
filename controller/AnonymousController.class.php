@@ -6,8 +6,7 @@ class AnonymousController extends Controller {
     
     public function __construct($currentRequest) {
         parent::__construct($currentRequest);
-        $userId = Request::getUser();
-        if(isset($userId))
+        if(is_object($this->user))
         {
             header("Location: index.php?controller=User"); //On empêche la déconnexion par changement d'adresse
         }

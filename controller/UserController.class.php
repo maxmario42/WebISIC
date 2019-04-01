@@ -6,12 +6,10 @@
         public function __construct($request) 
         {
             parent::__construct($request);
-            $userId = Request::getUser();
-            if(!isset($userId))
+            if(!is_object($this->user))
             {
                 header("Location: index.php"); //On empêche l'accès aux personnes non connectées
             }
-            $this->user = User::getWithId($userId);
         }
 
         public function defaultAction($request)
