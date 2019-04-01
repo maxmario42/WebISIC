@@ -6,7 +6,3 @@
 					<th scope="row">Statut</th>
 					<td><?php echo $user->STATUT; ?></td>
                 </tr>
-			<tr>
-                    <th scope="row">Mail</th>
-                    <td><?php echo $user->MAIL_ENSEIGNANT; ?></td>    
-			</tr>
