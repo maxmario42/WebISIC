@@ -25,7 +25,6 @@
                       <ul>
                           <li><a href="index.php?controller=User">Accueil</a></li>
                           <li><a href="index.php?controller=User&action=apropos">À propos</a></li>
-                          <?php var_dump($user->TYPE_UTILISATEUR); ?>
                           <?php if ($user->TYPE_UTILISATEUR == 'Enseignant') : ?>
                           <li>
                               <a href="<?php echo $this->path('add_Quiz'); ?>">
