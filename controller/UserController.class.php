@@ -61,7 +61,7 @@
                 $spe2 = $request->read('spe2');
                 if ($mdp==$mdpVali)
                 {
-                    $user = User::update($this->user->LOGIN,$this->user->TYPE_UTILISATEUR,$nom, $prenom, $mail_etudiant, $spe1, $spe2, $mdp, $login);
+                    $user = User::update($this->user->LOGIN,$this->user->TYPE_UTILISATEUR,$nom, $prenom, $mail, $spe1, $spe2, $mdp, $login);
                     if(!isset($user)) 
                     {
                         $view = new UserView($this,'profile/edit',array('user' => $this->user));
