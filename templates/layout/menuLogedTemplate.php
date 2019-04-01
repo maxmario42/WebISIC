@@ -25,7 +25,7 @@
                             <ul> 
                                 <li><a href="index.php?controller=User">Accueil</a></li> 
                                 <li><a href="index.php?controller=User&action=apropos">À propos</a></li>
-                                <li><a href="Quest.php">Questionnaire</a></li>
+                                <li><a href="#">Questionnaire</a></li>
                                <!-- <li><a href="blog.html"></a></li>
                                 <li><a href="contact.html">Contact</a></li> -->
                             </ul>
