@@ -10,9 +10,11 @@ class Router extends MyObject
         'homeUser' => 'User:',
         'logout' => 'User:disconnect',
         'aboutUser' => 'User:aPropos',
-        'inscription' => ':validateInscription',
+        /*'inscription' => ':validateInscription',
         'inscriptionEtu' => ':inscriptionEtu',
-        'inscriptionProf' => ':inscriptionProf',
+        'inscriptionProf' => ':inscriptionProf',*/
+        'inscription' => ':inscription',
+        'validateInscription' => ':validateInscription',
         'login' => ':login',
         'connect' => ':Connect',
         'profile' => 'User:profile',
