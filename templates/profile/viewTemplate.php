@@ -18,6 +18,9 @@
         </tr>
 				<?php require_once("viewType/view".$user->TYPE_UTILISATEUR."Template.php"); ?>
 			</table>
+			<button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = 'index.php?controller=User&action=edit';">
+					<span class="fa fa-pencil-square-o"></span> Edition
+			</button>
     </div>
 		</div>
 	</div>
