@@ -4,5 +4,5 @@
                 </div>
                 <div class="form-group">
                     <label for="spe2">Année de sortie</label>
-                    <input type="text" class="form-control" name="spe2" id="spe2" placeholder="Année de sortie" value="<?php echo $user->ANNEE_DE_SORTIE;?>">
+                    <input type="number" class="form-control" name="spe2" id="spe2" placeholder="Année de sortie" value="<?php echo $user->ANNEE_DE_SORTIE;?>">
                 </div>

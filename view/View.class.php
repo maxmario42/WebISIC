@@ -19,8 +19,7 @@ class View extends MyObject {
         $this->getTemplate('layout/head');
         $this->getTemplate('layout/menu');
         $this->getTemplate($this->templateName);
-        $this->getTemplate('layout/foot'); 
-
+        $this->getTemplate('layout/foot');
     }
 
     protected function getTemplate($templateName)

@@ -63,7 +63,6 @@
                 } 
                     else 
                     {
-                        //header("Location:index.php?controller=User&action=profile");
                         $this->redirect('profile');
                     }
                 }

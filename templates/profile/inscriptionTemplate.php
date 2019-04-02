@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     <label for="anneedesortie">Année de sortie (si vous êtes étudiant)</label>
-                    <input type="text" class="form-control" name="anneedesortie" id="anneedesortie" placeholder="Année de sortie">
+                    <input type="number" class="form-control" name="anneedesortie" id="anneedesortie" placeholder="Année de sortie">
                 </div>
 
                 <button type="submit" class="btn btn-dark" style="background-color: #1B5040;">Creer mon compte...</button>
