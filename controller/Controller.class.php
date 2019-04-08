@@ -7,7 +7,7 @@ abstract class Controller extends MyObject {
 
     public function __construct($currentRequest) {
         $this->request = $currentRequest;
-        $this->user = User::getWithId(Request::getUser());
+        $this->user = User::getWithId($currentRequest->getUser());
     }
     
     Abstract function defaultAction($currentRequest); //Action par défaut
@@ -41,6 +41,7 @@ abstract class Controller extends MyObject {
     }
     */
     public function linkTo($controller,$action=NULL)
+    //Assure la redirection, le $controller sur NULL donnera Anonymous, $action sur NULL donnera DefaultAction
     {
         header('Location:'.__BASE_URL.'/index.php?controller='.$controller.'&action='.$action);
         exit();

@@ -17,7 +17,7 @@ class AnonymousController extends Controller {
         $user = User::tryLogin($currentRequest->read('login'),$currentRequest->read('password'));
 
         if(is_object($user)) {
-            Request::setUser($user->ID);
+            $currentRequest->setUser($user->ID);
             $this->linkTo('User');
         }
         else {
@@ -54,10 +54,6 @@ class AnonymousController extends Controller {
         $view->render();
     }
 
-    /*
-    Actions d'inscriptions
-    */
-
     public function validateInscription($request) 
     {
     //Valide l'inscription d'un utilisateur
@@ -75,6 +71,7 @@ class AnonymousController extends Controller {
             $nom = $request->read('nom');
             $prenom = $request->read('prenom');
             $mail = $request->read('mail');
+            //Pour les 4 champs suivants, selon les valeurs récupérées, le User::create crééra un étudiant ou un enseignant
             $promo = $request->read('promo');
             $annee = $request->read('anneedesortie');
             $matricule = $request->read('matricule');

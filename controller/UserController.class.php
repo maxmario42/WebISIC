@@ -90,7 +90,7 @@
 
         public function disconnect($request) {
         //Déconnecte l'utilisateur
-            Request::unsetUser();
+            $request->unsetUser();
             $this->linkTo(NULL);
         }
     }

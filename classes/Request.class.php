@@ -10,28 +10,67 @@ class Request extends MyObject {
     aux paramètres de la requête (GET, POST, ...).
     */
     private static $Request = null;
+    private $action;
+    private $controller;
+    private $user = null;
 
-    public static function getCurrentRequest() {
- 
-        if(is_null(static::$Request)) {
-          static::$Request = new static();  
+    public static function getCurrentRequest()
+    //Design pattern Singleton
+    {
+        if(is_null(static::$Request))
+        {
+            static::$Request = new Request();  
         }
     
         return static::$Request;
-      }
-    public function getController(){
-        if (isset($_GET['controller']) && $_GET['controller']!=NULL){
+    }
+    public function __construct()
+    //Consruit la requête
+    {
+        $this->setController($this->readController());
+        $this->setAction($this->readAction());
+        $this->user = Session::getInstance()->UserID;
+    }
+    public function readController()
+    {
+    //Lit le controlleur dans le GET (Anonymous par défaut)
+        if (isset($_GET['controller']) && $_GET['controller']!=NULL)
+        {
             return $_GET['controller'];
         }
         return 'Anonymous';
     }
 
-    public function getAction(){
-        
-        if (isset($_GET['action']) && $_GET['action']!=NULL){
+    public function readAction()
+    {
+    //Lit l'action dans le GET (defaultAction par défaut)
+        if (isset($_GET['action']) && $_GET['action']!=NULL)
+        {
             return $_GET['action'];
         }
         return 'defaultAction';
+    }
+    public function setAction($action)
+    //Définit l'action voulue
+    {
+        $this->action = $action ?: 'defaultAction';
+        return $this;
+    }
+    public function setController($controller)
+    //Définit le controlleur voulu
+    {
+        $this->controller = ucfirst($controller) ?: 'Anonymous';
+        return $this;
+    }
+    public function getController()
+    //Accès au controlleur
+    {
+        return $this->controller;
+    }
+    public function getAction()
+    //Accès à l'action
+    {
+        return $this->action;
     }
 
     public function read($arg){
@@ -39,38 +78,27 @@ class Request extends MyObject {
             return$_POST[$arg];
         }
     }
-
-    public function changeController($value=null){
-        if($value==null){
-            unset ($_GET['controller']);
-        }
-        $l=$_GET['controller']=$value;
-        return $l;
-    }
-
-    public function changeAction($value=null){
-        if($value==null){
-            unset ($_GET['action']);
-        }
-        $l=$_GET['action']=$value;
-        return $l;
-    }
-
     public function write($key,$value){
         $l1=$_POST[$key]=$value;
         return $l1;
     }
 
-    public static function setUser($userID)
+    public function setUser($userID)
+    //Définit l'utilisateur en allant chercher l'ID de l'utilisateur dans la session
     {
         Session::getInstance()->UserID=$userID;
+        $this->user=$userID;
+        return $this;
     }
-    public static function getUser()
+    public function getUser()
+    //Lit l'utilisateur
     {
-        return Session::getInstance()->UserID;
+        return $this->user;
     }
-    public static function unsetUser()
+    public function unsetUser()
+    //Déconnexion
     {
+        $this->setUser(NULL);
         Session::getInstance()->destroy();
     }
 }

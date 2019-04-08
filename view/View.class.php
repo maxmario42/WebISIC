@@ -51,6 +51,7 @@ class View extends MyObject {
     }
     */
     public function linkTo($controller,$action=NULL)
+    //Assure la redirection, le $controller sur NULL donnera Anonymous, $action sur NULL donnera DefaultAction
     {
         return __BASE_URL.'/index.php?controller='.$controller.'&action='.$action;
     }
