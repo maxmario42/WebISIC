@@ -1,5 +1,5 @@
 <?php
-
+/*
 class Router extends MyObject
 {
     const routes = array(
@@ -40,5 +40,5 @@ class Router extends MyObject
         //throw new Error('Route Not Found', 404); Ils nous manque coder une classe des erreurs.
     }
 }
-
+*/
 ?>

@@ -33,12 +33,13 @@ abstract class Controller extends MyObject {
             $this->linkTo(NULL); 
         }
     }
-
+    /*
     public function redirect($cle,$params = array())
     {
         header('Location:'.Router::path($cle,$params));
         exit();
     }
+    */
     public function linkTo($controller,$action=NULL)
     {
         header('Location:'.__BASE_URL.'/index.php?controller='.$controller.'&action='.$action);

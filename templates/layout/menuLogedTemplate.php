@@ -27,24 +27,24 @@
                           <li><a href="<?php echo $this->linkTo('User','aPropos');?>">À propos</a></li>
                           <?php if ($user->TYPE_UTILISATEUR == 'Enseignant') : ?>
                           <li>
-                              <a href="index.php?controller=User&action=creerQuest">
+                              <a href="<?php echo $this->linkTo('Questionnaire','newQuest'); ?>">
                                   <!-- aller vers la page creation questionnaire-->
                                   Créer Questionnaire</a>
                           </li>
                           <li>
-                              <a href="<?php echo $this->path('my_Quiz'); ?>">
+                              <a href="<?php echo $this->linkTo('Questionnaire','show'); ?>">
                                   <!-- aller vers la page creation questionnaire-->
                                   Mes Questionnaires</a>
                           </li>
 
                           <?php elseif ($user->TYPE_UTILISATEUR == 'Etudiant') : ?>
                           <li class="nav-item text-center">
-                              <a href="<?php echo $this->path('my_EQuiz'); ?>">
+                              <a href="<?php echo $this->linkTo('Questionnaire','etuQuiz'); ?>">
                                   Mes Questionnaires
                               </a>
                           </li>
                           <li>
-                              <a href="<?php echo $this->path('my_EResults'); ?>">
+                              <a href="<?php echo $this->linkTo('Questionnaire','etuResultats'); ?>">
                                   Resultats
                               </a>
                           </li>

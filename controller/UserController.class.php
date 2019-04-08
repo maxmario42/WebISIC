@@ -85,7 +85,7 @@
 
         public function creerQuest($request){
             //Request::getUser();
-            $this->redirect("quiz"); 
+            $this->linkTo("Questionnaire"); 
         }
 
         public function disconnect($request) {

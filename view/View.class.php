@@ -44,11 +44,12 @@ class View extends MyObject {
         $this->args[$key] = $value;
         return $this;
     }
-
+    /*
     public function path($route, $params = array())
     {
         return Router::path($route, $params);
     }
+    */
     public function linkTo($controller,$action=NULL)
     {
         return __BASE_URL.'/index.php?controller='.$controller.'&action='.$action;
