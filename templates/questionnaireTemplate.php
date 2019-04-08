@@ -16,18 +16,20 @@
                     <input type="text" class="form-control" name="questTitre" id="inTitre" placeholder="Titre">
                 </div>
                 <div class="form-group">
-
+                <label for="description">Description</label> 
+                <input type="test"class="form-control" name="description" id="inDescription" placeholder="Description">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="dateOuverture">Date Ouverture</label>
+                        <label for="date_Ouverture">Date Ouverture</label>
                         <input type="text" class="form-control" name="dateOuverture" id="inDate_Ouverture" placeholder="jj/mm/aaaa">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="date_fermeture">Date Fermeture</label>
                         <input type="text" class="form-control" name="date_fermuture" id="inDate_Fermeture" placeholder="jj/mm/aaaa">
                     </div>
-                </div>
+                    <input type="text" class="form-control" name="dateOuverture" id="inDate_Ouverture" placeholder="jj/mm/aaaa">
+                    </div>        
                 <div class="form-group">
                     <label for="">Mode_Acces</label>
                     <input type="mode_acces" class="form-control" name="mode_acces" id="inMode_Acces" placeholder="Mode_Acces">
