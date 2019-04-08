@@ -63,8 +63,7 @@
                 } 
                     else 
                     {
-                        //header("Location:index.php?controller=User&action=profile");
-                        $this->redirect('profile');
+                        $this->linkTo('User','profile');
                     }
                 }
                 else
@@ -86,15 +85,13 @@
 
         public function creerQuest($request){
             //Request::getUser();
-            $this->redirect("quiz");
-           
-            
+            $this->linkTo("Questionnaire"); 
         }
 
         public function disconnect($request) {
         //Déconnecte l'utilisateur
             Request::unsetUser();
-            $this->redirect('home');
+            $this->linkTo(NULL);
         }
     }
 

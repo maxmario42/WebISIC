@@ -7,7 +7,7 @@
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="<?php echo $this->path('home');?>"><img src="css/img/quiz.png" alt=""></a>
+                    <a class="nav-brand" href="<?php echo $this->linkTo(NULL);?>"><img src="css/img/quiz.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -25,8 +25,8 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul> 
-                                <li><a href="<?php echo $this->path('home');?>">Accueil</a></li> 
-                                <li><a href="<?php echo $this->path('about');?>">À propos</a></li>
+                                <li><a href="<?php echo $this->linkTo(NULL);?>">Accueil</a></li> 
+                                <li><a href="<?php echo $this->linkTo(NULL,'aPropos');?>">À propos</a></li>
                                 <li><a href="Quest.php">Questionnaire</a></li>
                                <!-- <li><a href="blog.html"></a></li>
                                 <li><a href="contact.html">Contact</a></li> -->
@@ -42,8 +42,8 @@
 
                             <!-- Register / Login -->
                             <div class="register-login-area">
-                                <a href="<?php echo $this->path('inscription');?>" class="btn">Inscription</a>
-                                <a href="<?php echo $this->path('login');?>" class="btn active">Connexion</a>
+                                <a href="<?php echo $this->linkTo(NULL,'inscription');?>" class="btn">Inscription</a>
+                                <a href="<?php echo $this->linkTo(NULL,'login');?>" class="btn active">Connexion</a>
                             </div>
 
                         </div>

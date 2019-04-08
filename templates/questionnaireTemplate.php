@@ -9,7 +9,7 @@
             if (isset($questErrorText))
                 echo '<span class="error">' . $questErrorText . '</span>';
             ?>
-            <form action="<?php echo $this->path('add_Quiz');?>" method="post">
+            <form action="<?php echo $this->linkTo('Questionnaire','newQuest'); ?>>" method="post">
 
                 <div class="form-group">
                     <label for="titre">Titre</label>

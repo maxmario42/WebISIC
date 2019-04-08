@@ -8,7 +8,7 @@ class AnonymousController extends Controller {
         parent::__construct($currentRequest);
         if(is_object($this->user))
         {
-            $this->redirect('homeUser'); //On empêche la déconnexion par changement d'adresse
+            $this->linkTo('User',NULL); //On empêche la déconnexion par changement d'adresse
         }
     }
 
@@ -18,7 +18,7 @@ class AnonymousController extends Controller {
 
         if(is_object($user)) {
             Request::setUser($user->ID);
-            $this->redirect('homeUser');
+            $this->linkTo('User');
         }
         else {
             $view = new View($this,'profile/login');
@@ -89,7 +89,7 @@ class AnonymousController extends Controller {
                 } 
                 else 
                 {
-                    $this->redirect('login');
+                    $this->linkTo(NULL,'login');
                 }
             }
             else

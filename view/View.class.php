@@ -19,8 +19,7 @@ class View extends MyObject {
         $this->getTemplate('layout/head');
         $this->getTemplate('layout/menu');
         $this->getTemplate($this->templateName);
-        $this->getTemplate('layout/foot'); 
-
+        $this->getTemplate('layout/foot');
     }
 
     protected function getTemplate($templateName)
@@ -45,10 +44,15 @@ class View extends MyObject {
         $this->args[$key] = $value;
         return $this;
     }
-
+    /*
     public function path($route, $params = array())
     {
         return Router::path($route, $params);
+    }
+    */
+    public function linkTo($controller,$action=NULL)
+    {
+        return __BASE_URL.'/index.php?controller='.$controller.'&action='.$action;
     }
 } 
 ?> 
