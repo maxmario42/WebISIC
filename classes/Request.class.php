@@ -18,7 +18,7 @@ class Request extends MyObject {
         }
     
         return static::$Request;
-      }
+    }
     public function getController(){
         if (isset($_GET['controller']) && $_GET['controller']!=NULL){
             return $_GET['controller'];
