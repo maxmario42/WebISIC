@@ -20,17 +20,17 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="dateOuverture">DateOuverture</label>
+                        <label for="dateOuverture">Date Ouverture</label>
                         <input type="text" class="form-control" name="dateOuverture" id="inDate_Ouverture" placeholder="jj/mm/aaaa">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="date_fermeture">Date_Fermeture</label>
+                        <label for="date_fermeture">Date Fermeture</label>
                         <input type="text" class="form-control" name="date_fermuture" id="inDate_Fermeture" placeholder="jj/mm/aaaa">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">Mode_Acces</label>
-                    <input type="email" class="form-control" name="mode_acces" id="inMode_Acces" placeholder="Mode_Acces">
+                    <input type="mode_acces" class="form-control" name="mode_acces" id="inMode_Acces" placeholder="Mode_Acces">
                     <form>
                     <select name="Mode_Access" size=3>
                     <option>connecté
