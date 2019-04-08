@@ -20,7 +20,7 @@ class QuestionnaireController extends Controller
         $titre = $request->read('titre');
        var_dump( Questionnaire::isTitreUsed($titre));
         if (Questionnaire::isTitreUsed($titre)) {
-                $view = new View($this);
+                $view = new UserView($this, 'questionnaire/creerQuestionnaire', array('user' => $this->user));
                 $view->setArg('inscErrorText', 'This title is already used');
                 $view->render();
                 echo ("<script>alert('Vous avez déjà crée une questionnaire avec cette titre...');</script>");
@@ -36,7 +36,7 @@ class QuestionnaireController extends Controller
                 $questio = Questionnaire::create($idU,$titre,"sans aucun description", $etat,$date_ouverture,$date_fermeture,$mode_acces,$lien_http);
                 
                 if(!isset($questio)) {
-                    $view = new View($this);
+                    $view = new UserView($this, 'questionnaire/creerQuestionnaire', array('user' => $this->user));
                     $view->setArg('inscErrorText', 'Cannot complete creation');
                     $view->render();
                 } 
@@ -49,14 +49,14 @@ class QuestionnaireController extends Controller
     }
         public function showQuest($request){
             echo "On affichera TON QUESTIONNAIRE";
-            $view = new UserView($this,'questionnaire/showQuestionnaire', array('questionnaire' => $this->questio));
+            $view = new UserView($this,'questionnaire/showQuestionnaire', array('user' => $this->user, 'questionnaire' => $this->questio));
             $view->render();
         }
 
         public function edit($request)
         //Appelle la vue pour mettre à jour nos informations
         {
-            $v = new UserView($this,'questionnaire/editQuestionnaire', array('questionnaire' => $this->questio));
+            $v = new UserView($this,'questionnaire/editQuestionnaire', array('user' => $this->user, 'questionnaire' => $this->questio));
             $v->render();
         }
 
@@ -66,7 +66,7 @@ class QuestionnaireController extends Controller
             $titre = $request->read('titre');
             if(Questionnaire::isTitreUsed($titre)) 
             {
-                $view = new UserView($this,'questionnaire/editQuestionnaire',array('questionnaire' => $this->questio));
+                $view = new UserView($this,'questionnaire/editQuestionnaire',array('user' => $this->user, 'questionnaire' => $this->questio));
                 $view->setArg('inscErrorText','This title is already used');
                 $view->render();
                 echo("<script>alert('Vous avez un questionnaire avec le même titre...');</script>");  
@@ -81,7 +81,7 @@ class QuestionnaireController extends Controller
                 $questio = Questionnaire::update($this->questio->IDQ,$titre, $description,$etat,$date_ouverture,$date_fermeture,$mode_acces);
                 if(!isset($questio)) 
                 {
-                    $view = new UserView($this,'questionnaire/editQuestionnaire',array('questionnaire' => $this->questio));
+                    $view = new UserView($this,'questionnaire/editQuestionnaire',array('user' => $this->user, 'questionnaire' => $this->questio));
                     $view->setArg('inscErrorText', 'Cannot complete Edition');
                     $view->render();
             } 
