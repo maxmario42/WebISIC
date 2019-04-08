@@ -35,7 +35,7 @@ class Router extends MyObject
             $var = explode(':', self::routes[$route]);
             $params['controller'] = $var[0];
             $params['action'] = $var[1];
-            return __BASE_URL.'?'.http_build_query($params);
+            return __BASE_URL.'/index.php?'.http_build_query($params);
         }
         //throw new Error('Route Not Found', 404); Ils nous manque coder une classe des erreurs.
     }
