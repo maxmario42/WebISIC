@@ -49,5 +49,9 @@ class View extends MyObject {
     {
         return Router::path($route, $params);
     }
+    public function linkTo($controller,$action=NULL)
+    {
+        return __BASE_URL.'/index.php?controller='.$controller.'&action='.$action;
+    }
 } 
 ?> 

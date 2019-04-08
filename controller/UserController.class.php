@@ -63,7 +63,7 @@
                 } 
                     else 
                     {
-                        $this->redirect('profile');
+                        $this->linkTo('User','profile');
                     }
                 }
                 else
@@ -85,15 +85,13 @@
 
         public function creerQuest($request){
             //Request::getUser();
-            $this->redirect("quiz");
-           
-            
+            $this->redirect("quiz"); 
         }
 
         public function disconnect($request) {
         //Déconnecte l'utilisateur
             Request::unsetUser();
-            $this->redirect('home');
+            $this->linkTo(NULL);
         }
     }
 

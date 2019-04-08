@@ -22,7 +22,7 @@
 				</tr>
 				<?php require_once("viewType/view".$user->TYPE_UTILISATEUR."Template.php"); ?>
 			</table>
-			<button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->path('edit');?>';">
+			<button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('User','edit');?>';">
 					<span class="fa fa-pencil-square-o"></span> Edition
 			</button>
     </div>
