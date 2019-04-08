@@ -27,7 +27,7 @@
                           <li><a href="<?php echo $this->linkTo('User','aPropos');?>">À propos</a></li>
                           <?php if ($user->TYPE_UTILISATEUR == 'Enseignant') : ?>
                           <li>
-                              <a href="<?php echo $this->linkTo('Questionnaire','newQuest'); ?>">
+                              <a href="<?php echo $this->linkTo('Questionnaire'); ?>">
                                   <!-- aller vers la page creation questionnaire-->
                                   Créer Questionnaire</a>
                           </li>

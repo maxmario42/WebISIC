@@ -9,11 +9,11 @@
             if (isset($questErrorText))
                 echo '<span class="error">' . $questErrorText . '</span>';
             ?>
-            <form action="<?php echo $this->linkTo('Questionnaire','newQuest'); ?>>" method="post">
+            <form action="<?php echo $this->linkTo('Questionnaire','newQuest'); ?>" method="post">
 
                 <div class="form-group">
                     <label for="titre">Titre</label>
-                    <input type="text" class="form-control" name="questTitre" id="inTitre" placeholder="Titre">
+                    <input type="text" class="form-control" name="titre" id="inTitre" placeholder="Titre">
                 </div>
                 <div class="form-group">
 
@@ -21,11 +21,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="dateOuverture">Date Ouverture</label>
-                        <input type="text" class="form-control" name="dateOuverture" id="inDate_Ouverture" placeholder="jj/mm/aaaa">
+                        <input type="text" class="form-control" name="date_ouverture" id="inDate_Ouverture" placeholder="jj/mm/aaaa">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="date_fermeture">Date Fermeture</label>
-                        <input type="text" class="form-control" name="date_fermuture" id="inDate_Fermeture" placeholder="jj/mm/aaaa">
+                        <input type="text" class="form-control" name="date_fermeture" id="inDate_Fermeture" placeholder="jj/mm/aaaa">
                     </div>
                 </div>
                 <div class="form-group">
