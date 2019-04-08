@@ -36,20 +36,11 @@
                     <input type="email" class="form-control" name="mail" id="inMail" placeholder="Email">
                 </div>
                 <div class="form-group">
-                    <label for="matricule">Matricule (si vous êtes prof)</label>
-                    <input type="text" class="form-control" name="matricule" id="inMatricule" placeholder="Matricule">
-                </div>
-                <div class="form-group">
-                    <label for="statut">Statut (si vous êtes prof)</label><br>
-                    <input type="radio" name="statut" value="interne">Interne<br>
-                    <input type="radio" name="statut" value="externe">Externe<br>
-                </div>
-                <div class="form-group">
-                    <label for="promo">Promo (si vous êtes étudiant)</label>
+                    <label for="promo">Promo</label>
                     <input type="text" class="form-control" name="promo" id="promo" placeholder="Promo">
                 </div>
                 <div class="form-group">
-                    <label for="anneedesortie">Année de sortie (si vous êtes étudiant)</label>
+                    <label for="anneedesortie">Année de sortie</label>
                     <input type="number" class="form-control" name="anneedesortie" id="anneedesortie" placeholder="Année de sortie">
                 </div>
 

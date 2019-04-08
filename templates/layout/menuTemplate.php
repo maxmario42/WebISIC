@@ -42,7 +42,8 @@
 
                             <!-- Register / Login -->
                             <div class="register-login-area">
-                                <a href="<?php echo $this->linkTo(NULL,'inscription');?>" class="btn">Inscription</a>
+                                <a href="<?php echo $this->linkTo(NULL,'inscriptionEtu');?>" class="btn">Inscription Etudiant</a>
+                                <a href="<?php echo $this->linkTo(NULL,'inscriptionProf');?>" class="btn">Inscription Professeur</a>
                                 <a href="<?php echo $this->linkTo(NULL,'login');?>" class="btn active">Connexion</a>
                             </div>
 
