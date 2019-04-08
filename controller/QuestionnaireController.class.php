@@ -1,7 +1,7 @@
 <?php
 
 class QuestionnaireController extends Controller
-{
+{ protected $questio;
 
     public function __construct($currentRequest)
     {
@@ -49,12 +49,51 @@ class QuestionnaireController extends Controller
     }
         public function showQuest($request){
             echo "On affichera TON QUESTIONNAIRE";
-            $view = new View($this,'questionnaire/showQuestionnaire', array('questionnaire' => $this->questio) );
+            $view = new UserView($this,'questionnaire/showQuestionnaire', array('questionnaire' => $this->questio));
             $view->render();
         }
 
-        public function editQuest($request){
-            
+        public function edit($request)
+        //Appelle la vue pour mettre à jour nos informations
+        {
+            $v = new UserView($this,'questionnaire/editQuestionnaire', array('questionnaire' => $this->questio));
+            $v->render();
+        }
+
+        public function edition($request)
+        //Permet de mettre à jour les informations d'un utilisateur. Fonctionne sur tout les types.
+        {
+            $titre = $request->read('titre');
+            if(Questionnaire::isTitreUsed($titre)) 
+            {
+                $view = new UserView($this,'questionnaire/editQuestionnaire',array('questionnaire' => $this->questio));
+                $view->setArg('inscErrorText','This title is already used');
+                $view->render();
+                echo("<script>alert('Vous avez un questionnaire avec le même titre...');</script>");  
+            } 
+            else 
+            {
+                $etat="Fermé";
+                $description=$request->read('description');
+                $date_ouverture=$request->read('date_ouverture');
+                $date_fermeture=$request->read('date_fermeture');
+                $mode_acces=$request->read('mode_acces');
+                $questio = Questionnaire::update($this->questio->IDQ,$titre, $description,$etat,$date_ouverture,$date_fermeture,$mode_acces);
+                if(!isset($questio)) 
+                {
+                    $view = new UserView($this,'questionnaire/editQuestionnaire',array('questionnaire' => $this->questio));
+                    $view->setArg('inscErrorText', 'Cannot complete Edition');
+                    $view->render();
+            } 
+                else 
+                {
+                    $this->linkTo('Questionnaire','showQuest');
+                }
+                       
+                    
+                
+              
+            }
         }
     
 }
