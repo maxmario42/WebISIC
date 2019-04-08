@@ -49,8 +49,12 @@ class QuestionnaireController extends Controller
     }
         public function showQuest($request){
             echo "On affichera TON QUESTIONNAIRE";
-            $view = new View($this,'profile/login', array('questionnaire' => $this->questio) );
+            $view = new View($this,'questionnaire/showQuestionnaire', array('questionnaire' => $this->questio) );
             $view->render();
+        }
+
+        public function editQuest($request){
+            
         }
     
 }
