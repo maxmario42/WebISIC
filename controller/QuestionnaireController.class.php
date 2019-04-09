@@ -17,7 +17,7 @@ class QuestionnaireController extends Controller
     public function newQuest($request)
     {   
         $titre = $request->read('titre');
-       var_dump( Questionnaire::isTitreUsed($titre));
+        Questionnaire::isTitreUsed($titre);
         if (Questionnaire::isTitreUsed($titre)) {
                 $view = new UserView($this, 'questionnaire/creerQuestionnaire', array('user' => $this->user));
                 $view->setArg('inscErrorText', 'This title is already used');
@@ -50,13 +50,7 @@ class QuestionnaireController extends Controller
             echo "On affichera TON QUESTIONNAIRE";
             $view = new UserView($this,'questionnaire/showQuestionnaire', array('user' => $this->user, 'questionnaire' => $this->questio));
             $view->render();
-        }
-
-        public function listQuest($request){
-            echo "On affichera LES QUESTIONNAIRES";
-            $view = new UserView($this,'questionnaire/listQuestionnaire', array('user' => $this->user, 'questionnaires' => Questionnaire::getAllWithId(User::getIDColumn(),$this->user->ID));
-            $view->render();
-        }
+        } 
 
         public function edit($request)
         //Appelle la vue pour mettre à jour nos informations
