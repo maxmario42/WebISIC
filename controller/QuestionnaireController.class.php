@@ -24,7 +24,7 @@ class QuestionnaireController extends Controller
                 $view->render();
                 echo ("<script>alert('Vous avez déjà crée une questionnaire avec cette titre...');</script>");
             } else {
-                /*$description= $request->read('description');*/
+                $description= $request->read('description');
                 $idU=(int)$this->user->ID;
                 var_dump($idU);
                 $etat="Fermé";
@@ -32,7 +32,7 @@ class QuestionnaireController extends Controller
                 $date_ouverture=$request->read('date_ouverture');
                 $date_fermeture=$request->read('date_fermeture');
                 $mode_acces=$request->read('mode_acces');
-                $questio = Questionnaire::create($idU,$titre,"sans aucun description", $etat,$date_ouverture,$date_fermeture,$mode_acces,$lien_http);
+                $questio = Questionnaire::create($idU,$titre,$description, $etat,$date_ouverture,$date_fermeture,$mode_acces,$lien_http);
                 
                 if(!isset($questio)) {
                     $view = new UserView($this, 'questionnaire/creerQuestionnaire', array('user' => $this->user));

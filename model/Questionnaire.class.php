@@ -29,7 +29,7 @@ Class Questionnaire extends Model{
         return 'IDQ';
     }
 
-   public function create($id,$titre, $description, $etat,$date_o,$date_f,$mode_access,$lien_http ){
+   public static function create($id,$titre, $description, $etat,$date_o,$date_f,$mode_access,$lien_http ){
     static::db()->exec("INSERT INTO QUESTIONNAIRE (id,titre,id_regles_quest,description,etat,date_ouverture,date_fermeture,mode_acces,lien_http) VALUES ($id,'$titre',1,'$description','$etat','$date_o','$date_f','$mode_access','$lien_http')");
     return static::showQuest($titre);
     }
