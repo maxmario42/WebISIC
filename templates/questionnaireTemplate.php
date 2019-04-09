@@ -16,7 +16,7 @@
                     <input type="text" class="form-control" name="questTitre" id="inTitre" placeholder="Titre">
                     </div>
                     <div class="form-group">
-                    <label for="description_">Description</label>
+                    <label for="description">Description</label>
                     <input type="text" class="form-control" name="description" id="inDescription" placeholder="Description">
                     </div>
                     <div class="form-row">
