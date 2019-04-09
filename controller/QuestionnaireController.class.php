@@ -50,7 +50,7 @@ class QuestionnaireController extends Controller
             echo "On affichera TON QUESTIONNAIRE";
             $view = new UserView($this,'questionnaire/showQuestionnaire', array('user' => $this->user, 'questionnaire' => $this->questio));
             $view->render();
-        } 
+        }
 
         public function edit($request)
         //Appelle la vue pour mettre à jour nos informations

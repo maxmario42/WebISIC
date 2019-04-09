@@ -43,5 +43,16 @@ abstract class Model extends MyObject {
         $object = $st-> fetch();
         return $object;
     }
+    public static function getAllWithId($IDField,$ID){
+        //Retourne un ensemble d'objet en fonction d'une ID
+        $qresults = static::db()->query("select  * from ".static::getTableName()." where ".$IDField." ='$ID'");
+        $results = array();
+        foreach ($qresults as $result) {
+            if (count($result)) {
+                $results[] = new $this->get_called_class($result);
+            }
+        }
+        return $results;
+    }
 }
 ?>
