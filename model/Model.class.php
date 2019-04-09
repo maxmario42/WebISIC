@@ -44,7 +44,7 @@ abstract class Model extends MyObject {
         return $object;
     }
     public static function getAllWithId($IDField,$ID){
-        //Retourne un ensemble d'objet en fonction d'une ID
+        //Retourne un ensemble d'objet en fonction d'une ID (exemple, tous les questionnaires d'un utilisateur)
         $qresults = static::db()->query("select  * from ".static::getTableName()." where ".$IDField." ='$ID'");
         $results = array();
         foreach ($qresults as $result) {
