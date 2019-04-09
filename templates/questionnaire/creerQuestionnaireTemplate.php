@@ -13,7 +13,7 @@
 
                 <div class="form-group">
                     <label for="titre">Titre</label>
-                    <input type="text" class="form-control" name="titre" id="inTitre" placeholder="Titre">
+                    <input type="text" class="form-control" name="titre" id="inTitre" placeholder="Titre " size="10">
                 </div>
                 <label for="description">Description</label>
                 </label><br />
@@ -26,19 +26,19 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="date_fermeture">Date Fermeture</label>
-                <input type="text" class="form-control" name="date_fermeture" id="inDate_Fermeture" placeholder="aaaa/mm/jj">
+                <input type="text" class="form-control" name="date_fermeture"  id="inDate_Fermeture" placeholder="aaaa/mm/jj">
             </div>
             <div class="form-group">
                 <label for="">Mode_Acces</label>
-                <select class="form-control" name="mode_acces">
+                <select class="form-control" name="mode_acces" size=1>
                     <option  value="public">public</option>
                     <option value="connecté">connecté</option>
                     <option value="lien">lien</option>
                 </select>
-            </div>
-
+            
+<br>
             <button type="submit" class="btn btn-dark" style="background-color: #1B5040;"> Creer mon Questionnaire...</button>
-
+            </div>
 
 
             </form>
