@@ -32,7 +32,7 @@
                                   Créer Questionnaire</a>
                           </li>
                           <li>
-                              <a href="<?php echo $this->linkTo('Questionnaire','show'); ?>">
+                              <a href="<?php echo $this->linkTo('Questionnaire','showQuest'); ?>">
                                   <!-- aller vers la page creation questionnaire-->
                                   Mes Questionnaires</a>
                           </li>
