@@ -7,7 +7,6 @@ abstract class Controller extends MyObject {
 
     public function __construct($currentRequest) {
         $this->request = $currentRequest;
-        $this->user = User::getWithId($currentRequest->getUser());
     }
     
     Abstract function defaultAction($currentRequest); //Action par défaut
