@@ -9,7 +9,7 @@
             if (isset($inscErrorText))
                 echo '<span class="error">' . $inscErrorText . '</span>';
             ?>
-            <form action="<? echo $this->linkTo('User','edition');?>" method="post">
+            <form action="<?php echo $this->linkTo('User','edition');?>" method="post">
 
                 <div class="form-group">
                     <label for="login">Login</label>

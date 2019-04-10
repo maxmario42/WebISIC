@@ -91,9 +91,14 @@ class Request extends MyObject {
         return $this;
     }
     public function getUser()
-    //Lit l'utilisateur
+    //Lit l'ID de l'utilisateur
     {
         return $this->user;
+    }
+    public function getUserObject()
+    //Retourne l'utilisateur
+    {
+        return User::getWithId($this->getUser());
     }
     public function unsetUser()
     //Déconnexion
