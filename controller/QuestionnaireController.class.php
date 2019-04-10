@@ -26,10 +26,11 @@ class QuestionnaireController extends Controller
             } else {
                 $description= $request->read('description');
                 $idU=(int)$this->user->ID;
-                var_dump($idU);
+                $idU;
                 $etat="Fermé";
                 $lien_http="";
                 $date_ouverture=$request->read('date_ouverture');
+               
                 $date_fermeture=$request->read('date_fermeture');
                 $mode_acces=$request->read('mode_acces');
                 $questio = Questionnaire::create($idU,$titre,$description, $etat,$date_ouverture,$date_fermeture,$mode_acces,$lien_http);

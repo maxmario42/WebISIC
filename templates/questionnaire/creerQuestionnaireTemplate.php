@@ -15,21 +15,21 @@
                     <label for="titre">Titre</label>
                     <input type="text" class="form-control" name="titre" id="inTitre" placeholder="Titre " size="10">
                 </div>
+                <div class="form-row"> <br>
                 <label for="description">Description</label>
-                </label><br />
-                <textarea name="description" id="inDescription" placeholder="Description"></textarea>
-        </div>
+                <textarea class="form-control" name="description" id="inDescription" placeholder="Description"></textarea>
+                </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="date_Ouverture">Date Ouverture</label>
-                <input type="text" class="form-control" name="date_ouverture" id="inDate_Ouverture" placeholder="aaaa/mm/jj">
+                <input type="date" class="form-control" name="date_ouverture" id="inDate_Ouverture" placeholder="aaaa/mm/jj">
             </div>
             <div class="form-group col-md-6">
                 <label for="date_fermeture">Date Fermeture</label>
-                <input type="text" class="form-control" name="date_fermeture"  id="inDate_Fermeture" placeholder="aaaa/mm/jj">
+                <input type="date" class="form-control" name="date_fermeture"  id="inDate_Fermeture" placeholder="aaaa/mm/jj">
             </div>
             <div class="form-group">
-                <label for="">Mode_Acces</label>
+                <label for="">Mode Acces</label>
                 <select class="form-control" name="mode_acces" size=1>
                     <option  value="public">public</option>
                     <option value="connecté">connecté</option>
@@ -37,7 +37,7 @@
                 </select>
             
 <br>
-            <button type="submit" class="btn btn-dark" style="background-color: #1B5040;"> Creer mon Questionnaire...</button>
+            <button type="submit" class="btn btn-dark" style="background-color: #FF8100;"> Creer mon Questionnaire...</button>
             </div>
 
 
