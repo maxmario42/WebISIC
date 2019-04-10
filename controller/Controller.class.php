@@ -3,7 +3,7 @@ abstract class Controller extends MyObject {
     private $request;
     private $action;
 
-    protected $user;
+    //protected $user;
 
     public function __construct($currentRequest) {
         $this->request = $currentRequest;
@@ -28,7 +28,7 @@ abstract class Controller extends MyObject {
     public function protection()
     //On empêche l'accès aux personnes non connectées
     {
-        if(!is_object($this->user))
+        if(!is_object($this->request->getUserObject()))
         {
             $this->linkTo(NULL); 
         }

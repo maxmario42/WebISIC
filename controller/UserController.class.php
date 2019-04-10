@@ -9,21 +9,21 @@
 
         public function defaultAction($request)
         {
-            $view = new UserView($this, 'home',array('user' => $this->user));
+            $view = new UserView($this, 'home',array('user' => $request->getUserObject()));
             $view->render();
         }
 
         public function profile($request)
         //Appelle la vue qui affiche notre profil
         {
-            $v = new UserView($this,'profile/view', array('user' => $this->user));
+            $v = new UserView($this,'profile/view', array('user' => $request->getUserObject()));
             $v->render();
         }
 
         public function edit($request)
         //Appelle la vue pour mettre à jour nos informations
         {
-            $v = new UserView($this,'profile/edit', array('user' => $this->user));
+            $v = new UserView($this,'profile/edit', array('user' => $request->getUserObject()));
             $v->render();
         }
 
@@ -31,9 +31,9 @@
         //Permet de mettre à jour les informations d'un utilisateur. Fonctionne sur tout les types.
         {
             $login = $request->read('inscLogin');
-            if(User::isLoginUsed($login)&&$this->user->LOGIN!=$login) 
+            if(User::isLoginUsed($login)&&$request->getUserObject()->LOGIN!=$login) 
             {
-                $view = new UserView($this,'profile/edit',array('user' => $this->user));
+                $view = new UserView($this,'profile/edit',array('user' => $request->getUserObject()));
                 $view->setArg('inscErrorText','This login is already used');
                 $view->render();
                 echo("<script>alert('utilisateur existe déjà...');</script>");  
@@ -54,10 +54,10 @@
                 $spe2 = $request->read('spe2');
                 if ($mdp==$mdpVali)
                 {
-                    $user = User::update($this->user->LOGIN,$this->user->TYPE_UTILISATEUR,$nom, $prenom, $mail, $spe1, $spe2, $mdp, $login);
+                    $user = User::update($request->getUserObject()->LOGIN,$request->getUserObject()->TYPE_UTILISATEUR,$nom, $prenom, $mail, $spe1, $spe2, $mdp, $login);
                     if(!isset($user)) 
                     {
-                        $view = new UserView($this,'profile/edit',array('user' => $this->user));
+                        $view = new UserView($this,'profile/edit',array('user' => $request->getUserObject()));
                         $view->setArg('inscErrorText', 'Cannot complete inscription');
                         $view->render();
                 } 
@@ -68,7 +68,7 @@
                 }
                 else
                 {
-                    $view = new UserView($this,'profile/edit',array('user' => $this->user));
+                    $view = new UserView($this,'profile/edit',array('user' => $request->getUserObject()));
                     $view->setArg('inscErrorText', 'Les mots de passe ne correspondent pas');
                     $view->render();
                     secho("<script>alert('Les mots de passe ne correspondent pas');</script>");  
@@ -79,7 +79,7 @@
         public function aPropos($request)
         //Appelle la vue qui retournera notre about Us
         {
-            $view = new UserView($this,'apropos', array('user' => $this->user), array('user' => $this->user));
+            $view = new UserView($this,'apropos', array('user' => $this->user), array('user' => $request->getUserObject()));
             $view->render();
         }
 
