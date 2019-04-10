@@ -55,9 +55,11 @@ class QuestionnaireController extends Controller
         
         $questionnaires= Questionnaire::showQuest($request->getUserObject()->ID);
        // var_dump($questionnaires);
+       
+       $view = new UserView($this,'questionnaire/listQuestionnaire', array('user' => $request->getUserObject(), 'questionnaire' => $questionnaires));
+      // $view->setArg('questionnaire',$questionnaires);
+       //var_dump($view->getArg('questionnaire'));
        // echo "On affichera TA Liste des QUESTIONNAIRES";
-       $view = new UserView($this,'questionnaire/listQuestionnaire', array('user' => $request->getUserObject()));
-       $view->setArg('questionnaire',$questionnaires);
         $view->render();
     } 
 
