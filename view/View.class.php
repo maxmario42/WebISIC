@@ -55,5 +55,16 @@ class View extends MyObject {
     {
         return __BASE_URL.'/index.php?controller='.$controller.'&action='.$action;
     }
+
+    public function linkToID($controller,$action=NULL,$id)
+    //Assure la redirection, le $controller sur NULL donnera Anonymous, $action sur NULL donnera DefaultAction
+    {
+        return __BASE_URL.'/index.php?controller='.$controller.'&action='.$action.'&id='.$id;
+    }
+
+    public function safe($string)
+    {
+        return htmlspecialchars($string);
+    }
 } 
 ?> 

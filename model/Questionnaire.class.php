@@ -35,8 +35,9 @@ Class Questionnaire extends Model{
     }
 
 
-    public static function showQuest($titre){
-        $st = static::db()->query("select  * from QUESTIONNAIRE where titre='$titre'");
+    public static function showQuest($idCreateur){
+        //retourne les questionnaires d'un professeur
+        $st = static::db()->query("select  * from QUESTIONNAIRE where id=$idCreateur");
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "Questionnaire");
         $questio = $st->fetch(); //PDO::FETCH_ASSOCs
         return $questio;
