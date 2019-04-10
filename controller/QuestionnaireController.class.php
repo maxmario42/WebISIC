@@ -51,15 +51,25 @@ class QuestionnaireController extends Controller
           //*  echo "ON VA CREER TON QUESTIONNAIRE";
         }
     }
+    public function showQuiz($request){
+        echo "On va afficher seulement une questionnaire";
+        $idq = $request->getParameter('id'); //recupere le parametre en get de l'ID du questionnaire.
+        $quiz=Questionnaire::showQuiz($idq);
+        var_dump($quiz);
+        $view = new UserView($this,'questionnaire/showQuestionnaire', array('user' => $request->getUserObject(), 'quiz' => $quiz));
+        $view->render(); 
+        /*TO DO, on veut afficher ici seulement l'information d'une questionnaire*/ 
+    }
+
     public function showQuest($request){
         
         $questionnaires= Questionnaire::showQuest($request->getUserObject()->ID);
-       // var_dump($questionnaires);
+        var_dump($questionnaires);
        
        $view = new UserView($this,'questionnaire/listQuestionnaire', array('user' => $request->getUserObject(), 'questionnaire' => $questionnaires));
-      // $view->setArg('questionnaire',$questionnaires);
+      //$view->setArg('questionnaire',$questionnaires);
        //var_dump($view->getArg('questionnaire'));
-       // echo "On affichera TA Liste des QUESTIONNAIRES";
+       echo "On affichera TA Liste des QUESTIONNAIRES";
         $view->render();
     } 
 
@@ -97,7 +107,7 @@ class QuestionnaireController extends Controller
             } 
             else 
             {
-                $this->linkTo('Questionnaire','showQuest');
+                $this->linkTo('Questionnaire','showQuiz');
             }                    
         }
     }

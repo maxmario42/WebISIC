@@ -106,5 +106,12 @@ class Request extends MyObject {
         $this->setUser(NULL);
         Session::getInstance()->destroy();
     }
+  //Sert a recuperer l'ID d'un questionnaire pour l'afficher
+    public function getParameter($param){
+		if (isset($_GET[$param])) {
+			return $_GET[$param];
+		}
+		return "404";
+	}
 }
 ?>
