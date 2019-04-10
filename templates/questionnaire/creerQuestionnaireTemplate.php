@@ -79,7 +79,7 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <!-- debut bloc durée -->
-                        <label for="inTemps_total">Durée (en minute)</label>
+                        <label for="inTemps_total">Durée  (en minute)</label>
                         <input type="number" class="form-control" name="temps_total" id="inTemps_total" placeholder="MM">
                         <div class="valid-feedback">
                             Saisir une durée!
