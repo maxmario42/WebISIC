@@ -2,8 +2,6 @@
 
 class UserView extends View
 {
-    protected $user;
-
     public function render(){
         $this->getTemplate('layout/head');
         $this->getTemplate('layout/menuLoged');

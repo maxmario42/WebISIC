@@ -6,7 +6,7 @@ class AnonymousController extends Controller {
     
     public function __construct($currentRequest) {
         parent::__construct($currentRequest);
-        if(is_object($this->user))
+        if(is_object($currentRequest->getUserObject()))
         {
             $this->linkTo('User',NULL); //On empêche la déconnexion par changement d'adresse
         }

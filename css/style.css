@@ -14,10 +14,16 @@
   margin: 0;
   /*padding: 0;*/ }
 
+  .aMenu:hover{
+    background-color: #FF8100;
+    border-radius: 10px
+  }
+
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
   font-weight: 400; }
+  
 label{
  color: #3762f0
 }

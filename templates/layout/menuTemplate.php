@@ -25,9 +25,9 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul> 
-                                <li><a href="<?php echo $this->linkTo(NULL);?>">Accueil</a></li> 
-                                <li><a href="<?php echo $this->linkTo(NULL,'aPropos');?>">À propos</a></li>
-                                <li><a href="Quest.php">Questionnaire</a></li>
+                                <li><a class= "aMenu" href="<?php echo $this->linkTo(NULL);?>">Accueil</a></li> 
+                                <li><a class= "aMenu" href="<?php echo $this->linkTo(NULL,'aPropos');?>">À propos</a></li>
+                                <li><a class= "aMenu" href="Quest.php">Questionnaire</a></li>
                                <!-- <li><a href="blog.html"></a></li>
                                 <li><a href="contact.html">Contact</a></li> -->
                             </ul>

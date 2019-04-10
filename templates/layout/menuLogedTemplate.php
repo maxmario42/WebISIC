@@ -23,28 +23,28 @@
                   <!-- Nav Start -->
                   <div class="classynav">
                       <ul>
-                          <li><a href="<?php echo $this->linkTo('User');?>">Accueil</a></li>
-                          <li><a href="<?php echo $this->linkTo('User','aPropos');?>">À propos</a></li>
+                          <li><a class="aMenu" href="<?php echo $this->linkTo('User');?>">Accueil</a></li>
+                          <li><a class="aMenu" href="<?php echo $this->linkTo('User','aPropos');?>">À propos</a></li>
                           <?php if ($user->TYPE_UTILISATEUR == 'Enseignant') : ?>
                           <li>
-                              <a href="<?php echo $this->linkTo('Questionnaire'); ?>">
+                              <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire'); ?>">
                                   <!-- aller vers la page creation questionnaire-->
                                   Créer Questionnaire</a>
                           </li>
                           <li>
-                              <a href="<?php echo $this->linkTo('Questionnaire','showQuest'); ?>">
+                              <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire','showQuest'); ?>">
                                   <!-- aller vers la page creation questionnaire-->
                                   Mes Questionnaires</a>
                           </li>
 
                           <?php elseif ($user->TYPE_UTILISATEUR == 'Etudiant') : ?>
                           <li class="nav-item text-center">
-                              <a href="<?php echo $this->linkTo('Questionnaire','etuQuiz'); ?>">
+                              <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire','etuQuiz'); ?>">
                                   Mes Questionnaires
                               </a>
                           </li>
                           <li>
-                              <a href="<?php echo $this->linkTo('Questionnaire','etuResultats'); ?>">
+                              <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire','etuResultats'); ?>">
                                   Resultats
                               </a>
                           </li>
