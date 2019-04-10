@@ -20,3 +20,7 @@ label, .label {
   background-size: cover;
   -o-background-size: cover;
 }
+
+.bg_dark1 {
+	background: #C0C0C0;
+}
