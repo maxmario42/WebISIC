@@ -26,29 +26,6 @@ class QuestionnaireController extends Controller
                 $view->setArg('inscErrorText', 'This title is already used');
                 $view->render();
                 echo ("<script>alert('Vous avez déjà crée une questionnaire avec cette titre...');</script>");
-<<<<<<< HEAD
-            } else {
-                $description= $request->read('description');
-                $idU=(int)$this->user->ID;
-                $idU;
-                $etat="Fermé";
-                $lien_http="";
-                $date_ouverture=$request->read('date_ouverture');
-               
-                $date_fermeture=$request->read('date_fermeture');
-                $mode_acces=$request->read('mode_acces');
-                $questio = Questionnaire::create($idU,$titre,$description, $etat,$date_ouverture,$date_fermeture,$mode_acces,$lien_http);
-                
-                if(!isset($questio)) {
-                    $view = new UserView($this, 'questionnaire/creerQuestionnaire', array('user' => $this->user));
-                    $view->setArg('inscErrorText', 'Cannot complete creation');
-                    $view->render();
-                } 
-                else 
-                {  
-                   $this->linkTo('Questionnaire','showQuest');
-                }
-=======
         } 
         else 
         {
@@ -71,7 +48,6 @@ class QuestionnaireController extends Controller
             {  
                $this->linkTo('Questionnaire','showQuest');
             }
->>>>>>> 6d5a5f63e6e59ebdfd082b94433e848abd4fb23b
           //*  echo "ON VA CREER TON QUESTIONNAIRE";
         }
     }
