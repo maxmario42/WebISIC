@@ -1,14 +1,17 @@
-<div class="container">
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <tbody>
-                <div class="text-center">
+<div main class="container" style="flex-grow:1;">
+
+    <div class="row justify-content-center">
+		<div class="col-lg-6 jumbotron py-3">
+	
+            <div class="text-center">
                     <h2><span class="fa fa-user-circle"></span>QUESTIONNAIRES </h2>
+                    <?php // var_dump($questionnaire->IDQ);?>
                 </div>
-                <?php foreach ($this->getArg('questionnaire') as $questionnaire) : ?>
-                    <tr class="no-wrap">
-                        <th scope="col" class="align-middle">
-                            <a href="<?php echo $this->linkToID('Questionnaire', 'showQuiz', $questionnaire->IDQ); ?>">
+        <table class="table">
+            <tbody>
+                <tr>
+                <?php //foreach ($this->getArg('questionnaire') as $questionnaire) : ?>
+             <a href="<?php echo $this->linkToID('Questionnaire', 'showQuiz', $questionnaire->IDQ); ?>">
                     <tr>
                         <th scope="row">Titre</th>
                         <td><?php echo $questionnaire->TITRE; ?></td>
@@ -34,8 +37,9 @@
                         <th scope="row">Mode d'acces</th>
                         <td><?php echo $questionnaire->MODE_ACCES; ?></td>
                     </tr>
-
-                <?php endforeach ?>
+                </a>
+                </tr>
+                <?php //endforeach ?>
             </tbody>
         </table>
     </div>
