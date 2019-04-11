@@ -37,14 +37,25 @@ abstract class Model extends MyObject {
     }
     
     public static function getWithId($ID){
-        //Retourne un objet en fonction de son ID
-        $st = static::db()->query("select  * from ".static::getTableName()." where ".static::getIDColumn()." ='$ID'");
+        //Retourne un objet en fonction d'une ID
+        return static::getWithAnId($ID,static::getIDColumn());
+    }
+
+    public static function getWithAnId($ID, $IDField){
+        //Retourne un objet en fonction d'une ID, on peut choisir l'ID voulue avec le deuxième argument
+        $st = static::db()->query("select  * from ".static::getTableName()." where ".$IDField." ='$ID'");
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, get_called_class());
         $object = $st-> fetch();
         return $object;
     }
-    public static function getAllWithId($IDField,$ID){
-        //Retourne un ensemble d'objet en fonction d'une ID (exemple, tous les questionnaires d'un utilisateur)
+
+    public static function getAllWithId($ID){
+        //Retourne un ensemble d'objet en fonction d'une ID
+        return static::getAllWithAnId($ID,static::getIDColumn());
+    }
+
+    public static function getAllWithAnId($ID,$IDField){
+        //Retourne un ensemble d'objet en fonction d'une ID on peut choisir l'ID voulue avec le deuxième argument
         $qresults = static::db()->query("select  * from ".static::getTableName()." where ".$IDField." ='$ID'");
         $results = array();
         foreach ($qresults as $result) {
