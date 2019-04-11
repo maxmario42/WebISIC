@@ -5,13 +5,14 @@
 	
             <div class="text-center">
                     <h2><span class="fa fa-user-circle"></span>QUESTIONNAIRES </h2>
-                    <?php // var_dump($questionnaire->IDQ);?>
+                    <?php // ($questionnaire->IDQ);?>
                 </div>
+                <?php foreach ($this->getArg('questionnaire') as $questionnaire) : ?>
         <table class="table">
             <tbody>
-                <tr>
-                <?php //foreach ($this->getArg('questionnaire') as $questionnaire) : ?>
+                <tr>             
              <a href="<?php echo $this->linkToID('Questionnaire', 'showQuiz', $questionnaire->IDQ); ?>">
+            
                     <tr>
                         <th scope="row">Titre</th>
                         <td><?php echo $questionnaire->TITRE; ?></td>
@@ -39,8 +40,9 @@
                     </tr>
                 </a>
                 </tr>
-                <?php //endforeach ?>
+               
             </tbody>
         </table>
+        <?php endforeach ?>
     </div>
 </div>

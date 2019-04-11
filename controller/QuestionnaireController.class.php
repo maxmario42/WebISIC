@@ -31,7 +31,7 @@ class QuestionnaireController extends Controller
         {
             $description= $request->read('description');
             $idU=(int)$request->getUserObject()->ID;
-            var_dump($idU);
+            ($idU);
             $etat="Fermé";
             $lien_http="";
             $date_ouverture=$request->read('date_ouverture');
@@ -55,20 +55,20 @@ class QuestionnaireController extends Controller
         echo "On va afficher seulement une questionnaire";
         $idq = $request->getParameter('id'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         $quiz=Questionnaire::showQuiz($idq);
-        //var_dump($quiz);
+        //($quiz);
         $view = new UserView($this,'questionnaire/showQuestionnaire', array('user' => $request->getUserObject(), 'quiz' => $quiz));
         $view->render(); 
         /*TO DO, on veut afficher ici seulement l'information d'une questionnaire*/ 
     }
 
     public function showQuest($request){
-       var_dump($request->getUserObject()->ID); 
-        $questionnaires= Questionnaire::showQuest((int)$request->getUserObject()->ID);
-        var_dump($questionnaires);
+       ($request->getUserObject()->ID); 
+        $questionnaires= Questionnaire::showQuest($request->getUserObject()->ID);
+        ($questionnaires);
        
        $view = new UserView($this,'questionnaire/listQuestionnaire', array('user' => $request->getUserObject(), 'questionnaire' => $questionnaires));
       //$view->setArg('questionnaire',$questionnaires);
-       //var_dump($view->getArg('questionnaire'));
+       //($view->getArg('questionnaire'));
        //echo "On affichera TA Liste des QUESTIONNAIRES";
         $view->render();
     } 
