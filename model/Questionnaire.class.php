@@ -31,7 +31,7 @@ Class Questionnaire extends Model{
 
    public static function create($id,$titre, $description, $etat,$date_o,$date_f,$mode_access,$lien_http ){
     static::db()->exec("INSERT INTO QUESTIONNAIRE (id,titre,id_regles_quest,description,etat,date_ouverture,date_fermeture,mode_acces,lien_http) VALUES ($id,'$titre',1,'$description','$etat','$date_o','$date_f','$mode_access','$lien_http')");
-    return static::showQuest($titre);
+    return static::showQuest($id);
     }
 
     public static function showQuiz($idQ){
@@ -39,7 +39,7 @@ Class Questionnaire extends Model{
         $st = static::db()->query("select  * from QUESTIONNAIRE where IDQ=$idQ");
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "Questionnaire");
         $questio = $st->fetch(); //PDO::FETCH_ASSOCs
-        var_dump($questio);
+        
         return $questio;
     }
 
@@ -49,6 +49,7 @@ Class Questionnaire extends Model{
         $st = static::db()->query("SELECT  * from QUESTIONNAIRE WHERE ID=$idCreateur");
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "Questionnaire");
         $questio = $st->fetch(); //PDO::FETCH_ASSOCs
+        var_dump($questio);
         return $questio;
     }
 

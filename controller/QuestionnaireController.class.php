@@ -53,7 +53,7 @@ class QuestionnaireController extends Controller
     }
     public function showQuiz($request){
         echo "On va afficher seulement une questionnaire";
-        $idq = $request->getParameter('id'); //recupere le parametre en get de l'ID du questionnaire.
+        $idq = $request->getParameter('id'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         $quiz=Questionnaire::showQuiz($idq);
         //var_dump($quiz);
         $view = new UserView($this,'questionnaire/showQuestionnaire', array('user' => $request->getUserObject(), 'quiz' => $quiz));
@@ -63,8 +63,8 @@ class QuestionnaireController extends Controller
 
     public function showQuest($request){
        var_dump($request->getUserObject()->ID); 
-        $questionnaires= Questionnaire::showQuest($request->getUserObject()->ID);
-        //var_dump($questionnaires);
+        $questionnaires= Questionnaire::showQuest((int)$request->getUserObject()->ID);
+        var_dump($questionnaires);
        
        $view = new UserView($this,'questionnaire/listQuestionnaire', array('user' => $request->getUserObject(), 'questionnaire' => $questionnaires));
       //$view->setArg('questionnaire',$questionnaires);
