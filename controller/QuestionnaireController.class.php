@@ -62,7 +62,6 @@ class QuestionnaireController extends Controller
     }
 
     public function showQuest($request){
-       ($request->getUserObject()->ID); 
         $questionnaires= Questionnaire::showQuest($request->getUserObject()->ID);
         ($questionnaires);
        
