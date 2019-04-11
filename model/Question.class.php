@@ -1,6 +1,7 @@
 <?php
 
-Class Question extends Model{
+Class Question extends Model
+{
 
     public static function getTableName()
     {
@@ -22,11 +23,15 @@ Class Question extends Model{
         return 'ID_QUEST';
     }
 
-    public static function create($idq, $typeq, $temps_max)
+    public static function create($idq, $intitule, $typeq, $temps_max)
     {
-        static::db()->exec("INSERT INTO QUESTIONNAIRE (INTITULE,TYPEQ,TEMPS_MAXIMAL) VALUES ($idq,'$typeq',$temps_max)");
+        static::db()->exec("INSERT INTO QUESTIONNAIRE (INTITULE,TYPEQ,TEMPS_MAXIMAL) VALUES ('$intitule','$typeq',$temps_max)");
         static::db()->exec("INSERT INTO AJOUTER (IDQ,ID_QUEST) VALUES ($idq,".PDO::lastInsertId.")");
         return static::getWithId($idq);
+    }
+
+    public static function update($idquest, $intitule, $typeq, $temps_max){
+        static::db()->exec("UPDATE QUESTIONNAIRE SET INTITULE='$intitule',TYPEQ='$typeq',TEMPS_MAXIMAL='$temps_max' WHERE ID_QUEST=$idquest");
     }
 }
 
