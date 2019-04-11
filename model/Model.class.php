@@ -64,7 +64,7 @@ abstract class Model extends MyObject {
     }
     
     public static function isUsed($value,$field){
-        $st = static::db()->query("select login from ".static::getTableName()." where ".$field."='$value'");   
+        $st = static::db()->query("select ".$field." from ".static::getTableName()." where ".$field."='$value'");   
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, get_called_class());
         $object = $st-> fetch();
         return $object!=null;
