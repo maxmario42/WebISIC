@@ -62,14 +62,14 @@ class QuestionnaireController extends Controller
     }
 
     public function showQuest($request){
-        
+       var_dump($request->getUserObject()->ID); 
         $questionnaires= Questionnaire::showQuest($request->getUserObject()->ID);
         //var_dump($questionnaires);
        
        $view = new UserView($this,'questionnaire/listQuestionnaire', array('user' => $request->getUserObject(), 'questionnaire' => $questionnaires));
       //$view->setArg('questionnaire',$questionnaires);
        //var_dump($view->getArg('questionnaire'));
-       echo "On affichera TA Liste des QUESTIONNAIRES";
+       //echo "On affichera TA Liste des QUESTIONNAIRES";
         $view->render();
     } 
 
