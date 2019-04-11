@@ -11,7 +11,7 @@ class QuestionnaireController extends Controller
     }
 
     public function defaultAction($request)
-    {   //echo "you are in the questionnaire controller";
+    {  
         $view = new UserView($this, 'questionnaire/creerQuestionnaire', array('user' => $request->getUserObject()));
         $view->render();
     }
@@ -19,8 +19,8 @@ class QuestionnaireController extends Controller
     public function newQuest($request)
     {   
         $titre = $request->read('titre');
-        Questionnaire::isTitreUsed($titre);
-        if (Questionnaire::isTitreUsed($titre))
+        Questionnaire::isUsed($titre,'TITRE');
+        if (Questionnaire::isUsed($titre,'TITRE'))
         {
                 $view = new UserView($this, 'questionnaire/creerQuestionnaire', array('user' => $request->getUserObject()));
                 $view->setArg('inscErrorText', 'This title is already used');
@@ -54,21 +54,15 @@ class QuestionnaireController extends Controller
     public function showQuiz($request){
         echo "On va afficher seulement une questionnaire";
         $idq = $request->getParameter('id'); //recupere le parametre en get de l'ID du questionnaire de l'url.
-        $quiz=Questionnaire::showQuiz($idq);
-        //($quiz);
+        $quiz=Questionnaire::getWithId($idq);
         $view = new UserView($this,'questionnaire/showQuestionnaire', array('user' => $request->getUserObject(), 'quiz' => $quiz));
         $view->render(); 
         /*TO DO, on veut afficher ici seulement l'information d'une questionnaire*/ 
     }
 
     public function showQuest($request){
-        $questionnaires= Questionnaire::showQuest($request->getUserObject()->ID);
-        ($questionnaires);
-       
-       $view = new UserView($this,'questionnaire/listQuestionnaire', array('user' => $request->getUserObject(), 'questionnaire' => $questionnaires));
-      //$view->setArg('questionnaire',$questionnaires);
-       //($view->getArg('questionnaire'));
-       //echo "On affichera TA Liste des QUESTIONNAIRES";
+        $questionnaires= Questionnaire::getAllWithAnId($request->getUserObject()->ID,User::getIDColumn());
+        $view = new UserView($this,'questionnaire/listQuestionnaire', array('user' => $request->getUserObject(), 'questionnaire' => $questionnaires));
         $view->render();
     } 
 
@@ -83,7 +77,7 @@ class QuestionnaireController extends Controller
     //Permet de mettre à jour les informations d'un utilisateur. Fonctionne sur tout les types.
     {
         $titre = $request->read('titre');
-        if(Questionnaire::isTitreUsed($titre)) 
+        if(Questionnaire::isUsed($titre,'TITRE')) 
         {
             $view = new UserView($this,'questionnaire/editQuestionnaire',array('user' => $request->getUserObject(), 'questionnaire' => $this->questio));
             $view->setArg('inscErrorText','This title is already used');

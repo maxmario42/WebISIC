@@ -19,8 +19,7 @@ Class Questionnaire extends Model{
             'DATE_OUVERTURE',
             'DATE_FERMETURE',
             'MODE_ACCES',
-            'LIEN_HTTP',
-            
+            'LIEN_HTTP',  
         );
     }
 
@@ -33,7 +32,7 @@ Class Questionnaire extends Model{
     static::db()->exec("INSERT INTO QUESTIONNAIRE (id,titre,id_regles_quest,description,etat,date_ouverture,date_fermeture,mode_acces,lien_http) VALUES ($id,'$titre',1,'$description','$etat','$date_o','$date_f','$mode_access','$lien_http')");
     return static::showQuest($id);
     }
-
+    /*
     public static function showQuiz($idQ){
         //retourne les questionnaires d'un professeur
         $st = static::db()->query("select  * from QUESTIONNAIRE where IDQ=$idQ");
@@ -42,7 +41,7 @@ Class Questionnaire extends Model{
         
         return $questio;
     }
-
+    
     public static function showQuest($idCreateur){
         //retourne les questionnaires d'un professeur
        
@@ -52,17 +51,19 @@ Class Questionnaire extends Model{
         
         return $questio;
     }
-
+    */
 
     public static function update($IDQ,$titre, $description,$etat,$date_o,$date_f,$mode_acces){
         static::db()->exec("UPDATE QUESTIONNAIRE SET titre='$titre',description='$description',etat='$etat',date_ouverture='$date_o',date_fermeture='$date_f',mode_acces='$mode_acces' WHERE IDQ=$IDQ");
     }
+    /*
     public static function isTitreUsed($titre){
         $st = static::db()->query("select titre from QUESTIONNAIRE where titre='$titre'");   
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "Questionnaire");
         $questio = $st-> fetch();
         return $questio!=null;
     }
+    */
 }
 
 ?>
