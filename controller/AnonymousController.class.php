@@ -65,7 +65,7 @@ class AnonymousController extends Controller {
     {
     //Valide l'inscription d'un utilisateur
         $login = $request->read('inscLogin');
-        if(User::isLoginUsed($login)) 
+        if(User::isUsed($login,'LOGIN')) 
         {
             $view = new View($this);
             $view->setArg('inscErrorText','This login is already used');
