@@ -31,7 +31,7 @@
         //Permet de mettre à jour les informations d'un utilisateur. Fonctionne sur tout les types.
         {
             $login = $request->read('inscLogin');
-            if(User::isLoginUsed($login)&&$request->getUserObject()->LOGIN!=$login) 
+            if(User::isUsed($login,'LOGIN')&&$request->getUserObject()->LOGIN!=$login) 
             {
                 $view = new UserView($this,'profile/edit',array('user' => $request->getUserObject()));
                 $view->setArg('inscErrorText','This login is already used');
