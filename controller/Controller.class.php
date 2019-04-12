@@ -45,7 +45,7 @@ abstract class Controller extends MyObject {
         $params['controller'] = $controller;
         $params['action'] = $action;
         //header('Location:'.__BASE_URL.'/index.php?controller='.$controller.'&action='.$action);
-        header('Location:'.__BASE_URL.'?'.http_build_query($params));
+        header('Location:'.__BASE_URL.'/index.php?'.http_build_query($params));
         exit();
     }
 }
