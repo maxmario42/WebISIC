@@ -31,13 +31,13 @@ class QuestionnaireController extends Controller
         {
             $description= $request->read('description');
             $idU=(int)$request->getUserObject()->ID;
-            ($idU);
             $etat="Fermé";
             $lien_http="";
             $date_ouverture=$request->read('date_ouverture');
             $date_fermeture=$request->read('date_fermeture');
             $mode_acces=$request->read('mode_acces');
             $questio = Questionnaire::create($idU,$titre,$description, $etat,$date_ouverture,$date_fermeture,$mode_acces,$lien_http);
+           
             if(!isset($questio)) 
             {
                 $view = new UserView($this, 'questionnaire/creerQuestionnaire', array('user' => $request->getUserObject()));
@@ -46,9 +46,10 @@ class QuestionnaireController extends Controller
             } 
             else 
             {  
-               $this->linkTo('Questionnaire','showQuest');
+                  echo "ON VA CREER TON QUESTIONNAIRE";
+              // $this->linkToID('Questionnaire','showQuiz');
             }
-          //*  echo "ON VA CREER TON QUESTIONNAIRE";
+          
         }
     }
     public function showQuiz($request){

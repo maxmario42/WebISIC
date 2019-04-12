@@ -45,5 +45,12 @@ abstract class Controller extends MyObject {
         header('Location:'.__BASE_URL.'/index.php?controller='.$controller.'&action='.$action);
         exit();
     }
+
+    public function linkToID($controller,$action=NULL,$id)
+    //Assure la redirection, le $controller sur NULL donnera Anonymous, $action sur NULL donnera DefaultAction
+    {
+        header('Location:'.__BASE_URL.'/index.php?controller='.$controller.'&action='.$action.'&id='.$id);
+        exit();
+    }
 }
 ?>
