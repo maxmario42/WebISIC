@@ -9,11 +9,11 @@
             if (isset($inscErrorText))
                 echo '<span class="error">' . $inscErrorText . '</span>';
             ?>
-            <form action="<?php echo $this->linkTo('User','edition');?>" method="post">
+            <form action="<?php echo $this->linkTo('User', 'edition'); ?>" method="post">
 
                 <div class="form-group">
                     <label for="login">Login</label>
-                    <input type="text" class="form-control" name="inscLogin" id="inLogin" placeholder="Login" value="<?php echo $user->LOGIN;?>">
+                    <input type="text" class="form-control" name="inscLogin" id="inLogin" placeholder="Login" value="<?php echo $user->LOGIN; ?>">
                 </div>
                 <div class="form-group">
                     <label for="mdp">Mot de passe</label>
@@ -24,20 +24,21 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="nom">Nom</label>
-                        <input type="text" class="form-control" name="nom" id="inName" placeholder="Nom" value="<?php echo $user->NOM;?>">
+                        <input type="text" class="form-control" name="nom" id="inName" placeholder="Nom" value="<?php echo $user->NOM; ?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="prenom">Prénom</label>
-                        <input type="text" class="form-control" name="prenom" id="inPrenom" placeholder="Prenom" value="<?php echo $user->PRENOM;?>">
+                        <input type="text" class="form-control" name="prenom" id="inPrenom" placeholder="Prenom" value="<?php echo $user->PRENOM; ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email2">Email</label>
-                    <input type="email" class="form-control" name="mail" id="inMail" placeholder="Email" value="<?php echo $user->MAIL_ENSEIGNANT; echo $user->MAIL_ETUDIANT;?>">
+                    <input type="email" class="form-control" name="mail" id="inMail" placeholder="Email" value="<?php echo $user->MAIL_ENSEIGNANT;
+                                                                                                                echo $user->MAIL_ETUDIANT; ?>">
                 </div>
-<?php require_once ("editType/edit".$user->TYPE_UTILISATEUR."Template.php"); ?>
+                <?php require_once("editType/edit" . $user->TYPE_UTILISATEUR . "Template.php"); ?>
                 <button type="submit" class="btn btn-dark" style="background-color: #1B5040;">Mise à jour</button>
             </form>
         </div>
     </div>
-</div> 
+</div>

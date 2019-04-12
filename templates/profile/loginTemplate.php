@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-lg-4 text-center jumbotron py-3">
-			<form action="<?php echo $this->linkTo(NULL,'Connect');?>" method="post">
+			<form action="<?php echo $this->linkTo(NULL, 'Connect'); ?>" method="post">
 				<div class="form-group">
 					<h2>Connexion</h2>
 					<label for="login" class="sr-only">Login</label>
@@ -14,6 +14,6 @@
 					</button>
 				</div>
 			</form>
-		<div>
-	<div>
-<div>
+		</div>
+	</div>
+</div>

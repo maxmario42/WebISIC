@@ -49,15 +49,13 @@ class QuestionnaireController extends Controller
             } 
             else 
             {  
-                  echo "ON VA CREER TON QUESTIONNAIRE";
-              // $this->linkToID('Questionnaire','showQuiz');
+                $this->linkTo('Questionnaire','showQuiz',array('idq'=>$questio->IDQ));
             }
           
         }
     }
     public function showQuiz($request){
-        echo "On va afficher seulement une questionnaire";
-        $idq = $request->getParameter('id'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        $idq = $request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         $quiz=Questionnaire::getWithId($idq);
         $view = new UserView($this,'questionnaire/showQuestionnaire');
         $view->setArg('user',$request->getUserObject());
