@@ -36,6 +36,7 @@ Class Questionnaire extends Model{
 
     public static function update($IDQ,$titre, $description,$etat,$date_o,$date_f,$mode_acces){
         static::db()->exec("UPDATE QUESTIONNAIRE SET titre='$titre',description='$description',etat='$etat',date_ouverture='$date_o',date_fermeture='$date_f',mode_acces='$mode_acces' WHERE IDQ=$IDQ");
+        return static::getWithAnId($IDQ,'IDQ');
     }
 
     /*
