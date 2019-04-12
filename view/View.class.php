@@ -50,10 +50,13 @@ class View extends MyObject {
         return Router::path($route, $params);
     }
     */
-    public function linkTo($controller,$action=NULL)
+    public function linkTo($controller,$action=NULL, $params = array())
     //Assure la redirection, le $controller sur NULL donnera Anonymous, $action sur NULL donnera DefaultAction
     {
-        return __BASE_URL.'/index.php?controller='.$controller.'&action='.$action;
+        //return __BASE_URL.'/index.php?controller='.$controller.'&action='.$action;
+        $params['controller'] = $controller;
+        $params['action'] = $action;
+        return __BASE_URL.'/index.php?'.http_build_query($params);
     }
 
     public function linkToID($controller,$action=NULL,$id)
