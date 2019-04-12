@@ -28,37 +28,10 @@ Class Questionnaire extends Model{
         return 'IDQ';
     }
 
-<<<<<<< HEAD
-   public static function create($id,$titre, $description, $etat,$date_o,$date_f,$mode_access,$lien_http ){
-       
-    static::db()->exec("INSERT INTO QUESTIONNAIRE (id,titre,id_regles_quest,description,etat,date_ouverture,date_fermeture,mode_acces,lien_http) VALUES ($id,'$titre',1,'$description','$etat','$date_o','$date_f','$mode_access','$lien_http')");
-    $idQ=static::db()->lastInsertId();
-    var_dump($idQ);
-    return $idQ;
-    }
-
-    public static function showQuiz($idQ){
-        //retourne les questionnaires d'un professeur
-        $st = static::db()->query("select  * from QUESTIONNAIRE where IDQ=$idQ");
-        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "Questionnaire");
-        $questio = $st->fetch(); //PDO::FETCH_ASSOCs
-        
-        return $questio;
-    }
-
-    public static function showQuest($idCreateur){
-        //retourne les questionnaires d'un professeur
-        $st = static::db()->query("SELECT  * from QUESTIONNAIRE WHERE ID=$idCreateur");
-        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "Questionnaire");
-        $questio = $st->fetchAll(); //PDO::FETCH_ASSOCs
-        
-        return $questio;
-=======
     public static function create($id,$titre, $description, $etat,$date_o,$date_f,$mode_access,$lien_http )
     {
        static::db()->exec("INSERT INTO QUESTIONNAIRE (id,titre,id_regles_quest,description,etat,date_ouverture,date_fermeture,mode_acces,lien_http) VALUES ($id,'$titre',1,'$description','$etat','$date_o','$date_f','$mode_access','$lien_http')");
        return static::getWithId($id);
->>>>>>> 991c9dd1802e3ca3f3570a3f9bd76b600f109ed6
     }
 
     public static function update($IDQ,$titre, $description,$etat,$date_o,$date_f,$mode_acces){
