@@ -3,8 +3,6 @@ abstract class Controller extends MyObject {
     private $request;
     private $action;
 
-    //protected $user;
-
     public function __construct($currentRequest) {
         $this->request = $currentRequest;
     }
@@ -32,13 +30,7 @@ abstract class Controller extends MyObject {
             $this->linkTo(NULL); 
         }
     }
-    /*
-    public function redirect($cle,$params = array())
-    {
-        header('Location:'.Router::path($cle,$params));
-        exit();
-    }
-    */
+
     public function linkTo($controller,$action=NULL, $params = array())
     //Assure la redirection, le $controller sur NULL donnera Anonymous, $action sur NULL donnera DefaultAction
     {

@@ -61,13 +61,5 @@ class User extends Model {
         $user = $st->fetch(); //PDO::FETCH_ASSOCs
         return $user;
     }
-	/*
-    public static function isLoginUsed($login){
-        $st = static::db()->query("select login from UTILISATEUR where login='$login'");   
-        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
-        $user = $st-> fetch();
-        return $user!=null;
-    }
-    */
 }
 ?>

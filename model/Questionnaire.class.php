@@ -69,13 +69,4 @@ class Questionnaire extends Model
         static::db()->exec("UPDATE QUESTIONNAIRE SET titre='$titre',description='$description',etat='$etat',date_ouverture='$date_o',date_fermeture='$date_f',mode_acces='$mode_acces' WHERE IDQ=$IDQ");
         return static::getWithAnId($IDQ,'IDQ');
     }
-
-    /*
-    public static function isTitreUsed($titre){
-        $st = static::db()->query("select titre from QUESTIONNAIRE where titre='$titre'");   
-        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "Questionnaire");
-        $questio = $st-> fetch();
-        return $questio!=null;
-    }
-    */
 }

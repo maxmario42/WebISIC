@@ -44,12 +44,6 @@ class View extends MyObject {
         $this->args[$key] = $value;
         return $this;
     }
-    /*
-    public function path($route, $params = array())
-    {
-        return Router::path($route, $params);
-    }
-    */
     public function linkTo($controller,$action=NULL, $params = array())
     //Assure la redirection, le $controller sur NULL donnera Anonymous, $action sur NULL donnera DefaultAction
     {

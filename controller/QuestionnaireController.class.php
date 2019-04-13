@@ -1,8 +1,7 @@
 <?php
 
 class QuestionnaireController extends Controller
-{ 
-    //protected $questio;
+{
 
     public function __construct($currentRequest)
     {
