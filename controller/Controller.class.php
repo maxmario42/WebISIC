@@ -22,12 +22,17 @@ abstract class Controller extends MyObject {
         }
     }
 
-    public function protection()
-    //On empêche l'accès aux personnes non connectées
+    public function protection($type_specifique=NULL)
+    //On empêche l'accès aux personnes non connectées et si $type_specifique est défini, il permet de réserver l'accès à un type d'utilisateur
     {
-        if(!is_object($this->request->getUserObject()))
+        $user = $this->request->getUserObject();
+        if(!is_object($user))
         {
             $this->linkTo(NULL); 
+        }
+        elseif (isset($type_specifique)&&$user->TYPE_UTILISATEUR!=$type_specifique) 
+        {
+            $this->linkTo('User');
         }
     }
 

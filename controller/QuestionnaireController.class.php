@@ -12,6 +12,7 @@ class QuestionnaireController extends Controller
     public function defaultAction($request)
     //Par défaut, vue de création de questionnaire
     {  
+        $this->protection('Enseignant');
         $view = new UserView($this, 'questionnaire/creerQuestionnaire');
         $view->setArg('user',$request->getUserObject());
         $view->render();
@@ -20,7 +21,12 @@ class QuestionnaireController extends Controller
     public function newQuest($request)
     //Création d'un questionnaire
     {   
+        $this->protection('Enseignant');
         $titre = $request->read('titre');
+        if(!isset($titre))
+        {
+            $this->linkTo('Questionnaire');
+        }
         Questionnaire::isUsed($titre,'TITRE');
         if (Questionnaire::isUsed($titre,'TITRE'))
         {
@@ -64,6 +70,10 @@ class QuestionnaireController extends Controller
     public function showQuiz($request){
     //Affichage d'un questionnaire
         $idq = $request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        if(!isset($idq))
+        {
+            $this->linkTo('Questionnaire','showQuest');
+        }
         $quiz=Questionnaire::getWithId($idq);
         $view = new UserView($this,'questionnaire/showQuestionnaire');
         $view->setArg('user',$request->getUserObject());
@@ -74,6 +84,10 @@ class QuestionnaireController extends Controller
     public function showQuest($request){
     //Affichage des questionnaires d'un utilisateur
         $questionnaires= Questionnaire::getAllWithAnId($request->getUserObject()->ID,User::getIDColumn());
+        if(!isset($questionnaires))
+        {
+            $this->linkTo('User');
+        }
         $view = new UserView($this,'questionnaire/listQuestionnaire');
         $view->setArg('user',$request->getUserObject());
         $view->setArg('questionnaire',$questionnaires);
@@ -83,7 +97,12 @@ class QuestionnaireController extends Controller
     public function edit($request)
     //Appelle la vue pour mettre à jour nos informations
     {
+        $this->protection('Enseignant');
         $idq = $request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        if(!isset($idq))
+        {
+            $this->linkTo('Questionnaire');
+        }
         $quiz=Questionnaire::getWithId($idq);
         $v = new UserView($this,'questionnaire/editQuestionnaire');
         $v->setArg('user',$request->getUserObject());
@@ -94,9 +113,14 @@ class QuestionnaireController extends Controller
     public function edition($request)
     //Permet de mettre à jour les informations d'un utilisateur. Fonctionne sur tout les types.
     {
+        $this->protection('Enseignant');
         $idq = $request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         $quiz=Questionnaire::getWithId($idq);
         $titre = $request->read('titre');
+        if(!isset($titre))
+        {
+            $this->linkTo('Questionnaire');
+        }
         if(Questionnaire::isUsed($titre,'TITRE')&&$quiz->TITRE!=$titre) 
         {
             $view = new UserView($this,'questionnaire/editQuestionnaire');
