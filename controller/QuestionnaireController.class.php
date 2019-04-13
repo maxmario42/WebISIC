@@ -39,6 +39,12 @@ class QuestionnaireController extends Controller
             $date_ouverture=$request->read('date_ouverture');
             $date_fermeture=$request->read('date_fermeture');
             $mode_acces=$request->read('mode_acces');
+            $temps=(int)$request->read('temps_total');
+            $revenir=(int)$request->read('revenir_arriere');
+            $moins=(int)$request->read('moins');
+            $plus=(int)$request->read('plus');
+            //$neutre=(int)$request->read('neutre');
+            //$regles = Regles_Questionnaire::create($temps,$revenir,$plus,$moins,$neutre);
             $questio = Questionnaire::create($idU,$titre,1,$description, $etat,$date_ouverture,$date_fermeture,$mode_acces,$lien_http);
             
             if(!isset($questio)) 

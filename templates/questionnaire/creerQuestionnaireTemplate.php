@@ -91,11 +91,11 @@
                             <label for="inlineRadio1">Retour arrière</label>
                             <div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="revenir_arriere" id="inlineRadio1" checked="checked" value="oui">
+                                    <input class="form-check-input" type="radio" name="revenir_arriere" id="inlineRadio1" checked="checked" value="1">
                                     <label class="form-check-label" for="inlineRadio1">Oui</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="revenir_arriere" id="inlineRadio2" value="non">
+                                    <input class="form-check-input" type="radio" name="revenir_arriere" id="inlineRadio2" value="0">
                                     <label class="form-check-label" for="inlineRadio2">Non</label>
                                 </div>
                             </div>
