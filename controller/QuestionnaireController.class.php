@@ -38,8 +38,8 @@ class QuestionnaireController extends Controller
             $date_ouverture=$request->read('date_ouverture');
             $date_fermeture=$request->read('date_fermeture');
             $mode_acces=$request->read('mode_acces');
-            $questio = Questionnaire::create($idU,$titre,$description, $etat,$date_ouverture,$date_fermeture,$mode_acces,$lien_http);
-           
+            $questio = Questionnaire::create($idU,$titre,1,$description, $etat,$date_ouverture,$date_fermeture,$mode_acces,$lien_http);
+            
             if(!isset($questio)) 
             {
                 $view = new UserView($this, 'questionnaire/creerQuestionnaire');
@@ -48,7 +48,7 @@ class QuestionnaireController extends Controller
                 $view->render();
             } 
             else 
-            {  
+            {   var_dump($questio);
                   echo "ON VA CREER TON QUESTIONNAIRE";
               // $this->linkToID('Questionnaire','showQuiz');
             }
