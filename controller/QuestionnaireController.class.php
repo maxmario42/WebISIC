@@ -25,7 +25,7 @@ class QuestionnaireController extends Controller
         $titre = $request->read('titre');
         if(!isset($titre))
         {
-            $this->linkTo('Questionnaire');
+            $this->linkTo('Questionnaire','showQuest');
         }
         Questionnaire::isUsed($titre,'TITRE');
         if (Questionnaire::isUsed($titre,'TITRE'))
@@ -101,7 +101,7 @@ class QuestionnaireController extends Controller
         $idq = $request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         if(!isset($idq))
         {
-            $this->linkTo('Questionnaire');
+            $this->linkTo('Questionnaire','showQuest');
         }
         $quiz=Questionnaire::getWithId($idq);
         $v = new UserView($this,'questionnaire/editQuestionnaire');
@@ -119,7 +119,7 @@ class QuestionnaireController extends Controller
         $titre = $request->read('titre');
         if(!isset($titre))
         {
-            $this->linkTo('Questionnaire');
+            $this->linkTo('Questionnaire','showQuest');
         }
         if(Questionnaire::isUsed($titre,'TITRE')&&$quiz->TITRE!=$titre) 
         {
