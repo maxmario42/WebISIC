@@ -9,7 +9,7 @@
             if (isset($inscErrorText))
                 echo '<span class="error">' . $inscErrorText . '</span>';
             ?>
-            <form action="<?php echo $this->linkTo(NULL,'validateInscription');?>" method="post">
+            <form action="<?php echo $this->linkTo(NULL, 'validateInscription'); ?>" method="post">
 
                 <div class="form-group">
                     <label for="login">Login</label>
@@ -48,4 +48,4 @@
             </form>
         </div>
     </div>
-</div> 
+</div>

@@ -1,6 +1,6 @@
                 <div class="form-group">
                     <label for="spe1">Matricule</label>
-                    <input type="text" class="form-control" name="spe1" id="spe1" placeholder="Matricule" value="<?php echo $user->MATRICULE;?>">
+                    <input type="text" class="form-control" name="spe1" id="spe1" placeholder="Matricule" value="<?php echo $user->MATRICULE; ?>">
                 </div>
                 <div class="form-group">
                     <label for="spe2">Statut</label><br>

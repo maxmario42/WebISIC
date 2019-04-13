@@ -33,6 +33,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>
+
 <body>
     <!-- Preloader -->
     <div id="preloader">
@@ -53,5 +54,4 @@
                 <a href="https://www.linkedin.com/school/imt-lille-douai/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
                 <a href="https://twitter.com/imtlilledouai"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             </div>
-        </div>  
-    
+        </div>

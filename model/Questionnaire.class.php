@@ -30,10 +30,12 @@ class Questionnaire extends Model
     }
 
     public static function create($id, $titre, $id_regles, $description, $etat, $date_o, $date_f, $mode_access, $lien_http)
-    {
+    {  static::db()->exec("INSERT INTO QUESTIONNAIRE (id,titre,id_regles_quest,description,etat,date_ouverture,date_fermeture,mode_acces,lien_http) VALUES ($id,'$titre',$id_regles,'$description','$etat','$date_o','$date_f','$mode_access','$lien_http')");
+        return static::getWithAnId($titre,'TITRE');
+        
         //$sql="INSERT INTO QUESTIONNAIRE (id,titre,id_regles_quest,description,etat,date_ouverture,date_fermeture,mode_acces,lien_http)  VALUES($id,$titre,$id_regles,$description,$etat,$date_o,$date_f,$mode_access,$lien_http)";
         
-        $sth=static::db()->prepare('INSERT INTO QUESTIONNAIRE (id,titre,id_regles_quest,description,etat,date_ouverture,date_fermeture,mode_acces,lien_http)
+        /*$sth=static::db()->prepare('INSERT INTO QUESTIONNAIRE (id,titre,id_regles_quest,description,etat,date_ouverture,date_fermeture,mode_acces,lien_http)
          VALUES (:id, :titre, :id_regles, :description, :etat,:date_o, :date_f, :mode_access, :lien_http)');
         
        /* $sth->bindParam(':id', $id, PDO::PARAM_INT);
@@ -45,7 +47,7 @@ class Questionnaire extends Model
         $sth->bindParam(':date_f',$date_f);
         $sth->bindParam(':mode_access',$mode_access,PDO::PARAM_STR);
         $sth->bindParam(':lien_http',$lien_http,PDO::PARAM_STR);
-        $sth->execute(); */
+        $sth->execute(); 
         
         $sth->execute(array(
             'id' => $id,
@@ -59,12 +61,13 @@ class Questionnaire extends Model
             'lien_http' => $lien_http,
         ));
         var_dump(static::db()->lastInsertId());
-        return static::db()->lastInsertId();
+       return static::getWithAnId($titre,'TITRE');*/
     }
 
     public static function update($IDQ, $titre, $description, $etat, $date_o, $date_f, $mode_acces)
     {
         static::db()->exec("UPDATE QUESTIONNAIRE SET titre='$titre',description='$description',etat='$etat',date_ouverture='$date_o',date_fermeture='$date_f',mode_acces='$mode_acces' WHERE IDQ=$IDQ");
+        return static::getWithAnId($IDQ,'IDQ');
     }
 
     /*
