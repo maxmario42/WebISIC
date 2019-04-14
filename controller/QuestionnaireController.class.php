@@ -13,7 +13,7 @@ class QuestionnaireController extends Controller
     //Par défaut, vue de création de questionnaire
     {  
         $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
-        $view = new UserView($this, 'questionnaire/creerQuestionnaire');
+        $view = new View($this, 'questionnaire/creerQuestionnaire');
         $view->setArg('user',$request->getUserObject());
         $view->render();
     }
@@ -30,7 +30,7 @@ class QuestionnaireController extends Controller
         Questionnaire::isUsed($titre,'TITRE');
         if (Questionnaire::isUsed($titre,'TITRE'))
         {
-                $view = new UserView($this, 'questionnaire/creerQuestionnaire');
+                $view = new View($this, 'questionnaire/creerQuestionnaire');
                 $view->setArg('user',$request->getUserObject());
                 $view->setArg('inscErrorText', 'This title is already used');
                 $view->render();
@@ -55,7 +55,7 @@ class QuestionnaireController extends Controller
             
             if(!isset($questio)) 
             {
-                $view = new UserView($this, 'questionnaire/creerQuestionnaire');
+                $view = new View($this, 'questionnaire/creerQuestionnaire');
                 $view->setArg('user',$request->getUserObject());
                 $view->setArg('inscErrorText', 'Cannot complete creation');
                 $view->render();
@@ -75,7 +75,7 @@ class QuestionnaireController extends Controller
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
         $quiz=Questionnaire::getWithId($idq);
-        $view = new UserView($this,'questionnaire/showQuestionnaire');
+        $view = new View($this,'questionnaire/showQuestionnaire');
         $view->setArg('user',$request->getUserObject());
         $view->setArg('quiz',$quiz);  
         $view->render();
@@ -88,7 +88,7 @@ class QuestionnaireController extends Controller
         {
             $this->linkTo('User'); //Redirection si on tente de forcer l'action
         }
-        $view = new UserView($this,'questionnaire/listQuestionnaire');
+        $view = new View($this,'questionnaire/listQuestionnaire');
         $view->setArg('user',$request->getUserObject());
         $view->setArg('questionnaire',$questionnaires);
         $view->render();
@@ -104,7 +104,7 @@ class QuestionnaireController extends Controller
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
-        $v = new UserView($this,'questionnaire/editQuestionnaire');
+        $v = new View($this,'questionnaire/editQuestionnaire');
         $v->setArg('user',$request->getUserObject());
         $v->setArg('quiz',$quiz);
         $v->render();
@@ -123,7 +123,7 @@ class QuestionnaireController extends Controller
         }
         if(Questionnaire::isUsed($titre,'TITRE')&&$quiz->TITRE!=$titre) 
         {
-            $view = new UserView($this,'questionnaire/editQuestionnaire');
+            $view = new View($this,'questionnaire/editQuestionnaire');
             $view->setArg('user',$request->getUserObject());
             $view->setArg('quiz',$quiz);
             $view->setArg('inscErrorText','This title is already used');
@@ -146,7 +146,7 @@ class QuestionnaireController extends Controller
             $questio = Questionnaire::update($idq,$titre, $description,$etat,$date_ouverture,$date_fermeture,$mode_acces);
             if(!isset($questio)) 
             {
-                $view = new UserView($this,'questionnaire/editQuestionnaire');
+                $view = new View($this,'questionnaire/editQuestionnaire');
                 $view->setArg('user',$request->getUserObject());
                 $view->setArg('quiz',$quiz);
                 $view->setArg('inscErrorText', 'Cannot complete Edition');

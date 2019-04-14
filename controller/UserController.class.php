@@ -9,7 +9,7 @@
 
         public function defaultAction($request)
         {
-            $view = new UserView($this, 'home');
+            $view = new View($this, 'home');
             $view->setArg('user',$request->getUserObject());
             $view->render();
         }
@@ -17,7 +17,7 @@
         public function profile($request)
         //Appelle la vue qui affiche notre profil
         {
-            $v = new UserView($this,'profile/view');
+            $v = new View($this,'profile/view');
             $v->setArg('user',$request->getUserObject());
             $v->render();
         }
@@ -25,7 +25,7 @@
         public function edit($request)
         //Appelle la vue pour mettre à jour nos informations
         {
-            $v = new UserView($this,'profile/edit');
+            $v = new View($this,'profile/edit');
             $v->setArg('user',$request->getUserObject());
             $v->render();
         }
@@ -40,7 +40,7 @@
             }
             if(User::isUsed($login,'LOGIN')&&$request->getUserObject()->LOGIN!=$login) 
             {
-                $view = new UserView($this,'profile/edit');
+                $view = new View($this,'profile/edit');
                 $view->setArg('inscErrorText','This login is already used');
                 $view->setArg('user',$request->getUserObject());
                 $view->render();
@@ -65,7 +65,7 @@
                     $user = User::update($request->getUserObject()->LOGIN,$request->getUserObject()->TYPE_UTILISATEUR,$nom, $prenom, $mail, $spe1, $spe2, $mdp, $login);
                     if(!isset($user)) 
                     {
-                        $view = new UserView($this,'profile/edit');
+                        $view = new View($this,'profile/edit');
                         $view->setArg('user',$request->getUserObject());
                         $view->setArg('inscErrorText', 'Cannot complete inscription');
                         $view->render();
@@ -77,7 +77,7 @@
                 }
                 else
                 {
-                    $view = new UserView($this,'profile/edit');
+                    $view = new View($this,'profile/edit');
                     $view->setArg('inscErrorText', 'Les mots de passe ne correspondent pas');
                     $view->setArg('user',$request->getUserObject());
                     $view->render();
@@ -89,7 +89,7 @@
         public function aPropos($request)
         //Appelle la vue qui retournera notre about Us
         {
-            $view = new UserView($this,'apropos');
+            $view = new View($this,'apropos');
             $view->setArg('user',$request->getUserObject());
             $view->render();
         }

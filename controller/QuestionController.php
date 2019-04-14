@@ -9,7 +9,7 @@ class QuestionController extends Controller
 
     public function defaultAction($request)
     {  
-        $view = new UserView($this, 'question/creerQuestion');
+        $view = new View($this, 'question/creerQuestion');
         $view->setArg('user',$request->getUserObject());
         $view->render();
     }
@@ -19,7 +19,7 @@ class QuestionController extends Controller
         $intitule = $request->read('intitule');
         if (Question::isUsed($intitule,'INTITULE'))
         {
-                $view = new UserView($this, 'question/creerQuestion');
+                $view = new View($this, 'question/creerQuestion');
                 $view->setArg('user',$request->getUserObject());
                 $view->setArg('inscErrorText', 'This title is already used');
                 $view->render();
@@ -33,7 +33,7 @@ class QuestionController extends Controller
             $questio = Question::create($idq, $intitule, $typeq, $temps_max);
             if(!isset($questio)) 
             {
-                $view = new UserView($this, 'question/creerQuestion');
+                $view = new View($this, 'question/creerQuestion');
                 $view->setArg('user',$request->getUserObject());
                 $view->setArg('inscErrorText', 'Cannot complete creation');
                 $view->render();
