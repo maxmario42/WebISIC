@@ -28,11 +28,11 @@ abstract class Controller extends MyObject {
         $user = $this->request->getUserObject();
         if(!is_object($user))
         {
-            $this->linkTo(NULL); 
+            throw new Error('Vous devez être connectés', 401);
         }
         elseif (isset($type_specifique)&&$user->TYPE_UTILISATEUR!=$type_specifique) 
         {
-            $this->linkTo('User');
+            throw new Error("Vous n'avez pas les droits requis", 403);
         }
     }
 

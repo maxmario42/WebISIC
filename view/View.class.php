@@ -25,11 +25,16 @@ class View extends MyObject {
     protected function getTemplate($templateName)
     {
         extract($this->args);
-        include_once(implode('/', array(
+        $path=implode('/', array(
             __ROOT_DIR,
             'templates',
             $templateName.'Template.php'
-        )));
+        ));
+        if (is_readable($path)) {
+            require_once($path);
+            return;
+        }
+        throw new \Error('Template inconnu',404);
     }
 
     public function getArg($key, $default = false)

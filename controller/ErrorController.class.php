@@ -14,7 +14,8 @@ Ce controleur gère les erreurs
 
     public function defaultAction()
     {
-        $view = new View($this, 'error/error');
+        http_response_code($this->error->getCode());
+        $view = new View($this, 'error');
         $view->setArg('error', $this->error);
         if (is_object($this->request->getUserObject()))
         {
@@ -25,50 +26,9 @@ Ce controleur gère les erreurs
 
     public function execute()
     {
-        $method = 'e'.$this->error->getCode();
-        if (!method_exists($this, $method)) {
-            return $this->defaultAction();
-        }
-        return $this->$method();
+        return $this->defaultAction();
     }
 
-    //Les différentes erreurs gérées
-    public function e404()
-    {
-        http_response_code(404);
-        $view = new View($this, 'error/404');
-        $view->setArg('error', $this->error);
-        if (is_object($this->request->getUserObject()))
-        {
-            $view->setArg('user',$this->request->getUserObject());
-        }
-        $view->render();
-    }
-
-    public function e500()
-    {
-        http_response_code(500);
-        $view = new View($this, 'error/500');
-        $view->setArg('error', $this->error);
-        if (is_object($this->request->getUserObject()))
-        {
-            $view->setArg('user',$this->request->getUserObject());
-        }
-        $view->render();
-    }
-
-    public function e403()
-    {
-        http_response_code(403);
-        $view = new View($this, 'error/403');
-        $view->setArg('error', $this->error);
-        if (is_object($this->request->getUserObject()))
-        {
-            $view->setArg('user',$this->request->getUserObject());
-        }
-        $view->render();
-    }
-    
     public function setError(Error $error)
     {
         $this->error = $error;

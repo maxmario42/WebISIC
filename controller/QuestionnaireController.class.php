@@ -83,10 +83,11 @@ class QuestionnaireController extends Controller
 
     public function showQuest(){
     //Affichage des questionnaires d'un utilisateur
+        $this->protection('Enseignant');
         $questionnaires= Questionnaire::getAllWithAnId($this->request->getUserObject()->ID,User::getIDColumn());
         if(!isset($questionnaires))
         {
-            $this->linkTo('User'); //Redirection si on tente de forcer l'action
+            throw new Error("Problème d'accès aux questionnaires", 500);
         }
         $view = new View($this,'questionnaire/listQuestionnaire');
         $view->setArg('user',$this->request->getUserObject());

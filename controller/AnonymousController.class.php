@@ -65,6 +65,10 @@ class AnonymousController extends Controller {
     {
     //Valide l'inscription d'un utilisateur
         $login = $this->request->read('inscLogin');
+        if(!isset($login))
+        {
+            $this->linkTo(NULL);
+        }
         if(User::isUsed($login,'LOGIN')) 
         {
             $view = new View($this);
