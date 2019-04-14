@@ -12,7 +12,7 @@ class QuestionnaireController extends Controller
     public function defaultAction($request)
     //Par défaut, vue de création de questionnaire
     {  
-        $this->protection('Enseignant');
+        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
         $view = new UserView($this, 'questionnaire/creerQuestionnaire');
         $view->setArg('user',$request->getUserObject());
         $view->render();
@@ -21,11 +21,11 @@ class QuestionnaireController extends Controller
     public function newQuest($request)
     //Création d'un questionnaire
     {   
-        $this->protection('Enseignant');
+        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
         $titre = $request->read('titre');
         if(!isset($titre))
         {
-            $this->linkTo('Questionnaire','showQuest');
+            $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
         Questionnaire::isUsed($titre,'TITRE');
         if (Questionnaire::isUsed($titre,'TITRE'))
@@ -72,7 +72,7 @@ class QuestionnaireController extends Controller
         $idq = $request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         if(!isset($idq))
         {
-            $this->linkTo('Questionnaire','showQuest');
+            $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
         $quiz=Questionnaire::getWithId($idq);
         $view = new UserView($this,'questionnaire/showQuestionnaire');
@@ -86,7 +86,7 @@ class QuestionnaireController extends Controller
         $questionnaires= Questionnaire::getAllWithAnId($request->getUserObject()->ID,User::getIDColumn());
         if(!isset($questionnaires))
         {
-            $this->linkTo('User');
+            $this->linkTo('User'); //Redirection si on tente de forcer l'action
         }
         $view = new UserView($this,'questionnaire/listQuestionnaire');
         $view->setArg('user',$request->getUserObject());
@@ -95,15 +95,15 @@ class QuestionnaireController extends Controller
     } 
 
     public function edit($request)
-    //Appelle la vue pour mettre à jour nos informations
+    //Appelle la vue pour mettre à jour les informations
     {
-        $this->protection('Enseignant');
+        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
         $idq = $request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
-        if(!isset($idq))
-        {
-            $this->linkTo('Questionnaire','showQuest');
-        }
         $quiz=Questionnaire::getWithId($idq);
+        if(!isset($idq)||!is_object($quiz))
+        {
+            $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
+        }
         $v = new UserView($this,'questionnaire/editQuestionnaire');
         $v->setArg('user',$request->getUserObject());
         $v->setArg('quiz',$quiz);
@@ -111,15 +111,15 @@ class QuestionnaireController extends Controller
     }
 
     public function edition($request)
-    //Permet de mettre à jour les informations d'un utilisateur. Fonctionne sur tout les types.
+    //Permet de mettre à jour les informations d'un questionnaire.
     {
-        $this->protection('Enseignant');
+        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
         $idq = $request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         $quiz=Questionnaire::getWithId($idq);
         $titre = $request->read('titre');
-        if(!isset($titre))
+        if(!isset($titre)||!is_object($quiz))
         {
-            $this->linkTo('Questionnaire','showQuest');
+            $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
         if(Questionnaire::isUsed($titre,'TITRE')&&$quiz->TITRE!=$titre) 
         {
@@ -137,6 +137,12 @@ class QuestionnaireController extends Controller
             $date_ouverture=$request->read('date_ouverture');
             $date_fermeture=$request->read('date_fermeture');
             $mode_acces=$request->read('mode_acces');
+            $temps=(int)$request->read('temps_total');
+            $revenir=(int)$request->read('revenir_arriere');
+            $moins=(int)$request->read('moins');
+            $plus=(int)$request->read('plus');
+            //$neutre=(int)$request->read('neutre');
+            //$regles = Regles_Questionnaire::update($quiz->ID_REGLES_QUEST,$temps,$revenir,$plus,$moins,$neutre);
             $questio = Questionnaire::update($idq,$titre, $description,$etat,$date_ouverture,$date_fermeture,$mode_acces);
             if(!isset($questio)) 
             {
@@ -148,7 +154,7 @@ class QuestionnaireController extends Controller
             } 
             else 
             {
-                $this->linkTo('Questionnaire','showQuiz',array('idq' => $quiz->IDQ));
+                $this->linkTo('Questionnaire','showQuiz',array('idq' => $quiz->IDQ)); //Modification réussie
             }                    
         }
     }

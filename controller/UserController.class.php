@@ -36,7 +36,7 @@
             $login = $request->read('inscLogin');
             if(!isset($login))
             {
-                $this->linkTo('User','edit');
+                $this->linkTo('User','edit'); //Redirection si on tente de forcer l'action
             }
             if(User::isUsed($login,'LOGIN')&&$request->getUserObject()->LOGIN!=$login) 
             {
@@ -72,7 +72,7 @@
                 } 
                     else 
                     {
-                        $this->linkTo('User','profile');
+                        $this->linkTo('User','profile'); //Modification réussie
                     }
                 }
                 else
