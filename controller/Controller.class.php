@@ -1,6 +1,6 @@
 <?php
 abstract class Controller extends MyObject {
-    private $request;
+    protected $request;
     private $action;
 
     public function __construct($currentRequest) {
