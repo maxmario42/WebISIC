@@ -25,3 +25,4 @@ class ErrorController extends Controller
         $this->error = $error;
     }
 }
+?>
