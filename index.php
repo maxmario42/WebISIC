@@ -30,6 +30,12 @@ try {
     $controller = Dispatcher::dispatch($request); 
     $controller->execute(); 
 } catch (Exception $e) { 
-    echo 'Error : ' . $e->getMessage() . "\n"; 
+    $controller = new ErrorController($request);
+    $controller->setError(new Error($e->getMessage()));
+    $controller->execute();
+} catch (Error $e) {
+    $controller = new ErrorController($request);
+    $controller->setError($e);
+    $controller->execute();
 }
 ?>
