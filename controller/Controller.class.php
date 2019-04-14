@@ -3,22 +3,22 @@ abstract class Controller extends MyObject {
     protected $request;
     private $action;
 
-    public function __construct($currentRequest) {
-        $this->request = $currentRequest;
+    public function __construct($request) {
+        $this->request = $request;
     }
     
-    Abstract function defaultAction($currentRequest); //Action par défaut
+    Abstract function defaultAction(); //Action par défaut
 
     public function execute(){
         //Appelle la bonne méthode du contrôleur i.e soit l’action par défaut (defaultAction), soit l’action dont le nom a été passé dans la requête courante.
         if(is_null($this->request->getAction()))
         {
-            $this->defaultAction($this->request);
+            $this->defaultAction();
         }
         else 
         {
             $action = $this->request->getAction();
-            $this-> $action($this->request);
+            $this-> $action();
         }
     }
 
@@ -41,7 +41,6 @@ abstract class Controller extends MyObject {
     {
         $params['controller'] = $controller;
         $params['action'] = $action;
-        //header('Location:'.__BASE_URL.'/index.php?controller='.$controller.'&action='.$action);
         header('Location:'.__BASE_URL.'/index.php?'.http_build_query($params));
         exit();
     }
