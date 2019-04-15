@@ -25,13 +25,14 @@ Class Question extends Model
 
     public static function create($idq, $intitule, $typeq, $temps_max)
     {
-        static::db()->exec("INSERT INTO QUESTIONNAIRE (INTITULE,TYPEQ,TEMPS_MAXIMAL) VALUES ('$intitule','$typeq',$temps_max)");
+        static::db()->exec("INSERT INTO QUESTION (INTITULE,TYPEQ,TEMPS_MAXIMAL) VALUES ('$intitule','$typeq',$temps_max)");
         static::db()->exec("INSERT INTO AJOUTER (IDQ,ID_QUEST) VALUES ($idq,".PDO::lastInsertId.")");
         return static::getWithId($idq);
     }
 
-    public static function update($idquest, $intitule, $typeq, $temps_max){
-        static::db()->exec("UPDATE QUESTIONNAIRE SET INTITULE='$intitule',TYPEQ='$typeq',TEMPS_MAXIMAL='$temps_max' WHERE ID_QUEST=$idquest");
+    public static function update($idquest, $intitule, $typeq, $temps_max)
+    {
+        static::db()->exec("UPDATE QUESTION SET INTITULE='$intitule',TYPEQ='$typeq',TEMPS_MAXIMAL='$temps_max' WHERE ID_QUEST=$idquest");
     }
 }
 

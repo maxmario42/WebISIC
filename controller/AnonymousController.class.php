@@ -4,20 +4,20 @@ class AnonymousController extends Controller {
     Ce contrôleur regroupe l’ensemble des actions pour un utilisateur non connecté.
     */
     
-    public function __construct($currentRequest) {
-        parent::__construct($currentRequest);
-        if(is_object($currentRequest->getUserObject()))
+    public function __construct($request) {
+        parent::__construct($request);
+        if(is_object($request->getUserObject()))
         {
             $this->linkTo('User',NULL); //On empêche la déconnexion par changement d'adresse
         }
     }
 
-    public function Connect($currentRequest){
+    public function Connect(){
         //Permet la connexion d'un utilisateur
-        $user = User::tryLogin($currentRequest->read('login'),$currentRequest->read('password'));
+        $user = User::tryLogin($this->request->read('login'),$this->request->read('password'));
 
         if(is_object($user)) {
-            $currentRequest->setUser($user->ID);
+            $this->request->setUser($user->ID);
             $this->linkTo('User');
         }
         else {
@@ -27,44 +27,48 @@ class AnonymousController extends Controller {
         }
     }
         
-    public function defaultAction($currentRequest)
+    public function defaultAction()
     {
         $view = new View($this);
         $view->render();
     }
 
-    public function aPropos($currentrequest)
+    public function aPropos()
     //Appelle la vue qui retournera notre about Us
     {
        $view = new View($this,'apropos');
        $view->render();
     }
         
-    public function inscriptionEtu($currentRequest)
+    public function inscriptionEtu()
     //Appelle la vue qui retournera la page d'inscription
     {
         $view = new View($this,'inscription/inscriptionEtu');
         $view->render();
     }
 
-    public function inscriptionProf($currentRequest)
+    public function inscriptionProf()
     //Appelle la vue qui retournera la page d'inscription
     {
         $view = new View($this,'inscription/inscriptionProf');
         $view->render();
     }
 
-    public function login($currentRequest)
+    public function login()
     //Appelle la vue qui retourne la page de login
     {
         $view = new View($this,'profile/login');
         $view->render();
     }
 
-    public function validateInscription($request) 
+    public function validateInscription() 
     {
     //Valide l'inscription d'un utilisateur
-        $login = $request->read('inscLogin');
+        $login = $this->request->read('inscLogin');
+        if(!isset($login))
+        {
+            $this->linkTo(NULL);
+        }
         if(User::isUsed($login,'LOGIN')) 
         {
             $view = new View($this);
@@ -73,16 +77,16 @@ class AnonymousController extends Controller {
             echo("<script>alert('utilisateur existe déjà...');</script>");  
         } 
         else {
-            $mdp = $request->read('inscPassword');
-            $mdpVali = $request->read('inscPasswordVali');
-            $nom = $request->read('nom');
-            $prenom = $request->read('prenom');
-            $mail = $request->read('mail');
+            $mdp = $this->request->read('inscPassword');
+            $mdpVali = $this->request->read('inscPasswordVali');
+            $nom = $this->request->read('nom');
+            $prenom = $this->request->read('prenom');
+            $mail = $this->request->read('mail');
             //Pour les 4 champs suivants, selon les valeurs récupérées, le User::create crééra un étudiant ou un enseignant
-            $promo = $request->read('promo');
-            $annee = $request->read('anneedesortie');
-            $matricule = $request->read('matricule');
-            $statut = $request->read('statut');
+            $promo = $this->request->read('promo');
+            $annee = $this->request->read('anneedesortie');
+            $matricule = $this->request->read('matricule');
+            $statut = $this->request->read('statut');
             if ($mdp==$mdpVali)
             {
                 $user = User::create($nom, $prenom, $mail, $matricule, $statut ,$promo, $annee, $mdp, $login);

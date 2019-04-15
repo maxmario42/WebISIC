@@ -1,55 +1,105 @@
-<!-- Navbar Area -->
-<div class="clever-main-menu">
-    <div class="classy-nav-container breakpoint-off">
-        <!-- Menu -->
-        <nav class="classy-navbar justify-content-between" id="cleverNav">
+  <!-- Navbar Area -->
+  <div class="clever-main-menu">
+      <div class="classy-nav-container breakpoint-off">
+          <!-- Menu -->
+          <nav class="classy-navbar justify-content-between" id="cleverNav">
 
-            <!-- Logo -->
-            <a class="nav-brand" href="<?php echo $this->linkTo(NULL); ?>"><img src="css/img/quiz.png" alt=""></a>
+              <!-- Logo -->
+              <a class="nav-brand" href="<?php echo $this->linkTo(NULL); ?>"><img src="css/img/quiz.png" alt=""></a>
 
-            <!-- Navbar Toggler -->
-            <div class="classy-navbar-toggler">
-                <span class="navbarToggler"><span></span><span></span><span></span></span>
-            </div>
+              <!-- Navbar Toggler -->
+              <div class="classy-navbar-toggler">
+                  <span class="navbarToggler"><span></span><span></span><span></span></span>
+              </div>
 
-            <!-- Menu -->
-            <div class="classy-menu">
+              <!-- Menu -->
+              <div class="classy-menu">
 
-                <!-- Close Button -->
-                <div class="classycloseIcon">
-                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                </div>
+                  <!-- Close Button -->
+                  <div class="classycloseIcon">
+                      <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                  </div>
 
-                <!-- Nav Start -->
-                <div class="classynav">
-                    <ul>
-                        <li><a class="aMenu" href="<?php echo $this->linkTo(NULL); ?>">Accueil</a></li>
-                        <li><a class="aMenu" href="<?php echo $this->linkTo(NULL, 'aPropos'); ?>">À propos</a></li>
-                        <li><a class="aMenu" href="Quest.php">Questionnaire</a></li>
-                        <!-- <li><a href="blog.html"></a></li>
-                                <li><a href="contact.html">Contact</a></li> -->
-                    </ul>
+                  <!-- Nav Start -->
+                  <div class="classynav">
+                      <ul>
+                          <li><a class="aMenu" href="<?php echo $this->linkTo(NULL); ?>">Accueil</a></li>
+                          <?php if (isset($user)) : //Si on a un utilisateur connecté ?>
+                              <li><a class="aMenu" href="<?php echo $this->linkTo('User', 'aPropos'); ?>">À propos</a></li>
+                              <?php if ($user->TYPE_UTILISATEUR == 'Enseignant') : ?>
+                                  <li>
+                                      <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire'); ?>">
+                                          <!-- aller vers la page creation questionnaire-->
+                                          Créer Questionnaire</a>
+                                  </li>
+                                  <li>
+                                      <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'showQuest'); ?>">
+                                          <!-- aller vers la page creation questionnaire-->
+                                          Mes Questionnaires</a>
+                                  </li>
 
-                    <!-- Search Button -->
-                    <div class="search-area">
-                        <form action="#" method="post">
-                            <input type="search" name="search" id="search" placeholder="Search">
-                            <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                        </form>
-                    </div>
+                              <?php elseif ($user->TYPE_UTILISATEUR == 'Etudiant') : ?>
+                                  <li class="nav-item text-center">
+                                      <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'etuQuiz'); ?>">
+                                          Mes Questionnaires
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'etuResultats'); ?>">
+                                          Resultats
+                                      </a>
+                                  </li>
+                              <?php else : ?>
+                                  <a>
+                                      ERROR
+                                  </a>
+                              <?php endif ?>
+                          <?php else : //C'est un visiteur anonyme?>
+                              <li><a class="aMenu" href="<?php echo $this->linkTo(NULL, 'aPropos'); ?>">À propos</a></li>
+                              <li><a class="aMenu" href="Quest.php">Questionnaire</a></li>
+                              <!-- <li><a href="blog.html"></a></li>
+                                                <li><a href="contact.html">Contact</a></li> -->
+                          <?php endif ?>
+                      </ul>
 
-                    <!-- Register / Login -->
-                    <div class="register-login-area">
-                        <a href="<?php echo $this->linkTo(NULL, 'inscriptionEtu'); ?>" class="btn">Inscription Etudiant</a>
-                        <a href="<?php echo $this->linkTo(NULL, 'inscriptionProf'); ?>" class="btn">Inscription Professeur</a>
-                        <a href="<?php echo $this->linkTo(NULL, 'login'); ?>" class="btn active">Connexion</a>
-                    </div>
+                      <!-- Search Button -->
+                      <div class="search-area">
+                          <form action="#" method="post">
+                              <input type="search" name="search" id="search" placeholder="Search">
+                              <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                          </form>
+                      </div>
 
-                </div>
-                <!-- Nav End -->
-            </div>
-        </nav>
-    </div>
-</div>
-</header>
-<div id="page">
+                      <!-- Register / Login -->
+                      <?php if (isset($user)) : ?>
+                          <div class="login-state d-flex align-items-center">
+                              <div class="user-name mr-30">
+                                  <div class="dropdown">
+                                      <a class="dropdown-toggle" href="#" role="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $user->LOGIN ?></a>
+                                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
+                                          <a class="dropdown-item" href="<?php echo $this->linkTo('User', 'profile'); ?>">Profil</a>
+                                          <a class="dropdown-item" href="<?php echo $this->linkTo('User', 'edit'); ?>">Modifier Infos</a>
+                                          <a class="dropdown-item" href="<?php echo $this->linkTo('User', 'disconnect'); ?>">Déconnexion</a>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="userthumb">
+                                  <img src="img/bg-img/t1.png" alt="">
+                              </div>
+                          </div>
+                      <?php else : ?>
+                          <div class="register-login-area">
+                              <a href="<?php echo $this->linkTo(NULL, 'inscriptionEtu'); ?>" class="btn">Inscription Etudiant</a>
+                              <a href="<?php echo $this->linkTo(NULL, 'inscriptionProf'); ?>" class="btn">Inscription Professeur</a>
+                              <a href="<?php echo $this->linkTo(NULL, 'login'); ?>" class="btn active">Connexion</a>
+                          </div>
+                      <?php endif ?>
+
+                  </div>
+                  <!-- Nav End -->
+              </div>
+          </nav>
+      </div>
+  </div>
+  </header>
+  <div id="page">

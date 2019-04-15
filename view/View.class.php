@@ -25,11 +25,16 @@ class View extends MyObject {
     protected function getTemplate($templateName)
     {
         extract($this->args);
-        include_once(implode('/', array(
+        $path=implode('/', array(
             __ROOT_DIR,
             'templates',
             $templateName.'Template.php'
-        )));
+        ));
+        if (is_readable($path)) {
+            require_once($path);
+            return;
+        }
+        throw new \Error('Template inconnu',404);
     }
 
     public function getArg($key, $default = false)
@@ -44,12 +49,6 @@ class View extends MyObject {
         $this->args[$key] = $value;
         return $this;
     }
-    /*
-    public function path($route, $params = array())
-    {
-        return Router::path($route, $params);
-    }
-    */
     public function linkTo($controller,$action=NULL, $params = array())
     //Assure la redirection, le $controller sur NULL donnera Anonymous, $action sur NULL donnera DefaultAction
     {
@@ -58,13 +57,13 @@ class View extends MyObject {
         $params['action'] = $action;
         return __BASE_URL.'/index.php?'.http_build_query($params);
     }
-
+    /*
     public function linkToID($controller,$action=NULL,$id)
     //Assure la redirection, le $controller sur NULL donnera Anonymous, $action sur NULL donnera DefaultAction
     {
         return __BASE_URL.'/index.php?controller='.$controller.'&action='.$action.'&id='.$id;
     }
-
+    */
     public function safe($string)
     {
         return htmlspecialchars($string);

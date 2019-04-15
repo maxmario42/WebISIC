@@ -60,6 +60,6 @@ abstract class Repository extends MyObject
         }
         return $results;
     }
-*/
 }
+*/
 ?>
