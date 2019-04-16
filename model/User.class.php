@@ -63,8 +63,12 @@ class User extends Model
     {
         if ($type == 'Enseignant') {
             //static::db()->exec("UPDATE UTILISATEUR SET nom='$nom',prenom='$prenom',type_utilisateur='Enseignant',matricule='$spe1',statut='$spe2',mail_enseignant='$mail',mdp='$mdp',login='$login' WHERE LOGIN='$oldLogin'");
-            $data = [
-
+            
+            
+            $sth = static::db()->prepare("UPDATE UTILISATEUR SET nom=:nom, prenom=:prenom,type_utilisateur='Enseignant',matricule=:spe1, statut=:spe2,mail_enseignant=:mail, mdp=:mdp, login=:login WHERE LOGIN=:oldLogin");
+            var_dump($sth);
+            $res = $sth->execute(array(
+                
                 'nom' => $nom,
                 'prenom' => $prenom,
                 'spe1' => $spe1,
@@ -72,14 +76,10 @@ class User extends Model
                 'mail' => $mail,
                 'mdp' => $mdp,
                 'login' => $login,
-                'oldlogin' => $oldLogin
-            ];
-            var_dump($data);
-            $sth = static::db()->exec("UPDATE UTILISATEUR SET nom=:nom, prenom=:prenom, matricule=:spe1, statut=:spe2,mail_enseignant=:mail, mdp=:mdp, login=:login WHERE LOGIN=:oldLogin");
-            var_dump($sth);
-            $res = $sth->execute($data);
+                'oldLogin' => $oldLogin
+            ));
         } else {
-                  $sth=static::db()->exec('UPDATE UTILISATEUR SET nom=:nom, prenom=:prenom,type_utilisateur="Etudiant",matricule=:spe1,statut=:spe2,mail_enseignant=:mail,mdp=:mdp,login=:login WHERE LOGIN=:oldLogin');
+                  $sth=static::db()->prepare('UPDATE UTILISATEUR SET nom=:nom, prenom=:prenom,type_utilisateur="Etudiant",matricule=:spe1,statut=:spe2,mail_enseignant=:mail,mdp=:mdp,login=:login WHERE LOGIN=:oldLogin');
                   $res=$sth->execute(array(
                       'nom'=>$nom,
                       'prenom'=>$prenom,
@@ -88,8 +88,7 @@ class User extends Model
                       'mail'=>$mail,
                       'mdp'=>$mdp,
                       'login'=>$login,
-                      'oldlog
-                in'=>$oldLogin));
+                      'oldLogin'=>$oldLogin));
             }
         return static::tryLogin($login, $mdp);
     }
@@ -97,7 +96,7 @@ class User extends Model
     public static function tryLogin
     ($login, $mdp){
         $st = static::db()->query("select  * from UTILISATEUR where login='$login' and mdp='$mdp'");
-        $st->setFetchMode(PD O ::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
+        $st->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
         $user = $st->fetch(); //PDO::FETCH_ASSOCs
         return $user;
     }
