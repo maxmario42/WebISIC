@@ -9,7 +9,7 @@
 
         public function defaultAction()
         {
-            $view = new View($this, 'home');
+            $view = new View($this);
             $view->setArg('user',$this->request->getUserObject());
             $view->render();
         }
@@ -92,10 +92,6 @@
             $view = new View($this,'apropos');
             $view->setArg('user',$this->request->getUserObject());
             $view->render();
-        }
-
-        public function creerQuest(){
-            $this->linkTo("Questionnaire"); 
         }
 
         public function disconnect() {
