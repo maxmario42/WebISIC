@@ -1,5 +1,6 @@
 <?php
-class User extends Model {
+class User extends Model
+{
 
     public static function getTableName()
     {
@@ -28,38 +29,76 @@ class User extends Model {
     {
         return 'ID';
     }
-    
-    public static function create($nom, $prenom, $mail, $matricule, $statut, $promo, $annee, $mdp, $login) 
+
+    public static function create($nom, $prenom, $mail, $matricule, $statut, $promo, $annee, $mdp, $login)
     {
-        if(isset($matricule)&&isset($statut))
-        {
-            static::db()->exec("INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,matricule,statut,mail_enseignant,mdp,login) VALUES('$nom', '$prenom', 'Enseignant','$matricule','$statut','$mail','$mdp','$login')");
-        }
-        else
-        {
-            static::db()->exec("INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,promo,annee_de_sortie,mail_etudiant,mdp,login) VALUES('$nom', '$prenom', 'Etudiant','$promo','$annee','$mail','$mdp','$login')");
-        }
-        
+        if (isset($matricule) && isset($statut)) {
+                $sth = static::db()->prepare('INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,matricule,statut,mail_enseignant,mdp,login) VALUES(:nom, :prenom, "Enseignant", :matricule,:statut, :mail,:mdp,:login)');
+                $res = $sth->execute(array(
+                    'nom' => $nom,
+                    'prenom' => $prenom,
+                    'matricule' => $matricule,
+                    'statut' => $statut,
+                    'mail' => $mail,
+                    'mdp' => $mdp,
+                    'login' => $login
+                ));
+            } else {
+                $sth = static::db()->prepare('INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,matricule,statut,mail_enseignant,mdp,login) VALUES(:nom, :prenom, "Etudiant", :matricule,:statut, :mail,:mdp,:login)');
+                $res = $sth->execute(array(
+                    'nom' => $nom,
+                    'prenom' => $prenom,
+                    'matricule' => $matricule,
+                    'statut' => $statut,
+                    'mail' => $mail,
+                    'mdp' => $mdp,
+                    'login' => $login
+                ));
+            }
+
         return static::tryLogin($login, $mdp);
     }
 
     public static function update($oldLogin, $type, $nom, $prenom, $mail, $spe1, $spe2, $mdp, $login)
     {
-        if($type=='Enseignant'){
-            static::db()->exec("UPDATE UTILISATEUR SET nom='$nom',prenom='$prenom',type_utilisateur='Enseignant',matricule='$spe1',statut='$spe2',mail_enseignant='$mail',mdp='$mdp',login='$login' WHERE LOGIN='$oldLogin'");
-        }
-        else
-        {
-            static::db()->exec("UPDATE UTILISATEUR SET nom='$nom',prenom='$prenom',type_utilisateur='Etudiant',promo='$spe1',annee_de_sortie='$spe2',mail_etudiant='$mail',mdp='$mdp',login='$login' WHERE LOGIN='$oldLogin'");
-        }
+        if ($type == 'Enseignant') {
+            //static::db()->exec("UPDATE UTILISATEUR SET nom='$nom',prenom='$prenom',type_utilisateur='Enseignant',matricule='$spe1',statut='$spe2',mail_enseignant='$mail',mdp='$mdp',login='$login' WHERE LOGIN='$oldLogin'");
+            $data = [
+
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'spe1' => $spe1,
+                'spe2' => $spe2,
+                'mail' => $mail,
+                'mdp' => $mdp,
+                'login' => $login,
+                'oldlogin' => $oldLogin
+            ];
+            var_dump($data);
+            $sth = static::db()->exec("UPDATE UTILISATEUR SET nom=:nom, prenom=:prenom, matricule=:spe1, statut=:spe2,mail_enseignant=:mail, mdp=:mdp, login=:login WHERE LOGIN=:oldLogin");
+            var_dump($sth);
+            $res = $sth->execute($data);
+        } else {
+                  $sth=static::db()->exec('UPDATE UTILISATEUR SET nom=:nom, prenom=:prenom,type_utilisateur="Etudiant",matricule=:spe1,statut=:spe2,mail_enseignant=:mail,mdp=:mdp,login=:login WHERE LOGIN=:oldLogin');
+                  $res=$sth->execute(array(
+                      'nom'=>$nom,
+                      'prenom'=>$prenom,
+                      'spe1'=>$spe1,
+                      'spe2'=>$spe2,
+                      'mail'=>$mail,
+                      'mdp'=>$mdp,
+                      'login'=>$login,
+                      'oldlog
+                in'=>$oldLogin));
+            }
         return static::tryLogin($login, $mdp);
     }
-                
-    public static function tryLogin($login, $mdp){
+
+    public static function tryLogin
+    ($login, $mdp){
         $st = static::db()->query("select  * from UTILISATEUR where login='$login' and mdp='$mdp'");
-        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
+        $st->setFetchMode(PD O ::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "User");
         $user = $st->fetch(); //PDO::FETCH_ASSOCs
         return $user;
     }
 }
-?>
