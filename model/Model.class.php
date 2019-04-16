@@ -43,7 +43,8 @@ abstract class Model extends MyObject {
 
     public static function getWithAnId($ID, $IDField){
         //Retourne un objet en fonction d'une ID, on peut choisir l'ID voulue avec le deuxième argument
-        $st = static::db()->query("select  * from ".static::getTableName()." where ".$IDField." ='$ID'");
+        $st = static::db()->prepare("select  * from ".static::getTableName()." where ".$IDField." = ?");
+        $st->execute([$ID]);
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, get_called_class());
         $object = $st-> fetch();
         return $object;

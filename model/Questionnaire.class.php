@@ -60,13 +60,16 @@ class Questionnaire extends Model
             'mode_access' => $mode_access,
             'lien_http' => $lien_http,
         ));
-        //var_dump(static::db()->lastInsertId()); On arrive pas à le faire marcher
-       return static::getWithAnId($titre,'TITRE');
+       // $id=static::db()->lastInsertId();// On arrive pas à le faire marcher
+         //return static::db()->lastInsertId();
+         
+             return static::getWithAnId($titre,'TITRE');
     }
 
     public static function update($IDQ, $titre, $description, $etat, $date_o, $date_f, $mode_acces)
     {
-        static::db()->exec("UPDATE QUESTIONNAIRE SET titre='$titre',description='$description',etat='$etat',date_ouverture='$date_o',date_fermeture='$date_f',mode_acces='$mode_acces' WHERE IDQ=$IDQ");
+        $sth=static::db()->prepare("UPDATE QUESTIONNAIRE SET titre='$titre',description='$description',etat='$etat',date_ouverture='$date_o',date_fermeture='$date_f',mode_acces='$mode_acces' WHERE IDQ=$IDQ");
+        
         return static::getWithId($IDQ);
     }
 }

@@ -25,8 +25,13 @@ Class Question extends Model
 
     public static function create($idq, $intitule, $typeq, $temps_max)
     {
-        static::db()->exec("INSERT INTO QUESTION (INTITULE,TYPEQ,TEMPS_MAXIMAL) VALUES ('$intitule','$typeq',$temps_max)");
-        static::db()->exec("INSERT INTO AJOUTER (IDQ,ID_QUEST) VALUES ($idq,".PDO::lastInsertId.")");
+        $sth=static::db()->prepare("INSERT INTO QUESTION (INTITULE,TYPEQ,TEMPS_MAXIMAL) VALUES (:intitule,:typeq,:temps_max)");
+        $res = $sth->execute(array(
+            'intitule'=>$intitule,
+            'typeq'=>$typeq,
+            'temps_max'=>$temps_max));
+
+        $sth1=static::db()->exec("INSERT INTO AJOUTER (IDQ,ID_QUEST) VALUES ($idq,".PDO::lastInsertId.")");
         return static::getWithId($idq);
     }
 
@@ -44,7 +49,13 @@ Class Question extends Model
 
     public static function update($idquest, $intitule, $typeq, $temps_max)
     {
-        static::db()->exec("UPDATE QUESTION SET INTITULE='$intitule',TYPEQ='$typeq',TEMPS_MAXIMAL='$temps_max' WHERE ID_QUEST=$idquest");
+        $sth=static::db()->prepare("UPDATE QUESTION SET INTITULE=:intitule,TYPEQ=:typeq,TEMPS_MAXIMAL=:temps_max' WHERE ID_QUEST=:idquest");
+        $res = $sth->execute(array(
+            'intitule'=>$intitule,
+            'typeq'=>$typeq,
+            'temps_max'=>$temps_max,
+            'idquest'=>$idquest));
+
     }
 }
 

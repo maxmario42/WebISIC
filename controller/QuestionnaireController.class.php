@@ -53,7 +53,7 @@ class QuestionnaireController extends Controller
             //$regles = Regles_Questionnaire::create($temps,$revenir,$plus,$moins,$neutre);
             $questio = Questionnaire::create($idU,$titre,1,$description, $etat,$date_ouverture,$date_fermeture,$mode_acces,$lien_http);
             
-            if(!isset($questio)) 
+           if(!isset($questio)) 
             {
                 $view = new View($this, 'questionnaire/creerQuestionnaire');
                 $view->setArg('user',$this->request->getUserObject());
