@@ -68,8 +68,14 @@ class Questionnaire extends Model
 
     public static function update($IDQ, $titre, $description, $etat, $date_o, $date_f, $mode_acces)
     {
-        $sth=static::db()->prepare("UPDATE QUESTIONNAIRE SET titre='$titre',description='$description',etat='$etat',date_ouverture='$date_o',date_fermeture='$date_f',mode_acces='$mode_acces' WHERE IDQ=$IDQ");
-        
+        $sth=static::db()->prepare('UPDATE QUESTIONNAIRE SET titre=:titre,description=:description,etat=:etat,date_ouverture=:date_o,date_fermeture=:date_f,mode_acces=:mode_acces WHERE IDQ=:IDQ');
+        $sth->execute(array(
+            'titre' => $titre,
+            'description' => $description,
+            'etat' => $etat,
+            'date_o' => $date_o,
+            'date_f' => $date_f,
+        ));
         return static::getWithId($IDQ);
     }
 }
