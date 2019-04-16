@@ -33,7 +33,8 @@ class User extends Model
     public static function create($nom, $prenom, $mail, $matricule, $statut, $promo, $annee, $mdp, $login)
     {
         if (isset($matricule) && isset($statut)) {
-                $sth = static::db()->prepare('INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,matricule,statut,mail_enseignant,mdp,login) VALUES(:nom, :prenom, "Enseignant", :matricule,:statut, :mail,:mdp,:login)');
+                $sth = static::db()->prepare('INSERT INTO UTILISATEUR (nom,prenom,type_utilisateur,matricule,statut,mail_enseignant,mdp,login) 
+                VALUES(:nom, :prenom, "Enseignant", :matricule,:statut, :mail,:mdp,:login)');
                 $res = $sth->execute(array(
                     'nom' => $nom,
                     'prenom' => $prenom,

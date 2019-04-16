@@ -1,6 +1,6 @@
 <?php
 
-Class Question extends Model
+class Question extends Model
 {
 
     public static function getTableName()
@@ -25,13 +25,14 @@ Class Question extends Model
 
     public static function create($idq, $intitule, $typeq, $temps_max)
     {
-        $sth=static::db()->prepare("INSERT INTO QUESTION (INTITULE,TYPEQ,TEMPS_MAXIMAL) VALUES (:intitule,:typeq,:temps_max)");
+        $sth = static::db()->prepare("INSERT INTO QUESTION (INTITULE,TYPEQ,TEMPS_MAXIMAL) VALUES (:intitule,:typeq,:temps_max)");
         $res = $sth->execute(array(
-            'intitule'=>$intitule,
-            'typeq'=>$typeq,
-            'temps_max'=>$temps_max));
+            'intitule' => $intitule,
+            'typeq' => $typeq,
+            'temps_max' => $temps_max
+        ));
 
-        $sth1=static::db()->exec("INSERT INTO AJOUTER (IDQ,ID_QUEST) VALUES ($idq,".PDO::lastInsertId.")");
+        $sth1 = static::db()->exec("INSERT INTO AJOUTER (IDQ,ID_QUEST) VALUES ($idq," . PDO::lastInsertId . ")");
         return static::getWithId($idq);
     }
 
@@ -41,22 +42,20 @@ Class Question extends Model
         FROM QUESTIONNAIRE
         JOIN AJOUTER on AJOUTER.IDQ=QUESTIONNAIRE.IDQ
         JOIN QUESTION on AJOUTER.ID_QUEST=QUESTION.ID_QUEST
-        WHERE QUESTIONNAIRE.IDQ = ".$idq."");
-        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, Question);
-        $object = $st-> fetch();
+        WHERE QUESTIONNAIRE.IDQ = " . $idq . "");
+        $st->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Question);
+        $object = $st->fetch();
         return $object;
     }
 
     public static function update($idquest, $intitule, $typeq, $temps_max)
     {
-        $sth=static::db()->prepare("UPDATE QUESTION SET INTITULE=:intitule,TYPEQ=:typeq,TEMPS_MAXIMAL=:temps_max' WHERE ID_QUEST=:idquest");
+        $sth = static::db()->prepare("UPDATE QUESTION SET INTITULE=:intitule,TYPEQ=:typeq,TEMPS_MAXIMAL=:temps_max' WHERE ID_QUEST=:idquest");
         $res = $sth->execute(array(
-            'intitule'=>$intitule,
-            'typeq'=>$typeq,
-            'temps_max'=>$temps_max,
-            'idquest'=>$idquest));
-
+            'intitule' => $intitule,
+            'typeq' => $typeq,
+            'temps_max' => $temps_max,
+            'idquest' => $idquest
+        ));
     }
 }
-
-?>
