@@ -26,9 +26,9 @@ class DatabasePDO extends MyObject {
         static::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    public function lastInsertId()
+   /* public function lastInsertId()
     {
         return static::$pdo->lastInsertId();
-    }
+    }*/
 }
 ?>
