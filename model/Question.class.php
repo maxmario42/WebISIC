@@ -30,6 +30,18 @@ Class Question extends Model
         return static::getWithId($idq);
     }
 
+    public static function getQuestions($idq)
+    {
+        $st = static::db()->query("SELECT QUESTION.INTITULE QUESTION.ID_QUEST QUESTION.TYPEQ QUESTION.TEMPS_MAXIMAL
+        FROM QUESTIONNAIRE
+        JOIN AJOUTER on AJOUTER.IDQ=QUESTIONNAIRE.IDQ
+        JOIN QUESTION on AJOUTER.ID_QUEST=QUESTION.ID_QUEST
+        WHERE QUESTIONNAIRE.IDQ = ".$idq."");
+        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, Question);
+        $object = $st-> fetch();
+        return $object;
+    }
+
     public static function update($idquest, $intitule, $typeq, $temps_max)
     {
         static::db()->exec("UPDATE QUESTION SET INTITULE='$intitule',TYPEQ='$typeq',TEMPS_MAXIMAL='$temps_max' WHERE ID_QUEST=$idquest");

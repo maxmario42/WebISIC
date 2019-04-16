@@ -62,7 +62,7 @@ class QuestionController extends Controller
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
         $quiz=Questionnaire::getWithId($idq);
-        $questions= Question::getAllWithAnId($idq,Questionnaire::getIDColumn());
+        $questions= Question::getQuestions($idq);
         if(!isset($questions))
         {
             throw new Error("Problème d'accès aux questions", 500);
