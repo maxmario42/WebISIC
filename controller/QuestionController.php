@@ -23,7 +23,6 @@ class QuestionController extends Controller
         {
             $this->linkTo('Question'); //Redirection si on tente de forcer l'action
         }
-        $idU=(int)$this->request->getUserObject()->ID;
         $typeq=$this->request->read('typeq');
         $temps_max=$this->request->read('temps_max');
         $questio = Question::create($idq, $intitule, $typeq, $temps_max);
@@ -36,13 +35,13 @@ class QuestionController extends Controller
         } 
         else 
         {  
-            $this->linkTo('Question','showQuest');
+            $this->linkTo('Question','showQuestion',array('idquest'=>$questio->ID_QUEST));
         }
     }
 
     public function showQuestion()
     {
-        $idquest = $this->request->getParameter('idquest'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        $idquest = $this->request->getParameter('idquest'); //recupere le parametre en get de l'ID de la question de l'url.
         if(!isset($idquest))
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
@@ -62,16 +61,55 @@ class QuestionController extends Controller
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
         $quiz=Questionnaire::getWithId($idq);
-        $questions= Question::getQuestions($idq);
+        $questions=Question::getQuestions($idq);
         if(!isset($questions))
         {
             throw new Error("Problème d'accès aux questions", 500);
         }
-        $view = new View($this,'questionnaire/listQuestion');
+        $view = new View($this,'question/listQuestion');
         $view->setArg('user',$this->request->getUserObject());
         $view->setArg('questionnaire',$quiz);
         $view->setArg('question',$questions);
         $view->render();
+    }
+
+    public function edit()
+    {
+        $idquest = $this->request->getParameter('idquest');
+        if(!isset($idquest))
+        {
+            $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
+        }
+        $question=Question::getWithId($idquest);
+        $view = new View($this,'question/editQuestion');
+        $view->setArg('user',$this->request->getUserObject());
+        $view->setArg('question',$question);  
+        $view->render();
+    }
+
+    public function edition()
+    {   
+        $this->protection('Enseignant');
+        $intitule = $this->request->read('intitule');
+        $idquest = $this->request->getParameter('idquest'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        if(!isset($intitule))
+        {
+            $this->linkTo('Question','edit',array('idquest'=>$idquest)); //Redirection si on tente de forcer l'action
+        }
+        $typeq=$this->request->read('typeq');
+        $temps_max=$this->request->read('temps_max');
+        $questio = Question::update($idquest, $intitule, $typeq, $temps_max);
+        if(!isset($questio))
+        {
+            $view = new View($this, 'question/editQuestion');
+            $view->setArg('user',$this->request->getUserObject());
+            $view->setArg('inscErrorText', 'Cannot complete creation');
+            $view->render();
+        } 
+        else 
+        {  
+            $this->linkTo('Question','showQuestion',array('idquest'=>$questio->ID_QUEST));
+        }
     }
 }
 ?>
