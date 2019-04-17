@@ -13,8 +13,8 @@
                             <td><?php echo $question->INTITULE; ?></td>
                         </tr>
                         <tr>
-                            <th scope="row">Idq</th>
-                            <td><?php echo $question->IDQ; ?></td>
+                            <th scope="row">Id quest</th>
+                            <td><?php echo $question->ID_QUEST; ?></td>
                         </tr>
                         <tr>
                             <th scope="row">TypeQ</th>
@@ -26,7 +26,7 @@
                         </tr>
                         <tr>
                             <th scope="row">Tag</th>
-                            <td><?php echo $question->TAg; ?></td>
+                            <td><?php echo $question->TAG; ?></td>
                         </tr>
                         
                         <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaire->IDQ)); ?>';">

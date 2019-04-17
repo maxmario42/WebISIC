@@ -38,13 +38,13 @@ class Question extends Model
 
     public static function getQuestions($idq)
     {
-        $st = static::db()->query("SELECT QUESTION.INTITULE QUESTION.ID_QUEST QUESTION.TYPEQ QUESTION.TEMPS_MAXIMAL
+        $st = static::db()->query("SELECT QUESTION.INTITULE, QUESTION.ID_QUEST, QUESTION.TYPEQ, QUESTION.TEMPS_MAXIMAL
         FROM QUESTIONNAIRE
         JOIN AJOUTER on AJOUTER.IDQ=QUESTIONNAIRE.IDQ
         JOIN QUESTION on AJOUTER.ID_QUEST=QUESTION.ID_QUEST
         WHERE QUESTIONNAIRE.IDQ = $idq");
-        $st->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Question);
-        $object = $st->fetch();
+        $st->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Question');
+        $object = $st->fetchAll();
         return $object;
     }
 

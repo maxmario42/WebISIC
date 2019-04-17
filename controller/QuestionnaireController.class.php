@@ -70,7 +70,7 @@ class QuestionnaireController extends Controller
     }
     public function showQuiz(){
     //Affichage d'un questionnaire
-        $idq = $this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         if(!isset($idq))
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
@@ -100,7 +100,7 @@ class QuestionnaireController extends Controller
     //Appelle la vue pour mettre à jour les informations
     {
         $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
-        $idq = $this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         $quiz=Questionnaire::getWithId($idq);
         $regles=Regles_Questionnaire::getWithId($quiz->ID_REGLES_QUEST);
         if(!isset($idq)||!is_object($quiz))
@@ -118,7 +118,7 @@ class QuestionnaireController extends Controller
     //Permet de mettre à jour les informations d'un questionnaire.
     {
         $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
-        $idq = $this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         $quiz=Questionnaire::getWithId($idq);
         $titre = $this->request->read('titre');
         if(!isset($titre)||!is_object($quiz))

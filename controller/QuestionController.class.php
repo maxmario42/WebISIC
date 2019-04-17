@@ -41,7 +41,7 @@ class QuestionController extends Controller
 
     public function showQuestion()
     {
-        $idquest = $this->request->getParameter('idquest'); //recupere le parametre en get de l'ID de la question de l'url.
+        $idquest = (int)$this->request->getParameter('idquest'); //recupere le parametre en get de l'ID de la question de l'url.
         if(!isset($idquest))
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
@@ -55,7 +55,7 @@ class QuestionController extends Controller
 
     public function showListQuestion()
     {
-        $idq = $this->request->getParameter('idq');
+        $idq = (int)$this->request->getParameter('idq');
         if(!isset($idq))
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
@@ -75,7 +75,7 @@ class QuestionController extends Controller
 
     public function edit()
     {
-        $idquest = $this->request->getParameter('idquest');
+        $idquest = (int)$this->request->getParameter('idquest');
         if(!isset($idquest))
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
@@ -91,7 +91,7 @@ class QuestionController extends Controller
     {   
         $this->protection('Enseignant');
         $intitule = $this->request->read('intitule');
-        $idquest = $this->request->getParameter('idquest'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        $idquest = (int)$this->request->getParameter('idquest'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         if(!isset($intitule))
         {
             $this->linkTo('Question','edit',array('idquest'=>$idquest)); //Redirection si on tente de forcer l'action
