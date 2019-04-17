@@ -31,7 +31,7 @@ class Question extends Model
             'typeq' => $typeq,
             'temps_max' => $temps_max
         ));
-        $id = static::db()->lastInsertId;
+        $id = static::db()->lastInsertId();
         $sth1 = static::db()->exec("INSERT INTO AJOUTER (IDQ,ID_QUEST) VALUES ($idq,$id)");
         return static::getWithId($id);
     }
