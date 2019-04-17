@@ -55,7 +55,7 @@
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc date ouverture -->
                             <label for="inDate_Ouverture">Date Ouverture</label>
-                            <input type="date" class="form-control" name="date_ouverture" id="inDate_Ouverture" placeholder="aaaa/mm/jj">
+                            <input type="date" class="form-control" name="date_ouverture" id="inDate_Ouverture" placeholder="aaaa/mm/jj" value="<?php echo $quiz->DATE_OUVERTURE;?>">
                             <div class="valid-feedback">
                                 Saisir une date d'ouverture!
                             </div>
@@ -63,8 +63,8 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc date ferméture -->
-                            <label for="inDate_Fermeture">Date ferméture</label>
-                            <input type="date" class="form-control" name="date_fermeture" id="inDate_Fermeture" placeholder="aaaa/mm/jj">
+                            <label for="inDate_Fermeture">Date fermeture</label>
+                            <input type="date" class="form-control" name="date_fermeture" id="inDate_Fermeture" placeholder="aaaa/mm/jj" value="<?php echo $quiz->DATE_FERMETURE;?>">
                             <div class="valid-feedback">
                                 Saisir une date de ferméture!
                             </div>
@@ -80,7 +80,7 @@
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc durée -->
                             <label for="inTemps_total">Durée (en minute)</label>
-                            <input type="number" class="form-control" name="temps_total" id="inTemps_total" placeholder="MM" value="">
+                            <input type="number" class="form-control" name="temps_total" id="inTemps_total" placeholder="MM" value="<?php echo $regles->TEMPS_TOTALE;?>">
                             <div class="valid-feedback">
                                 Saisir une durée!
                             </div>
@@ -112,7 +112,7 @@
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc valeur du point -->
                             <!-- <label for="inMoins">Nombre de point *</label> -->
-                            <input type="number" class="form-control" name="moins" id="inMoins" value="0" placeholder="" required>
+                            <input type="number" class="form-control" name="moins" id="inMoins" value="<?php echo $regles->MOINS;?>" placeholder="" required>
                             <div class="valid-feedback">
                                 Saisir une valeur!
                             </div>
@@ -129,7 +129,7 @@
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc valeur du point -->
                             <!-- <label for="inPlus">Nombre de point *</label> -->
-                            <input type="number" class="form-control" name="plus" id="inPlus" value="1" placeholder="" required>
+                            <input type="number" class="form-control" name="plus" id="inPlus" value="<?php echo $regles->PLUS;?>" placeholder="" required>
                             <div class="valid-feedback">
                                 Saisir une valeur!
                             </div>

@@ -50,8 +50,9 @@ class QuestionnaireController extends Controller
             $moins=(int)$this->request->read('moins');
             $plus=(int)$this->request->read('plus');
             //$neutre=(int)$this->request->read('neutre');
-            //$regles = Regles_Questionnaire::create($temps,$revenir,$plus,$moins,$neutre);
-            $questio = Questionnaire::create($idU,$titre,1,$description, $etat,$date_ouverture,$date_fermeture,$mode_acces,$lien_http);
+            $neutre=0;
+            $regles = Regles_Questionnaire::create($temps,$revenir,$plus,$moins,$neutre);
+            $questio = Questionnaire::create($idU,$titre,$regles->ID_REGLES_QUEST,$description, $etat,$date_ouverture,$date_fermeture,$mode_acces,$lien_http);
             
            if(!isset($questio)) 
             {
@@ -101,6 +102,7 @@ class QuestionnaireController extends Controller
         $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
         $idq = $this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         $quiz=Questionnaire::getWithId($idq);
+        $regles=Regles_Questionnaire::getWithId($quiz->ID_REGLES_QUEST);
         if(!isset($idq)||!is_object($quiz))
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
@@ -108,6 +110,7 @@ class QuestionnaireController extends Controller
         $v = new View($this,'questionnaire/editQuestionnaire');
         $v->setArg('user',$this->request->getUserObject());
         $v->setArg('quiz',$quiz);
+        $v->setArg('regles',$regles);
         $v->render();
     }
 
@@ -143,7 +146,8 @@ class QuestionnaireController extends Controller
             $moins=(int)$this->request->read('moins');
             $plus=(int)$this->request->read('plus');
             //$neutre=(int)$this->request->read('neutre');
-            //$regles = Regles_Questionnaire::update($quiz->ID_REGLES_QUEST,$temps,$revenir,$plus,$moins,$neutre);
+            $neutre=0;
+            $regles = Regles_Questionnaire::update($quiz->ID_REGLES_QUEST,$temps,$revenir,$plus,$moins,$neutre);
             $questio = Questionnaire::update($idq,$titre, $description,$etat,$date_ouverture,$date_fermeture,$mode_acces);
             if(!isset($questio)) 
             {
@@ -160,4 +164,3 @@ class QuestionnaireController extends Controller
         }
     }
 }
-?>

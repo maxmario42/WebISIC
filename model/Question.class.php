@@ -31,9 +31,9 @@ class Question extends Model
             'typeq' => $typeq,
             'temps_max' => $temps_max
         ));
-
-        $sth1 = static::db()->exec("INSERT INTO AJOUTER (IDQ,ID_QUEST) VALUES ($idq," . PDO::lastInsertId . ")");
-        return static::getWithId($idq);
+        $id = static::db()->lastInsertId;
+        $sth1 = static::db()->exec("INSERT INTO AJOUTER (IDQ,ID_QUEST) VALUES ($idq,$id)");
+        return static::getWithId($id);
     }
 
     public static function getQuestions($idq)
@@ -42,7 +42,7 @@ class Question extends Model
         FROM QUESTIONNAIRE
         JOIN AJOUTER on AJOUTER.IDQ=QUESTIONNAIRE.IDQ
         JOIN QUESTION on AJOUTER.ID_QUEST=QUESTION.ID_QUEST
-        WHERE QUESTIONNAIRE.IDQ = " . $idq . "");
+        WHERE QUESTIONNAIRE.IDQ = $idq");
         $st->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Question);
         $object = $st->fetch();
         return $object;
@@ -57,5 +57,6 @@ class Question extends Model
             'temps_max' => $temps_max,
             'idquest' => $idquest
         ));
+        return static::getWithId($idquest);
     }
 }

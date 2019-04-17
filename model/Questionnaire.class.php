@@ -63,7 +63,7 @@ class Questionnaire extends Model
        // $id=static::db()->lastInsertId();// On arrive pas à le faire marcher
          //return static::db()->lastInsertId();
          
-             return static::getWithAnId($titre,'TITRE');
+        return static::getWithId(static::db()->lastInsertId());
     }
 
     public static function update($IDQ, $titre, $description, $etat, $date_o, $date_f, $mode_acces)
@@ -75,6 +75,7 @@ class Questionnaire extends Model
             'etat' => $etat,
             'date_o' => $date_o,
             'date_f' => $date_f,
+            'mode_acces' => $mode_acces,
         ));
         return static::getWithId($IDQ);
     }

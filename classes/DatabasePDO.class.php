@@ -11,8 +11,8 @@ class DatabasePDO extends MyObject {
         //Gestion de l'unique instance
         if(is_null(static::$pdo)) {
             static::$pdo = new static();
+            static::connect();
         }
-        static::connect();
         return static::$pdo;
         }
     public static function connect(){

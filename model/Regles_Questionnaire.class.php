@@ -28,7 +28,7 @@ class Regles_Questionnaire extends Model
     public static function create($temps, $revenir, $plus, $moins, $neutre)
     {
         static::db()->exec("INSERT INTO REGLES_QUESTIONNAIRE (TEMPS_TOTALE, REVENIR_ARRIERE, PLUS, MOINS, NEUTRE) VALUES ($temps,$revenir,$plus,$moins,$neutre)");
-        return static::getWithAnId($titre,'TITRE'); //A résoudre
+        return static::getWithId(static::db()->lastInsertId());
     }
 
     public static function update($IDRQ, $temps, $revenir, $plus, $moins, $neutre)
