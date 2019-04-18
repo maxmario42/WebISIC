@@ -16,24 +16,8 @@
                             <th scope="row">Description</th>
                             <td><?php echo $questionnaire->DESCRIPTION; ?></td>
                         </tr>
-                        <tr>
-                            <th scope="row">Etat</th>
-                            <td><?php echo $questionnaire->ETAT; ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Date Ouverture</th>
-                            <td><?php echo $questionnaire->DATE_OUVERTURE; ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Date Fermeture</th>
-                            <td><?php echo $questionnaire->DATE_FERMETURE; ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mode d'acces</th>
-                            <td><?php echo $questionnaire->MODE_ACCES; ?></td>
-                        </tr>
                         <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaire->IDQ)); ?>';">
-                            <span class="fa fa-search"></span>Détail
+                            <span class="fa fa-search"></span> Détail
                         </button>
                     </tbody>
                 </table>

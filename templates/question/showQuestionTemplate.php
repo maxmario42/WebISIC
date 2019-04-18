@@ -15,7 +15,6 @@
                     <th scope="row">TYPEQ</th>
                     <td><?php echo $question->TYPEQ; ?></td>
                 </tr>
-
                 <tr>
                     <th scope="row">TEMPS_MAX</th>
                     <td><?php echo $question->TEMPS_MAX; ?></td>

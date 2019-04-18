@@ -28,6 +28,10 @@ abstract class Model extends MyObject {
 
 	public function __get($prop) {
         //Permet de récupérer la valeur de la colonne $prop
+        if (!isset($this->props[$prop]))
+        {
+            return "";
+        }
 		return $this->props[$prop];
 	}
 	

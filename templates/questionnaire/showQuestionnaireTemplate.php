@@ -36,7 +36,7 @@
                     <span class="fa fa-pencil-square-o"></span> Edition
                 </button>
                 <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'showListQuestion', array('idq' => $quiz->IDQ)); ?>';">
-                    <span class="fa fa-search"></span>Questions
+                    <span class="fa fa-search"></span> Questions
                 </button>
             </tbody>
         </table>
