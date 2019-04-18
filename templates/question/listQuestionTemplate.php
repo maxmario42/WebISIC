@@ -13,10 +13,6 @@
                             <td><?php echo $question->INTITULE; ?></td>
                         </tr>
                         <tr>
-                            <th scope="row">Id quest</th>
-                            <td><?php echo $question->ID_QUEST; ?></td>
-                        </tr>
-                        <tr>
                             <th scope="row">TypeQ</th>
                             <td><?php echo $question->TYPEQ; ?></td>
                         </tr>
@@ -29,7 +25,7 @@
                             <td><?php echo $question->TAG; ?></td>
                         </tr>
                         
-                        <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaire->IDQ)); ?>';">
+                        <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'showQuestion', array('idquest' => $question->ID_QUEST)); ?>';">
                             <span class="fa fa-search"></span>Détail
                         </button>
                     </tbody>
