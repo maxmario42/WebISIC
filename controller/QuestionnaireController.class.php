@@ -77,7 +77,6 @@ class QuestionnaireController extends Controller
         }
         $quiz=Questionnaire::getWithId($idq);
         $regles=Regles_Questionnaire::getWithId($quiz->ID_REGLES_QUEST);
-        var_dump((int)$regles->REVENIR_ARRIERE != 1);
         $view = new View($this,'questionnaire/showQuestionnaire');
         $view->setArg('user',$this->request->getUserObject());
         $view->setArg('quiz',$quiz);
