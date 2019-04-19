@@ -33,6 +33,7 @@
                             <td><?php echo $questionnaire->MODE_ACCES; ?></td>
                         </tr>
                         <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaire->IDQ)); ?>';">
+                    
                             <span class="fa fa-search"></span>Détail
                         </button>
                     </tbody>
