@@ -32,37 +32,41 @@
                     <th scope="row">Mode d'acces</th>
                     <td><?php echo $quiz->MODE_ACCES; ?></td>
                 </tr>
+            </tbody>
+            <tbody>
                 <div class="text-center">
-                    <h2><span class="glyphicon glyphicon-list-alt"></span> Regles du quiz </h2>
-                </div>
-                <tr>
-                    <th scope="row">Durée</th>
-                    <td><?php echo $regles->TEMPS_TOTALE; ?></td>
-                </tr>
-                <tr>
-                    <th scope="row">Revenir en arrière?</th>
-                    <?php if ((int)$regles->REVENIR_ARRIERE != 1) : ?>
-                        <td>NON</td>
-                    <?php else : ?>
-                        <td>OUI</td>
-                    <?php endif ?>
-                </tr>
+                    <h2><span class="glyphicon glyphicon-list-alt"></span>
+                        Regles du quiz </h2>
+                        </div>
 
-                <tr>
-                    <th scope="row">Points pour question correct</th>
-                    <td><?php echo $regles->PLUS; ?></td>
-                </tr>
-                <tr>
-                    <th scope="row">Points de penalisation</th>
-                    <td><?php echo $regles->MOINS; ?></td>
-                </tr>
+                    <tr>
+                        <th scope="row">Durée</th>
+                        <td><?php echo $regles->TEMPS_TOTALE . " min"; ?></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Revenir en arrière?</th>
+                        <?php if ((int)$regles->REVENIR_ARRIERE != 1) : ?>
+                            <td>NON</td>
+                        <?php else : ?>
+                            <td>OUI</td>
+                        <?php endif ?>
+                    </tr>
 
-                <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'edit', array('idq' => $quiz->IDQ)); ?>';">
-                    <span class="fa fa-pencil-square-o"></span> Edition
-                </button>
-                <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'showListQuestion', array('idq' => $quiz->IDQ)); ?>';">
-                    <span class="fa fa-search"></span> Questions
-                </button>
+                    <tr>
+                        <th scope="row">Points pour question correct</th>
+                        <td><?php echo $regles->PLUS; ?></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Points de penalisation</th>
+                        <td><?php echo $regles->MOINS; ?></td>
+                    </tr>
+
+                    <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'edit', array('idq' => $quiz->IDQ)); ?>';">
+                        <span class="fa fa-pencil-square-o"></span> Edition
+                    </button>
+                    <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'showListQuestion', array('idq' => $quiz->IDQ)); ?>';">
+                        <span class="fa fa-search"></span> Questions
+                    </button>
             </tbody>
         </table>
     </div>

@@ -19,6 +19,7 @@ class QuestionController extends Controller
         $this->protection('Enseignant');
         $intitule = $this->request->read('intitule');
         $idq = $this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        var_dump($idq);
         if(!isset($intitule))
         {
             $this->linkTo('Question'); //Redirection si on tente de forcer l'action
