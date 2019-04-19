@@ -49,10 +49,10 @@ class Questionnaire extends Model
         $sth->bindParam(':lien_http',$lien_http,PDO::PARAM_STR);
         $sth->execute(); */
         
-        $sth->execute(array(
+       $res=$sth->execute(array(
             'id' => $id,
-            'titre' => $titre,
             'id_regles' => $id_regles,
+            'titre' => $titre,
             'description' => $description,
             'etat' => $etat,
             'date_o' => $date_o,
@@ -68,7 +68,7 @@ class Questionnaire extends Model
 
     public static function update($IDQ, $titre, $description, $etat, $date_o, $date_f, $mode_acces)
     {
-        $sth=static::db()->prepare('UPDATE QUESTIONNAIRE SET titre=:titre,description=:description,etat=:etat,date_ouverture=:date_o,date_fermeture=:date_f,mode_acces=:mode_acces WHERE IDQ=:IDQ');
+        $sth=static::db()->prepare("UPDATE QUESTIONNAIRE SET titre=:titre,description=:description,etat=:etat,date_ouverture=:date_o,date_fermeture=:date_f,mode_acces=:mode_acces WHERE IDQ=:IDQ");
         $sth->execute(array(
             'titre' => $titre,
             'description' => $description,
