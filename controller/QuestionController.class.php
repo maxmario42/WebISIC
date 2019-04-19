@@ -9,8 +9,15 @@ class QuestionController extends Controller
 
     public function defaultAction()
     {  
+        $idq = $this->request->getParameter('idq');
+        if(!isset($idq))
+        {
+            $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
+        }
+        $quiz=Questionnaire::getWithId($idq);
         $view = new View($this, 'question/creerQuestion');
         $view->setArg('user',$this->request->getUserObject());
+        $view->setArg('questionnaire',$quiz);
         $view->render();
     }
 
