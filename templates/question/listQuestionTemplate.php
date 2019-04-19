@@ -1,4 +1,4 @@
-<button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question','defaultAction', array('idq' => $questionnaire->IDQ)); ?>';">
+<button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'defaultAction', array('idq' => $questionnaire->IDQ)); ?>';">
     <span class="fa fa-plus-circle"></span> Créer une question
 </button>
 <?php foreach ($this->getArg('question') as $question) : ?>
@@ -28,8 +28,11 @@
                             <td><?php echo $question->TAG; ?></td>
                         </tr>
 
-                        <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'showQuestion', array('idquest' => $question->ID_QUEST)); ?>';">
+                        <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'showQuestion', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>';">
                             <span class="fa fa-search"></span> Détail
+                        </button>
+                        <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'deleteQuestion', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>';">
+                            <span class="fa fa-times"></span> Supprimer
                         </button>
                     </tbody>
                 </table>

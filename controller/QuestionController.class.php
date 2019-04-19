@@ -43,7 +43,7 @@ class QuestionController extends Controller
         } 
         else 
         {  
-            $this->linkTo('Question','showQuestion',array('idquest'=>$questio->ID_QUEST));
+            $this->linkTo('Question','showQuestion',array('idq'=>$idq,'idquest'=>$questio->ID_QUEST));
         }
     }
 
@@ -118,6 +118,19 @@ class QuestionController extends Controller
         {  
             $this->linkTo('Question','showQuestion',array('idquest'=>$questio->ID_QUEST));
         }
+    }
+
+    public function deleteQuestion()
+    {
+        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
+        $idq = (int)$this->request->getParameter('idq');
+        $idquest = (int)$this->request->getParameter('idquest');
+        if(!isset($idquest)||!isset($idq))
+        {
+            $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
+        }
+        Question::delete($idq,$idquest);
+        $this->linkTo('Question','showListQuestion',array('idq'=>$idq));
     }
 }
 ?>

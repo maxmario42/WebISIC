@@ -59,4 +59,10 @@ class Question extends Model
         ));
         return static::getWithId($idquest);
     }
+
+    public static function delete($IDQ, $IDQuest)
+    {
+        static::db()->exec("DELETE FROM AJOUTER WHERE IDQ=$IDQ AND ID_QUEST=$IDQuest");
+        static::deleteWithId($IDQuest);
+    }
 }

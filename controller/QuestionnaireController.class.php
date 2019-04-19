@@ -165,4 +165,17 @@ class QuestionnaireController extends Controller
             }                    
         }
     }
+    public function deleteQuest()
+    {
+        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
+        $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        if(!isset($idq))
+        {
+            $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
+        }
+        $idrq=Questionnaire::getAllWithId($idq)->ID_REGLES_QUEST;
+        Questionnaire::deleteWithId($idq);
+        Regles_Questionnaire::deleteWithId($idrq);
+        $this->linkTo('Questionnaire','showQuest');
+    }
 }
