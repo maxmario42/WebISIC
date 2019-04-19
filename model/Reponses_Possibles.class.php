@@ -39,8 +39,16 @@ Class Reponses_Possibles extends Model
 
     public static function update($idr,$idq,$enonce, $correct, $colonne)
     {
-        static::db()->exec("UPDATE REPONSES_POSSIBLES SET ID_QUEST=$idq, ENONCE='$enonce',CORRECT=$correct,COLONNE1OU2=$colonne WHERE ID_REPONSE=$idr");
+        $sth=static::db()->prepare("UPDATE REPONSES_POSSIBLES SET ID_QUEST=:idq, ENONCE=:enonce ,CORRECT=:correct,COLONNE1OU2=:colonne WHERE ID_REPONSE=:idr");
+        $sth->execute(array(
+            'idr' => $idr,
+            'idq'=>$idq,
+            'enonce'=>$enonce,
+            'correct'=>$correct,
+            'colonne'=>$colonne           
+        ));
     }
 }
+
 
 ?>

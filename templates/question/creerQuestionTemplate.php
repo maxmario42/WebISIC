@@ -24,15 +24,15 @@
                             </div>
                             <!-- fin bloc1-1  -->
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <!-- debut bloc1-2 -->
+                      <!--  <div class="col-md-6 mb-3">
+                            debut bloc1-2
                             <label for="idq">Idq *</label>
                             <input type="text" class="form-control" name="idq" id="idq" placeholder="Idq" value="" required>
                             <div class="valid-feedback">
                                 Saisir un idq!
                             </div>
-                            <!-- fin bloc1-2  -->
-                        </div>
+                             fin bloc1-2 
+                        </div>  -->
 
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc1-3 -->
