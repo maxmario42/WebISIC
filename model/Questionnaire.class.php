@@ -60,9 +60,6 @@ class Questionnaire extends Model
             'mode_access' => $mode_access,
             'lien_http' => $lien_http,
         ));
-       // $id=static::db()->lastInsertId();// On arrive pas à le faire marcher
-         //return static::db()->lastInsertId();
-         
         return static::getWithId(static::db()->lastInsertId());
     }
 

@@ -173,6 +173,11 @@ class QuestionnaireController extends Controller
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
+        $questions=Question::getQuestions($idq);
+        foreach ($questions as $question)
+        {
+            Question::delete($idq,$question->ID_QUEST);
+        }
         $idrq=Questionnaire::getAllWithId($idq)->ID_REGLES_QUEST;
         Questionnaire::deleteWithId($idq);
         Regles_Questionnaire::deleteWithId($idrq);
