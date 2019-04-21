@@ -39,13 +39,20 @@
                                           Mes Questionnaires</a>
                                   </li>
                                   <?php if (isset($questionnaire)) : ?>
-                                      <li><a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaire->IDQ)); ?>">Gestion du Questionnaire</a>
+                                      <li><a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaire->IDQ)); ?>"><?php echo $questionnaire->TITRE;?></a>
                                           <ul class="dropdown">
-                        
-                                            <li><a href="<?php echo $this->linkTo('Question', 'defaultAction', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-plus-circle"></span> Créer Question</a></li>
-                                              <li><a href="<?php echo $this->linkTo('Question', 'showListQuestion', array('idq' => $questionnaire->IDQ));?>"><span class="fa fa-search"></span> Voir les Questions</a></li>
-                                              <li><a href="<?php echo $this->linkTo('Questionnaire', 'edit', array('idq' => $questionnaire->IDQ));?>"><span class="fa fa-pencil-square-o"></span> Edition</a></li>
-                                              <li><a href="<?php echo $this->linkTo('Questionnaire', 'deleteQuest', array('idq' => $questionnaire->IDQ));?>"><span class="fa fa-times"></span> Supprimer</a></li>
+                                              <li><a href="<?php echo $this->linkTo('Question', 'defaultAction', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-plus-circle"></span> Créer Question</a></li>
+                                              <li><a href="<?php echo $this->linkTo('Question', 'showListQuestion', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-search"></span> Voir les Questions</a></li>
+                                              <li><a href="<?php echo $this->linkTo('Questionnaire', 'edit', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-pencil-square-o"></span> Edition</a></li>
+                                              <li><a href="<?php echo $this->linkTo('Questionnaire', 'deleteQuest', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-times"></span> Supprimer</a></li>
+                                          </ul>
+                                      </li>
+                                  <?php endif ?>
+                                  <?php if (isset($question)) : ?>
+                                      <li><a class="aMenu" href="<?php echo $this->linkTo('Question', 'showQuestion', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>"><?php echo $question->INTITULE;?></a>
+                                          <ul class="dropdown">
+                                              <li><a href="<?php echo $this->linkTo('Question', 'edit', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>"><span class="fa fa-pencil-square-o"></span> Edition</a></li>
+                                              <li><a href="<?php echo $this->linkTo('Question', 'deleteQuestion', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>"><span class="fa fa-times"></span> Supprimer</a></li>
                                           </ul>
                                       </li>
                                   <?php endif ?>
@@ -71,7 +78,7 @@
                               <li><a class="aMenu" href="<?php echo $this->linkTo(NULL, 'aPropos'); ?>">À propos</a></li>
                               <li><a class="aMenu" href="Quest.php">Questionnaire</a></li>
                               <!-- <li><a href="blog.html"></a></li>
-                                                        <li><a href="contact.html">Contact</a></li> -->
+                                                            <li><a href="contact.html">Contact</a></li> -->
                           <?php endif ?>
                       </ul>
 

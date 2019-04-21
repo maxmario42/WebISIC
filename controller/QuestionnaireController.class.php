@@ -6,13 +6,12 @@ class QuestionnaireController extends Controller
     public function __construct($request)
     {
         parent::__construct($request);
-        $this->protection(); //pour qu'une personne n'essai pas de forcer l'entree sur cette page.
+        $this->protection('Enseignant'); //pour qu'une personne n'essai pas de forcer l'entree sur cette page.
     }
 
     public function defaultAction()
     //Par défaut, vue de création de questionnaire
     {  
-        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
         $view = new View($this, 'questionnaire/creerQuestionnaire');
         $view->setArg('user',$this->request->getUserObject());
         $view->render();
@@ -21,7 +20,6 @@ class QuestionnaireController extends Controller
     public function newQuest()
     //Création d'un questionnaire
     {   
-        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
         $titre = $this->request->read('titre');
         if(!isset($titre))
         {
@@ -68,7 +66,8 @@ class QuestionnaireController extends Controller
           
         }
     }
-    public function showQuiz(){
+    public function showQuiz()
+    {
     //Affichage d'un questionnaire
         $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         if(!isset($idq))
@@ -84,9 +83,9 @@ class QuestionnaireController extends Controller
         $view->render();
     }
 
-    public function showQuest(){
+    public function showQuest()
+    {
     //Affichage des questionnaires d'un utilisateur
-        $this->protection('Enseignant');
         $questionnaires= Questionnaire::getAllWithAnId($this->request->getUserObject()->ID,User::getIDColumn());
         if(!isset($questionnaires))
         {
@@ -101,7 +100,6 @@ class QuestionnaireController extends Controller
     public function edit()
     //Appelle la vue pour mettre à jour les informations
     {
-        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
         $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         $questionnaire=Questionnaire::getWithId($idq);
         $regles=Regles_Questionnaire::getWithId($questionnaire->ID_REGLES_QUEST);
@@ -119,7 +117,6 @@ class QuestionnaireController extends Controller
     public function edition()
     //Permet de mettre à jour les informations d'un questionnaire.
     {
-        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
         $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         $questionnaire=Questionnaire::getWithId($idq);
         $titre = $this->request->read('titre');

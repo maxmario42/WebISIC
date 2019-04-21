@@ -1,4 +1,4 @@
-<?php if (empty($this->getArg('question'))) : ?>
+<?php if (empty($this->getArg('questions'))) : ?>
     <div main class="container" style="flex-grow:1;">
         <div class="row justify-content-center">
             <div class="col-lg-6 jumbotron py-3">
@@ -20,7 +20,7 @@
         </div>
     </div>
 <?php else : ?>
-    <?php foreach ($this->getArg('question') as $question) : ?>
+    <?php foreach ($this->getArg('questions') as $question) : ?>
         <div main class="container" style="flex-grow:1;">
             <div class="row justify-content-center">
                 <div class="col-lg-6 jumbotron py-3">
@@ -49,10 +49,10 @@
 
                             <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'showQuestion', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>';">
                                 <span class="fa fa-search"></span> Détail
-                            </button>
+                            </button><!--
                             <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'deleteQuestion', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>';">
                                 <span class="fa fa-times"></span> Supprimer
-                            </button>
+                            </button>-->
                         </tbody>
                     </table>
                 </div>
