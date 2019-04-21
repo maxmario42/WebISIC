@@ -24,7 +24,8 @@
                   <div class="classynav">
                       <ul>
                           <li><a class="aMenu" href="<?php echo $this->linkTo(NULL); ?>">Accueil</a></li>
-                          <?php if (isset($user)) : //Si on a un utilisateur connecté ?>
+                          <?php if (isset($user)) :
+                                ?>
                               <li><a class="aMenu" href="<?php echo $this->linkTo('User', 'aPropos'); ?>">À propos</a></li>
                               <?php if ($user->TYPE_UTILISATEUR == 'Enseignant') : ?>
                                   <li>
@@ -37,6 +38,17 @@
                                           <!-- aller vers la page creation questionnaire-->
                                           Mes Questionnaires</a>
                                   </li>
+                                  <?php if (isset($questionnaire)) : ?>
+                                      <li><a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaire->IDQ)); ?>">Gestion du Questionnaire</a>
+                                          <ul class="dropdown">
+                        
+                                            <li><a href="<?php echo $this->linkTo('Question', 'defaultAction', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-plus-circle"></span> Créer Question</a></li>
+                                              <li><a href="<?php echo $this->linkTo('Question', 'showListQuestion', array('idq' => $questionnaire->IDQ));?>"><span class="fa fa-search"></span> Voir les Questions</a></li>
+                                              <li><a href="<?php echo $this->linkTo('Questionnaire', 'edit', array('idq' => $questionnaire->IDQ));?>"><span class="fa fa-pencil-square-o"></span> Edition</a></li>
+                                              <li><a href="<?php echo $this->linkTo('Questionnaire', 'deleteQuest', array('idq' => $questionnaire->IDQ));?>"><span class="fa fa-times"></span> Supprimer</a></li>
+                                          </ul>
+                                      </li>
+                                  <?php endif ?>
 
                               <?php elseif ($user->TYPE_UTILISATEUR == 'Etudiant') : ?>
                                   <li class="nav-item text-center">
@@ -54,11 +66,12 @@
                                       ERROR
                                   </a>
                               <?php endif ?>
-                          <?php else : //C'est un visiteur anonyme?>
+                          <?php else :
+                            ?>
                               <li><a class="aMenu" href="<?php echo $this->linkTo(NULL, 'aPropos'); ?>">À propos</a></li>
                               <li><a class="aMenu" href="Quest.php">Questionnaire</a></li>
                               <!-- <li><a href="blog.html"></a></li>
-                                                <li><a href="contact.html">Contact</a></li> -->
+                                                        <li><a href="contact.html">Contact</a></li> -->
                           <?php endif ?>
                       </ul>
 

@@ -1,6 +1,6 @@
-<button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'defaultAction', array('idq' => $questionnaire->IDQ)); ?>';">
+<!--<button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'defaultAction', array('idq' => $questionnaire->IDQ)); ?>';">
     <span class="fa fa-plus-circle"></span> Créer une question
-</button>
+</button>-->
 <?php foreach ($this->getArg('question') as $question) : ?>
     <div main class="container" style="flex-grow:1;">
         <div class="row justify-content-center">

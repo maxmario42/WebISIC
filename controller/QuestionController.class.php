@@ -14,10 +14,10 @@ class QuestionController extends Controller
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
-        $quiz=Questionnaire::getWithId($idq);
+        $questionnaire=Questionnaire::getWithId($idq);
         $view = new View($this, 'question/creerQuestion');
         $view->setArg('user',$this->request->getUserObject());
-        $view->setArg('questionnaire',$quiz);
+        $view->setArg('questionnaire',$questionnaire);
         $view->render();
     }
 
@@ -36,8 +36,10 @@ class QuestionController extends Controller
         $questio = Question::create($idq, $intitule, $typeq, $temps_max);
         if(!isset($questio))
         {
+            $questionnaire=Questionnaire::getWithId($idq);
             $view = new View($this, 'question/creerQuestion');
             $view->setArg('user',$this->request->getUserObject());
+            $view->setArg('questionnaire',$questionnaire);
             $view->setArg('inscErrorText', 'Cannot complete creation');
             $view->render();
         } 
@@ -49,14 +51,17 @@ class QuestionController extends Controller
 
     public function showQuestion()
     {
+        $idq = (int)$this->request->getParameter('idq');
         $idquest = (int)$this->request->getParameter('idquest'); //recupere le parametre en get de l'ID de la question de l'url.
         if(!isset($idquest))
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
         $question=Question::getWithId($idquest);
+        $questionnaire=Questionnaire::getWithId($idq);
         $view = new View($this,'question/showQuestion');
         $view->setArg('user',$this->request->getUserObject());
+        $view->setArg('questionnaire',$questionnaire);
         $view->setArg('question',$question);  
         $view->render();
     }
@@ -68,7 +73,7 @@ class QuestionController extends Controller
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
-        $quiz=Questionnaire::getWithId($idq);
+        $questionnaire=Questionnaire::getWithId($idq);
         $questions=Question::getQuestions($idq);
         if(!isset($questions))
         {
@@ -76,21 +81,24 @@ class QuestionController extends Controller
         }
         $view = new View($this,'question/listQuestion');
         $view->setArg('user',$this->request->getUserObject());
-        $view->setArg('questionnaire',$quiz);
+        $view->setArg('questionnaire',$questionnaire);
         $view->setArg('question',$questions);
         $view->render();
     }
 
     public function edit()
     {
+        $idq = (int)$this->request->getParameter('idq');
         $idquest = (int)$this->request->getParameter('idquest');
         if(!isset($idquest))
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
+        $questionnaire=Questionnaire::getWithId($idq);
         $question=Question::getWithId($idquest);
         $view = new View($this,'question/editQuestion');
         $view->setArg('user',$this->request->getUserObject());
+        $view->setArg('questionnaire',$questionnaire);
         $view->setArg('question',$question);  
         $view->render();
     }
@@ -99,6 +107,7 @@ class QuestionController extends Controller
     {   
         $this->protection('Enseignant');
         $intitule = $this->request->read('intitule');
+        $idq = (int)$this->request->getParameter('idq');
         $idquest = (int)$this->request->getParameter('idquest'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         if(!isset($intitule))
         {
@@ -109,8 +118,12 @@ class QuestionController extends Controller
         $questio = Question::update($idquest, $intitule, $typeq, $temps_max);
         if(!isset($questio))
         {
+            $questionnaire=Questionnaire::getWithId($idq);
+            $question=Question::getWithId($idquest);
             $view = new View($this, 'question/editQuestion');
             $view->setArg('user',$this->request->getUserObject());
+            $view->setArg('questionnaire',$questionnaire);
+            $view->setArg('question',$question);  
             $view->setArg('inscErrorText', 'Cannot complete creation');
             $view->render();
         } 
@@ -133,4 +146,3 @@ class QuestionController extends Controller
         $this->linkTo('Question','showListQuestion',array('idq'=>$idq));
     }
 }
-?>
