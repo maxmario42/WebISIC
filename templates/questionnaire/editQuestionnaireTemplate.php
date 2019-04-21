@@ -9,7 +9,7 @@
             echo '<span class="error">' . $questErrorText . '</span>';
         ?>
 
-        <form action="<?php echo $this->linkTo('Questionnaire', 'edition', array('idq' => $quiz->IDQ)); ?>" method="post" class="needs-validation">
+        <form action="<?php echo $this->linkTo('Questionnaire', 'edition', array('idq' => $questionnaire->IDQ)); ?>" method="post" class="needs-validation">
             <div class="form-row">
                 <div class="col-md-6 mb-3">
                     <!-- debut bloc1 -->
@@ -18,7 +18,7 @@
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc1-1 -->
                             <label for="inTitre">Titre *</label>
-                            <input type="text" class="form-control" name="titre" id="inTitre" placeholder="Titre " value="<?php echo $quiz->TITRE;?>" required>
+                            <input type="text" class="form-control" name="titre" id="inTitre" placeholder="Titre " value="<?php echo $questionnaire->TITRE;?>" required>
                             <div class="valid-feedback">
                                 Saisir un titre!
                             </div>
@@ -43,7 +43,7 @@
                         <div class="col-md-12 mb-3">
                             <!-- debut bloc description -->
                             <label for="inDescription">Description</label>
-                            <textarea class="form-control" name="description" id="inDescription" placeholder="Description" value="<?php echo $quiz->DESCRIPTION;?>"></textarea>
+                            <textarea class="form-control" name="description" id="inDescription" placeholder="Description" value="<?php echo $questionnaire->DESCRIPTION;?>"></textarea>
                             <div class="valid-feedback">
                                 Saisir une description!
                             </div>
@@ -55,7 +55,7 @@
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc date ouverture -->
                             <label for="inDate_Ouverture">Date Ouverture</label>
-                            <input type="date" class="form-control" name="date_ouverture" id="inDate_Ouverture" placeholder="aaaa/mm/jj" value="<?php echo $quiz->DATE_OUVERTURE;?>">
+                            <input type="date" class="form-control" name="date_ouverture" id="inDate_Ouverture" placeholder="aaaa/mm/jj" value="<?php echo $questionnaire->DATE_OUVERTURE;?>">
                             <div class="valid-feedback">
                                 Saisir une date d'ouverture!
                             </div>
@@ -64,7 +64,7 @@
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc date ferméture -->
                             <label for="inDate_Fermeture">Date fermeture</label>
-                            <input type="date" class="form-control" name="date_fermeture" id="inDate_Fermeture" placeholder="aaaa/mm/jj" value="<?php echo $quiz->DATE_FERMETURE;?>">
+                            <input type="date" class="form-control" name="date_fermeture" id="inDate_Fermeture" placeholder="aaaa/mm/jj" value="<?php echo $questionnaire->DATE_FERMETURE;?>">
                             <div class="valid-feedback">
                                 Saisir une date de ferméture!
                             </div>

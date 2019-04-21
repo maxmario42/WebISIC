@@ -70,15 +70,17 @@ class QuestionnaireController extends Controller
     }
     public function showQuiz(){
     //Affichage d'un questionnaire
-        $idq = $this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         if(!isset($idq))
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
-        $quiz=Questionnaire::getWithId($idq);
+        $questionnaire=Questionnaire::getWithId($idq);
+        $regles=Regles_Questionnaire::getWithId($questionnaire->ID_REGLES_QUEST);
         $view = new View($this,'questionnaire/showQuestionnaire');
         $view->setArg('user',$this->request->getUserObject());
-        $view->setArg('quiz',$quiz);  
+        $view->setArg('questionnaire',$questionnaire);
+        $view->setArg('regles',$regles);  
         $view->render();
     }
 
@@ -92,7 +94,7 @@ class QuestionnaireController extends Controller
         }
         $view = new View($this,'questionnaire/listQuestionnaire');
         $view->setArg('user',$this->request->getUserObject());
-        $view->setArg('questionnaire',$questionnaires);
+        $view->setArg('questionnaires',$questionnaires);
         $view->render();
     } 
 
@@ -100,16 +102,16 @@ class QuestionnaireController extends Controller
     //Appelle la vue pour mettre à jour les informations
     {
         $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
-        $idq = $this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
-        $quiz=Questionnaire::getWithId($idq);
-        $regles=Regles_Questionnaire::getWithId($quiz->ID_REGLES_QUEST);
-        if(!isset($idq)||!is_object($quiz))
+        $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        $questionnaire=Questionnaire::getWithId($idq);
+        $regles=Regles_Questionnaire::getWithId($questionnaire->ID_REGLES_QUEST);
+        if(!isset($idq)||!is_object($questionnaire))
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
         $v = new View($this,'questionnaire/editQuestionnaire');
         $v->setArg('user',$this->request->getUserObject());
-        $v->setArg('quiz',$quiz);
+        $v->setArg('questionnaire',$questionnaire);
         $v->setArg('regles',$regles);
         $v->render();
     }
@@ -118,18 +120,18 @@ class QuestionnaireController extends Controller
     //Permet de mettre à jour les informations d'un questionnaire.
     {
         $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
-        $idq = $this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
-        $quiz=Questionnaire::getWithId($idq);
+        $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        $questionnaire=Questionnaire::getWithId($idq);
         $titre = $this->request->read('titre');
-        if(!isset($titre)||!is_object($quiz))
+        if(!isset($titre)||!is_object($questionnaire))
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
-        if(Questionnaire::isUsed($titre,'TITRE')&&$quiz->TITRE!=$titre) 
+        if(Questionnaire::isUsed($titre,'TITRE')&&$questionnaire->TITRE!=$titre) 
         {
             $view = new View($this,'questionnaire/editQuestionnaire');
             $view->setArg('user',$this->request->getUserObject());
-            $view->setArg('quiz',$quiz);
+            $view->setArg('questionnaire',$questionnaire);
             $view->setArg('inscErrorText','This title is already used');
             $view->render();
             echo("<script>alert('Vous avez un questionnaire avec le même titre...');</script>");  
@@ -147,20 +149,38 @@ class QuestionnaireController extends Controller
             $plus=(int)$this->request->read('plus');
             //$neutre=(int)$this->request->read('neutre');
             $neutre=0;
-            $regles = Regles_Questionnaire::update($quiz->ID_REGLES_QUEST,$temps,$revenir,$plus,$moins,$neutre);
+            $regles = Regles_Questionnaire::update($questionnaire->ID_REGLES_QUEST,$temps,$revenir,$plus,$moins,$neutre);
             $questio = Questionnaire::update($idq,$titre, $description,$etat,$date_ouverture,$date_fermeture,$mode_acces);
             if(!isset($questio)) 
             {
                 $view = new View($this,'questionnaire/editQuestionnaire');
                 $view->setArg('user',$this->request->getUserObject());
-                $view->setArg('quiz',$quiz);
+                $view->setArg('questionnaire',$questionnaire);
                 $view->setArg('inscErrorText', 'Cannot complete Edition');
                 $view->render();
             } 
             else 
             {
-                $this->linkTo('Questionnaire','showQuiz',array('idq' => $quiz->IDQ)); //Modification réussie
+                $this->linkTo('Questionnaire','showQuiz',array('idq' => $questionnaire->IDQ)); //Modification réussie
             }                    
         }
+    }
+    public function deleteQuest()
+    {
+        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
+        $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        if(!isset($idq))
+        {
+            $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
+        }
+        $questions=Question::getQuestions($idq);
+        foreach ($questions as $question)
+        {
+            Question::delete($idq,$question->ID_QUEST);
+        }
+        $idrq=Questionnaire::getAllWithId($idq)->ID_REGLES_QUEST;
+        Questionnaire::deleteWithId($idq);
+        Regles_Questionnaire::deleteWithId($idrq);
+        $this->linkTo('Questionnaire','showQuest');
     }
 }

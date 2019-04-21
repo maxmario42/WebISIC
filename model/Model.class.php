@@ -28,6 +28,10 @@ abstract class Model extends MyObject {
 
 	public function __get($prop) {
         //Permet de récupérer la valeur de la colonne $prop
+        if (!isset($this->props[$prop]))
+        {
+            return "";
+        }
 		return $this->props[$prop];
 	}
 	
@@ -57,18 +61,28 @@ abstract class Model extends MyObject {
 
     public static function getAllWithAnId($ID,$IDField){
         //Retourne un ensemble d'objet en fonction d'une ID on peut choisir l'ID voulue avec le deuxième argument
-        $st = static::db()->query("SELECT  * from ".static::getTableName()." WHERE ".$IDField." ='$ID'");
+        $st = static::db()->query("SELECT  * FROM ".static::getTableName()." WHERE ".$IDField." ='$ID'");
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, get_called_class());
         $objects = $st->fetchAll(); //PDO::FETCH_ASSOCs
-        
         return $objects;
     }
     
     public static function isUsed($value,$field){
-        $st = static::db()->query("select ".$field." from ".static::getTableName()." where ".$field."='$value'");   
+        $st = static::db()->query("SELECT ".$field." FROM ".static::getTableName()." WHERE ".$field."='$value'");   
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, get_called_class());
         $object = $st-> fetch();
         return $object!=null;
+    }
+
+    public static function deleteWithId($ID){
+        //Supprime un objet en fonction d'une ID
+        static::deleteWithAnId($ID,static::getIDColumn());
+    }
+
+    public static function deleteWithAnId($ID, $IDField){
+        //Supprime un objet en fonction d'une ID, on peut choisir l'ID voulue avec le deuxième argument
+        $st = static::db()->prepare("DELETE FROM ".static::getTableName()." WHERE ".$IDField." = ?");
+        $st->execute([$ID]);
     }
 }
 ?>
