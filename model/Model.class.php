@@ -66,6 +66,13 @@ abstract class Model extends MyObject {
         $objects = $st->fetchAll(); //PDO::FETCH_ASSOCs
         return $objects;
     }
+    public static function getAll(){
+        //Retourne un ensemble d'objet en fonction d'une ID on peut choisir l'ID voulue avec le deuxième argument
+        $st = static::db()->query("SELECT  * FROM ".static::getTableName());
+        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, get_called_class());
+        $objects = $st->fetchAll(); //PDO::FETCH_ASSOCs
+        return $objects;
+    }
     
     public static function isUsed($value,$field){
         $st = static::db()->query("SELECT ".$field." FROM ".static::getTableName()." WHERE ".$field."='$value'");   

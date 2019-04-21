@@ -35,11 +35,11 @@
                                   </li>
                                   <li>
                                       <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'showQuest'); ?>">
-                                          <!-- aller vers la page creation questionnaire-->
+                                          <!-- aller vers la page questionnaire-->
                                           Mes Questionnaires</a>
                                   </li>
                                   <?php if (isset($questionnaire)) : ?>
-                                      <li><a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaire->IDQ)); ?>"><?php echo $questionnaire->TITRE;?></a>
+                                      <li><a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaire->IDQ)); ?>"><?php echo $questionnaire->TITRE; ?></a>
                                           <ul class="dropdown">
                                               <li><a href="<?php echo $this->linkTo('Question', 'defaultAction', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-plus-circle"></span> Créer Question</a></li>
                                               <li><a href="<?php echo $this->linkTo('Question', 'showListQuestion', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-search"></span> Voir les Questions</a></li>
@@ -49,7 +49,7 @@
                                       </li>
                                   <?php endif ?>
                                   <?php if (isset($question)) : ?>
-                                      <li><a class="aMenu" href="<?php echo $this->linkTo('Question', 'showQuestion', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>"><?php echo $question->INTITULE;?></a>
+                                      <li><a class="aMenu" href="<?php echo $this->linkTo('Question', 'showQuestion', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>"><?php echo $question->INTITULE; ?></a>
                                           <ul class="dropdown">
                                               <li><a href="<?php echo $this->linkTo('Question', 'edit', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>"><span class="fa fa-pencil-square-o"></span> Edition</a></li>
                                               <li><a href="<?php echo $this->linkTo('Question', 'deleteQuestion', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>"><span class="fa fa-times"></span> Supprimer</a></li>
@@ -59,13 +59,13 @@
 
                               <?php elseif ($user->TYPE_UTILISATEUR == 'Etudiant') : ?>
                                   <li class="nav-item text-center">
-                                      <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'etuQuiz'); ?>">
-                                          Mes Questionnaires
+                                      <a class="aMenu" href="<?php echo $this->linkTo('Participer'); ?>">
+                                          Questionnaires
                                       </a>
                                   </li>
                                   <li>
-                                      <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'etuResultats'); ?>">
-                                          Resultats
+                                      <a class="aMenu" href="<?php echo $this->linkTo('Participer', 'Resultats'); ?>">
+                                          Mes Résultats
                                       </a>
                                   </li>
                               <?php else : ?>
@@ -78,7 +78,7 @@
                               <li><a class="aMenu" href="<?php echo $this->linkTo(NULL, 'aPropos'); ?>">À propos</a></li>
                               <li><a class="aMenu" href="Quest.php">Questionnaire</a></li>
                               <!-- <li><a href="blog.html"></a></li>
-                                                            <li><a href="contact.html">Contact</a></li> -->
+                                                                <li><a href="contact.html">Contact</a></li> -->
                           <?php endif ?>
                       </ul>
 

@@ -1,4 +1,4 @@
-<?php if (empty($questionnaires)) : ?>
+<?php if (empty($this->getArg('questionnaires'))) : ?>
     <div main class="container" style="flex-grow:1;">
         <div class="row justify-content-center">
             <div class="col-lg-6 jumbotron py-3">
@@ -9,18 +9,15 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th scope="row">Il faut créer un questionnaire !</th>
-                            <td>Pour cela, cliquez sur le bouton</td>
-                            <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire'); ?>';">
-                                <span class="fa fa-plus-circle"></span> Créer un questionnaire
-                            </button>
+                            <th scope="row">Patience</th>
+                            <td>Vous pourrez bientôt répondre à des questionnaires</td>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 <?php else : ?>
-<!-- ##### Popular Course Area Start ##### -->
+    <!-- ##### Popular Course Area Start ##### -->
     <section class="popular-courses-area section-padding-100">
         <div class="container">
             <div class="row">
@@ -32,7 +29,7 @@
                             <div class="course-content">
                                 <h4><?php echo $questionnaire->TITRE; ?></h4>
                                 <div class="meta d-flex align-items-center">
-                                    <a href="#"><?php echo User::getWithId($questionnaire->ID)->PRENOM;?> <?php echo User::getWithId($questionnaire->ID)->NOM;?></a>
+                                    <a href="#"><?php echo User::getWithId($questionnaire->ID)->PRENOM; ?> <?php echo User::getWithId($questionnaire->ID)->NOM; ?></a>
                                 </div>
                                 <p><?php echo $questionnaire->DESCRIPTION; ?></p>
                             </div>
@@ -47,7 +44,7 @@
                                     </div>
                                 </div>
                                 <div class="course-fee h-100">
-                                    <a href="<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaire->IDQ)); ?>" class="free">Détails</a>
+                                    <a href="<?php echo $this->linkTo('Participer', 'participer', array('idq' => $questionnaire->IDQ)); ?>" class="free">Participer</a>
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-<?php if (empty($this->getArg('questions'))) : ?>
+<?php if (empty($questions)) : ?>
     <div main class="container" style="flex-grow:1;">
         <div class="row justify-content-center">
             <div class="col-lg-6 jumbotron py-3">
@@ -20,7 +20,7 @@
         </div>
     </div>
 <?php else : ?>
-    <?php foreach ($this->getArg('questions') as $question) : ?>
+    <?php foreach ($questions as $question) : ?>
         <div main class="container" style="flex-grow:1;">
             <div class="row justify-content-center">
                 <div class="col-lg-6 jumbotron py-3">
