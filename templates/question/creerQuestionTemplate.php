@@ -13,7 +13,7 @@
             <div class="form-row">
                 <div class="col-md-6 mb-3">
                     <!-- debut bloc1 -->
-                    <div class="p-1"><strong class="mr-auto">Paramètre1</strong></div>
+                    <div class="p-1"><strong class="mr-auto">Paramètre</strong></div>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc1-1 -->
@@ -24,16 +24,6 @@
                             </div>
                             <!-- fin bloc1-1  -->
                         </div>
-                      <!--  <div class="col-md-6 mb-3">
-                            debut bloc1-2
-                            <label for="idq">Idq *</label>
-                            <input type="text" class="form-control" name="idq" id="idq" placeholder="Idq" value="" required>
-                            <div class="valid-feedback">
-                                Saisir un idq!
-                            </div>
-                             fin bloc1-2 
-                        </div>  -->
-
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc1-3 -->
                             <label for="typeq">TypeQ</label>
@@ -48,7 +38,10 @@
                             <!-- fin bloc1-3  -->
                         </div>
                     </div>
-
+                    <!-- fin bloc1 -->
+                </div>
+                <div class="col-md-6 mb-3">
+                    <!-- debut bloc2 -->
                     <div class="p-1"><strong class="mr-auto">Règles</strong></div>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
@@ -60,18 +53,27 @@
                             </div>
                             <!-- fin bloc durée  -->
                         </div>
-                        </div>
+                        
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc1-4 -->
-                            <label for="tag">Tag *</label>
+                            <label for="tag">Tag </label>
                             <input type="text" class="form-control" name="tag" id="tag" placeholder="tag">
-                        
-                                Saisir un idq!
+                            <div class="valid-feedback">
+                                Saisir un tag!
                             </div>
                             <!-- fin bloc1-4  -->
                         </div>
-
-            <button type="submit" class="btn btn-warning text-dark">Creer ma Question </button>
+                    </div>
+                    <!-- fin bloc2 -->
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 mb-3 text-center">
+                
+                <button type="submit" class="btn btn-warning text-dark">Creer ma Question </button>
+                
+             </div>
+            </div>
         </form>
 
     </div>

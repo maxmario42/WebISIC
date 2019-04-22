@@ -32,17 +32,11 @@
                     <th scope="row">Mode d'acces</th>
                     <td><?php echo $questionnaire->MODE_ACCES; ?></td>
                 </tr>
-<<<<<<< HEAD
-                <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'edit', array('idq' => $quiz->IDQ)); ?>';">
-                <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'edit', array('idq' => $quiz->IDQ)); ?>';">
-                    
-=======
                 <!--
                 <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'showListQuestion', array('idq' => $questionnaire->IDQ)); ?>';">
                     <span class="fa fa-search"></span> Questions
                 </button>
                 <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'edit', array('idq' => $questionnaire->IDQ)); ?>';">
->>>>>>> b456a991218c82f494dde42db076642471517d20
                     <span class="fa fa-pencil-square-o"></span> Edition
                 </button>
                 <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'deleteQuest', array('idq' => $questionnaire->IDQ)); ?>';">

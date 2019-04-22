@@ -1,8 +1,4 @@
-<<<<<<< HEAD
- <?php if (empty($this->getArg('questionnaires'))) : ?>
-=======
 <?php if (empty($questionnaires)) : ?>
->>>>>>> 79df5e18019bd46f6e88fcedd4408e22e0ccb71e
     <div main class="container" style="flex-grow:1;">
         <div class="row justify-content-center">
             <div class="col-lg-6 jumbotron py-3">
@@ -24,7 +20,7 @@
         </div>
     </div>
 <?php else : ?>
-<<<<<<< HEAD
+
 <?php foreach ($this->getArg('questionnaires') as $questionnaires) : ?>
     <div main class="container" style="flex-grow:1;">
         <div class="row justify-content-center">
@@ -43,18 +39,26 @@
                             <th scope="row">Description</th>
                             <td><?php echo $questionnaires->DESCRIPTION; ?></td>
                         </tr>
-<<<<<<< HEAD
-                        <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaire->IDQ)); ?>';">
-                    
-                            <span class="fa fa-search"></span>Détail
-=======
+
+                        <?php if (isset($questionnaires)) : ?>
+                                      
+                                      <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaires->IDQ)); ?>"><?php echo $questionnaires->TITRE; ?></a>
+                                          <ul class="dropdown">
+                                              <li><a href="<?php echo $this->linkTo('Question', 'defaultAction', array('idq' => $questionnaires->IDQ)); ?>"><span class="fa fa-plus-circle"></span> Créer Question</a></li>
+                                              <li><a href="<?php echo $this->linkTo('Question', 'showListQuestion', array('idq' => $questionnaires->IDQ)); ?>"><span class="fa fa-search"></span> Voir les Questions</a></li>
+                                              <li><a href="<?php echo $this->linkTo('Questionnaire', 'edit', array('idq' => $questionnaires->IDQ)); ?>"><span class="fa fa-pencil-square-o"></span> Edition</a></li>
+                                              <li><a href="<?php echo $this->linkTo('Questionnaire', 'deleteQuest', array('idq' => $questionnaires->IDQ)); ?>"><span class="fa fa-times"></span> Supprimer</a></li>
+                                          </ul>
+                                      
+                                      
+                        <?php endif ?>
+
                         <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaires->IDQ)); ?>';">
-                            <span class="fa fa-search"></span> Détail
->>>>>>> b456a991218c82f494dde42db076642471517d20
+                            <span class="fa fa-search"></span>Détail
                         </button>
                     </tbody>
                 </table>
-=======
+
 <!-- ##### Popular Course Area Start ##### -->
     <section class="popular-courses-area section-padding-100">
         <div class="container">
@@ -85,9 +89,10 @@
                         </div>
                     </div>
                 <?php endforeach ?>
->>>>>>> 79df5e18019bd46f6e88fcedd4408e22e0ccb71e
+
             </div>
         </div>
     </section>
+<?php endforeach ?>
 <?php endif ?>
 <!-- ##### Popular Course Area End ##### -->
