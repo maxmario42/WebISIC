@@ -1,8 +1,4 @@
-<<<<<<< HEAD
  <?php if (empty($this->getArg('questionnaires'))) : ?>
-=======
-<?php if (empty($questionnaires)) : ?>
->>>>>>> 79df5e18019bd46f6e88fcedd4408e22e0ccb71e
     <div main class="container" style="flex-grow:1;">
         <div class="row justify-content-center">
             <div class="col-lg-6 jumbotron py-3">
