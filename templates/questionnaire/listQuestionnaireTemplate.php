@@ -42,9 +42,6 @@
                                     <div class="seat">
                                         <i class="fa fa-user" aria-hidden="true"></i> 10
                                     </div>
-                                    <div class="rating">
-                                        <i class="fa fa-star" aria-hidden="true"></i> 4.5
-                                    </div>
                                 </div>
                                 <div class="course-fee h-100">
                                     <a href="<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaire->IDQ)); ?>" class="free">Détails</a>
