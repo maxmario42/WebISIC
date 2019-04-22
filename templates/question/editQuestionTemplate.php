@@ -70,7 +70,7 @@
             <div class="form-row">
                 <div class="col-md-12 mb-3 text-center">
                 
-                <button type="submit" class="btn btn-warning text-dark">Creer ma Question </button>
+                <button type="submit" class="btn btn-warning text-dark">Modifier ma Question </button>
                 
              </div>
             </div>
