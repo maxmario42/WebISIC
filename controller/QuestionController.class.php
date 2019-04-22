@@ -4,7 +4,7 @@ class QuestionController extends Controller
     public function __construct($request)
     {
         parent::__construct($request);
-        $this->protection(); //pour qu'une personne n'essai pas de forcer l'entree sur cette page.
+        $this->protection('Enseignant'); //pour qu'une personne n'essai pas de forcer l'entree sur cette page.
     }
 
     public function defaultAction()
@@ -23,7 +23,6 @@ class QuestionController extends Controller
 
     public function newQuest()
     {   
-        $this->protection('Enseignant');
         $intitule = $this->request->read('intitule');
         $idq = $this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         var_dump($idq);
@@ -82,7 +81,7 @@ class QuestionController extends Controller
         $view = new View($this,'question/listQuestion');
         $view->setArg('user',$this->request->getUserObject());
         $view->setArg('questionnaire',$questionnaire);
-        $view->setArg('question',$questions);
+        $view->setArg('questions',$questions);
         $view->render();
     }
 
@@ -105,7 +104,6 @@ class QuestionController extends Controller
 
     public function edition()
     {   
-        $this->protection('Enseignant');
         $intitule = $this->request->read('intitule');
         $idq = (int)$this->request->getParameter('idq');
         $idquest = (int)$this->request->getParameter('idquest'); //recupere le parametre en get de l'ID du questionnaire de l'url.
@@ -135,7 +133,6 @@ class QuestionController extends Controller
 
     public function deleteQuestion()
     {
-        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
         $idq = (int)$this->request->getParameter('idq');
         $idquest = (int)$this->request->getParameter('idquest');
         if(!isset($idquest)||!isset($idq))

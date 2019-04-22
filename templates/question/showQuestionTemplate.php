@@ -23,10 +23,10 @@
                     <th scope="row">TAG</th>
                     <td><?php echo $question->TAG; ?></td>
                 </tr>
-
+                <!--
                 <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'edit', array('idq' => $question->ID_QUEST)); ?>';">
                     <span class="fa fa-pencil-square-o"></span> Edition
-                </button>
+                </button>-->
             </tbody>
         </table>
     </div>
