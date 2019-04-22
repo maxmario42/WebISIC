@@ -40,6 +40,8 @@
                             <td><?php echo $questionnaires->DESCRIPTION; ?></td>
                         </tr>
 
+                        <?php 
+                        /*
                         <?php if (isset($questionnaires)) : ?>
                                       
                                       <a class="aMenu" href="<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaires->IDQ)); ?>"><?php echo $questionnaires->TITRE; ?></a>
@@ -52,6 +54,8 @@
                                       
                                       
                         <?php endif ?>
+                        */
+                        ?>
 
                         <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'showQuiz', array('idq' => $questionnaires->IDQ)); ?>';">
                             <span class="fa fa-search"></span>Détail

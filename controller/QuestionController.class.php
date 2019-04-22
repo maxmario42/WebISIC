@@ -95,6 +95,7 @@ class QuestionController extends Controller
         }
         $questionnaire=Questionnaire::getWithId($idq);
         $question=Question::getWithId($idquest);
+
         $view = new View($this,'question/editQuestion');
         $view->setArg('user',$this->request->getUserObject());
         $view->setArg('questionnaire',$questionnaire);
