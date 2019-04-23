@@ -69,8 +69,9 @@ class Request extends MyObject {
     }
     public function getAction()
     //Accès à l'action
-    {
+    { var_dump($this->action);
         return $this->action;
+        
     }
 
     public function read($arg){
