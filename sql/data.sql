@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb4
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Lun 18 Mars 2019 à 20:19
--- Version du serveur :  10.1.26-MariaDB-0+deb9u1
--- Version de PHP :  7.0.33-0+deb9u3
+-- Hôte : localhost
+-- Généré le :  mar. 23 avr. 2019 à 15:20
+-- Version du serveur :  10.3.7-MariaDB
+-- Version de PHP :  5.6.39
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,11 +19,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `maxence_godefert`
+-- Base de données :  `quizmines`
 --
 
 --
--- Contenu de la table `AJOUTER`
+-- Déchargement des données de la table `AJOUTER`
 --
 
 INSERT INTO `AJOUTER` (`IDQ`, `ID_QUEST`) VALUES
@@ -30,10 +32,12 @@ INSERT INTO `AJOUTER` (`IDQ`, `ID_QUEST`) VALUES
 (2, 2),
 (3, 3),
 (4, 6),
-(5, 4);
+(5, 4),
+(7, 7),
+(7, 8);
 
 --
--- Contenu de la table `APPARTENIR`
+-- Déchargement des données de la table `APPARTENIR`
 --
 
 INSERT INTO `APPARTENIR` (`IDRC`, `ID_REPONSE`) VALUES
@@ -44,18 +48,18 @@ INSERT INTO `APPARTENIR` (`IDRC`, `ID_REPONSE`) VALUES
 (5, 10);
 
 --
--- Contenu de la table `PARTICIPER`
+-- Déchargement des données de la table `PARTICIPER`
 --
 
-INSERT INTO `PARTICIPER` (`ID`, `IDQ`, `DATE_PARTICIPATION`, `CLASSEMENT`) VALUES
-(1, 1, '1903-01-01', 1),
-(1, 5, '2019-01-30', 1),
-(2, 2, '2019-04-01', 1),
-(3, 3, '2019-02-15', 1),
-(4, 4, '2019-04-01', 1);
+INSERT INTO `PARTICIPER` (`ID`, `IDQ`, `DATE_PARTICIPATION`, `CLASSEMENT`, `SCORE`) VALUES
+(1, 1, '1903-01-01', 1, NULL),
+(1, 5, '2019-01-30', 1, NULL),
+(2, 2, '2019-04-01', 1, NULL),
+(3, 3, '2019-02-15', 1, NULL),
+(4, 4, '2019-04-01', 1, NULL);
 
 --
--- Contenu de la table `QUESTION`
+-- Déchargement des données de la table `QUESTION`
 --
 
 INSERT INTO `QUESTION` (`INTITULE`, `ID_QUEST`, `TYPEQ`, `TEMPS_MAXIMAL`) VALUES
@@ -64,10 +68,12 @@ INSERT INTO `QUESTION` (`INTITULE`, `ID_QUEST`, `TYPEQ`, `TEMPS_MAXIMAL`) VALUES
 ('IHM signifie Interface Homme...', 3, 'QRL', 30),
 ('Pharo est une implémentation du langage ?', 4, 'QRL', NULL),
 ('La réponse à la grande question est...', 5, 'QCU', NULL),
-('Vérités sur le SQL ?', 6, 'QCM', 60);
+('Vérités sur le SQL ?', 6, 'QCM', 60),
+('Qu\'est-ce qu\'un pointeur', 7, 'QCM', 120),
+('En programmation en langage C, quel signe utilise-t-on pour le test d\'égalité ?', 8, 'QCM', 20);
 
 --
--- Contenu de la table `QUESTIONNAIRE`
+-- Déchargement des données de la table `QUESTIONNAIRE`
 --
 
 INSERT INTO `QUESTIONNAIRE` (`IDQ`, `ID`, `TITRE`, `ID_REGLES_QUEST`, `DESCRIPTION`, `ETAT`, `DATE_OUVERTURE`, `DATE_FERMETURE`, `MODE_ACCES`, `LIEN_HTTP`) VALUES
@@ -75,10 +81,11 @@ INSERT INTO `QUESTIONNAIRE` (`IDQ`, `ID`, `TITRE`, `ID_REGLES_QUEST`, `DESCRIPTI
 (2, 6, 'Un peu de Web', 4, 'Apprenons à faire du web', 'Ouvert', '2019-03-04', '2019-05-19', 'Connecté', 'Lien2'),
 (3, 7, 'IHM', 3, 'Interfacer l\'homme et la machine', 'Fermé', '2019-02-01', '2019-03-01', 'Lien', 'Lien3'),
 (4, 5, 'Vive la SGBD', 2, NULL, 'Ouvert', '2019-02-28', '2019-05-30', 'Connecté', 'Lien4'),
-(5, 6, 'Pharo c\'est la vie', 1, NULL, 'Fermé', '2019-01-28', '2019-01-31', 'Public', 'Lien5');
+(5, 6, 'Pharo c\'est la vie', 1, NULL, 'Fermé', '2019-01-28', '2019-01-31', 'Public', 'Lien5'),
+(7, 6, 'langage C', 5, 'Ici on testera vos connaissances sur ce langage', 'OUVERT', '2019-04-10', '2019-04-20', 'Public', 'lien6');
 
 --
--- Contenu de la table `REGLES_GENERATION`
+-- Déchargement des données de la table `REGLES_GENERATION`
 --
 
 INSERT INTO `REGLES_GENERATION` (`REGLE`, `ID_REGLE`) VALUES
@@ -89,7 +96,7 @@ INSERT INTO `REGLES_GENERATION` (`REGLE`, `ID_REGLE`) VALUES
 ('Regle5', 5);
 
 --
--- Contenu de la table `REGLES_QUESTIONNAIRE`
+-- Déchargement des données de la table `REGLES_QUESTIONNAIRE`
 --
 
 INSERT INTO `REGLES_QUESTIONNAIRE` (`TEMPS_TOTALE`, `REVENIR_ARRIERE`, `ID_REGLES_QUEST`, `PLUS`, `MOINS`, `NEUTRE`) VALUES
@@ -100,7 +107,7 @@ INSERT INTO `REGLES_QUESTIONNAIRE` (`TEMPS_TOTALE`, `REVENIR_ARRIERE`, `ID_REGLE
 (100, 1, 5, 5, 3, 1);
 
 --
--- Contenu de la table `REPONSES_POSSIBLES`
+-- Déchargement des données de la table `REPONSES_POSSIBLES`
 --
 
 INSERT INTO `REPONSES_POSSIBLES` (`ID_REPONSE`, `ID_QUEST`, `ENONCE`, `CORRECT`, `COLONNE1OU2`) VALUES
@@ -113,10 +120,15 @@ INSERT INTO `REPONSES_POSSIBLES` (`ID_REPONSE`, `ID_QUEST`, `ENONCE`, `CORRECT`,
 (7, 5, '42', 1, NULL),
 (8, 4, 'Smalltalk', 1, NULL),
 (9, 5, 'Nord Nord Ouest', 0, NULL),
-(10, 6, 'C\'est trop dur', 1, NULL);
+(10, 6, 'C\'est trop dur', 1, NULL),
+(11, 7, 'une variable qui stocke une adresse', 1, NULL),
+(12, 7, 'une variable qui contient l\'adresse mémoire d\'une autre variable', 0, NULL),
+(13, 8, '=', 1, NULL),
+(14, 8, ':=', 0, NULL),
+(15, 8, '==', 0, NULL);
 
 --
--- Contenu de la table `REPONSE_CHOISIE`
+-- Déchargement des données de la table `REPONSE_CHOISIE`
 --
 
 INSERT INTO `REPONSE_CHOISIE` (`ID_QUEST`, `IDRC`, `ID`, `OKPASOK`) VALUES
@@ -127,7 +139,7 @@ INSERT INTO `REPONSE_CHOISIE` (`ID_QUEST`, `IDRC`, `ID`, `OKPASOK`) VALUES
 (6, 5, 4, 0);
 
 --
--- Contenu de la table `SPECIFIER`
+-- Déchargement des données de la table `SPECIFIER`
 --
 
 INSERT INTO `SPECIFIER` (`IDQ`, `ID_REGLE`) VALUES
@@ -138,18 +150,19 @@ INSERT INTO `SPECIFIER` (`IDQ`, `ID_REGLE`) VALUES
 (5, 5);
 
 --
--- Contenu de la table `TAG`
+-- Déchargement des données de la table `TAG`
 --
 
 INSERT INTO `TAG` (`TAG`) VALUES
 ('HTML'),
 ('IHM'),
+('Langage-C'),
 ('Pharo'),
 ('PHP'),
 ('SQL');
 
 --
--- Contenu de la table `TAGGER`
+-- Déchargement des données de la table `TAGGER`
 --
 
 INSERT INTO `TAGGER` (`ID_QUEST`, `TAG`) VALUES
@@ -157,10 +170,12 @@ INSERT INTO `TAGGER` (`ID_QUEST`, `TAG`) VALUES
 (2, 'PHP'),
 (3, 'PHP'),
 (4, 'Pharo'),
-(6, 'SQL');
+(6, 'SQL'),
+(7, 'Langage-C'),
+(8, 'Langage-C');
 
 --
--- Contenu de la table `TYPE`
+-- Déchargement des données de la table `TYPE`
 --
 
 INSERT INTO `TYPE` (`TYPEQ`) VALUES
@@ -170,7 +185,7 @@ INSERT INTO `TYPE` (`TYPEQ`) VALUES
 ('QRL');
 
 --
--- Contenu de la table `UTILISATEUR`
+-- Déchargement des données de la table `UTILISATEUR`
 --
 
 INSERT INTO `UTILISATEUR` (`NOM`, `PRENOM`, `TYPE_UTILISATEUR`, `ID`, `MATRICULE`, `STATUT`, `MAIL_ENSEIGNANT`, `PROMO`, `ANNEE_DE_SORTIE`, `MAIL_ETUDIANT`, `MDP`, `LOGIN`) VALUES
@@ -181,7 +196,9 @@ INSERT INTO `UTILISATEUR` (`NOM`, `PRENOM`, `TYPE_UTILISATEUR`, `ID`, `MATRICULE
 ('Pinot', 'Rémy', 'Enseignant', 5, 'IMT001', 'Interne', 'remy.pinot@imt-lille-douai.fr', NULL, NULL, NULL, 'd', 'rem'),
 ('Fabresse', 'Luc', 'Enseignant', 6, 'IMT002', 'Interne', 'luc.fabresse@imt-lille-douai.fr', NULL, NULL, NULL, 'e', 'pharluc'),
 ('Vermeulen', 'Mathieu', 'Enseignant', 7, 'IMT003', 'Interne', 'mathieu.vermeulen@imt-lille-douai.fr', NULL, NULL, NULL, 'f', 'matt'),
-('Le prof pas engagé', 'Inconnu', 'Enseignant', 8, 'EX001', 'Externe', 'inconnu@domaine.ext', NULL, NULL, NULL, 'g', '42');
+('Le prof pas engagé', 'Inconnu', 'Enseignant', 8, 'EX001', 'Externe', 'inconnu@domaine.ext', NULL, NULL, NULL, 'g', '42'),
+('nuevo1', 'n', 'Etudiant', 9, NULL, NULL, NULL, NULL, NULL, 'nuevo@fr.com', 'n', 'nuevo');
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

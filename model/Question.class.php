@@ -37,6 +37,7 @@ class Question extends Model
     }
 
     public static function getQuestions($idq)
+    //Récupère toutes les questions associées à un questionnaire
     {
         $st = static::db()->query("SELECT QUESTION.INTITULE, QUESTION.ID_QUEST, QUESTION.TYPEQ, QUESTION.TEMPS_MAXIMAL
         FROM QUESTIONNAIRE
@@ -61,6 +62,7 @@ class Question extends Model
     }
 
     public static function delete($IDQ, $IDQuest)
+    //Supprime aussi l'association à un questionnaire
     {
         static::db()->exec("DELETE FROM AJOUTER WHERE IDQ=$IDQ AND ID_QUEST=$IDQuest");
         static::deleteWithId($IDQuest);

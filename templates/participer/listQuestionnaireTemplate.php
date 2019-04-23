@@ -21,17 +21,17 @@
     <section class="popular-courses-area section-padding-100">
         <div class="container">
             <div class="row">
-                <?php foreach ($questionnaires as $questionnaire) : ?>
+                <?php foreach ($questionnaires as $unquestionnaire) : ?>
                     <!-- Single Popular Course -->
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="single-popular-course mb-100 wow fadeInUp" data-wow-delay="250ms">
                             <!-- Course Content -->
                             <div class="course-content">
-                                <h4><?php echo $questionnaire->TITRE; ?></h4>
+                                <h4><?php echo $unquestionnaire->TITRE; ?></h4>
                                 <div class="meta d-flex align-items-center">
-                                    <a href="#"><?php echo User::getWithId($questionnaire->ID)->PRENOM; ?> <?php echo User::getWithId($questionnaire->ID)->NOM; ?></a>
+                                    <a href="#"><?php echo User::getWithId($unquestionnaire->ID)->PRENOM; ?> <?php echo User::getWithId($unquestionnaire->ID)->NOM; ?></a>
                                 </div>
-                                <p><?php echo $questionnaire->DESCRIPTION; ?></p>
+                                <p><?php echo $unquestionnaire->DESCRIPTION; ?></p>
                             </div>
                             <!-- Seat Rating Fee -->
                             <div class="seat-rating-fee d-flex justify-content-between">
@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                                 <div class="course-fee h-100">
-                                    <a href="<?php echo $this->linkTo('Participer', 'participer', array('idq' => $questionnaire->IDQ)); ?>" class="free">Participer</a>
+                                    <a href="<?php echo $this->linkTo('Participer', 'participer', array('idq' => $unquestionnaire->IDQ)); ?>" class="free">Participer</a>
                                 </div>
                             </div>
                         </div>

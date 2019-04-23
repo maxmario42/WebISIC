@@ -43,7 +43,7 @@ class QuestionController extends Controller
             $view->render();
         } 
         else 
-        {  
+        {  //CHANGEMENT POUR FAIRE RENDER DES QUESTIONS POSSIBLES
             $this->linkTo('Question','showQuestion',array('idq'=>$idq,'idquest'=>$questio->ID_QUEST));
         }
     }
@@ -63,6 +63,15 @@ class QuestionController extends Controller
         $view->setArg('questionnaire',$questionnaire);
         $view->setArg('question',$question);  
         $view->render();
+    }
+
+    public function addReponse(){
+        $idq = (int)$this->request->getParameter('idq');
+        $idquest = (int)$this->request->getParameter('idquest');
+        $enonce=$this->request->read('enonce');
+        $correct=(bool)$this->request('correct');
+        //champ colonne est vide pour l'instant
+        $reponse=Reponses_Possibles::create($idquest,$enonce,$correct,null);
     }
 
     public function showListQuestion()
