@@ -9,8 +9,8 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th scope="row">Patience</th>
-                            <td>Vous pourrez bientôt répondre à des questionnaires</td>
+                            <th scope="row">Ben alors...</th>
+                            <td>Vous êtes sur d'avoir répondu à un questionnaire ?</td>
                     </tbody>
                 </table>
             </div>

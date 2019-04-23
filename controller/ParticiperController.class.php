@@ -98,10 +98,11 @@ class ParticiperController extends Controller
     }
     public function fin()
     {
-        Participer::finParticipation($this->request->getUser(),$this->session->questionnaireEnCours);
+        $idq=$this->session->questionnaireEnCours;
+        Participer::finParticipation($this->request->getUser(),$idq);
         unset($this->session->questionnaireEnCours);
         unset($this->session->questionEnCours);
-        $this->linkTo('Participer','resultats');
+        $this->linkTo('Participer','detailResultats',array('idq' => $idq));
     }
 
     public function resultats()
