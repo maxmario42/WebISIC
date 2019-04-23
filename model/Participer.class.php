@@ -67,6 +67,15 @@ class Participer extends Model
         return $object;
     }
 
+    public static function lesParticipation($IDQ)
+    //Récupère les participations d'un questionnaire
+    {
+        $st = static::db()->query("SELECT * FROM PARTICIPER WHERE IDQ =$IDQ AND SCORE IS NOT NULL AND CLASSEMENT IS NOT NULL"); 
+        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Participer');
+        $object = $st-> fetchAll();
+        return $object;
+    }
+
     public static function uneParticipation($ID,$IDQ)
     //Récupère les participations d'un utilisateur
     {

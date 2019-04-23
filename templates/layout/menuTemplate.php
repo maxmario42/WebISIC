@@ -43,6 +43,7 @@
                                           <ul class="dropdown">
                                               <li><a href="<?php echo $this->linkTo('Question', 'defaultAction', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-plus-circle"></span> Créer Question</a></li>
                                               <li><a href="<?php echo $this->linkTo('Question', 'showListQuestion', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-search"></span> Voir les Questions</a></li>
+                                              <li><a href="<?php echo $this->linkTo('Questionnaire', 'showParticipations', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-search"></span> Voir Participations</a></li>
                                               <li><a href="<?php echo $this->linkTo('Questionnaire', 'edit', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-pencil-square-o"></span> Edition</a></li>
                                               <li><a href="<?php echo $this->linkTo('Questionnaire', 'deleteQuest', array('idq' => $questionnaire->IDQ)); ?>"><span class="fa fa-times"></span> Supprimer</a></li>
                                           </ul>
