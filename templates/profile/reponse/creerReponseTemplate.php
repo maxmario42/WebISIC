@@ -9,7 +9,7 @@
             echo '<span class="error">' . $questErrorText . '</span>';
         ?>
 
-        <form action="<?php echo $this->linkTo('Question', 'newQuest', array('idq'=>$questionnaire->IDQ)); ?>" method="post" class="needs-validation">
+        <form action="<?php echo $this->linkTo('Question', 'addReponse', array('idq'=>$questionnaire->IDQ)); ?>" method="post" class="needs-validation">
             <div class="form-row">
                 <div class="col-md-6 mb-3">
                     <!-- debut bloc1 -->
