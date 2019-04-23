@@ -76,15 +76,18 @@ class ParticiperController extends Controller
         $questionnaire = Questionnaire::getWithId($idq);
         $questions = Question::getQuestions($idq);
         $question = $questions[$numeroQuestion];
+        $reponse=$this->request->read('reponse');
         if($question->TYPEQ=='QCU')
         {
-            $reponse=$this->request->read('reponse');
-            Reponse_Choisie::choixQCU($reponse,$question->ID_QUEST,$this->request->getUser());
+            Reponse_Choisie::choixQCU($reponse,$idq,$this->request->getUser());
         }
         else if($question->TYPEQ=='QRL')
         {
-            $reponse=$this->request->read('reponse');
             Reponse_Choisie::choixQRL($reponse,$idq,$this->request->getUser());
+        }
+        else if($question->TYPEQ=='QCM')
+        {
+            Reponse_Choisie::choixQCM($reponse,$idq,$this->request->getUser());
         }
         $this->session->questionEnCours+=1;
         $this->linkTo('Participer','repondre');

@@ -47,6 +47,7 @@ Class Reponse_Choisie extends Model
     }
 
     public static function delete($id,$idq)
+    //Supprime les réponses choisies pour une question par un utilisateur
     {
         $st = static::db()->query("SELECT  * FROM REPONSE_CHOISIE WHERE ID = $id AND ID_QUEST = $idq");
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reponse_Choisie');
@@ -59,6 +60,7 @@ Class Reponse_Choisie extends Model
     }
 
     public static function choixQCU($idr, $idq, $id)
+    //Gère l'inscription d'une réponse de QCU
     {
         static::delete($id,$idq);
         $ok=Reponses_Possibles::getWithId($idr)->CORRECT;
@@ -66,10 +68,22 @@ Class Reponse_Choisie extends Model
     }
 
     public static function choixQRL($reponse, $idq, $id)
+    //Gère l'inscription d'une réponse de QRL
     {
         static::delete($id,$idq);
         $bonneReponse=Reponses_Possibles::getWithAnId($idq,'ID_QUEST');
-        $ok=($bonneReponse->ENONCE==$reponse);
+        $ok=(strcasecmp($bonneReponse->ENONCE,$reponse)==0);//Permet d'ignorer la casse
         static::create($bonneReponse->ID_REPONSE,$idq,$id,$ok);
+    }
+
+    public static function choixQCM($reponses, $idq, $id)
+    //Gère l'inscription d'une réponse de QCM
+    {
+        static::delete($id,$idq);
+        foreach($reponses as $reponse)
+        {
+            $reponse=Reponses_Possibles::getWithId($reponse);
+            static::create($reponse->ID_REPONSE,$idq,$id,$reponse->CORRECT);
+        }
     }
 }
