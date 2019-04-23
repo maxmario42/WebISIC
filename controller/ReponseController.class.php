@@ -15,7 +15,6 @@ class ReponseController extends Controller{
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
         $questionnaire=Questionnaire::getWithId($idq);
-        var_dump($questionnaire);
         $question=Question::getWithId($idquest);
         $view = new View($this,'reponse/creerReponse');
         $view->setArg('user',$this->request->getUserObject());
@@ -43,7 +42,7 @@ class ReponseController extends Controller{
         } 
         else 
         {  //CHANGEMENT POUR FAIRE RENDER DES QUESTIONS POSSIBLES
-            $this->linkTo('Reponse','showReponse',array('idquest'=>$idquest,'idR'=>$reponse->ID_REPONSE));
+            $this->linkTo('Reponse','showReponse',array('idq'=>$idq,'idquest'=>$idquest,'idR'=>$reponse->ID_REPONSE));
         }
       
        
