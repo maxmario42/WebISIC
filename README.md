@@ -22,9 +22,8 @@ Initialisation de la base de données
 - Importer dans votre base de données le fichier `sql/structure.sql`
 - Importer les données de test dans votre base à l'aide du fichier `sql/data.sql`
 
-Configurer votre environnement
-- Renommer `config/config.php.dist` en `config/config.php`
-- Editer le fichier pour permettre la connection à votre base de données
+Configurer votre environnements
+- Editer le fichier `config/config.php` pour permettre la connection à votre base de données
 
 Architecture du Projet
 ----------------------
@@ -33,7 +32,6 @@ Architecture du Projet
 - `config`: Fichiers de configuration
 - `controller`: Controllers
 - `model`: Modèles de données
-- `repository`: Requêtes pour accéder aux données
 - `sql`: Fichiers SQL permettant l'initialisation de la base de données
     - `sql/structure.sql`: Schéma de la base de donnée
     - `sql/data.sql`: Données de test
