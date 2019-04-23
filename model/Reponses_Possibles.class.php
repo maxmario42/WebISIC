@@ -33,6 +33,8 @@ Class Reponses_Possibles extends Model
             'correct'=>$correct,
             'colonne'=>$colonne           
         ));
+        $id = static::db()->lastInsertId();
+        return static::getWithId($id);
     }
 
     public static function update($idr,$idq,$enonce, $correct, $colonne)

@@ -30,6 +30,7 @@ class ReponseController extends Controller{
         $correct=(int)$this->request->read('correct');
         //champ colonne est vide pour l'instant
         $reponse=Reponses_Possibles::create($idquest,$enonce,$correct,null);
+        var_dump($reponse);
         if(!isset($reponse))
         {  $question=Question::getWithId($idquest);
             $questionnaire=Questionnaire::getWithId($idq);
