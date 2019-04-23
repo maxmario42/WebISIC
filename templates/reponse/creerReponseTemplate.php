@@ -9,7 +9,7 @@
             echo '<span class="error">' . $questErrorText . '</span>';
         ?>
 
-        <form action="<?php echo $this->linkTo('Reponse', 'showReponse', array('idq'=>$questionnaire->IDQ,'idquest' => $question->ID_QUEST)); ?>" method="post" class="needs-validation">
+        <form action="<?php echo $this->linkTo('Reponse', 'newReponse', array('idq'=>$questionnaire->IDQ,'idquest' => $question->ID_QUEST)); ?>" method="post" class="needs-validation">
             <div class="form-row">
                 <div class="col-md-6 mb-3">
                     <!-- debut bloc1 -->
@@ -28,8 +28,8 @@
                             <!-- debut bloc1-3 -->
                             <label for="correct">Correct</label>
                             <select class="form-control" name="correct" id="correct" size="1" required>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
+                                <option value="0">OUI</option>
+                                <option value="1">NON</option>
                                 
                             </select>
                             <div class="valid-feedback">

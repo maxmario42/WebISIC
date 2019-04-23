@@ -15,29 +15,53 @@ class ReponseController extends Controller{
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
         $questionnaire=Questionnaire::getWithId($idq);
+        var_dump($questionnaire);
         $question=Question::getWithId($idquest);
-        $view = new View($this, 'reponse/creerReponse');
+        $view = new View($this,'reponse/creerReponse');
         $view->setArg('user',$this->request->getUserObject());
         $view->setArg('questionnaire',$questionnaire);
         $view->setArg('question',$question);  
         $view->render();
     }
 
-    public function showReponse(){
+    public function newReponse(){
         $idq = (int)$this->request->getParameter('idq');
         $idquest = (int)$this->request->getParameter('idquest');
         $enonce=$this->request->read('enonce');
         $correct=(int)$this->request('correct');
         //champ colonne est vide pour l'instant
         $reponse=Reponses_Possibles::create($idquest,$enonce,$correct,null);
-        $question=Question::getWithId($idquest);
-        $questionnaire=Questionnaire::getWithId($idq);
-        $view = new View($this,'question/showReponse');
-        $view->setArg('user',$this->request->getUserObject());
-        $view->setArg('questionnaire',$questionnaire);
-        $view->setArg('question',$question);  
-        $view->render();
+        if(!isset($reponse))
+        {  $question=Question::getWithId($idquest);
+            $questionnaire=Questionnaire::getWithId($idq);
+            $view = new View($this, 'reponse/creerReponse');
+            $view->setArg('user',$this->request->getUserObject());
+            $view->setArg('questionnaire',$questionnaire);
+            $view->setArg('question',$question);
+            $view->setArg('inscErrorText', 'Cannot complete creation');
+            $view->render();
+        } 
+        else 
+        {  //CHANGEMENT POUR FAIRE RENDER DES QUESTIONS POSSIBLES
+            $this->linkTo('Reponse','showReponse',array('idquest'=>$idquest,'idR'=>$reponse->ID_REPONSE));
+        }
+      
+       
+       
 
+    }
+
+    public function showReponse(){
+        
+        $idquest = (int)$this->request->getParameter('idquest');
+        $idR=(int)$this->request->getParameter('idR');
+        $question=Question::getWithId($idquest);
+        $reponse=Reponses_Possibles::getWithId($idR);
+        $view = new View($this,'reponse/showReponse');
+        $view->setArg('question',$question);
+        $view->setArg('reponse',$reponse);
+        $view->setArg('user',$this->request->getUserObject());
+        $view->render();
     }
 
 }
