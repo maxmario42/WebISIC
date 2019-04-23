@@ -44,19 +44,18 @@ class ReponseController extends Controller{
         {  //CHANGEMENT POUR FAIRE RENDER DES QUESTIONS POSSIBLES
             $this->linkTo('Reponse','showReponse',array('idq'=>$idq,'idquest'=>$idquest,'idR'=>$reponse->ID_REPONSE));
         }
-      
-       
-       
-
     }
 
-    public function showReponse(){
-        
+    public function showReponse()
+    {
+        $idq = (int)$this->request->getParameter('idq');    
         $idquest = (int)$this->request->getParameter('idquest');
         $idR=(int)$this->request->getParameter('idR');
         $question=Question::getWithId($idquest);
+        $questionnaire=Questionnaire::getWithId($idq);
         $reponse=Reponses_Possibles::getWithId($idR);
         $view = new View($this,'reponse/showReponse');
+        $view->setArg('questionnaire',$questionnaire);
         $view->setArg('question',$question);
         $view->setArg('reponse',$reponse);
         $view->setArg('user',$this->request->getUserObject());
