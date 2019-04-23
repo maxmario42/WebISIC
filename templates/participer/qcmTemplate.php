@@ -9,7 +9,7 @@
             if (isset($inscErrorText))
                 echo '<span class="error">' . $inscErrorText . '</span>';
             ?>
-            <form action="<?php echo $this->linkTo('Participer', 'reponseQCM'); ?>" method="post">
+            <form action="<?php echo $this->linkTo('Participer', 'reponse'); ?>" method="post">
                 <div class="form-group">
                     <label for="consigne">Cochez les réponses qui vous semblent juste</label><br>
                     <?php foreach ($reponses as $unereponse):?>

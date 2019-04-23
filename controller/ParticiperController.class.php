@@ -49,7 +49,12 @@ class ParticiperController extends Controller
             throw new Error('Problème',500);
         }
         $questionnaire = Questionnaire::getWithId($idq);
-        $question = Question::getQuestions($idq)[$numeroQuestion];
+        $questions = Question::getQuestions($idq);
+        if (!array_key_exists($numeroQuestion,$questions))
+        {
+            $this->linkTo('Participer','fin');
+        }
+        $question = $questions[$numeroQuestion];
         $reponses = Reponses_Possibles::getAllWithAnId($question->ID_QUEST, Question::getIDColumn());
         $view = new View($this, "participer/" . strtolower($question->TYPEQ));
         $view->setArg('user', $this->request->getUserObject());
@@ -59,12 +64,23 @@ class ParticiperController extends Controller
         $view->render();
     }
 
-    public function reponseQCU()
-    { }
-
-    public function reponseQRL()
-    { }
-
-    public function reponseQCM()
-    { }
+    public function reponse()
+    { 
+        $idq = $this->session->questionnaireEnCours;
+        $numeroQuestion = $this->session->questionEnCours;
+        $questionnaire = Questionnaire::getWithId($idq);
+        $questions = Question::getQuestions($idq);
+        $question = $questions[$numeroQuestion];
+        if($question->TYPEQ=='QCU')
+        {
+            $reponse=$this->request->read('reponse');
+            Reponse_Choisie::choix($reponse,$question->ID_QUEST,$this->request->getUser());
+        }
+        $this->session->questionEnCours+=1;
+        $this->linkTo('Participer','repondre');
+    }
+    public function fin()
+    {
+        $this->linkTo('Participer','abandonner');
+    }
 }

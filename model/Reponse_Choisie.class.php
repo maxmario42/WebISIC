@@ -20,7 +20,7 @@ Class Reponse_Choisie extends Model
 
     public static function getIDColumn()
     {
-        return 'ID_REPONSE';
+        return 'IDRC';
     }
 
     public static function create($idr, $idq, $id, $ok)
@@ -32,7 +32,7 @@ Class Reponse_Choisie extends Model
             'ok'=>$ok          
         ));
         $id = static::db()->lastInsertId();
-        $sth1 = static::db()->exec("INSERT INTO APPARTENIR (IRC,ID_REPONSE) VALUES ($id,$idr)");
+        $sth1 = static::db()->exec("INSERT INTO APPARTENIR (IDRC,ID_REPONSE) VALUES ($id,$idr)");
     }
 
     public static function update($idrc,$idq,$id, $ok)
@@ -48,6 +48,20 @@ Class Reponse_Choisie extends Model
 
     public static function delete($id,$idq)
     {
-        //TODO
+        $st = static::db()->query("SELECT  * FROM REPONSE_CHOISIE WHERE ID = $id AND ID_QUEST = $idq");
+        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reponse_Choisie');
+        $objects = $st->fetchAll(); //PDO::FETCH_ASSOCs
+        foreach ($objects as $reponse)
+        {
+            $sth1 = static::db()->exec("DELETE FROM APPARTENIR WHERE IDRC = $reponse->IDRC");
+            $sth2 = static::deleteWithId($reponse->IDRC);
+        }
+    }
+
+    public static function choix($idr, $idq, $id)
+    {
+        static::delete($id,$idq);
+        $ok=Reponses_Possibles::getWithId($idr)->CORRECT;
+        static::create($idr,$idq,$id,$ok);
     }
 }
