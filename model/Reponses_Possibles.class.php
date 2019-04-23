@@ -33,8 +33,6 @@ Class Reponses_Possibles extends Model
             'correct'=>$correct,
             'colonne'=>$colonne           
         ));
-        
-   
     }
 
     public static function update($idr,$idq,$enonce, $correct, $colonne)

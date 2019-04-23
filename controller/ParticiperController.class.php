@@ -20,5 +20,32 @@ class ParticiperController extends Controller
         $view->setArg('questionnaires',$questionnaires);
         $view->render();
     }
+
+    public function participer()
+    {
+        $idq = (int)$this->request->getParameter('idq');
+        $questions = Question::getQuestions($idq);
+        $unequestion = $questions[0];
+        $this->linkTo('Participer','repondre',array('idq' => $idq, 'idquest'=>$unequestion->ID_QUEST));
+    }
+
+    public function repondre()
+    {
+        $idq = (int)$this->request->getParameter('idq');
+        $idquest = (int)$this->request->getParameter('idquest');
+        if (!isset($idq)||!isset($idquest))
+        {
+            $this->linkTo('Participer');
+        }
+        $questionnaire = Questionnaire::getWithId($idq);
+        $question = Question::getWithId($idquest);
+        $reponses = Reponses_Possibles::getAllWithAnId($idquest,Question::getIDColumn());
+        $view = new View($this,"participer/".strtolower($question->TYPEQ));
+        $view->setArg('user',$this->request->getUserObject());
+        $view->setArg('questionnaire',$questionnaire);
+        $view->setArg('question',$question);
+        $view->setArg('reponses',$reponses);
+        $view->render();
+    }
 }
 ?>
