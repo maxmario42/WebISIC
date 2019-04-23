@@ -24,14 +24,16 @@ class ParticiperController extends Controller
     }
 
     public function participer()
+    //Débute une participation
     {
-        if (!isset($this->session->questionnaireEnCours))
+        if (!isset($this->session->questionnaireEnCours)) //Si réponse en cours
         {
             $idq = (int)$this->request->getParameter('idq');
-            if (!Participer::debutParticipation($this->request->getUser(),$idq))
+            if (!Participer::debutParticipation($this->request->getUser(),$idq)) //Si l'utilisateur a déjà participé, on le redirige vers les résultats
             {
-                $this->linkTo('Participer');
+                $this->linkTo('Participer','detailResultats',array('idq' => $idq));
             }
+            //Stockage dans la session
             $this->session->questionnaireEnCours = $idq;
             $this->session->questionEnCours=0;
         }
@@ -47,6 +49,7 @@ class ParticiperController extends Controller
     }
 
     public function repondre()
+    //Affiche la prochaine question
     {
         $idq = $this->session->questionnaireEnCours;
         $numeroQuestion = $this->session->questionEnCours;
@@ -55,7 +58,7 @@ class ParticiperController extends Controller
         }
         $questionnaire = Questionnaire::getWithId($idq);
         $questions = Question::getQuestions($idq);
-        if (!array_key_exists($numeroQuestion,$questions))
+        if (!array_key_exists($numeroQuestion,$questions))//Si on a fait toute les questions
         {
             $this->linkTo('Participer','fin');
         }
@@ -70,6 +73,7 @@ class ParticiperController extends Controller
     }
 
     public function reponse()
+    //Inscrit la réponse
     { 
         $idq = $this->session->questionnaireEnCours;
         $numeroQuestion = $this->session->questionEnCours;
@@ -94,9 +98,44 @@ class ParticiperController extends Controller
     }
     public function fin()
     {
-        Participer::finParticipation($this->request->getUser(),$this->session->questionnaireEnCours);
+        $idq=$this->session->questionnaireEnCours;
+        Participer::finParticipation($this->request->getUser(),$idq);
         unset($this->session->questionnaireEnCours);
         unset($this->session->questionEnCours);
-        $this->linkTo('Participer');
+        $this->linkTo('Participer','detailResultats',array('idq' => $idq));
     }
+
+    public function resultats()
+    {
+        $participations = Participer::mesParticipation($this->request->getUser());
+        if (!isset($participations)) {
+            throw new Error("Problème d'accès aux participations", 500);
+        }
+        $questionnaires=array();
+        foreach ($participations as $participation) 
+        {
+            array_push($questionnaires,Questionnaire::getWithId($participation->IDQ));
+        }
+        $view = new View($this, 'resultats/listQuestionnaire');
+        $view->setArg('user', $this->request->getUserObject());
+        $view->setArg('questionnaires', $questionnaires);
+        $view->render();
+    }
+
+    public function detailResultats()
+    {
+        $idq = (int)$this->request->getParameter('idq');
+        $participation=Participer::uneParticipation($this->request->getUser(),$idq);
+        if (!is_object($participation))
+        {
+            $this->linkTo('Participer','resultats');
+        }
+        $questionnaire = Questionnaire::getWithId($idq);
+        $view = new View($this, 'resultats/showQuestionnaire');
+        $view->setArg('user', $this->request->getUserObject());
+        $view->setArg('questionnaire', $questionnaire);
+        $view->setArg('participation', $participation);
+        $view->render();
+    }
+
 }
