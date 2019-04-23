@@ -46,6 +46,11 @@ Class Reponses_Possibles extends Model
             'colonne'=>$colonne           
         ));
     }
+
+    public static function delete($ID)
+    {
+        //TODO
+    }
 }
 
 

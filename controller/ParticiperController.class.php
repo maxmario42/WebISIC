@@ -79,7 +79,12 @@ class ParticiperController extends Controller
         if($question->TYPEQ=='QCU')
         {
             $reponse=$this->request->read('reponse');
-            Reponse_Choisie::choix($reponse,$question->ID_QUEST,$this->request->getUser());
+            Reponse_Choisie::choixQCU($reponse,$question->ID_QUEST,$this->request->getUser());
+        }
+        else if($question->TYPEQ=='QRL')
+        {
+            $reponse=$this->request->read('reponse');
+            Reponse_Choisie::choixQRL($reponse,$idq,$this->request->getUser());
         }
         $this->session->questionEnCours+=1;
         $this->linkTo('Participer','repondre');

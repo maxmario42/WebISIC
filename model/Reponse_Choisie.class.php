@@ -58,10 +58,18 @@ Class Reponse_Choisie extends Model
         }
     }
 
-    public static function choix($idr, $idq, $id)
+    public static function choixQCU($idr, $idq, $id)
     {
         static::delete($id,$idq);
         $ok=Reponses_Possibles::getWithId($idr)->CORRECT;
         static::create($idr,$idq,$id,$ok);
+    }
+
+    public static function choixQRL($reponse, $idq, $id)
+    {
+        static::delete($id,$idq);
+        $bonneReponse=Reponses_Possibles::getWithAnId($idq,'ID_QUEST');
+        $ok=($bonneReponse->ENONCE==$reponse);
+        static::create($bonneReponse->ID_REPONSE,$idq,$id,$ok);
     }
 }
