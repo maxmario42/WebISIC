@@ -65,6 +65,15 @@ class QuestionController extends Controller
         $view->render();
     }
 
+    public function addReponse(){
+        $idq = (int)$this->request->getParameter('idq');
+        $idquest = (int)$this->request->getParameter('idquest');
+        $enonce=$this->request->read('enonce');
+        $correct=(bool)$this->request('correct');
+        //champ colonne est vide pour l'instant
+        $reponse=Reponses_Possibles::create($idquest,$enonce,$correct,null);
+    }
+
     public function showListQuestion()
     {
         $idq = (int)$this->request->getParameter('idq');
