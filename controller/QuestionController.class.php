@@ -65,22 +65,7 @@ class QuestionController extends Controller
         $view->render();
     }
 
-    public function addReponse(){
-        $idq = (int)$this->request->getParameter('idq');
-        $idquest = (int)$this->request->getParameter('idquest');
-        $enonce=$this->request->read('enonce');
-        $correct=(int)$this->request('correct');
-        //champ colonne est vide pour l'instant
-        $reponse=Reponses_Possibles::create($idquest,$enonce,$correct,null);
-        $question=Question::getWithId($idquest);
-        $questionnaire=Questionnaire::getWithId($idq);
-        $view = new View($this,'question/showReponse');
-        $view->setArg('user',$this->request->getUserObject());
-        $view->setArg('questionnaire',$questionnaire);
-        $view->setArg('question',$question);  
-        $view->render();
-
-    }
+    
 
     public function showListQuestion()
     {
