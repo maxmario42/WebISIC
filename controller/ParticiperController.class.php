@@ -86,6 +86,9 @@ class ParticiperController extends Controller
     }
     public function fin()
     {
-        $this->linkTo('Participer','abandonner');
+        Participer::finParticipation($this->request->getUser(),$this->session->questionnaireEnCours);
+        unset($this->session->questionnaireEnCours);
+        unset($this->session->questionEnCours);
+        $this->linkTo('Participer');
     }
 }
