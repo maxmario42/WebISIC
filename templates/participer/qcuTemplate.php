@@ -11,9 +11,9 @@
             ?>
             <form action="<?php echo $this->linkTo('Participer', 'reponseQCU'); ?>" method="post">
                 <div class="form-group">
-                    <label for="consigne">Cochez la réponses qui vous semble juste</label><br>
+                    <label for="consigne">Cochez la réponse qui vous semble juste</label><br>
                     <?php foreach ($reponses as $unereponse):?>
-                        <input type="radio" name="reponse" value="<?php echo $unereponse->ENONCE; ?>"> <?php echo $unereponse->ENONCE; ?><br>
+                        <input type="radio" name="reponse" value="<?php echo $unereponse->ID_REPONSE; ?>"> <?php echo $unereponse->ENONCE; ?><br>
                     <?php endforeach ?>
                 </div>
 

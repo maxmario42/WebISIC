@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <label for="consigne">Cochez les réponses qui vous semblent juste</label><br>
                     <?php foreach ($reponses as $unereponse):?>
-                        <input type="checkbox" name="<?php echo $unereponse->ENONCE; ?>" value="<?php echo $unereponse->ENONCE; ?>"> <?php echo $unereponse->ENONCE; ?><br>
+                        <input type="checkbox" name="reponse[]" value="<?php echo $unereponse->ID_REPONSE; ?>"> <?php echo $unereponse->ENONCE; ?><br>
                     <?php endforeach ?>
                 </div>
 

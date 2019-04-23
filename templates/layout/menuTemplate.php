@@ -58,11 +58,24 @@
                                   <?php endif ?>
 
                               <?php elseif ($user->TYPE_UTILISATEUR == 'Etudiant') : ?>
-                                  <li class="nav-item text-center">
-                                      <a class="aMenu" href="<?php echo $this->linkTo('Participer'); ?>">
-                                          Questionnaires
-                                      </a>
-                                  </li>
+                                  <?php if (isset(Session::getInstance()->questionnaireEnCours)) : ?>
+                                      <li class="nav-item text-center">
+                                          <a class="aMenu" href="<?php echo $this->linkTo('Participer','participer'); ?>">
+                                              Reprendre mon Questionnaire
+                                          </a>
+                                      </li>
+                                      <li class="nav-item text-center">
+                                          <a class="aMenu" href="<?php echo $this->linkTo('Participer','abandonner'); ?>">
+                                              Abandonner mon Questionnaire
+                                          </a>
+                                      </li>
+                                  <?php else : ?>
+                                      <li class="nav-item text-center">
+                                          <a class="aMenu" href="<?php echo $this->linkTo('Participer'); ?>">
+                                              Questionnaires
+                                          </a>
+                                      </li>
+                                  <?php endif ?>
                                   <li>
                                       <a class="aMenu" href="<?php echo $this->linkTo('Participer', 'Resultats'); ?>">
                                           Mes Résultats
@@ -78,7 +91,7 @@
                               <li><a class="aMenu" href="<?php echo $this->linkTo(NULL, 'aPropos'); ?>">À propos</a></li>
                               <li><a class="aMenu" href="Quest.php">Questionnaire</a></li>
                               <!-- <li><a href="blog.html"></a></li>
-                                                                <li><a href="contact.html">Contact</a></li> -->
+                                                                        <li><a href="contact.html">Contact</a></li> -->
                           <?php endif ?>
                       </ul>
 

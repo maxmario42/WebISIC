@@ -9,7 +9,7 @@
             if (isset($inscErrorText))
                 echo '<span class="error">' . $inscErrorText . '</span>';
             ?>
-            <form action="<?php echo $this->linkTo('Participer', 'reponseChoisie'); ?>" method="post">
+            <form action="<?php echo $this->linkTo('Participer', 'reponseQRL'); ?>" method="post">
                 <div class="form-group">
                     <label for="consigne">Ecrivez la bonne réponse</label><br>
                     <input type="text" class="form-control" name="reponse" id="reponse" placeholder="Votre réponse">

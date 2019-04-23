@@ -42,6 +42,11 @@ Cette classe gère la session en cours
     {
         return isset($_SESSION[$name]);
     }
+    public function __unset($name)
+    //Détruit une variable
+    {
+        unset($_SESSION[$name]);
+    }
     public function destroy()
     //Fin d'une session
     {
