@@ -24,8 +24,8 @@
                     <td><?php echo $question->TAG; ?></td>
                 </tr>
                 
-                <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'addReponse', array('idq' => $question->ID_QUEST,)); ?>';">
-                    <span class="icon-plus-sign"></span> Ajouter reponses
+                <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'addReponse', array('idquest' => $question->ID_QUEST)); ?>';">
+                    <span class="fas fa-plus"></span> Ajouter reponse
                 </button>
             </tbody>
         </table>
