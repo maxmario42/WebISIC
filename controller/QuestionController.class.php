@@ -43,7 +43,7 @@ class QuestionController extends Controller
             $view->render();
         } 
         else 
-        {  
+        {  //CHANGEMENT POUR FAIRE RENDER DES QUESTIONS POSSIBLES
             $this->linkTo('Question','showQuestion',array('idq'=>$idq,'idquest'=>$questio->ID_QUEST));
         }
     }
