@@ -50,6 +50,9 @@
                                 <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'showListQuestion', array('idq' => $unquestionnaire->IDQ)); ?>';">
                                     <span class="fa fa-search"></span> Voir les Questions
                                 </button>
+                                <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'showParticipations', array('idq' => $unquestionnaire->IDQ)); ?>';">
+                                    <span class="fa fa-search"></span> Voir les Participations
+                                </button>
                                 <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Questionnaire', 'edit', array('idq' => $unquestionnaire->IDQ)); ?>';">
                                     <span class="fa fa-pencil-square-o"></span> Edition
                                 </button>

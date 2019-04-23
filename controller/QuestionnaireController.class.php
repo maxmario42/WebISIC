@@ -95,7 +95,35 @@ class QuestionnaireController extends Controller
         $view->setArg('user',$this->request->getUserObject());
         $view->setArg('questionnaires',$questionnaires);
         $view->render();
-    } 
+    }
+
+    public function showParticipations()
+    {
+        $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
+        if(!isset($idq))
+        {
+            $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
+        }
+        $questionnaire=Questionnaire::getWithId($idq);
+        $participations = Participer::lesParticipation($idq);
+        $view = new View($this,'questionnaire/participation');
+        $view->setArg('user',$this->request->getUserObject());
+        $view->setArg('questionnaire',$questionnaire);
+        $view->setArg('participations',$participations);
+        $view->render();
+    }
+
+    public function deleteParticipation()
+    {
+        $idq = (int)$this->request->getParameter('idq');
+        $id = (int)$this->request->getParameter('id');
+        if(!isset($idq)||!isset($id))
+        {
+            $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
+        }
+        Participer::abandon($id,$idq);
+        $this->linkTo('Questionnaire','showParticipations',array('idq' => $idq));
+    }
 
     public function edit()
     //Appelle la vue pour mettre à jour les informations
