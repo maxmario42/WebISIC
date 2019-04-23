@@ -25,7 +25,7 @@
                 </tr>
                 
                 <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Reponse', 'defaultAction', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST )); ?>';">
-                    <span class="fas fa-plus"></span> Ajouter reponse
+                    <span class="fa fa-plus-circle"></span> Ajouter reponse
                 </button>
             </tbody>
         </table>
