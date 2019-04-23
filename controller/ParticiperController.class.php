@@ -28,6 +28,10 @@ class ParticiperController extends Controller
         if (!isset($this->session->questionnaireEnCours))
         {
             $idq = (int)$this->request->getParameter('idq');
+            if (!Participer::debutParticipation($this->request->getUser(),$idq))
+            {
+                $this->linkTo('Participer');
+            }
             $this->session->questionnaireEnCours = $idq;
             $this->session->questionEnCours=0;
         }
@@ -36,6 +40,7 @@ class ParticiperController extends Controller
 
     public function abandonner()
     {
+        Participer::abandon($this->request->getUser(),$this->session->questionnaireEnCours);
         unset($this->session->questionnaireEnCours);
         unset($this->session->questionEnCours);
         $this->linkTo('Participer');

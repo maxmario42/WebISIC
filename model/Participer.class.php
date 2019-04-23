@@ -26,7 +26,7 @@ class Participer extends Model
     public static function debutParticipation($ID,$IDQ)
     //Initialise une participation. Contrôle si la personne a déjà répondue.
     {
-        $st = static::db()->query("SELECT * FROM PARTICPER WHERE ID =$ID AND IDQ=$IDQ");   
+        $st = static::db()->query("SELECT * FROM PARTICIPER WHERE ID =$ID AND IDQ=$IDQ");   
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, get_called_class());
         $object = $st-> fetch();
         if ($object==null)
@@ -39,6 +39,6 @@ class Participer extends Model
 
     public static function abandon($ID,$IDQ)
     {
-        $st = static::db()->query("DELETE FROM PARTICPER WHERE ID =$ID AND IDQ=$IDQ");
+        $st = static::db()->query("DELETE FROM PARTICIPER WHERE ID =$ID AND IDQ=$IDQ");
     }
 }
