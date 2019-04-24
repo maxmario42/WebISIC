@@ -84,10 +84,12 @@ Ce controlleur gère les réponses
 
     public function deleteReponse()
     {
-        $idq = (int)$this->request->getParameter('idq');    
+        $idq = (int)$this->request->getParameter('idq');
         $idquest = (int)$this->request->getParameter('idquest');
         $idR=(int)$this->request->getParameter('idR');
+        Reponse_Choisie::deleteAll($idquest);
         Reponses_Possibles::deleteWithId($idR);
+        Participer::deleteWithAnId($idq, 'IDQ');
         $this->linkTo('Reponse','showListReponse',array('idq'=>$idq,'idquest'=>$idquest));
     }
 

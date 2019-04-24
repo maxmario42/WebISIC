@@ -158,12 +158,14 @@ Ce controlleur gère les questions. Ici, chaque question n'est reliée qu'à un 
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
+        Reponse_Choisie::deleteAll($idquest);
         $reponses=Reponses_Possibles::getAllWithAnId($idquest,'ID_QUEST');
         foreach ($reponses as $reponse)
         {
             Reponses_Possibles::deleteWithId($reponse->ID_REPONSE);
         }
         Question::delete($idq,$idquest);
+        Participer::deleteWithAnId($idq, 'IDQ');
         $this->linkTo('Question','showListQuestion',array('idq'=>$idq));
     }
 }

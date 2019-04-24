@@ -17,24 +17,24 @@
                 </div>
                 <div class="form-group">
                     <label for="mdp">Mot de passe</label>
-                    <input type="password" class="form-control" name="inscPassword" id="inPassword" placeholder="Mot de passe">
+                    <input type="password" class="form-control" name="inscPassword" id="inPassword" placeholder="Mot de passe" required>
                     <label for="mdpVali">Confirmer Mot de passe</label>
-                    <input type="password" class="form-control" name="inscPasswordVali" id="inPasswordVali" placeholder="Confirmer Mot de passe">
+                    <input type="password" class="form-control" name="inscPasswordVali" id="inPasswordVali" placeholder="Confirmer Mot de passe" required>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="nom">Nom</label>
-                        <input type="text" class="form-control" name="nom" id="inName" placeholder="Nom" value="<?php echo $user->NOM; ?>">
+                        <input type="text" class="form-control" name="nom" id="inName" placeholder="Nom" value="<?php echo $user->NOM; ?>" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="prenom">Prénom</label>
-                        <input type="text" class="form-control" name="prenom" id="inPrenom" placeholder="Prenom" value="<?php echo $user->PRENOM; ?>">
+                        <input type="text" class="form-control" name="prenom" id="inPrenom" placeholder="Prenom" value="<?php echo $user->PRENOM; ?>" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email2">Email</label>
                     <input type="email" class="form-control" name="mail" id="inMail" placeholder="Email" value="<?php echo $user->MAIL_ENSEIGNANT;
-                                                                                                                echo $user->MAIL_ETUDIANT; ?>">
+                                                                                                                echo $user->MAIL_ETUDIANT; ?>" required>
                 </div>
                 <?php require_once("editType/edit" . $user->TYPE_UTILISATEUR . "Template.php"); ?>
                 <button type="submit" class="btn btn-dark" style="background-color: #1B5040;">Mise à jour</button>

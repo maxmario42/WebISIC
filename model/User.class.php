@@ -1,7 +1,8 @@
 <?php
 class User extends Model
 /*
-Ce Model gère les utilisateurs
+Ce Model gère les utilisateurs.
+Il y a deux entrées différentes pour les mails car on voulait gérer des participants sans compte (Juste avec nom et prénom), ça vient de notre MCD
 */
 {
 
@@ -81,7 +82,7 @@ Ce Model gère les utilisateurs
                 'oldLogin' => $oldLogin
             ));
         } else {
-                $sth = static::db()->prepare('UPDATE UTILISATEUR SET nom=:nom, prenom=:prenom,type_utilisateur="Etudiant",matricule=:spe1,statut=:spe2,mail_enseignant=:mail,mdp=:mdp,login=:login WHERE LOGIN=:oldLogin');
+                $sth = static::db()->prepare('UPDATE UTILISATEUR SET nom=:nom, prenom=:prenom,type_utilisateur="Etudiant",matricule=:spe1,statut=:spe2,mail_etudiant=:mail,mdp=:mdp,login=:login WHERE LOGIN=:oldLogin');
                 $res = $sth->execute(array(
                     'nom' => $nom,
                     'prenom' => $prenom,

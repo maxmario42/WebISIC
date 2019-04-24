@@ -62,6 +62,19 @@ Ce Model gère les réponses choisies par les étudiants. Ici, chaque question n
         }
     }
 
+    public static function deleteAll($idq)
+    //Supprime les réponses choisies pour une question
+    {
+        $st = static::db()->query("SELECT  * FROM REPONSE_CHOISIE WHERE ID_QUEST = $idq");
+        $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reponse_Choisie');
+        $objects = $st->fetchAll(); //PDO::FETCH_ASSOCs
+        foreach ($objects as $reponse)
+        {
+            $sth1 = static::db()->exec("DELETE FROM APPARTENIR WHERE IDRC = $reponse->IDRC");
+            $sth2 = static::deleteWithId($reponse->IDRC);
+        }
+    }
+
     public static function choixQCU($idr, $idq, $id)
     //Gère l'inscription d'une réponse de QCU
     {

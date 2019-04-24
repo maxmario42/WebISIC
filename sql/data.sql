@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mar. 23 avr. 2019 à 15:20
+-- Généré le :  mer. 24 avr. 2019 à 18:51
 -- Version du serveur :  10.3.7-MariaDB
 -- Version de PHP :  5.6.39
 
@@ -52,11 +52,11 @@ INSERT INTO `APPARTENIR` (`IDRC`, `ID_REPONSE`) VALUES
 --
 
 INSERT INTO `PARTICIPER` (`ID`, `IDQ`, `DATE_PARTICIPATION`, `CLASSEMENT`, `SCORE`) VALUES
-(1, 1, '1903-01-01', 1, NULL),
-(1, 5, '2019-01-30', 1, NULL),
-(2, 2, '2019-04-01', 1, NULL),
-(3, 3, '2019-02-15', 1, NULL),
-(4, 4, '2019-04-01', 1, NULL);
+(1, 1, '1903-01-01', 1, 1),
+(1, 5, '2019-01-30', 1, 5),
+(2, 2, '2019-04-01', 1, 2),
+(3, 3, '2019-02-15', 1, 3),
+(4, 4, '2019-04-01', 1, 4);
 
 --
 -- Déchargement des données de la table `QUESTION`
