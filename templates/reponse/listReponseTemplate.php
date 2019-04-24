@@ -41,6 +41,9 @@
                             <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Reponse', 'showReponse', array('idq' => $questionnaire->IDQ, 'idquest' => $reponse->ID_QUEST, 'idR' => $reponse->ID_REPONSE)); ?>';">
                                 <span class="fa fa-search"></span> Détail
                             </button>
+                            <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Reponse', 'deleteReponse', array('idq' => $questionnaire->IDQ, 'idquest' => $reponse->ID_QUEST, 'idR' => $reponse->ID_REPONSE)); ?>';">
+                                <span class="fa fa-times"></span> Supprimer
+                            </button>
                         </tbody>
                     </table>
                 </div>

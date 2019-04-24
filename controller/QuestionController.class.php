@@ -142,6 +142,11 @@ class QuestionController extends Controller
         {
             $this->linkTo('Questionnaire','showQuest'); //Redirection si on tente de forcer l'action
         }
+        $reponses=Reponses_Possibles::getAllWithAnId($idquest,'ID_QUEST');
+        foreach ($reponses as $reponse)
+        {
+            Reponses_Possibles::deleteWithId($reponse->ID_REPONSE);
+        }
         Question::delete($idq,$idquest);
         $this->linkTo('Question','showListQuestion',array('idq'=>$idq));
     }

@@ -28,8 +28,8 @@
                             <!-- debut bloc1-3 -->
                             <label for="correct">Correct</label>
                             <select class="form-control" name="correct" id="correct" size="1" required>
-                                <option value="0">OUI</option>
-                                <option value="1">NON</option>
+                                <option value="1">OUI</option>
+                                <option value="0">NON</option>
                                 
                             </select>
                             <div class="valid-feedback">

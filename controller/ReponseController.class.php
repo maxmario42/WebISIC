@@ -63,7 +63,8 @@ class ReponseController extends Controller{
         $view->render();
     }
 
-    public function showListReponse(){
+    public function showListReponse()
+    {
         $idq = (int)$this->request->getParameter('idq');    
         $idquest=(int)$this->request->getParameter('idquest');
         //lister les reponses d'une question
@@ -76,7 +77,15 @@ class ReponseController extends Controller{
         $view->setArg('question',$question);
         $view->setArg('reponses',$reponses);
         $view->render();
+    }
 
+    public function deleteReponse()
+    {
+        $idq = (int)$this->request->getParameter('idq');    
+        $idquest = (int)$this->request->getParameter('idquest');
+        $idR=(int)$this->request->getParameter('idR');
+        Reponses_Possibles::deleteWithId($idR);
+        $this->linkTo('Reponse','showListReponse',array('idq'=>$idq,'idquest'=>$idquest));
     }
 
 }
