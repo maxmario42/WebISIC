@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mer. 24 avr. 2019 à 18:40
+-- Généré le :  mer. 24 avr. 2019 à 21:04
 -- Version du serveur :  10.3.7-MariaDB
 -- Version de PHP :  5.6.39
 
@@ -64,7 +64,7 @@ CREATE TABLE `APPARTENIR` (
 CREATE TABLE `PARTICIPER` (
   `ID` bigint(20) NOT NULL,
   `IDQ` bigint(20) NOT NULL,
-  `DATE_PARTICIPATION` date NOT NULL DEFAULT current_timestamp(),
+  `DATE_PARTICIPATION` date DEFAULT NULL,
   `CLASSEMENT` int(11) DEFAULT NULL,
   `SCORE` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

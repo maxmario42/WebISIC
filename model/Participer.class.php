@@ -53,7 +53,7 @@ Ce Model gère les participations des utilisateurs à un questionnaire.
     //Conclut une participation
     {
         $score = static::calculScore($ID,$IDQ);
-        $st = static::db()->query("UPDATE PARTICIPER SET SCORE=$score, CLASSEMENT=1 WHERE ID = $ID AND IDQ=$IDQ");
+        $st = static::db()->query("UPDATE PARTICIPER SET SCORE=$score, CLASSEMENT=1, DATE_PARTICIPATION=CURDATE() WHERE ID = $ID AND IDQ=$IDQ");
     }
 
     public static function abandon($ID,$IDQ)
