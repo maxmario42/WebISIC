@@ -15,7 +15,7 @@
                     <input type="text" class="form-control" name="reponse" id="reponse" placeholder="Votre réponse">
                 </div>
 
-                <button type="submit" class="btn btn-dark" style="background-color: #1B5040;">Valider ma réponse</button>
+                <button type="submit" class="btn btn-dark" style="background-color: #FF8100;">Valider ma réponse</button>
             </form>
         </div>
     </div>
