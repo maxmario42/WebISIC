@@ -1,1 +1,0 @@
-<p>Bonjour. Souhaitez-vous consulter <a href="page2.html">la page 2</a> ?</p>
