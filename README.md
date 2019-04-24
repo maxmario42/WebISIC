@@ -37,3 +37,10 @@ Architecture du Projet
     - `sql/data.sql`: Données de test
 - `templates`: Modèles de génération HTML
 - `view`: Gestion des vues
+
+Informations de conceptions
+----------------------
+
+Vous trouverez ces dossiers sur notre dépot :
+- `SGBD` : Ce dossier contient les représentations de notre base de données. Vous y trouverez également des fichiers utilisables sur PowerAMC.
+- `Ergonomie` : Ce dossier comporte plusieurs fichiers sur nos choix ergonomiques. Il contient notamment un PDF qui résume tous nos choix.
