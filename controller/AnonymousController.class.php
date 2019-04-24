@@ -111,5 +111,17 @@ class AnonymousController extends Controller {
             }
         }
     }
+
+    public function questionnaires()
+    {
+        //Affichage des questionnaires
+        $questionnaires = Questionnaire::getAll();
+        if (!isset($questionnaires)) {
+            throw new Error("Problème d'accès aux questionnaires", 500);
+        }
+        $view = new View($this, 'participer/listQuestionnaire');
+        $view->setArg('questionnaires', $questionnaires);
+        $view->render();
+    }
 }
 ?>

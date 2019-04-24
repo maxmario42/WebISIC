@@ -89,12 +89,9 @@
                                       ERROR
                                   </a>
                               <?php endif ?>
-                          <?php else :
-                            ?>
+                          <?php else : ?>
                               <li><a class="aMenu" href="<?php echo $this->linkTo(NULL, 'aPropos'); ?>">À propos</a></li>
-                              <li><a class="aMenu" href="Quest.php">Questionnaire</a></li>
-                              <!-- <li><a href="blog.html"></a></li>
-                                                                            <li><a href="contact.html">Contact</a></li> -->
+                              <li><a class="aMenu" href="<?php echo $this->linkTo(NULL, 'questionnaires'); ?>">Questionnaires</a></li>
                           <?php endif ?>
                       </ul>
 
