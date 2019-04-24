@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mer. 24 avr. 2019 à 18:51
+-- Généré le :  mer. 24 avr. 2019 à 21:05
 -- Version du serveur :  10.3.7-MariaDB
 -- Version de PHP :  5.6.39
 
@@ -44,8 +44,11 @@ INSERT INTO `APPARTENIR` (`IDRC`, `ID_REPONSE`) VALUES
 (1, 2),
 (2, 3),
 (3, 6),
-(4, 8),
-(5, 10);
+(5, 10),
+(7, 3),
+(8, 5),
+(9, 6),
+(11, 15);
 
 --
 -- Déchargement des données de la table `PARTICIPER`
@@ -101,7 +104,7 @@ INSERT INTO `REGLES_GENERATION` (`REGLE`, `ID_REGLE`) VALUES
 
 INSERT INTO `REGLES_QUESTIONNAIRE` (`TEMPS_TOTALE`, `REVENIR_ARRIERE`, `ID_REGLES_QUEST`, `PLUS`, `MOINS`, `NEUTRE`) VALUES
 (NULL, 0, 1, 1, NULL, NULL),
-(600, 0, 2, 3, 1, NULL),
+(600, 0, 2, 3, 1, 0),
 (300, 1, 3, 2, 1, NULL),
 (NULL, 1, 4, 1, 2, NULL),
 (100, 1, 5, 5, 3, 1);
@@ -135,8 +138,11 @@ INSERT INTO `REPONSE_CHOISIE` (`ID_QUEST`, `IDRC`, `ID`, `OKPASOK`) VALUES
 (1, 1, 2, 1),
 (2, 2, 2, 1),
 (3, 3, 3, 1),
-(4, 4, 1, 1),
-(6, 5, 4, 0);
+(6, 5, 4, 0),
+(2, 7, 12, 1),
+(2, 8, 12, 1),
+(3, 9, 12, 1),
+(7, 11, 1, 0);
 
 --
 -- Déchargement des données de la table `SPECIFIER`
@@ -197,7 +203,10 @@ INSERT INTO `UTILISATEUR` (`NOM`, `PRENOM`, `TYPE_UTILISATEUR`, `ID`, `MATRICULE
 ('Fabresse', 'Luc', 'Enseignant', 6, 'IMT002', 'Interne', 'luc.fabresse@imt-lille-douai.fr', NULL, NULL, NULL, 'e', 'pharluc'),
 ('Vermeulen', 'Mathieu', 'Enseignant', 7, 'IMT003', 'Interne', 'mathieu.vermeulen@imt-lille-douai.fr', NULL, NULL, NULL, 'f', 'matt'),
 ('Le prof pas engagé', 'Inconnu', 'Enseignant', 8, 'EX001', 'Externe', 'inconnu@domaine.ext', NULL, NULL, NULL, 'g', '42'),
-('nuevo1', 'n', 'Etudiant', 9, NULL, NULL, NULL, NULL, NULL, 'nuevo@fr.com', 'n', 'nuevo');
+('nuevo1', 'n', 'Etudiant', 9, NULL, NULL, NULL, NULL, NULL, 'nuevo@fr.com', 'n', 'nuevo'),
+('LaMenace', 'Maxence', 'Etudiant', 10, NULL, NULL, 'a@b.fr', NULL, NULL, NULL, 'aa', 'maxlamenace'),
+('aaa', 'aaa', 'Etudiant', 11, NULL, NULL, 'a@b.fr', NULL, NULL, NULL, 'aa', 'aaa'),
+('aa', 'aa', 'Etudiant', 12, NULL, NULL, 'a@b.fr', NULL, NULL, NULL, 'aa', 'aa');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

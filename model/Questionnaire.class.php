@@ -55,6 +55,7 @@ Ce Model gère les questionnaires
     {
         $sth = static::db()->prepare("UPDATE QUESTIONNAIRE SET titre=:titre,description=:description,etat=:etat,date_ouverture=:date_o,date_fermeture=:date_f,mode_acces=:mode_acces WHERE IDQ=:IDQ");
         $sth->execute(array(
+            'IDQ' => $IDQ,
             'titre' => $titre,
             'description' => $description,
             'etat' => $etat,
