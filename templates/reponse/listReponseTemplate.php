@@ -1,4 +1,4 @@
-<?php if (empty($questions)) : ?>
+<?php if (empty($reponses)) : ?>
     <div main class="container" style="flex-grow:1;">
         <div class="row justify-content-center">
             <div class="col-lg-6 jumbotron py-3">
@@ -11,7 +11,7 @@
                         <tr>
                             <th scope="row">Il faut créer une reponse !</th>
                             <td>Pour cela, cliquez sur le bouton</td>
-                        <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Question', 'defaultAction', array('idq' => $questionnaire->IDQ)); ?>';">
+                        <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Reponse', 'defaultAction', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>';">
                             <span class="fa fa-plus-circle"></span> Créer une reponse
                         </button>
                     </tbody>
@@ -20,7 +20,7 @@
         </div>
     </div>
 <?php else : ?>
-    <?php foreach ($questions as $reponse) : ?>
+    <?php foreach ($reponses as $reponse) : ?>
         <div main class="container" style="flex-grow:1;">
             <div class="row justify-content-center">
                 <div class="col-lg-6 jumbotron py-3">

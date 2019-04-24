@@ -27,6 +27,10 @@
                 <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Reponse', 'defaultAction', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST )); ?>';">
                     <span class="fa fa-plus-circle"></span> Ajouter reponse
                 </button>
+                <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Reponse', 'showListReponse', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST )); ?>';">
+                    Voir reponses ajoutés
+                </button>
+
             </tbody>
         </table>
     </div>
