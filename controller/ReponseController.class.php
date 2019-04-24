@@ -68,10 +68,12 @@ class ReponseController extends Controller{
         $idquest=(int)$this->request->getParameter('idquest');
         //lister les reponses d'une question
         $reponses=Reponses_Possibles::getAllWithAnId($idquest,'ID_QUEST');
+        $question=Question::getWithId($idquest);
         $questionnaire=Questionnaire::getWithId($idq);
         $view = new View($this,'reponse/listReponse');
         $view->setArg('user',$this->request->getUserObject());
         $view->setArg('questionnaire',$questionnaire);
+        $view->setArg('question',$question);
         $view->setArg('reponses',$reponses);
         $view->render();
 

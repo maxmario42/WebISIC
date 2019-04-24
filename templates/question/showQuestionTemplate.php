@@ -23,12 +23,12 @@
                     <th scope="row">TAG</th>
                     <td><?php echo $question->TAG; ?></td>
                 </tr>
-                
-                <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Reponse', 'defaultAction', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST )); ?>';">
+
+                <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Reponse', 'defaultAction', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>';">
                     <span class="fa fa-plus-circle"></span> Ajouter reponse
                 </button>
-                <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Reponse', 'showListReponse', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST )); ?>';">
-                    Voir reponses ajoutés
+                <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href = '<?php echo $this->linkTo('Reponse', 'showListReponse', array('idq' => $questionnaire->IDQ, 'idquest' => $question->ID_QUEST)); ?>';">
+                    <span class="fa fa-search"></span> Voir reponses ajoutés
                 </button>
 
             </tbody>
