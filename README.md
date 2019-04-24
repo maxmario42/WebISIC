@@ -1,7 +1,7 @@
 Projet-Web - Quiz en ligne
 ===================
 
-Inroduction
+Introduction
 -----------
 
 Le projet Web est un projet de groupe de deuxième année à l'école IMT Lille Douai.
