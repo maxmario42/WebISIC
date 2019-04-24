@@ -13,35 +13,35 @@
 
                 <div class="form-group">
                     <label for="login">Login</label>
-                    <input type="text" class="form-control" name="inscLogin" id="inLogin" placeholder="Login">
+                    <input type="text" class="form-control" name="inscLogin" id="inLogin" placeholder="Login" required>
                 </div>
                 <div class="form-group">
                     <label for="mdp">Mot de passe</label>
-                    <input type="password" class="form-control" name="inscPassword" id="inPassword" placeholder="Mot de passe">
+                    <input type="password" class="form-control" name="inscPassword" id="inPassword" placeholder="Mot de passe" required>
                     <label for="mdpVali">Confirmer Mot de passe</label>
-                    <input type="password" class="form-control" name="inscPasswordVali" id="inPasswordVali" placeholder="Confirmer Mot de passe">
+                    <input type="password" class="form-control" name="inscPasswordVali" id="inPasswordVali" placeholder="Confirmer Mot de passe" required>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="nom">Nom</label>
-                        <input type="text" class="form-control" name="nom" id="inName" placeholder="Nom">
+                        <input type="text" class="form-control" name="nom" id="inName" placeholder="Nom" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="prenom">Prénom</label>
-                        <input type="text" class="form-control" name="prenom" id="inPrenom" placeholder="Prenom">
+                        <input type="text" class="form-control" name="prenom" id="inPrenom" placeholder="Prenom" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email2">Email</label>
-                    <input type="email" class="form-control" name="mail" id="inMail" placeholder="Email">
+                    <input type="email" class="form-control" name="mail" id="inMail" placeholder="Email" required>
                 </div>
                 <div class="form-group">
                     <label for="promo">Promo</label>
-                    <input type="text" class="form-control" name="promo" id="promo" placeholder="Promo">
+                    <input type="text" class="form-control" name="promo" id="promo" placeholder="Promo" required>
                 </div>
                 <div class="form-group">
                     <label for="anneedesortie">Année de sortie</label>
-                    <input type="number" class="form-control" name="anneedesortie" id="anneedesortie" placeholder="Année de sortie">
+                    <input type="number" class="form-control" name="anneedesortie" id="anneedesortie" placeholder="Année de sortie" required>
                 </div>
 
                 <button type="submit" class="btn btn-dark" style="background-color: #1B5040;">Creer mon compte...</button>

@@ -9,7 +9,7 @@
             echo '<span class="error">' . $questErrorText . '</span>';
         ?>
 
-        <form action="<?php echo $this->linkTo('Question', 'newQuest', array('idq'=>$questionnaire->IDQ)); ?>" method="post" class="needs-validation">
+        <form action="<?php echo $this->linkTo('Question', 'newQuest', array('idq' => $questionnaire->IDQ)); ?>" method="post" class="needs-validation">
             <div class="form-row">
                 <div class="col-md-6 mb-3">
                     <!-- debut bloc1 -->
@@ -53,7 +53,7 @@
                             </div>
                             <!-- fin bloc durée  -->
                         </div>
-                        
+
                         <div class="col-md-6 mb-3">
                             <!-- debut bloc1-4 -->
                             <label for="tag">Tag </label>
@@ -69,10 +69,10 @@
             </div>
             <div class="form-row">
                 <div class="col-md-12 mb-3 text-center">
-                
-                <button type="submit" class="btn btn-warning text-dark">Creer ma Question </button>
-                
-             </div>
+
+                    <button type="submit" class="btn btn-warning text-dark">Creer ma Question </button>
+
+                </div>
             </div>
         </form>
 
