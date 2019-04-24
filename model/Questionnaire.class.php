@@ -1,6 +1,9 @@
 <?php
 
 class Questionnaire extends Model
+/*
+Ce Model gère les questionnaires
+*/
 {
 
     public static function getTableName()
@@ -30,24 +33,9 @@ class Questionnaire extends Model
     }
 
     public static function create($id, $titre, $id_regles, $description, $etat, $date_o, $date_f, $mode_access, $lien_http)
-    { /* static::db()->exec("INSERT INTO QUESTIONNAIRE (id,titre,id_regles_quest,description,etat,date_ouverture,date_fermeture,mode_acces,lien_http) VALUES ($id,'$titre',$id_regles,'$description','$etat','$date_o','$date_f','$mode_access','$lien_http')");
-        return static::getWithAnId($titre,'TITRE');*/
-
-        //$sql="INSERT INTO QUESTIONNAIRE (id,titre,id_regles_quest,description,etat,date_ouverture,date_fermeture,mode_acces,lien_http)  VALUES($id,$titre,$id_regles,$description,$etat,$date_o,$date_f,$mode_access,$lien_http)";
-
+    {
         $sth = static::db()->prepare('INSERT INTO QUESTIONNAIRE (id,titre,id_regles_quest,description,etat,date_ouverture,date_fermeture,mode_acces,lien_http)
          VALUES (:id, :titre, :id_regles, :description, :etat,:date_o, :date_f, :mode_access, :lien_http)');
-
-        /* $sth->bindParam(':id', $id, PDO::PARAM_INT);
-        $sth->bindParam(':titre',$titre,PDO::PARAM_STR);
-        $sth->bindParam(':id_regles',$id_regles,PDO::PARAM_INT);
-        $sth->bindParam(':description',$description,PDO::PARAM_STR);
-        $sth->bindParam(':etat',$etat,PDO::PARAM_STR);
-        $sth->bindParam(':date_o',$date_o);
-        $sth->bindParam(':date_f',$date_f);
-        $sth->bindParam(':mode_access',$mode_access,PDO::PARAM_STR);
-        $sth->bindParam(':lien_http',$lien_http,PDO::PARAM_STR);
-        $sth->execute(); */
 
         $res = $sth->execute(array(
             'id' => $id,

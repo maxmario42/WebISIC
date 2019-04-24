@@ -37,18 +37,12 @@ abstract class Controller extends MyObject {
     }
 
     public function linkTo($controller,$action=NULL, $params = array())
-    //Assure la redirection, le $controller sur NULL donnera Anonymous, $action sur NULL donnera DefaultAction
+    //Assure la redirection, le $controller sur NULL donnera Anonymous, $action sur NULL donnera defaultAction. 
+    //On peut passer d'autres paramètres en GET avec $params
     {
         $params['controller'] = $controller;
         $params['action'] = $action;
         header('Location:'.__BASE_URL.'/index.php?'.http_build_query($params));
-        exit();
-    }
-
-    public function linkToID($controller,$action=NULL,$id)
-    //Assure la redirection, le $controller sur NULL donnera Anonymous, $action sur NULL donnera DefaultAction
-    {
-        header('Location:'.__BASE_URL.'/index.php?controller='.$controller.'&action='.$action.'&id='.$id);
         exit();
     }
 }

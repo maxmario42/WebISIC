@@ -1,5 +1,8 @@
 <?php
 class Participer extends Model
+/*
+Ce Model gère les participations des utilisateurs à un questionnaire.
+*/
 {
     public static function getTableName()
     {
@@ -19,7 +22,7 @@ class Participer extends Model
 
     public static function getIDColumn()
     {
-        return "";
+        return ""; //Pas d'ID car issu d'une relation N-N
     }
 
     public static function debutParticipation($ID,$IDQ)
@@ -54,6 +57,7 @@ class Participer extends Model
     }
 
     public static function abandon($ID,$IDQ)
+    //Supprime une participation
     {
         $st = static::db()->query("DELETE FROM PARTICIPER WHERE ID =$ID AND IDQ=$IDQ");
     }
@@ -86,6 +90,7 @@ class Participer extends Model
     }
 
     public static function calculScore($ID,$IDQ)
+    //Calcule le score (Mauvais résultat)
     {
         $st = static::db()->query("SELECT SUM(RC.OKPASOK*RQ.PLUS)
         FROM QUESTIONNAIRE AS Q

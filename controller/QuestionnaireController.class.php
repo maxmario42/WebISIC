@@ -1,6 +1,9 @@
 <?php
 
 class QuestionnaireController extends Controller
+/*
+Ce controlleur gère les questionnaires.
+*/
 {
 
     public function __construct($request)
@@ -66,6 +69,11 @@ class QuestionnaireController extends Controller
           
         }
     }
+
+    /*
+    Actions d'affichage
+    */
+
     public function showQuiz()
     {
     //Affichage d'un questionnaire
@@ -97,7 +105,12 @@ class QuestionnaireController extends Controller
         $view->render();
     }
 
+    /*
+    Actions de participations
+    */
+
     public function showParticipations()
+    //Affiche les participations des étudiants à un questionnaire (On obtient uniquement le score, pas les réponses)
     {
         $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         if(!isset($idq))
@@ -114,6 +127,7 @@ class QuestionnaireController extends Controller
     }
 
     public function deleteParticipation()
+    //Supprime la participation d'un étudiant à un questionnaire
     {
         $idq = (int)$this->request->getParameter('idq');
         $id = (int)$this->request->getParameter('id');
@@ -124,6 +138,10 @@ class QuestionnaireController extends Controller
         Participer::abandon($id,$idq);
         $this->linkTo('Questionnaire','showParticipations',array('idq' => $idq));
     }
+
+    /*
+    Actions de gestion
+    */
 
     public function edit()
     //Appelle la vue pour mettre à jour les informations
@@ -191,8 +209,8 @@ class QuestionnaireController extends Controller
         }
     }
     public function deleteQuest()
+    //Permet de supprimer un questionnaire et ses questions. Ne fonctionne pas si un étudiant y a participé.
     {
-        $this->protection('Enseignant'); //Réserve l'accès aux Enseignants
         $idq = (int)$this->request->getParameter('idq'); //recupere le parametre en get de l'ID du questionnaire de l'url.
         if(!isset($idq))
         {

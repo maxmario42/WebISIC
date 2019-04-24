@@ -1,5 +1,8 @@
 <?php
     class UserController extends Controller {
+    /*
+    Ce controlleur gère les actions concernant un utilisateur
+    */
         
         public function __construct($request) 
         {
@@ -8,6 +11,7 @@
         }
 
         public function defaultAction()
+        //Page d'acceuil
         {
             $view = new View($this);
             $view->setArg('user',$this->request->getUserObject());

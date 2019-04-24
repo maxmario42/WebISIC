@@ -2,7 +2,7 @@
 
 class ErrorController extends Controller
 /*
-Ce controleur gère les erreurs
+Ce controleur gère les erreurs. Il dispose de sa propre méthode execute.
 */
 {
     private $error;
@@ -17,9 +17,9 @@ Ce controleur gère les erreurs
         http_response_code($this->error->getCode());
         $view = new View($this, 'error');
         $view->setArg('error', $this->error);
-        if (is_object($this->request->getUserObject()))
+        if (is_object($this->request->getUserObject()))//Si un utilisateur est connecté
         {
-            $view->setArg('user',$this->request->getUserObject());
+            $view->setArg('user',$this->request->getUserObject()); //Permet de maintenir la présence de l'utilisateur dans la barre de menu
         }
         $view->render();
     }

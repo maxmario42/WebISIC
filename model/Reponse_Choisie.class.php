@@ -1,6 +1,9 @@
 <?php
 
 Class Reponse_Choisie extends Model
+/*
+Ce Model gère les réponses choisies par les étudiants. Ici, chaque question ne peut être utilisé que par un questionnaire
+*/
 {
 
     public static function getTableName()

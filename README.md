@@ -16,7 +16,7 @@ Mode d'emploi :
 
 Téléchargement du projet
 - `git clone`
-- `cd projet-web`
+- `cd WebISIC`
 
 Initialisation de la base de données
 - Importer dans votre base de données le fichier `sql/structure.sql`

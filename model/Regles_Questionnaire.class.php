@@ -1,6 +1,9 @@
 <?php
 
 class Regles_Questionnaire extends Model
+/*
+Ce Model gère les règles de questionnaire
+*/
 {
 
     public static function getTableName()

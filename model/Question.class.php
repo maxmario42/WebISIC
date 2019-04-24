@@ -1,6 +1,9 @@
 <?php
 
 class Question extends Model
+/*
+Ce Model gère les questions
+*/
 {
 
     public static function getTableName()

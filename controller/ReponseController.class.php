@@ -1,5 +1,8 @@
 <?php
 class ReponseController extends Controller{
+/*
+Ce controlleur gère les réponses
+*/
     public function __construct($request)
     {
         parent::__construct($request);

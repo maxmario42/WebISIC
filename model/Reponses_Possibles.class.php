@@ -1,6 +1,9 @@
 <?php
 
 Class Reponses_Possibles extends Model
+/*
+Ce Model gère les réponses à une question
+*/
 {
 
     public static function getTableName()
@@ -47,14 +50,6 @@ Class Reponses_Possibles extends Model
             'correct'=>$correct,
             'colonne'=>$colonne           
         ));
-    }
-
-    
-
-
-    public static function delete($ID)
-    {
-        //TODO
     }
 }
 

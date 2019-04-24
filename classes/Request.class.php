@@ -12,7 +12,7 @@ class Request extends MyObject {
     private static $Request = null;
     private $action;
     private $controller;
-    private $user = null;
+    private $user = null; //Par défaut, il n'y a pas d'utilisateur connecté
 
     public static function getCurrentRequest()
     //Design pattern Singleton
@@ -75,11 +75,13 @@ class Request extends MyObject {
     }
 
     public function read($arg){
+    //Lit une donnée en POST
         if (isset($_POST[$arg])){
             return$_POST[$arg];
         }
     }
     public function write($key,$value){
+    //Ecrit une donnée en POST
         $l1=$_POST[$key]=$value;
         return $l1;
     }
@@ -107,8 +109,10 @@ class Request extends MyObject {
         $this->setUser(NULL);
         Session::getInstance()->destroy();
     }
-  //Sert a recuperer l'ID d'un questionnaire pour l'afficher
-    public function getParameter($param){
+  
+    public function getParameter($param)
+    {
+    //Lit des données en GET
 		if (isset($_GET[$param])) {
 			return $_GET[$param];
 		}

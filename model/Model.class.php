@@ -1,5 +1,8 @@
 <?php
 abstract class Model extends MyObject {
+    /*
+    Couche d'abstraction pour accéder à notre Base de donnée. Chaque Model dispose de méthodes génériques et spécifiques.
+    */
         
     protected $props;
     
@@ -75,6 +78,7 @@ abstract class Model extends MyObject {
     }
     
     public static function isUsed($value,$field){
+        //Permet de savoir si un objet est déjà présent dans le base
         $st = static::db()->query("SELECT ".$field." FROM ".static::getTableName()." WHERE ".$field."='$value'");   
         $st ->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, get_called_class());
         $object = $st-> fetch();
